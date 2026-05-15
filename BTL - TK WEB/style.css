@@ -12,7 +12,6 @@ body {
     line-height: 1.6;
 }
 
-/* --- THANH NAV KÍNH MỜ MÀU XANH MINT --- */
 .dau-trang-kinh {
     position: sticky;
     top: 0;
@@ -26,7 +25,6 @@ body {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(147, 233, 190, 0.3);
-    /* Viền xanh mint mờ */
 }
 
 .logo {
@@ -34,9 +32,7 @@ body {
     font-weight: 900;
     letter-spacing: 2px;
     color: #93e9be;
-    /* Màu Xanh Mint của bạn */
     text-shadow: 0 0 10px rgba(147, 233, 190, 0.4);
-    /* Phát sáng nhẹ */
 }
 
 .thanh-dieu-huong ul {
@@ -93,8 +89,7 @@ body {
     /* Chữ chuyển thành đen cho nổi bật */
 }
 
-.banner-vang {
-    /* Tên class giữ nguyên để khớp HTML, nhưng màu đã đổi */
+.banner {
     height: 450px;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), #0a0a0a),
         url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1500&q=80');
@@ -106,14 +101,6 @@ body {
     margin-bottom: 40px;
 }
 
-.nhan-vip {
-    color: #93e9be;
-    border: 1px solid #93e9be;
-    padding: 4px 10px;
-    font-size: 12px;
-    letter-spacing: 3px;
-}
-
 .noi-dung-banner h1 {
     font-size: 48px;
     color: #fff;
@@ -121,7 +108,6 @@ body {
 }
 
 .nut-dat-ve {
-    /* Tạo hiệu ứng dải màu từ Xanh lá đậm mượt sang Xanh Mint của bạn */
     background: linear-gradient(45deg, #6ecfa0, #93e9be);
     color: #0a0a0a;
     border: none;
@@ -131,7 +117,6 @@ body {
     border-radius: 30px;
     cursor: pointer;
     box-shadow: 0 10px 20px rgba(147, 233, 190, 0.25);
-    /* Bóng đổ màu mint */
     transition: 0.3s;
 }
 
@@ -145,12 +130,21 @@ body {
     padding: 0 5% 50px;
 }
 
-.tieu-de-muc {
+.tieu-de-muc a {
     color: #93e9be;
     font-size: 24px;
+    text-decoration: none;
     margin-bottom: 30px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s ease;
+}
+
+.tieu-de-muc a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(147, 233, 190, 0.6);
 }
 
 .luoi-phim {
@@ -193,11 +187,90 @@ body {
     font-size: 14px;
 }
 
-/* --- CHÂN TRANG --- */
 .chan-trang {
-    text-align: center;
-    padding: 40px;
+    background-color: #050505;
+    padding: 60px;
     border-top: 1px solid rgba(147, 233, 190, 0.15);
-    color: #555;
+    color: #b0b0b0;
+    font-size: 14px;
+}
+
+.noi-dung-footer {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    /* Cột giới thiệu to gấp đôi 2 cột còn lại */
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.logo-footer {
+    color: #93e9be;
+    font-size: 22px;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    font-weight: 900;
+}
+
+.cot-footer h3 {
+    color: #ffffff;
+    font-size: 16px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cot-footer p {
+    line-height: 2;
+    max-width: 80%;
+}
+
+.cot-footer ul {
+    list-style: none;
+}
+
+.cot-footer ul li {
+    margin-bottom: 12px;
+}
+
+.cot-footer ul li a {
+    color: #b0b0b0;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.cot-footer ul li a:hover {
+    color: #93e9be;
+}
+
+.mang-xa-hoi {
+    display: flex;
+    gap: 15px;
+}
+
+.icon-mxh {
+    background-color: transparent;
+    color: #93e9be;
+    border: 1px solid #93e9be;
+    padding: 8px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 500;
     font-size: 13px;
+    transition: all 0.3s ease;
+}
+
+.icon-mxh:hover {
+    background-color: #93e9be;
+    color: #050505;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(147, 233, 190, 0.4);
+}
+
+.ban-quyen {
+    text-align: center;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 13px;
+    color: #666;
 }
