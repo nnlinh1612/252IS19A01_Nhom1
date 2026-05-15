@@ -1,0 +1,203 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lexend', 'Segoe UI', sans-serif;
+}
+
+body {
+    background-color: #0a0a0a;
+    /* Đen sâu */
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+/* --- THANH NAV KÍNH MỜ MÀU XANH MINT --- */
+.dau-trang-kinh {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(147, 233, 190, 0.3);
+    /* Viền xanh mint mờ */
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #93e9be;
+    /* Màu Xanh Mint của bạn */
+    text-shadow: 0 0 10px rgba(147, 233, 190, 0.4);
+    /* Phát sáng nhẹ */
+}
+
+.thanh-dieu-huong ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.thanh-dieu-huong ul li a {
+    text-decoration: none;
+    color: #b0b0b0;
+    transition: color 0.3s ease;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.thanh-dieu-huong ul li a:hover,
+.thanh-dieu-huong ul li a.dang-chon {
+    color: #93e9be;
+}
+
+.nut-dang-ky {
+    font-size: 18px;
+    background: transparent;
+    color: #93e9be;
+    border: 1px solid #93e9be;
+    padding: 8px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.4s;
+}
+
+.nut-dang-ky:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(147, 233, 190, 0.4);
+}
+
+.nut-dang-nhap {
+    font-size: 18px;
+    background: linear-gradient(45deg, #6ecfa0, #93e9be);
+    color: black;
+    border: 1px solid #93e9be;
+    padding: 8px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.4s;
+}
+
+.nut-dang-nhap:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(147, 233, 190, 0.4);
+    /* Chữ chuyển thành đen cho nổi bật */
+}
+
+.banner-vang {
+    /* Tên class giữ nguyên để khớp HTML, nhưng màu đã đổi */
+    height: 450px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), #0a0a0a),
+        url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1500&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    margin-bottom: 40px;
+}
+
+.nhan-vip {
+    color: #93e9be;
+    border: 1px solid #93e9be;
+    padding: 4px 10px;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+.noi-dung-banner h1 {
+    font-size: 48px;
+    color: #fff;
+    margin: 20px 0;
+}
+
+.nut-dat-ve {
+    /* Tạo hiệu ứng dải màu từ Xanh lá đậm mượt sang Xanh Mint của bạn */
+    background: linear-gradient(45deg, #6ecfa0, #93e9be);
+    color: #0a0a0a;
+    border: none;
+    padding: 12px 30px;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(147, 233, 190, 0.25);
+    /* Bóng đổ màu mint */
+    transition: 0.3s;
+}
+
+.nut-dat-ve:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(147, 233, 190, 0.4);
+}
+
+/* --- LƯỚI PHIM --- */
+.khu-vuc-chinh {
+    padding: 0 5% 50px;
+}
+
+.tieu-de-muc {
+    color: #93e9be;
+    font-size: 24px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.luoi-phim {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.the-phim {
+    transition: 0.4s;
+}
+
+.khung-anh {
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid rgba(147, 233, 190, 0.15);
+    /* Viền thẻ phim */
+}
+
+.the-phim img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    display: block;
+    transition: 0.5s;
+}
+
+.the-phim:hover img {
+    transform: scale(1.1);
+}
+
+.the-phim h3 {
+    margin: 15px 0 5px;
+    color: #fff;
+    font-size: 18px;
+}
+
+.the-phim p {
+    color: #888;
+    font-size: 14px;
+}
+
+/* --- CHÂN TRANG --- */
+.chan-trang {
+    text-align: center;
+    padding: 40px;
+    border-top: 1px solid rgba(147, 233, 190, 0.15);
+    color: #555;
+    font-size: 13px;
+}
