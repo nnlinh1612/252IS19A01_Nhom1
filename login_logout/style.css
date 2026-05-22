@@ -6,9 +6,9 @@
 }
 
 body {
-    background-color: #0a0a0a;
+    background-color: #0a0a0a !important;
     /* Đen sâu */
-    color: #e0e0e0;
+    color: #e0e0e0 !important;
     line-height: 1.6;
 }
 
@@ -273,4 +273,470 @@ body {
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     font-size: 13px;
     color: #666;
+}
+
+/* ==========================================================
+   MÃ CSS RESPONSIVE - TAB LỊCH CHIẾU
+   ========================================================== */
+
+/* 1. Thiết lập chung cho body nền tối */
+body {
+    background-color: #0a0a0a;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+/* 2. Định dạng Navbar */
+.thanh-nav {
+    background-color: #111111;
+    border-bottom: 1px solid rgba(147, 233, 190, 0.2);
+    padding: 12px 0;
+}
+.logo {
+    color: #93e9be !important;
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: 1px;
+    /* THÊM 2 DÒNG NÀY VÀO */
+    white-space: nowrap; /* Bắt buộc chữ phải nằm trên cùng 1 dòng, không được rớt chữ */
+    flex-shrink: 0;      /* Cấm Flexbox bóp méo hay thu nhỏ khu vực của Logo */
+}
+.thanh-nav .nav-link {
+    color: #b0b0b0 !important;
+    font-size: 16px;
+    padding: 8px 15px !important;
+}
+.thanh-nav .nav-link.active, .thanh-nav .nav-link:hover {
+    color: #93e9be !important;
+}
+
+/* 3. Tiêu đề mục */
+.tieu-de-muc {
+    color: #93e9be;
+    font-weight: 700;
+    font-size: calc(1.5rem + 1vw); /* Tự co giãn font chữ theo độ rộng màn hình */
+}
+
+/* 4. Thanh chọn ngày đặt vé thông minh */
+.thanh-chon-ngay {
+    overflow-x: auto; /* Nếu màn hình điện thoại quá hẹp, tự động cho phép vuốt ngang qua các ngày */
+    white-space: nowrap; /* Không cho chữ ngày bị xuống dòng lung tung */
+    padding-bottom: 10px;
+    -webkit-overflow-scrolling: touch; /* Giúp vuốt vuốt trên iPhone mượt hơn */
+}
+/* Ẩn thanh cuộn xấu xí của trình duyệt để giao diện sạch đẹp */
+.thanh-chon-ngay::-webkit-scrollbar {
+    display: none;
+}
+
+.nut-ngay {
+    background: #161616;
+    color: #b0b0b0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 16px;
+    border-radius: 8px;
+    min-width: 105px;
+    flex-shrink: 0; /* Ngăn nút bị bóp méo khi màn hình nhỏ */
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+.nut-ngay.active, .nut-ngay:hover {
+    background: #e50914;
+    color: #fff;
+    border-color: #e50914;
+    box-shadow: 0 0 12px rgba(229, 9, 20, 0.4);
+}
+
+/* 5. Thẻ phim hàng ngang ở danh sách Lịch Chiếu */
+.the-phim-ngang {
+    background: #121212;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column; /* Mặc định trên điện thoại: Poster ở trên, chữ ở dưới */
+    gap: 15px;
+    transition: 0.3s ease;
+}
+.the-phim-ngang:hover {
+    border-color: rgba(147, 233, 190, 0.3);
+    background: #161616;
+}
+
+/* Định dạng nhãn giới hạn độ tuổi */
+.nhan-tuoi {
+    background: #e50914;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: bold;
+    display: inline-block;
+    vertical-align: middle;
+}
+.nhan-tuoi.nhan-p {
+    background: #28a745;
+}
+
+/* Các nút chọn suất chiếu giờ giấc */
+.nut-suat-chieu {
+    background: #222;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.2s;
+}
+.nut-suat-chieu:hover {
+    background: #93e9be;
+    color: #000;
+    border-color: #93e9be;
+}
+
+/* 6. Giao diện trang chi tiết phim */
+.anh-poster-chi-tiet {
+    width: 100%;
+    max-width: 320px; /* Khống chế không cho poster phình to quá mức trên máy tính */
+    height: auto;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+}
+
+.nut-dat-ve {
+    background: linear-gradient(45deg, #6ecfa0, #93e9be);
+    color: #000;
+    font-weight: bold;
+    border: none;
+    padding: 12px 35px;
+    border-radius: 30px;
+    width: 100%; /* Trên điện thoại nút đặt vé sẽ to toàn màn hình cho dễ bấm */
+    transition: 0.3s;
+}
+
+/* Khung video trailer tỷ lệ vàng 16:9 chống méo */
+.khung-trailer {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+}
+.khung-trailer iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* ==========================================================
+   MEDIA QUERIES (Bí thuật Responsive cho các màn hình lớn)
+   ========================================================== */
+
+/* Áp dụng khi màn hình rộng từ 768px trở lên (Máy tính bảng nằm ngang & Máy tính) */
+@media (min-width: 768px) {
+    .the-phim-ngang {
+        flex-direction: row; /* Chuyển thành hàng ngang: Ảnh bên trái, chữ bên phải giống ảnh mẫu */
+        padding: 20px;
+    }
+    
+    .nut-dat-ve {
+        width: auto; /* Trên máy tính, nút đặt vé thu gọn lại vừa vặn chữ thay vì tràn màn hình */
+    }
+}
+/* ==========================================================
+   CẤP NHẬT CĂN GIỮA TUYỆT ĐỐI TRÊN MÁY TÍNH (Màn hình >= 992px)
+   ========================================================== */
+@media (min-width: 992px) {
+    .dau-trang-kinh {
+        margin: 0;
+        border-radius: 50px;
+        padding: 15px 5%;
+        position: sticky !important;  /* Bắt buộc gắn chặt thanh này */
+        top: 0 !important;            /* Gắn chặt ở vị trí sát mép trên cùng (0px) */
+        z-index: 9999 !important;
+        flex-wrap: wrap;
+        display: flex !important;
+        align-items: center !important; 
+        justify-content: space-between !important; /* Đẩy logo kịch trái, nút kịch phải */
+        position: relative; /* Tạo mỏ neo để cụm chữ căn giữa dựa vào header */
+    }
+
+    /* Khung collapse chứa cả chữ và nút */
+    .dau-trang-kinh .navbar-collapse {
+        display: flex !important;
+        align-items: center !important;
+        width: 100%;
+    }
+
+    /* ĐÂY LÀ BÍ THUẬT: Đưa thanh điều hướng vào giữa trung tâm header */
+    .thanh-dieu-huong {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%); /* Dịch chuyển tọa độ kịch kim vào giữa */
+        z-index: 5;
+    }
+
+    /* Định dạng danh sách Menu hàng ngang */
+    .thanh-dieu-huong ul {
+        flex-direction: row !important;
+        gap: 30px;
+        padding: 0;
+        margin: 0; 
+        display: flex !important;
+        align-items: center; 
+    }
+
+    .thanh-dieu-huong ul li a {
+        display: inline-block;
+        line-height: 1; 
+    }
+
+    /* Khóa chặt khu vực tài khoản cố định ở lề bên phải */
+    .tai-khoan {
+        margin-left: auto; /* Tự động đẩy kịch sàn về bên phải */
+        display: flex !important;
+        justify-content: flex-end !important;
+    }
+
+    .nhom-nut-tk {
+        width: auto;
+        padding-bottom: 0;
+        margin: 0;
+        display: flex;
+        align-items: center; 
+    }
+    /* ==========================================================
+   CSS DÀNH RIÊNG CHO TRANG CHỦ - 4 PHIM TRÊN MỘT DÒNG
+   ========================================================== */
+@media (min-width: 992px) {
+    /* Thanh navbar giữ nguyên của cậu... */
+
+    /* Thẻ bọc phim ở trang chủ */
+    .the-phim-home {
+        background-color: #111111;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        padding: 12px;
+        width: 100%;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+    }
+
+    .the-phim-home:hover {
+        transform: translateY(-8px);
+        border-color: rgba(147, 233, 190, 0.4);
+        box-shadow: 0 10px 25px rgba(147, 233, 190, 0.15);
+    }
+
+    /* ÉP POSTER VỀ ĐÚNG TỶ LỆ DỌC NHỎ (Hiển thị 4 phim đẹp mắt) */
+    .khung-anh-home {
+        position: relative;
+        width: 100%;
+        height: 320px; /* Chiều cao vừa vặn cho 4 poster/dòng */
+        overflow: hidden;
+        border-radius: 12px;
+    }
+
+    .khung-anh-home img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+}
+}
+/* ==========================================================
+   CSS THẺ PHIM TRANG CHỦ (ÁP DỤNG CHO MỌI KÍCH THƯỚC MÀN HÌNH)
+   ========================================================== */
+
+/* Thẻ bọc ngoài cùng */
+.the-phim-home {
+    background-color: #111111;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 10px;
+    width: 100%;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.the-phim-home:hover {
+    transform: translateY(-8px);
+    border-color: rgba(147, 233, 190, 0.4);
+    box-shadow: 0 10px 25px rgba(147, 233, 190, 0.15);
+}
+
+/* ĐÂY LÀ BÍ QUYẾT: Dùng tỷ lệ 2/3 để ép mọi poster cao bằng nhau chằn chặn */
+.khung-anh-home {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2 / 3; /* Chiều cao tự động tính bằng 1.5 lần chiều rộng */
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.khung-anh-home img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cắt gọn ảnh mà không làm méo hình */
+    transition: transform 0.5s ease;
+}
+
+.the-phim-home:hover .khung-anh-home img {
+    transform: scale(1.08);
+}
+
+/* Lớp phủ hiện nút Chi tiết khi hover */
+.lop-phu-home {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+.the-phim-home:hover .lop-phu-home {
+    opacity: 1;
+}
+
+/* Thiết kế nút Chi tiết bo tròn phát sáng */
+.nut-xem-chi-tiet {
+    background: transparent;
+    color: #93e9be;
+    border: 1px solid #93e9be;
+    padding: 6px 20px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.nut-xem-chi-tiet:hover {
+    background: #93e9be;
+    color: #0a0a0a;
+    box-shadow: 0 0 15px rgba(147, 233, 190, 0.6);
+}
+
+/* Chữ nghĩa bên dưới poster */
+.tieu-de-phim-home {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.the-loai-phim-home {
+    color: #888888;
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+/* ==========================================================
+   CSS CHO Ô TÌM KIẾM PHIM VÀ ICON ĐỘC LẬP
+   ========================================================== */
+.o-tim-kiem-phim {
+    background-color: #111111 !important;
+    border: 1px solid rgba(147, 233, 190, 0.4) !important;
+    color: #ffffff !important;
+    border-radius: 30px !important;
+    
+    /* CHÚ Ý: Tăng khoảng cách lề trái (padding-left) lên 45px để chừa chỗ cho icon */
+    padding: 12px 20px 12px 45px !important; 
+    
+    box-shadow: 0 0 10px rgba(147, 233, 190, 0.05);
+    transition: all 0.3s ease;
+}
+
+.o-tim-kiem-phim:focus {
+    background-color: #1a1a1a !important;
+    border-color: #93e9be !important;
+    box-shadow: 0 0 15px rgba(147, 233, 190, 0.4) !important;
+    outline: none;
+    color: #ffffff !important;
+}
+
+/* Đổi màu chữ mờ đi một chút */
+.o-tim-kiem-phim::placeholder {
+    color: #888888 !important;
+}
+
+/* ĐỊNH DẠNG ĐẶT VỊ TRÍ ICON KÍNH LÚP LÊN TRÊN Ô TÌM KIẾM */
+.icon-tim-kiem {
+    position: absolute;
+    left: 30px; /* Cách mép trái 30px */
+    top: 50%; /* Đẩy xuống giữa */
+    transform: translateY(-50%); /* Căn giữa chính xác tuyệt đối */
+    color: #888888; /* Màu kính lúp tệp với màu chữ placeholder */
+    font-size: 16px;
+    z-index: 10; /* Nổi lên trên ô nhập liệu */
+    pointer-events: none; /* Tránh việc người dùng click nhầm vào icon bị kẹt con trỏ chuột */
+}
+/* ==========================================================
+   KHÓA CHẶT KÍCH THƯỚC NÚT TÀI KHOẢN (CHỐNG BOOTSTRAP)
+   ========================================================== */
+.dau-trang-kinh .nut-dang-nhap, 
+.dau-trang-kinh .nut-dang-ky {
+    display: inline-block !important;
+    font-size: 18px !important;       /* Ép chuẩn cỡ chữ gốc */
+    padding: 8px 20px !important;     /* Ép chuẩn khoảng đệm gốc của trang chủ */
+    line-height: normal !important;   /* Xóa bỏ chiều cao dòng ảo do Bootstrap tự độn vào */
+    height: auto !important;          /* Thuận theo tự nhiên của padding */
+    align-self: center !important;    /* Căn giữa dọc */
+    white-space: nowrap !important;   /* Không rớt chữ */
+    margin: 0 !important;             /* Xóa lề thừa rác */
+    
+}
+/* ==========================================================
+   SỬA LỖI GIAO DIỆN LỊCH CHIẾU (ÉP NẰM NGANG)
+   ========================================================== */
+.the-phim-ngang {
+    background: #111111;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 20px;
+    
+    /* 3 lệnh BẮT BUỘC để ảnh và chữ luôn nằm ngang */
+    display: flex !important;
+    flex-direction: row !important; 
+    flex-wrap: nowrap !important;
+    align-items: flex-start;
+    gap: 20px; /* Khoảng cách giữa ảnh và chữ */
+}
+
+/* ==========================================================
+   CSS CỐ ĐỊNH KÍCH THƯỚC POSTER LỊCH CHIẾU (ĐÃ CHUẨN TÊN CLASS)
+   ========================================================== */
+
+/* Cố định khung ảnh poster bên trái */
+.the-phim-ngang .col-md-3 {
+    width: 20% !important; 
+    max-width: 130px !important; /* Đừng quên chữ !important quyền lực ở đây nhé */
+    flex-shrink: 0; 
+}
+
+/* Đảm bảo ảnh bên trong ôm vừa vặn khung chứa */
+.the-phim-ngang .col-md-3 img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Khu vực chữ chiếm phần không gian còn lại */
+.the-phim-ngang .col-md-9 {
+    width: 80% !important; 
+    padding-left: 15px !important; 
 }
