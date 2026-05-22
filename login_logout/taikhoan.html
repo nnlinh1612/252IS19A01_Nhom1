@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="taikhoan.css">
+    <title>Plant Cinema - Tài khoản</title>
+</head>
+<body>
+
+<header class="dau-trang-kinh">
+    <div class="logo">PLANT CINEMA</div>
+    <nav class="thanh-dieu-huong">
+        <ul>
+            <li><a href="trangchu.html">Trang chủ</a></li>
+            <li><a href="#">Lịch chiếu</a></li>
+            <li><a href="#">Tin tức</a></li>
+            <li><a href="#">Khuyến mãi</a></li>
+            <li><a href="#">Giá vé</a></li>
+        </ul>
+    </nav>
+    <div class="tai-khoan" id="taikhoanArea">
+        <button class="nut-dang-nhap" id="moDangNhap">Đăng nhập</button>
+        <button class="nut-dang-ky" id="moDangKy">Đăng ký</button>
+    </div>
+</header>
+
+<main class="khu-vuc-chinh">
+    <div id="veContainer"></div>
+</main>
+
+<!-- MODAL ĐĂNG NHẬP -->
+<div id="dangNhapModal" class="taikhoan-modal">
+    <div class="taikhoan-modal-content">
+        <span class="taikhoan-close" onclick="dongModal('dangNhapModal')">&times;</span>
+        <h2>ĐĂNG NHẬP</h2>
+        <input type="email" id="loginEmail" class="taikhoan-input" placeholder="Email">
+        <input type="password" id="loginPass" class="taikhoan-input" placeholder="Mật khẩu">
+        <div id="loginError" class="taikhoan-error"></div>
+        <button class="taikhoan-btn-submit" onclick="dangNhap()">Đăng nhập</button>
+    </div>
+</div>
+
+<!-- MODAL ĐĂNG KÝ -->
+<div id="dangKyModal" class="taikhoan-modal">
+    <div class="taikhoan-modal-content">
+        <span class="taikhoan-close" onclick="dongModal('dangKyModal')">&times;</span>
+        <h2>ĐĂNG KÝ</h2>
+        <input type="text" id="regName" class="taikhoan-input" placeholder="Họ tên">
+        <input type="tel" id="regPhone" class="taikhoan-input" placeholder="Số điện thoại">
+        <input type="email" id="regEmail" class="taikhoan-input" placeholder="Email">
+        <input type="password" id="regPass" class="taikhoan-input" placeholder="Mật khẩu">
+        <div id="regError" class="taikhoan-error"></div>
+        <div id="regSuccess" class="taikhoan-success"></div>
+        <button class="taikhoan-btn-submit" onclick="dangKy()">Tạo tài khoản</button>
+    </div>
+</div>
+
+<footer class="chan-trang">
+    <div class="noi-dung-footer">
+        <div class="cot-footer">
+            <h3 class="logo-footer">PLANT CINEMA</h3>
+            <p>Hệ thống rạp chiếu phim mang đến trải nghiệm điện ảnh xanh, hiện đại và đẳng cấp nhất.</p>
+        </div>
+        <div class="cot-footer">
+            <h3>Chính Sách</h3>
+            <ul><li><a href="#">Điều khoản sử dụng</a></li>
+            <li><a href="#">Chính sách bảo mật</a></li></ul>
+        </div>
+        <div class="cot-footer">
+            <h3>Kết Nối</h3>
+            <div class="mang-xa-hoi">
+                <a href="#" class="icon-mxh">Facebook</a>
+                <a href="#" class="icon-mxh">Instagram</a>
+            </div>
+        </div>
+    </div>
+    <div class="ban-quyen">
+        <p>Copyright &copy; 2026 Plant Cinema. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+// Khởi tạo dữ liệu mẫu
+if (!localStorage.getItem('cinema_users')) {
+    localStorage.setItem('cinema_users', JSON.stringify([
+        { id: 1, name: "Admin Plant", email: "admin@plant.com", phone: "0900000001", password: "123456" }
+    ]));
+}
+
+if (!localStorage.getItem('cinema_tickets')) {
+    localStorage.setItem('cinema_tickets', JSON.stringify([
+        { id: "VE001234", email: "admin@plant.com", movie: "Mortal Kombat", date: "25/05/2026", time: "19:30", seats: ["A1","A2"], combo: "Combo Bắp Nước", total: 210000 }
+    ]));
+}
+
+let currentUser = null;
+
+function kiemTraDangNhap() {
+    const saved = sessionStorage.getItem('currentUser');
+    if (saved) {
+        currentUser = JSON.parse(saved);
+        capNhatGiaoDien();
+        hienThiVe();
+    } else {
+        hienThiGiaoDienChuaDangNhap();
+    }
+}
+
+function capNhatGiaoDien() {
+    const area = document.getElementById('taikhoanArea');
+    area.innerHTML = `
+        <div class="taikhoan-user-area">
+            <span style="color:#93e9be;">👤 ${currentUser.name}</span>
+            <button class="taikhoan-logout-btn" onclick="dangXuat()">Đăng xuất</button>
+        </div>
+    `;
+}
+
+function hienThiGiaoDienChuaDangNhap() {
+    const area = document.getElementById('taikhoanArea');
+    area.innerHTML = `
+        <button class="nut-dang-nhap" id="moDangNhap">Đăng nhập</button>
+        <button class="nut-dang-ky" id="moDangKy">Đăng ký</button>
+    `;
+    document.getElementById('moDangNhap')?.addEventListener('click', () => moModal('dangNhapModal'));
+    document.getElementById('moDangKy')?.addEventListener('click', () => moModal('dangKyModal'));
+    document.getElementById('veContainer').innerHTML = `<div class="taikhoan-empty">🔐 Vui lòng đăng nhập để xem vé</div>`;
+}
+
+function hienThiVe() {
+    if (!currentUser) return;
+    const allTickets = JSON.parse(localStorage.getItem('cinema_tickets'));
+    const myTickets = allTickets.filter(t => t.email === currentUser.email);
+    
+    if (myTickets.length === 0) {
+        document.getElementById('veContainer').innerHTML = `<div class="taikhoan-ve-container"><h2>🎟️ VÉ CỦA TÔI</h2><div class="taikhoan-empty">Chưa có vé nào</div></div>`;
+        return;
+    }
+    
+    let html = `<div class="taikhoan-ve-container"><h2>🎟️ VÉ CỦA TÔI (${myTickets.length})</h2>`;
+    myTickets.forEach(t => {
+        html += `<div class="taikhoan-ve-item">
+            <p><strong>Mã vé:</strong> ${t.id}</p>
+            <p><strong>Phim:</strong> ${t.movie}</p>
+            <p><strong>Ngày:</strong> ${t.date} - ${t.time}</p>
+            <p><strong>Ghế:</strong> ${t.seats.join(', ')}</p>
+            <p><strong>Combo:</strong> ${t.combo}</p>
+            <p><strong>Tiền:</strong> ${t.total.toLocaleString()}đ</p>
+        </div>`;
+    });
+    html += `</div>`;
+    document.getElementById('veContainer').innerHTML = html;
+}
+
+function dangKy() {
+    const name = document.getElementById('regName').value.trim();
+    const phone = document.getElementById('regPhone').value.trim();
+    const email = document.getElementById('regEmail').value.trim();
+    const pass = document.getElementById('regPass').value.trim();
+    
+    document.getElementById('regError').innerText = '';
+    document.getElementById('regSuccess').innerText = '';
+    
+    if (!name || !phone || !email || !pass) {
+        document.getElementById('regError').innerText = 'Vui lòng nhập đầy đủ!';
+        return;
+    }
+    
+    const users = JSON.parse(localStorage.getItem('cinema_users'));
+    if (users.find(u => u.email === email)) {
+        document.getElementById('regError').innerText = 'Email đã tồn tại!';
+        return;
+    }
+    
+    users.push({ id: users.length+1, name, phone, email, password: pass });
+    localStorage.setItem('cinema_users', JSON.stringify(users));
+    document.getElementById('regSuccess').innerText = 'Đăng ký thành công! Hãy đăng nhập.';
+    setTimeout(() => {
+        dongModal('dangKyModal');
+        moModal('dangNhapModal');
+    }, 1500);
+}
+
+function dangNhap() {
+    const email = document.getElementById('loginEmail').value.trim();
+    const pass = document.getElementById('loginPass').value.trim();
+    const users = JSON.parse(localStorage.getItem('cinema_users'));
+    const user = users.find(u => u.email === email && u.password === pass);
+    
+    if (user) {
+        currentUser = user;
+        sessionStorage.setItem('currentUser', JSON.stringify(user));
+        dongModal('dangNhapModal');
+        capNhatGiaoDien();
+        hienThiVe();
+    } else {
+        document.getElementById('loginError').innerText = 'Sai email hoặc mật khẩu!';
+    }
+}
+
+function dangXuat() {
+    sessionStorage.removeItem('currentUser');
+    currentUser = null;
+    hienThiGiaoDienChuaDangNhap();
+}
+
+function moModal(id) {
+    document.getElementById(id).classList.add('active');
+}
+
+function dongModal(id) {
+    document.getElementById(id).classList.remove('active');
+}
+
+window.onclick = function(e) {
+    if (e.target.classList.contains('taikhoan-modal')) {
+        e.target.classList.remove('active');
+    }
+}
+
+kiemTraDangNhap();
+</script>
+
+</body>
+</html>

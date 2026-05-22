@@ -1,0 +1,146 @@
+.taikhoan-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.taikhoan-modal.active {
+    display: flex;
+}
+
+.taikhoan-modal-content {
+    background: #0f0f0f;
+    border: 1px solid #93e9be;
+    border-radius: 20px;
+    padding: 35px 40px 40px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+}
+
+.taikhoan-modal-content h2 {
+    color: #93e9be;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.taikhoan-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #93e9be;
+}
+
+.taikhoan-close:hover {
+    color: white;
+}
+
+.taikhoan-input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 10px;
+    color: white;
+}
+
+.taikhoan-input:focus {
+    border-color: #93e9be;
+    outline: none;
+}
+
+.taikhoan-btn-submit {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background: linear-gradient(45deg, #6ecfa0, #93e9be);
+    color: black;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.taikhoan-error {
+    color: #ff6b6b;
+    font-size: 13px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.taikhoan-success {
+    color: #93e9be;
+    font-size: 13px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.taikhoan-ve-container {
+    margin-top: 40px;
+    padding: 25px;
+    background: #0f0f0f;
+    border-radius: 20px;
+    border: 1px solid rgba(147, 233, 190, 0.2);
+}
+
+.taikhoan-ve-container h2 {
+    color: #93e9be;
+    margin-bottom: 20px;
+    border-left: 4px solid #93e9be;
+    padding-left: 15px;
+}
+
+.taikhoan-ve-item {
+    background: #1a1a1a;
+    border-left: 4px solid #93e9be;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+}
+
+.taikhoan-ve-item p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.taikhoan-ve-item strong {
+    color: #93e9be;
+}
+
+.taikhoan-user-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.taikhoan-logout-btn {
+    background: transparent;
+    border: 1px solid #ff6b6b;
+    color: #ff6b6b;
+    padding: 8px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.taikhoan-logout-btn:hover {
+    background: #ff6b6b;
+    color: black;
+}
+
+.taikhoan-empty {
+    text-align: center;
+    padding: 40px;
+    color: #888;
+}
