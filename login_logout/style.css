@@ -740,3 +740,115 @@ body {
     width: 80% !important; 
     padding-left: 15px !important; 
 }
+/* ==========================================================
+   CSS CHO THANH TAB TRƯỢT TRÊN TRANG LỊCH CHIẾU
+   ========================================================== */
+.danh-sach-tab {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 15px;
+}
+
+.tab-item {
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    margin: 0;
+}
+
+.tab-item.active {
+    color: #93e9be !important;; 
+}
+
+/* Đường gạch chân trượt */
+.thanh-truot {
+    position: absolute;
+    bottom: -2px; /* Đè lên viền xám ở dưới */
+    left: 0;
+    height: 4px;
+    background-color: #93e9be !important;;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Hiệu ứng gia tốc trượt cực xịn */
+    border-radius: 4px;
+}
+/* ==========================================================
+   CSS DỌN DẸP GIAO DIỆN LỊCH CHIẾU (XÓA VIỀN, CĂN GIỮA)
+   ========================================================== */
+
+/* 1. XÓA SẠCH ĐƯỜNG KẺ XÁM MỜ Ở KHU VỰC TAB */
+.khu-vuc-tab,
+.danh-sach-tab {
+    border-bottom: 0px transparent !important; 
+    box-shadow: none !important;
+}
+
+/* Đảm bảo tab không có viền thừa nào bị sót lại */
+hr.vien-tab { 
+    display: none !important; 
+}
+
+/* 2. CĂN GIỮA THANH CHỌN 7 NGÀY TUYỆT ĐỐI */
+#vung-chon-ngay {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow: visible !important; /* Đảm bảo không bị cắt xén từ thẻ cha */
+}
+
+#thanh-chon-ngay {
+    display: flex !important;
+    justify-content: center !important; 
+    gap: 12px !important; 
+    width: 100% !important;
+    max-width: 850px; /* Nới rộng ra một chút cho thoải mái */
+    margin: 0 auto 30px auto !important;
+    
+    /* ĐÂY LÀ BÍ QUYẾT: Thêm padding 20px vào 2 bên để bảo vệ góc và bóng đổ của nút */
+    padding: 15px 20px !important; 
+    
+    overflow-x: auto; 
+    -webkit-overflow-scrolling: touch; 
+}
+
+/* Đảm bảo ô input tìm kiếm cũng được căn giữa cho đồng bộ */
+.o-tim-kiem-phim {
+    margin: 0 auto !important;
+    display: block !important;
+}
+
+/* 3. BẢO VỆ GIAO DIỆN TRÊN ĐIỆN THOẠI (CHỐNG MẤT NÚT) */
+@media (max-width: 768px) {
+    #thanh-chon-ngay {
+        justify-content: flex-start !important; /* Nhỏ quá thì cho xếp từ trái sang */
+        overflow-x: auto !important; /* Bật tính năng vuốt ngang */
+        padding: 0 15px !important;
+    }
+}
+/* ==========================================================
+   CSS ĐỒNG BỘ MÀU CHỮ KHỞI CHIẾU SẮP RA MẮT
+   ========================================================== */
+.chu-khoi-chieu {
+    color: #93e9be !important;
+    font-weight: bold;
+}
+
+/* 2. Thiết kế nút Xem Trailer giống hệt nút Chi tiết ở Trang chủ */
+.nut-xem-trailer {
+    background: transparent !important;
+    color: #93e9be !important;
+    border: 1px solid #93e9be !important;
+    padding: 6px 20px !important;
+    border-radius: 30px !important;
+    font-weight: bold !important;
+    font-size: 14px !important;
+    transition: all 0.3s ease !important;
+    display: inline-block;
+    text-decoration: none;
+}
+
+/* Hiệu ứng Hover (Ảnh 3 của cậu): Đổi nền xanh chữ đen và phát sáng */
+.nut-xem-trailer:hover {
+    background: #93e9be !important;
+    color: #0a0a0a !important;
+    box-shadow: 0 0 15px rgba(147, 233, 190, 0.6) !important;
+    border-color: #93e9be !important;
+}

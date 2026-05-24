@@ -3,6 +3,7 @@ const khoPhim = [
     {
         id: 1,
         ten: "Doraemon Movie 45: Nobita Và Cuộc Phiêu Lưu Vào Thế Giới Trong Tranh",
+        trangThai: "dang-chieu",
         theLoai: "Hoạt Hình, Giả Tưởng, Phiêu Lưu",
         thoiLuong: "102 phút",
         khoiChieu: "22/05/2026",
@@ -24,8 +25,10 @@ const khoPhim = [
     {
         id: 2, 
         ten: "Shin Cậu Bé Bút Chì: Vương Quốc Nguệch Ngoạc Và Bốn Dũng Sĩ Bất Ổn",
+        trangThai: "dang-chieu",
         theLoai: "Hoạt Hình, Hài",
         thoiLuong: "105 phút",
+        khoiChieu: "22/05/2026",
         nhanTuoi: "P",
         diem: "9.7", 
         poster: "hinhanh/Poster2.jpg",
@@ -46,7 +49,9 @@ const khoPhim = [
         id: 3, 
         ten: "Super Mario Thiên Hà",
         theLoai: "Hoạt Hình, Phiêu Lưu, Hài, Hành Động",
+        trangThai: "dang-chieu",
         thoiLuong: "99 phút",
+        khoiChieu: "22/05/2026",
         nhanTuoi: "P",
         diem: "8.1", 
         poster: "hinhanh/Poster3.jpg",
@@ -68,8 +73,10 @@ const khoPhim = [
     {
         id: 4,
         ten: "Mèo Siêu Quậy Ở Viện Bảo Tàng",
+        trangThai: "dang-chieu",
         theLoai: "Hoạt Hình, Phiêu Lưu, Hài",
         thoiLuong: "112 phút",
+        khoiChieu: "22/05/2026",
         nhanTuoi: "P",
         diem: "8.3",
         poster: "hinhanh/Poster4.jpg",
@@ -93,8 +100,10 @@ const khoPhim = [
     {
         id: 5,
         ten: "Đội Thám Tử Cừu",
+        trangThai: "dang-chieu",
         theLoai: "Hài, Thần Bí",
         thoiLuong: "110 phút",
+        khoiChieu: "22/05/2026",
         nhanTuoi: "P",
         diem: "7.3",
         poster: "hinhanh/Poster5.jpg",
@@ -116,8 +125,10 @@ const khoPhim = [
     {
         id: 6,
         ten: "Tạm Biệt Gohan",
+        trangThai: "dang-chieu",
         theLoai: "Tâm Lý, Tình Cảm Gia Đình",
         thoiLuong: "141 phút",
+        khoiChieu: "22/05/2026",
         nhanTuoi: "K",
         diem: "8.5",
         poster: "hinhanh/Poster6.jpg",
@@ -139,8 +150,10 @@ const khoPhim = [
     {
         id: 7,
         ten: "Thoát Khỏi Tận Thế",
+        trangThai: "dang-chieu",
         theLoai: "Phiêu Lưu, Khoa Học Viễn Tưởng",
         thoiLuong: "156 phút",
+        khoiChieu: "22/05/2026",
         nhanTuoi: "K",
         diem: "7.0",
         poster: "hinhanh/Poster7.jpg",
@@ -163,8 +176,10 @@ const khoPhim = [
     {
         id: 8,
         ten: "Michael",
+        trangThai: "dang-chieu",
         theLoai: "Ca Nhạc, Chính Kịch",
         thoiLuong: "127 phút",
+        khoiChieu: "22/05/2026",
         nhanTuoi: "K",
         diem: "9.0",
         poster: "hinhanh/Poster8.jpg",
@@ -191,8 +206,10 @@ const khoPhim = [
     {
         id: 9,
         ten: "Trùm Sò",
+        trangThai: "dang-chieu",
         theLoai: "Hài, Cổ Trang, Dân Gian",
         thoiLuong: "105 phút",
+        khoiChieu: "22/05/2026",
         nhanTuoi: "K",
         diem: "6.9",
         poster: "hinhanh/Poster9.jpg",
@@ -221,8 +238,10 @@ const khoPhim = [
     {
         id: 10,
         ten: "Dưới Bóng Điện Hạ",
+        trangThai: "dang-chieu",
         theLoai: "Tâm Lý, Cổ Trang, Lịch Sử",
         thoiLuong: "117 phút",
+        khoiChieu: "22/05/2026",
         nhanTuoi: "T16",
         diem: "8.8",
         poster: "hinhanh/Poster10.jpg",
@@ -251,8 +270,10 @@ const khoPhim = [
     {
         id: 11,
         ten: "Phí Phông",
+        trangThai: "dang-chieu",
         theLoai: "Kinh Dị, Tâm Linh",
         thoiLuong: "125 phút",
+        khoiChieu: "22/05/2026",
         nhanTuoi: "T16",
         diem: "8.0",
         poster: "hinhanh/Poster11.jpg",
@@ -278,8 +299,10 @@ const khoPhim = [
     {
         id: 12,
         ten: "Bài Trùng Phá Án",
+        trangThai: "dang-chieu",
         theLoai: "Trinh Thám, Hành Động, Hài",
         thoiLuong: "120 phút",
+        khoiChieu: "22/05/2026",
         nhanTuoi: "T16",
         diem: "7.3",
         poster: "hinhanh/Poster12.jpg",
@@ -301,8 +324,10 @@ const khoPhim = [
     {
         id: 13,
         ten: "Một Thời Ta Đã Yêu",
+        trangThai: "dang-chieu",
         theLoai: "Tâm Lý, Tình Cảm, Lãng Mạn",
         thoiLuong: "115 phút",
+        khoiChieu: "22/05/2026",
         nhanTuoi: "T16",
         diem: "5.3",
         poster: "hinhanh/Poster13.jpg",
@@ -326,8 +351,10 @@ const khoPhim = [
     {
         id: 14,
         ten: "Hồ Nuốt Người",
+        trangThai: "dang-chieu",
         theLoai: "Kinh Dị, Giật Gân",
         thoiLuong: "146 phút",
+        khoiChieu: "22/05/2026",
         nhanTuoi: "T18",
         diem: "8.4",
         poster: "hinhanh/Poster14.jpg",
@@ -355,8 +382,10 @@ const khoPhim = [
     {
         id: 15,
         ten: "Xác Ướp",
+        trangThai: "dang-chieu",
         theLoai: "Kinh Dị, Siêu Nhiên",
         thoiLuong: "151 phút",
+        khoiChieu: "22/05/2026",
         nhanTuoi: "T18",
         diem: "8.1",
         poster: "hinhanh/Poster15.jpg",
@@ -384,8 +413,10 @@ const khoPhim = [
     {
         id: 16,
         ten: "Làng Khát Máu",
+        trangThai: "dang-chieu",
         theLoai: "Kinh Dị, Trinh Thám, Tâm Linh",
         thoiLuong: "136 phút",
+        khoiChieu: "22/05/2026",
         nhanTuoi: "T18",
         diem: "7.3",
         poster: "hinhanh/Poster16.jpg",
@@ -413,8 +444,10 @@ const khoPhim = [
     {
         id: 17,
         ten: "Làng Trùng Tang",
+        trangThai: "dang-chieu",
         theLoai: "Kinh Dị, Tâm Linh",
         thoiLuong: "140 phsut",
+        khoiChieu: "22/05/2026",
         nhanTuoi: "T18",
         diem: "7.3",
         poster: "hinhanh/Poster17.jpg",
@@ -442,8 +475,10 @@ const khoPhim = [
     {
         id: 18,
         ten: "Hào Quang Đơn Độc",
+        trangThai: "dang-chieu",
         theLoai: "Tâm Lý, Giật Gân",
         thoiLuong: "125 phút",
+        khoiChieu: "22/05/2026",
         nhanTuoi: "T18",
         diem: "7.3",
         poster: "hinhanh/Poster18.jpg",
@@ -466,25 +501,73 @@ const khoPhim = [
             "17/06/2026": ["08:30", "15:00", "20:30"],
         }
     },
+    { 
+        id: 19, 
+        ten: "Madames Thanh Sắc", 
+        trangThai: "sap-chieu", 
+        theLoai: "Tâm lý, Tội Phạm",
+        thoiLuong: "100 phút",
+        ngayKhoiChieu: "19/06/2026", 
+        nhanTuoi: "T18",
+        diem: "",
+        poster: "hinhanh/posterSC1.png",
+        moTa: "Madames Thanh Sắc xoay quanh cuộc đời của đại mỹ nhân Cầm Thanh (Thanh Hằng) và Madame Sắc (Hồng Ánh) - bà chủ vũ trường Kim Đô vô cùng giàu có và sở hữu nhiều kim cương. Dù ở dưới trướng của bà Sắc và từng bước trở thành vũ nữ đình đám nhất Sài Gòn những năm 1960, nhưng Cầm Thanh luôn muốn nổi loạn. Từ đó, hai người phụ nữ bắt đầu cuộc giằng co căng thẳng dẫn đến những sự kiện gây rúng động.",
+        trailer: "hinhanh/TrailerSC1.mp4"
+    },
+    { 
+        id: 20, 
+        ten: "Cầu Chú Hỏa", 
+        trangThai: "sap-chieu", 
+        theLoai: "Kinh Dị, Tâm Linh",
+        thoiLuong: "100 phút",
+        ngayKhoiChieu: "12/06/2026", 
+        nhanTuoi: "T18",
+        diem: "",
+        poster: "hinhanh/posterSC2.jpg",
+        moTa: "Để câu view, một nhóm streamer livestream khám phá Lầu Chú Hỏa, dinh thự bỏ hoang gắn với truyền thuyết về con ma nhà họ Hứa. Nhưng ngay từ những phút đầu, mọi thứ đã vượt khỏi tầm kiểm soát. Hiện tượng siêu nhiên liên tiếp xảy ra, kéo cả nhóm vào vòng xoáy ám ảnh không lối thoát. Buổi livestream nhanh chóng biến thành nơi “tạo nghiệp – trả nghiệp”, khi từng người phải trả giá cho lòng tham và sự báng bổ trước linh hồn oan khuất của cô tiểu thư họ Hứa.",
+        trailer: "hinhanh/TrailerSC2.mp4"
+    },
+    { 
+        id: 21, 
+        ten: "Câu Chuyện Đồ Chơi 5", 
+        trangThai: "sap-chieu", 
+        theLoai: "Hoạt Hình, Phiêu Lưu",
+        thoiLuong: "102 phút",
+        ngayKhoiChieu: "19/06/2026", 
+        nhanTuoi: "P",
+        diem: "",
+        poster: "hinhanh/posterSC3.jpg",
+        moTa: "Các món đồ chơi đã trở lại trong Toy Story 5 của Disney và Pixar, và lần này sẽ là cuộc đối đầu giữa đồ chơi và công nghệ. Buzz, Woody, Jessie cùng cả nhóm sẽ phải đối mặt với thử thách khó khăn hơn gấp bội khi chạm trán một mối đe dọa hoàn toàn mới đối với niềm vui vui chơi. Bộ phim được đạo diễn bởi Andrew Stanton, đồng đạo diễn bởi Kenna Harris và sản xuất bởi Lindsey Collins. Toy Story 5 sẽ khởi chiếu tại rạp vào ngày 19 tháng 6 năm 2026.",
+        trailer: "hinhanh/TrailerSC3.mp4"
+    }
 ];
 
 // =================================================================
-// 1. HÀM HIỂN THỊ TRANG CHỦ (GIỚI HẠN 8 PHIM, 4 PHIM/DÒNG)
+// BIẾN TOÀN CỤC (QUẢN LÝ TRẠNG THÁI)
+// =================================================================
+let ngayHienTai = null;
+let tabLichChieuHienTai = 'dang-chieu';
+
+// =================================================================
+// 1. HÀM HIỂN THỊ PHIM ĐANG CHIẾU TRANG CHỦ (GIỚI HẠN 8 PHIM)
 // =================================================================
 function renderDanhSachTrangChu() {
     const vungTrangChu = document.getElementById("danh-sach-phim-trang-chu");
     if (!vungTrangChu) return;
     vungTrangChu.innerHTML = ""; 
 
-    khoPhim.slice(0, 8).forEach(phim => {
+    // Chỉ lấy phim ĐANG CHIẾU
+    const phimDangChieu = khoPhim.filter(p => p.trangThai === 'dang-chieu').slice(0, 8);
+
+    phimDangChieu.forEach(phim => {
         const classNhan = phim.nhanTuoi === "P" ? "nhan-tuoi nhan-p" : "nhan-tuoi";
         const htmlPhim = `
             <div class="col-6 col-md-4 col-lg-3 d-flex mb-4">
-                <div class="the-phim-home d-flex flex-column w-100" onclick="window.location.href='Lichchieu.html?id=${phim.id}'">
+                <div class="the-phim-home d-flex flex-column w-100">
                     <div class="khung-anh-home">
                         <img src="${phim.poster}" alt="${phim.ten}">
                         <div class="lop-phu-home">
-                            <button class="nut-xem-chi-tiet">Chi tiết</button>
+                            <button class="nut-xem-chi-tiet" onclick="window.location.href='Lichchieu.html?id=${phim.id}'">Chi tiết</button>
                         </div>
                     </div>
                     <div class="mt-3 d-flex flex-column flex-grow-1 justify-content-between">
@@ -503,13 +586,54 @@ function renderDanhSachTrangChu() {
         vungTrangChu.innerHTML += htmlPhim;
     });
 }
-// Biến này để ghi nhớ người dùng đang xem ngày nào, tránh bị reset khi gõ tìm kiếm
-let ngayHienTai = null;
+
+// =================================================================
+// 2. HÀM HIỂN THỊ PHIM SẮP CHIẾU TRANG CHỦ (GIỚI HẠN 8 PHIM)
+// =================================================================
+function renderDanhSachSapChieuTrangChu() {
+    const vungSapChieu = document.getElementById("danh-sach-phim-sap-chieu-trang-chu");
+    if (!vungSapChieu) return;
+    vungSapChieu.innerHTML = ""; 
+
+    // Chỉ lấy phim SẮP CHIẾU
+    const phimSapChieu = khoPhim.filter(p => p.trangThai === 'sap-chieu').slice(0, 8);
+
+    phimSapChieu.forEach(phim => {
+        const classNhan = phim.nhanTuoi === "P" ? "nhan-tuoi nhan-p" : "nhan-tuoi";
+        const htmlPhim = `
+            <div class="col-6 col-md-4 col-lg-3 d-flex mb-4">
+                <div class="the-phim-home d-flex flex-column w-100">
+                    <div class="khung-anh-home">
+                        <img src="${phim.poster}" alt="${phim.ten}">
+                        <div class="lop-phu-home">
+                            <button class="nut-xem-chi-tiet" onclick="window.location.href='Lichchieu.html?id=${phim.id}'">Xem Trailer</button>
+                        </div>
+                    </div>
+                    <div class="mt-3 d-flex flex-column flex-grow-1 justify-content-between">
+                        <div>
+                            <h4 class="tieu-de-phim-home">${phim.ten}</h4>
+                            <p class="text-center mb-1 fw-bold" style="font-size: 13px; color: #93e9be;">Khởi chiếu: ${phim.ngayKhoiChieu}</p>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center mt-2 gap-2 px-1">
+                            <span class="text-secondary small" style="font-size: 11px;">${phim.theLoai}</span>
+                            <span class="${classNhan}" style="font-size: 11px; padding: 2px 6px;">${phim.nhanTuoi}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        vungSapChieu.innerHTML += htmlPhim;
+    });
+}
+
+// =================================================================
+// 3. HÀM HIỂN THỊ DANH SÁCH BÊN TRANG LỊCH CHIẾU (CHUNG CẢ 2 TAB)
+// =================================================================
 function renderDanhSachLichChieu(ngayDuocChon = null) {
     const vungDanhSach = document.getElementById("danh-sach-phim");
     if(!vungDanhSach) return;
 
-    // QUẢN LÝ NGÀY: Giữ đúng ngày đang xem khi người dùng gõ tìm kiếm
+    // QUẢN LÝ NGÀY
     if (!ngayDuocChon) {
         if (!ngayHienTai) {
             const today = new Date();
@@ -520,53 +644,58 @@ function renderDanhSachLichChieu(ngayDuocChon = null) {
         }
         ngayDuocChon = ngayHienTai;
     } else {
-        ngayHienTai = ngayDuocChon; // Cập nhật lại nếu người dùng click nút ngày khác
+        ngayHienTai = ngayDuocChon; 
     }
 
     vungDanhSach.innerHTML = ""; 
 
-    // ĐỌC DỮ LIỆU TỪ Ô TÌM KIẾM
     const oTimKiem = document.getElementById("o-tim-kiem-phim");
-    // Lấy chữ in hoa/in thường đều chuyển về chữ thường để so sánh cho chuẩn
     const tuKhoa = oTimKiem ? oTimKiem.value.toLowerCase().trim() : "";
 
-    // BỘ LỌC 1: Lọc những phim chiếu trong ngày được chọn
-    let phimHopLe = khoPhim.filter(phim => phim.suatChieu && phim.suatChieu[ngayDuocChon]);
+    let phimHopLe = [];
 
-    // BỘ LỌC 2: Nếu có gõ từ khóa, lọc tiếp theo tên phim
-    if (tuKhoa !== "") {
-        phimHopLe = phimHopLe.filter(phim => phim.ten.toLowerCase().includes(tuKhoa));
+    // LỌC THEO TAB
+    if (tabLichChieuHienTai === 'dang-chieu') {
+        phimHopLe = khoPhim.filter(phim => phim.trangThai === 'dang-chieu' && phim.suatChieu && phim.suatChieu[ngayDuocChon]);
+    } else {
+        phimHopLe = khoPhim.filter(phim => phim.trangThai === 'sap-chieu');
     }
 
-    // Nếu lọc xong mà không còn phim nào thì báo lỗi
+    // LỌC TIẾP THEO TÊN PHIM
+    if (tuKhoa !== "") phimHopLe = phimHopLe.filter(phim => phim.ten.toLowerCase().includes(tuKhoa));
+
     if (phimHopLe.length === 0) {
-        vungDanhSach.innerHTML = `<h5 class="text-white text-center w-100 my-5">Không tìm thấy phim nào phù hợp với từ khóa "${tuKhoa}".</h5>`;
+        vungDanhSach.innerHTML = `<h5 class="text-white text-center w-100 my-5">Không có phim nào phù hợp.</h5>`;
         return;
     }
 
-    // In danh sách phim đã lọc ra màn hình
+    // --- VẼ GIAO DIỆN PHIM ---
     phimHopLe.forEach(phim => {
         const classNhan = phim.nhanTuoi === "P" ? "nhan-tuoi nhan-p" : "nhan-tuoi";
-        const danhSachGio = phim.suatChieu[ngayDuocChon];
+        
+        let htmlChucNang = '';
+        if (tabLichChieuHienTai === 'dang-chieu') {
+            const danhSachGio = phim.suatChieu[ngayDuocChon] || [];
+            htmlChucNang = danhSachGio.map(gio => `
+                <button class="nut-suat-chieu" onclick="alert('Đặt vé ${gio}')">${gio}</button>
+            `).join('');
+        } else {
+            htmlChucNang = `
+                <p class="chu-khoi-chieu mb-2" style="width: 100%;">Khởi chiếu: ${phim.ngayKhoiChieu}</p>
+                <button class="nut-xem-chi-tiet" onclick="hienChiTietPhim(${phim.id})">Xem Trailer</button>
+            `;
+        }
 
         const htmlPhim = `
             <div class="col-12 mb-4">
                 <div class="the-phim-ngang row align-items-center m-0">
-                    <div class="col-12 col-md-3 p-0 text-center text-md-start" style="cursor: pointer;" onclick="hienChiTietPhim(${phim.id})">
+                    <div class="col-12 col-md-3 p-0" style="cursor: pointer;" onclick="hienChiTietPhim(${phim.id})">
                         <img src="${phim.poster}" class="img-fluid rounded shadow" alt="${phim.ten}">
                     </div>
                     <div class="col-12 col-md-9 mt-3 mt-md-0 px-md-4">
-                        <h4 class="text-white mb-2" style="cursor: pointer;" onclick="hienChiTietPhim(${phim.id})">
-                            ${phim.ten} <span class="${classNhan} ms-2">${phim.nhanTuoi}</span>
-                        </h4>
-                        <p class="text-secondary small mb-1">Thể loại: ${phim.theLoai || "Chưa cập nhật"} | Thời lượng: ${phim.thoiLuong || "Chưa cập nhật"}</p>
-                        <p class="text-secondary small mb-3">Đánh giá rạp: ★ ${phim.diem}</p>
-                        
-                        <div class="d-flex flex-wrap gap-2">
-                            ${danhSachGio.map(gio => `
-                                <button class="nut-suat-chieu" onclick="alert('Tiến hành đặt vé suất ${gio} - Ngày ${ngayDuocChon}')">${gio}</button>
-                            `).join('')}
-                        </div>
+                        <h4 class="text-white mb-2" style="cursor: pointer;" onclick="hienChiTietPhim(${phim.id})">${phim.ten} <span class="${classNhan}">${phim.nhanTuoi}</span></h4>
+                        <p class="text-secondary small mb-3">Thể loại: ${phim.theLoai} | Thời lượng: ${phim.thoiLuong}</p>
+                        <div class="d-flex flex-wrap gap-2 align-items-center">${htmlChucNang}</div>
                     </div>
                 </div>
             </div>
@@ -574,65 +703,36 @@ function renderDanhSachLichChieu(ngayDuocChon = null) {
         vungDanhSach.innerHTML += htmlPhim;
     });
 }
-// // =================================================================
-// // 2. HÀM HIỂN THỊ LỊCH CHIẾU (LỌC THEO SUẤT CHIẾU, ĐÃ KHẮC PHỤC LỖI CRASH)
-// // =================================================================
-// function renderDanhSachLichChieu(ngayDuocChon = null) {
-//     const vungDanhSach = document.getElementById("danh-sach-phim");
-//     if(!vungDanhSach) return;
-
-//     if (!ngayDuocChon) {
-//         const today = new Date();
-//         const dd = String(today.getDate()).padStart(2, '0');
-//         const mm = String(today.getMonth() + 1).padStart(2, '0');
-//         const yyyy = today.getFullYear();
-//         ngayDuocChon = `${dd}/${mm}/${yyyy}`;
-//     }
-
-//     vungDanhSach.innerHTML = ""; 
-
-//     // Lọc cực kỳ an toàn: Chỉ lấy những phim có khai báo giờ chiếu trong ngày đó
-//     const phimHopLe = khoPhim.filter(phim => phim.suatChieu && phim.suatChieu[ngayDuocChon]);
-
-//     // Nếu rạp không có lịch chiếu ngày hôm đó
-//     if (phimHopLe.length === 0) {
-//         vungDanhSach.innerHTML = `<h5 class="text-white text-center w-100 my-5">Hiện chưa có lịch chiếu phim cho ngày ${ngayDuocChon}.</h5>`;
-//         return;
-//     }
-
-//     // Tiến hành vẽ danh sách phim
-//     phimHopLe.forEach(phim => {
-//         const classNhan = phim.nhanTuoi === "P" ? "nhan-tuoi nhan-p" : "nhan-tuoi";
-//         const danhSachGio = phim.suatChieu[ngayDuocChon];
-
-//         const htmlPhim = `
-//             <div class="col-12 mb-4">
-//                 <div class="the-phim-ngang row align-items-center m-0">
-//                     <div class="col-12 col-md-3 p-0 text-center text-md-start" style="cursor: pointer;" onclick="hienChiTietPhim(${phim.id})">
-//                         <img src="${phim.poster}" class="img-fluid rounded shadow" alt="${phim.ten}">
-//                     </div>
-//                     <div class="col-12 col-md-9 mt-3 mt-md-0 px-md-4">
-//                         <h4 class="text-white mb-2" style="cursor: pointer;" onclick="hienChiTietPhim(${phim.id})">
-//                             ${phim.ten} <span class="${classNhan} ms-2">${phim.nhanTuoi}</span>
-//                         </h4>
-//                         <p class="text-secondary small mb-1">Thể loại: ${phim.theLoai || "Chưa cập nhật"} | Thời lượng: ${phim.thoiLuong || "Chưa cập nhật"}</p>
-//                         <p class="text-secondary small mb-3">Đánh giá rạp: ★ ${phim.diem}</p>
-                        
-//                         <div class="d-flex flex-wrap gap-2">
-//                             ${danhSachGio.map(gio => `
-//                                 <button class="nut-suat-chieu" onclick="alert('Tiến hành đặt vé suất ${gio} - Ngày ${ngayDuocChon}')">${gio}</button>
-//                             `).join('')}
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         `;
-//         vungDanhSach.innerHTML += htmlPhim;
-//     });
-// }
 
 // =================================================================
-// 3. HÀM TỰ ĐỘNG TẠO 7 NÚT CHỌN NGÀY
+// 4. CHUYỂN TAB VÀ HIỆU ỨNG TRƯỢT GẠCH CHÂN
+// =================================================================
+function chuyenTabLichChieu(tabId, tabElement) {
+    tabLichChieuHienTai = tabId;
+
+    document.querySelectorAll('.tab-item').forEach(tab => {
+        tab.classList.remove('active');
+        tab.classList.add('text-secondary');
+    });
+    tabElement.classList.add('active');
+    tabElement.classList.remove('text-secondary');
+
+    const thanhTruot = document.getElementById('thanh-truot-tab');
+    if (thanhTruot) {
+        thanhTruot.style.width = tabElement.offsetWidth + 'px';
+        thanhTruot.style.left = tabElement.offsetLeft + 'px';
+    }
+
+    const vungChonNgay = document.getElementById('vung-chon-ngay');
+    if (vungChonNgay) {
+        vungChonNgay.style.display = (tabId === 'dang-chieu') ? 'block' : 'none';
+    }
+
+    renderDanhSachLichChieu();
+}
+
+// =================================================================
+// 5. THANH CHỌN 7 NGÀY
 // =================================================================
 function renderThanhChonNgay() {
     const thanhChonNgay = document.getElementById('thanh-chon-ngay');
@@ -662,7 +762,6 @@ function renderThanhChonNgay() {
     thanhChonNgay.innerHTML = html;
 }
 
-// Xử lý khi click vào nút Ngày
 function chonNgay(btnElement, dateStr) {
     document.querySelectorAll('.nut-ngay').forEach(btn => btn.classList.remove('active'));
     btnElement.classList.add('active');
@@ -670,7 +769,7 @@ function chonNgay(btnElement, dateStr) {
 }
 
 // =================================================================
-// 4. HÀM XEM CHI TIẾT VÀ QUAY LẠI
+// 6. XEM CHI TIẾT PHIM VÀ QUAY LẠI
 // =================================================================
 function hienChiTietPhim(idPhim) {
     const phim = khoPhim.find(p => p.id === idPhim);
@@ -678,6 +777,10 @@ function hienChiTietPhim(idPhim) {
 
     const vungChiTiet = document.getElementById("vung-chi-tiet");
     const classNhan = phim.nhanTuoi === "P" ? "nhan-tuoi nhan-p" : "nhan-tuoi";
+
+    let nutDatVe = phim.trangThai === 'dang-chieu' 
+        ? `<button class="btn nut-dat-ve mt-3" onclick="alert('Tiến hành đặt vé phim ${phim.ten}')">ĐẶT VÉ NGAY</button>` 
+        : `<p class="chu-khoi-chieu mt-3" style="font-size: 18px;">Khởi chiếu: ${phim.ngayKhoiChieu}</p>`;
 
     vungChiTiet.innerHTML = `
         <button class="btn btn-outline-secondary mb-4 text-white" onclick="hienLichChieu()">&larr; Quay lại Lịch chiếu</button>
@@ -694,7 +797,7 @@ function hienChiTietPhim(idPhim) {
                 </div>
                 <h4 class="text-white h5">Nội dung tóm tắt</h4>
                 <p class="text-secondary" style="line-height: 1.6; font-size: 15px;">${phim.moTa || "Đang cập nhật..."}</p>
-                <button class="btn nut-dat-ve mt-3" onclick="alert('Tiến hành đặt vé phim ${phim.ten}')">ĐẶT VÉ NGAY</button>
+                ${nutDatVe}
             </div>
         </div>
         <div class="row mt-4 mt-md-5">
@@ -716,23 +819,55 @@ function hienLichChieu() {
     if (iframeVideo) iframeVideo.src = ""; 
     document.getElementById("vung-chi-tiet").classList.add("d-none");
     document.getElementById("vung-lich-chieu").classList.remove("d-none");
+    
+    // BỔ SUNG QUAN TRỌNG: Nếu trước đó đi thẳng từ Trang chủ vào Chi tiết (chưa kịp vẽ Lịch), thì bây giờ vẽ lại!
+    if (document.getElementById("danh-sach-phim") && document.getElementById("danh-sach-phim").innerHTML.trim() === "") {
+        if (document.getElementById("thanh-chon-ngay")) renderThanhChonNgay();
+        renderDanhSachLichChieu();
+    }
+
     const url = new URL(window.location);
     url.searchParams.delete('id');
     window.history.pushState({}, '', url);
 }
 
 // =================================================================
-// 5. CHẠY TỰ ĐỘNG KHỞI TẠO WEB
+// 7. KHỞI TẠO TỰ ĐỘNG KHI LOAD TRANG (ĐÃ FIX LỖI GIẬT KHUNG HÌNH)
 // =================================================================
 document.addEventListener("DOMContentLoaded", () => {
+    // 1. Kích hoạt các hàm của Trang Chủ (Nếu có)
     if (document.getElementById("danh-sach-phim-trang-chu")) renderDanhSachTrangChu();
-    if (document.getElementById("thanh-chon-ngay")) renderThanhChonNgay(); 
-    if (document.getElementById("danh-sach-phim")) renderDanhSachLichChieu(); 
+    if (document.getElementById("danh-sach-phim-sap-chieu-trang-chu")) renderDanhSachSapChieuTrangChu();
 
+    // 2. Đọc đường link ngay lập tức, không dùng setTimeout delay nữa
     const urlParams = new URLSearchParams(window.location.search);
     const phimIdParam = urlParams.get('id');
-    if (phimIdParam && document.getElementById("vung-chi-tiet")) {
-        const targetId = parseInt(phimIdParam);
-        if (!isNaN(targetId)) setTimeout(() => hienChiTietPhim(targetId), 100);
+    const tabParam = urlParams.get('tab');
+
+    const vungLichChieu = document.getElementById("vung-lich-chieu");
+    const vungChiTiet = document.getElementById("vung-chi-tiet");
+
+    // 3. Xử lý kịch bản cho trang Lịch Chiếu
+    if (vungLichChieu && vungChiTiet) {
+        if (phimIdParam) {
+            // KỊCH BẢN A: Có ID -> Đi thẳng vào Chi tiết phim
+            // Bí quyết chống giật: Giấu vùng Lịch chiếu đi ngay lập tức trước khi nó kịp vẽ bậy lên màn hình
+            vungLichChieu.classList.add("d-none"); 
+            const targetId = parseInt(phimIdParam);
+            if (!isNaN(targetId)) hienChiTietPhim(targetId);
+        } else {
+            // KỊCH BẢN B: Không có ID -> Mở trang Lịch chiếu bình thường
+            vungLichChieu.classList.remove("d-none");
+            if (document.getElementById("thanh-chon-ngay")) renderThanhChonNgay(); 
+            if (document.getElementById("danh-sach-phim")) renderDanhSachLichChieu(); 
+
+            // Nhảy Tab theo Link (Nhanh gấp 10 lần setTimeout cũ)
+            const danhSachTab = document.querySelectorAll('.tab-item');
+            if (tabParam === 'sap-chieu' && danhSachTab.length >= 2) {
+                chuyenTabLichChieu('sap-chieu', danhSachTab[1]); 
+            } else if (danhSachTab.length >= 1) {
+                chuyenTabLichChieu('dang-chieu', danhSachTab[0]); 
+            }
+        }
     }
 });

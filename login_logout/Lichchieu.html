@@ -21,6 +21,7 @@
     <nav class="thanh-dieu-huong collapse navbar-collapse justify-content-lg-center" id="thanhDieuHuongResponsive">
         <ul>
             <li><a href="Trangchu.html">Trang chủ</a></li>
+            <li><a href="gioithieu.html">Giới thiệu</a></li>
             <li><a href="Lichchieu.html" class="dang-chon">Lịch chiếu</a></li>
             <li><a href="tintuc.html">Tin tức</a></li>
             <li><a href="#">Khuyến mãi</a></li>
@@ -41,7 +42,17 @@
     <main class="container my-4 my-md-5">
         
         <div id="vung-lich-chieu">
-            <h2 class="tieu-de-muc text-center mb-4">Phim Đang Chiếu</h2>
+            <div class="khu-vuc-tab my-5">
+        <div class="danh-sach-tab position-relative d-flex justify-content-center gap-4 gap-md-5">
+            <h3 class="tab-item active" onclick="chuyenTabLichChieu('dang-chieu', this)">PHIM ĐANG CHIẾU</h3>
+            <h3 class="tab-item text-secondary" onclick="chuyenTabLichChieu('sap-chieu', this)">PHIM SẮP CHIẾU</h3>
+            <div class="thanh-truot" id="thanh-truot-tab"></div> 
+        </div>
+        </div>
+
+            <div id="vung-chon-ngay">
+            <div class="thanh-chon-ngay d-flex..." id="thanh-chon-ngay"></div>
+        </div>
             <div class="row justify-content-center mb-4">
                 <div class="col-12 col-md-8 col-lg-6">
             
@@ -69,6 +80,34 @@
             </div>
 
     </main>
+    <footer class="chan-trang">
+        <div class="noi-dung-footer">
+            <div class="cot-footer">
+                <h3 class="logo-footer">PLANT CINEMA</h3>
+                <p>Hệ thống rạp chiếu phim mang đến trải nghiệm điện ảnh xanh, hiện đại và đẳng cấp nhất dành cho bạn.</p>
+            </div>
+            <div class="cot-footer">
+                <h3>Chính Sách & Quy Định</h3>
+                <ul>
+                    <li><a href="#">Điều khoản sử dụng</a></li>
+                    <li><a href="#">Chính sách bảo mật</a></li>
+                    <li><a href="#">Chính sách đổi trả, hoàn vé</a></li>
+                    <li><a href="#">Chính sách thành viên</a></li>
+                </ul>
+            </div>
+            <div class="cot-footer">
+                <h3>Kết Nối Với Chúng Tôi</h3>
+                <div class="mang-xa-hoi">
+                    <a href="#" class="icon-mxh">Facebook</a>
+                    <a href="#" class="icon-mxh">Instagram</a>
+                    <a href="#" class="icon-mxh">Youtube</a>
+                </div>
+            </div>
+        </div>
+        <div class="ban-quyen">
+            <p>Copyright &copy; 2026 Plant Cinema. All rights reserved. Developed by Nhóm 1</p>
+        </div>
+    </footer>
     <!-- MODAL ĐĂNG NHẬP -->
     <div id="dangNhapModal" class="taikhoan-modal">
         <div class="taikhoan-modal-content">
