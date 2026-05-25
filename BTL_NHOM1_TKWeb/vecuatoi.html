@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="taikhoan.css">
+    <title>Plant Cinema - Vé của tôi</title>
+    <style>
+        .ticket-list {
+            margin: 40px 0;
+        }
+        .ticket-item {
+            background: #0f0f0f;
+            border-left: 4px solid #93e9be;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+        .ticket-item:hover {
+            background: #1a1a1a;
+            transform: translateX(5px);
+        }
+        .ticket-code {
+            font-family: monospace;
+            color: #93e9be;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .ticket-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .ticket-info p {
+            margin: 5px 0;
+            color: #ccc;
+        }
+        .ticket-info strong {
+            color: #93e9be;
+        }
+        .empty-ticket {
+            text-align: center;
+            padding: 60px;
+            background: #0f0f0f;
+            border-radius: 20px;
+            color: #888;
+        }
+        .back-home {
+            display: inline-block;
+            margin-top: 30px;
+            background: transparent;
+            border: 1px solid #93e9be;
+            color: #93e9be;
+            padding: 10px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .back-home:hover {
+            background: #93e9be;
+            color: #0a0a0a;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="dau-trang-kinh">
+        <div class="logo">PLANT CINEMA</div>
+        <nav class="thanh-dieu-huong">
+            <ul>
+                <li><a href="trangchu.html">Trang chủ</a></li>
+                <li><a href="gioithieu.html">Giới thiệu</a></li>
+                <li><a href="#">Lịch chiếu</a></li>
+                <li><a href="tintuc.html">Tin tức</a></li>
+                <li><a href="giave.html">Giá vé</a></li>
+            </ul>
+        </nav>
+        <div class="tai-khoan" id="taikhoanArea"></div>
+    </header>
+
+    <main class="khu-vuc-chinh">
+        <h1 class="tieu-de-muc" style="margin-top: 0;">
+            <a href="#">🎟️ Vé của tôi <span>&raquo;</span></a>
+        </h1>
+        <div id="ticketContainer" class="ticket-list"></div>
+        <div style="text-align: center;">
+            <a href="trangchu.html" class="back-home">← Về trang chủ</a>
+        </div>
+    </main>
+
+    <footer class="chan-trang">
+        <div class="noi-dung-footer">
+            <div class="cot-footer">
+                <h3 class="logo-footer">PLANT CINEMA</h3>
+                <p>Hệ thống rạp chiếu phim mang đến trải nghiệm điện ảnh xanh, hiện đại và đẳng cấp nhất.</p>
+            </div>
+            <div class="cot-footer">
+                <h3>Chính Sách</h3>
+                <ul>
+                    <li><a href="#">Điều khoản sử dụng</a></li>
+                    <li><a href="#">Chính sách bảo mật</a></li>
+                </ul>
+            </div>
+            <div class="cot-footer">
+                <h3>Kết Nối</h3>
+                <div class="mang-xa-hoi">
+                    <a href="#" class="icon-mxh">Facebook</a>
+                    <a href="#" class="icon-mxh">Instagram</a>
+                    <a href="#" class="icon-mxh">Youtube</a>
+                </div>
+            </div>
+        </div>
+        <div class="ban-quyen">
+            <p>Copyright &copy; 2026 Plant Cinema. All rights reserved. Developed by Nhóm 1</p>
+        </div>
+    </footer>
+
+    <!-- MODAL ĐĂNG NHẬP / ĐĂNG KÝ -->
+    <div id="dangNhapModal" class="taikhoan-modal">
+        <div class="taikhoan-modal-content">
+        <span class="taikhoan-close" onclick="dongModal('dangNhapModal')">&times;</span>
+        <h2>ĐĂNG NHẬP</h2>
+        <input type="email" id="loginEmail" class="taikhoan-input" placeholder="Email">
+        <input type="password" id="loginPass" class="taikhoan-input" placeholder="Mật khẩu">
+        <div id="loginError" class="taikhoan-error"></div>
+        <button class="taikhoan-btn-submit" onclick="dangNhap()">Đăng nhập</button>
+        <div style="text-align: center; margin-top: 15px;">
+            <span style="color:#888;">Chưa có tài khoản? </span>
+            <span onclick="moModal('dangKyModal'); dongModal('dangNhapModal');" style="color:#93e9be; cursor:pointer;">Đăng ký ngay</span>
+        </div>
+    </div>
+    </div>
+    <div id="dangKyModal" class="taikhoan-modal">
+        <div class="taikhoan-modal-content">
+        <span class="taikhoan-close" onclick="dongModal('dangKyModal')">&times;</span>
+        <h2>ĐĂNG KÝ</h2>
+        <input type="text" id="regName" class="taikhoan-input" placeholder="Họ tên">
+        <input type="tel" id="regPhone" class="taikhoan-input" placeholder="Số điện thoại">
+        <input type="email" id="regEmail" class="taikhoan-input" placeholder="Email">
+        <input type="password" id="regPass" class="taikhoan-input" placeholder="Mật khẩu">
+        <div id="regError" class="taikhoan-error"></div>
+        <div id="regSuccess" class="taikhoan-success"></div>
+        <button class="taikhoan-btn-submit" onclick="dangKy()">Tạo tài khoản</button>
+        <div style="text-align: center; margin-top: 15px;">
+            <span style="color:#888;">Đã có tài khoản? </span>
+            <span onclick="moModal('dangNhapModal'); dongModal('dangKyModal');" style="color:#93e9be; cursor:pointer;">Đăng nhập</span>
+        </div>
+    </div>
+    </div>
+
+    <script src="taikhoan.js"></script>
+    <script>
+        const savedUser = sessionStorage.getItem('currentUser');
+        if (!savedUser) {
+            window.location.href = 'trangchu.html';
+        }
+
+        const currentUser = JSON.parse(savedUser);
+
+        const area = document.getElementById('taikhoanArea');
+        if (area && currentUser) {
+            area.innerHTML = `
+                <div style="display: flex; gap: 15px; align-items: center;">
+                    <span style="color:#93e9be;">👤 ${currentUser.name}</span>
+                    <button class="nut-dang-xuat" style="background:transparent; border:1px solid #ff6b6b; color:#ff6b6b; padding:8px 20px; border-radius:30px; cursor:pointer;" onclick="dangXuat()">Đăng xuất</button>
+                </div>
+            `;
+        }
+
+        function hienThiVe() {
+            const allTickets = JSON.parse(localStorage.getItem('cinema_tickets') || '[]');
+            const myTickets = allTickets.filter(t => t.email === currentUser.email);
+            const container = document.getElementById('ticketContainer');
+
+            if (myTickets.length === 0) {
+                container.innerHTML = `<div class="empty-ticket">🎫 Bạn chưa đặt vé nào. Hãy đặt vé ngay hôm nay!</div>`;
+                return;
+            }
+
+            let html = '';
+            myTickets.forEach(t => {
+                html += `
+                    <div class="ticket-item">
+                        <div class="ticket-code">🎫 Mã vé: ${t.id}</div>
+                        <div class="ticket-info">
+                            <p><strong>📽️ Phim:</strong> ${t.movie}</p>
+                            <p><strong>📅 Ngày:</strong> ${t.date}</p>
+                            <p><strong>⏰ Giờ:</strong> ${t.time}</p>
+                            <p><strong>💺 Ghế:</strong> ${t.seats.join(', ')}</p>
+                            <p><strong>🍿 Combo:</strong> ${t.combo}</p>
+                            <p><strong>💰 Tổng tiền:</strong> ${t.total.toLocaleString()}đ</p>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function dangXuat() {
+            sessionStorage.removeItem('currentUser');
+            window.location.href = 'trangchu.html';
+        }
+
+        hienThiVe();
+    </script>
+</body>
+
+</html>
