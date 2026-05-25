@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="taikhoan.css">
+    <title>Plant Cinema - Chi tiết</title>
+    <style>
+        .detail-container {
+            background: #0f0f0f;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            border: 1px solid rgba(147, 233, 190, 0.2);
+        }
+
+        .detail-img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 25px;
+        }
+
+        .detail-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .badge-tintuc {
+            background: #2a6b4e;
+            color: #93e9be;
+        }
+
+        .badge-khuyenmai {
+            background: #6b2a2a;
+            color: #ff8888;
+        }
+
+        .detail-title {
+            font-size: 28px;
+            color: #93e9be;
+            margin-bottom: 15px;
+        }
+
+        .detail-date {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .detail-content {
+            color: #ccc;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .back-btn {
+            background: transparent;
+            border: 1px solid #93e9be;
+            color: #93e9be;
+            padding: 10px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #93e9be;
+            color: #0a0a0a;
+        }
+
+        .voucher-box {
+            background: #1a1a1a;
+            border: 1px dashed #93e9be;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="dau-trang-kinh">
+        <div class="logo">PLANT CINEMA</div>
+        <nav class="thanh-dieu-huong">
+            <ul>
+                <li><a href="trangchu.html">Trang chủ</a></li>
+                <li><a href="gioithieu.html">Giới thiệu</a></li>
+                <li><a href="Lichchieu.html">Lịch chiếu</a></li>
+                <li><a href="tintuc.html">Tin tức</a></li>
+                <li><a href="giave.html">Giá vé</a></li>
+            </ul>
+        </nav>
+        <div class="tai-khoan" id="taikhoanArea">
+            <button class="nut-dang-nhap" onclick="moModal('dangNhapModal')">Đăng nhập</button>
+            <button class="nut-dang-ky" onclick="moModal('dangKyModal')">Đăng ký</button>
+        </div>
+    </header>
+
+    <main class="khu-vuc-chinh">
+        <div id="detailContainer"></div>
+        <div style="text-align: center;">
+            <button class="back-btn" onclick="window.location.href='tintuc.html'">← Quay lại danh sách</button>
+        </div>
+    </main>
+
+    <footer class="chan-trang">
+        <div class="noi-dung-footer">
+            <div class="cot-footer">
+                <h3 class="logo-footer">PLANT CINEMA</h3>
+                <p>Hệ thống rạp chiếu phim mang đến trải nghiệm điện ảnh xanh, hiện đại và đẳng cấp nhất.</p>
+            </div>
+            <div class="cot-footer">
+                <h3>Chính Sách</h3>
+                <ul>
+                    <li><a href="#">Điều khoản sử dụng</a></li>
+                    <li><a href="#">Chính sách bảo mật</a></li>
+                </ul>
+            </div>
+            <div class="cot-footer">
+                <h3>Kết Nối</h3>
+                <div class="mang-xa-hoi">
+                    <a href="#" class="icon-mxh">Facebook</a>
+                    <a href="#" class="icon-mxh">Instagram</a>
+                    <a href="#" class="icon-mxh">Youtube</a>
+                </div>
+            </div>
+        </div>
+        <div class="ban-quyen">
+            <p>Copyright &copy; 2026 Plant Cinema. All rights reserved. Developed by Nhóm 1</p>
+        </div>
+    </footer>
+
+    <!-- MODAL ĐĂNG NHẬP -->
+    <div id="dangNhapModal" class="taikhoan-modal">
+        <div class="taikhoan-modal-content">
+            <span class="taikhoan-close" onclick="dongModal('dangNhapModal')">&times;</span>
+            <h2>ĐĂNG NHẬP</h2>
+            <input type="email" id="loginEmail" class="taikhoan-input" placeholder="Email">
+            <input type="password" id="loginPass" class="taikhoan-input" placeholder="Mật khẩu">
+            <div id="loginError" class="taikhoan-error"></div>
+            <button class="taikhoan-btn-submit" onclick="dangNhap()">Đăng nhập</button>
+            <div style="text-align: center; margin-top: 15px;">
+                <span style="color:#888;">Chưa có tài khoản? </span>
+                <span onclick="moModal('dangKyModal'); dongModal('dangNhapModal');" style="color:#93e9be; cursor:pointer;">Đăng ký ngay</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL ĐĂNG KÝ -->
+    <div id="dangKyModal" class="taikhoan-modal">
+        <div class="taikhoan-modal-content">
+            <span class="taikhoan-close" onclick="dongModal('dangKyModal')">&times;</span>
+            <h2>ĐĂNG KÝ</h2>
+            <input type="text" id="regName" class="taikhoan-input" placeholder="Họ tên">
+            <input type="tel" id="regPhone" class="taikhoan-input" placeholder="Số điện thoại">
+            <input type="email" id="regEmail" class="taikhoan-input" placeholder="Email">
+            <input type="password" id="regPass" class="taikhoan-input" placeholder="Mật khẩu">
+            <div id="regError" class="taikhoan-error"></div>
+            <div id="regSuccess" class="taikhoan-success"></div>
+            <button class="taikhoan-btn-submit" onclick="dangKy()">Tạo tài khoản</button>
+            <div style="text-align: center; margin-top: 15px;">
+                <span style="color:#888;">Đã có tài khoản? </span>
+                <span onclick="moModal('dangNhapModal'); dongModal('dangKyModal');" style="color:#93e9be; cursor:pointer;">Đăng nhập</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="taikhoan.js"></script>
+    <script>
+        const newsData = [
+            { id: 1, type: "tintuc", title: "🎉 Khai trương rạp Plant Cinema", content: "<p>Chi tiết: Từ 1/6 đến 8/6, giảm 30% tất cả các suất chiếu. Áp dụng với tất cả các đối tượng và hình thức thanh toán bằng tiền mặt.</p>", date: "20/05/2026", image: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=500&q=80", voucher: null },
+            { id: 2, type: "khuyenmai", title: "🎁 Khuyến mãi Tết Thiếu Nhi 1/6", content: "<p>Trẻ em dưới 14 tuổi được tặng combo bắp nước tự chọn miễn phí.</p>", date: "25/05/2026", image: "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=500&q=80", voucher: { code: "JUNE30", discount: "30%" } },
+            { id: 3, type: "tintuc", title: "🎬 Lịch chiếu phim mới tháng 6", content: "<p>Inside Out 2, Bad Boys 4, A Quiet Place: Day One cùng các siêu phẩm các được công chiếu tại Plant Cinema.</p>", date: "28/05/2026", image: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=500&q=80", voucher: null },
+            { id: 4, type: "khuyenmai", title: "🏮 Khuyến mãi Trung Thu", content: "<p>Mua 2 tặng 1, voucher MOONFEST. Áp dụng đến hết rằm trung thu.</p>", date: "01/09/2026", image: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=500&q=80", voucher: { code: "MOONFEST", discount: "Mua 2 tặng 1" } },
+            { id: 5, type: "tintuc", title: "⭐ Plant Cinema đạt giải xanh 2026", content: "<p>Rạp chiếu phim thân thiện môi trường...</p>", date: "15/05/2026", image: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=500&q=80", voucher: null }
+        ];
+
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+        const item = newsData.find(i => i.id == id);
+
+        if (item) {
+            document.getElementById('detailContainer').innerHTML = `
+                <div class="detail-container">
+                    <img src="${item.image}" class="detail-img">
+                    <span class="detail-badge ${item.type === 'tintuc' ? 'badge-tintuc' : 'badge-khuyenmai'}">
+                        ${item.type === 'tintuc' ? '📰 TIN TỨC' : '🎁 KHUYẾN MÃI'}
+                    </span>
+                    <h1 class="detail-title">${item.title}</h1>
+                    <p class="detail-date">📅 ${item.date}</p>
+                    <div class="detail-content">${item.content}</div>
+                    ${item.voucher ? `<div class="voucher-box">🎟️ Mã: <strong style="color:#93e9be;">${item.voucher.code}</strong> - Giảm ${item.voucher.discount}</div>` : ''}
+                </div>
+            `;
+        } else {
+            document.getElementById('detailContainer').innerHTML = '<p style="text-align:center; padding:50px;">❌ Không tìm thấy bài viết.</p>';
+        }
+    </script>
+</body>
+
+</html>

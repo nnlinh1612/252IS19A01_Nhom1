@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vé Thành Công - PLANT CINEMA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body style="display: flex; align-items: center; justify-content: center; min-height: 100vh;">
+
+    <div class="khoi-giao-dien text-center" style="max-width: 500px; width: 100%;">
+        <h2 class="mb-4" style="color: #93e9be;">🎉 ĐẶT VÉ THÀNH CÔNG!</h2>
+        <div class="text-start p-4 rounded"
+            style="background: rgba(255,255,255,0.05); border: 1px dashed rgba(147, 233, 190, 0.5);">
+            <p class="text-secondary text-center mb-4">Mã vé: <br><strong class="fs-1 text-white" id="kq-ma"></strong>
+            </p>
+            <p class="text-secondary mb-1">Khách hàng: <strong class="text-white" id="kq-ten"></strong></p>
+            <p class="text-secondary mb-1">Phim: <strong class="text-white" id="kq-phim"></strong></p>
+            <p class="text-secondary mb-1">Thời gian: <strong class="text-white" id="kq-thoigian"></strong></p>
+            <p class="text-secondary mb-1">Ghế: <strong class="text-white" id="kq-ghe"></strong> (<span
+                    id="kq-loaive"></span>)</p>
+            <p class="text-secondary mb-1">Combo: <strong class="text-white" id="kq-combo"></strong></p>
+            <hr style="border-color: rgba(255,255,255,0.1);">
+            <h4 class="text-end" style="color: #93e9be;">Đã thanh toán: <span id="kq-tong"></span></h4>
+        </div>
+
+        <div class="mt-4">
+            <button id="nut-gui-mail" class="btn btn-outline-light w-100 mb-3"
+                style="padding: 12px; border-radius: 30px;" onclick="giaLapGuiEmail()">
+                📧 Gửi vé về Email
+            </button>
+            <button class="nut-thanh-toan" onclick="veTrangChu()">Về Trang Chủ</button>
+        </div>
+    </div>
+
+    <script>
+        let emailNhanVe = "";
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Lấy gói dữ liệu từ Balo ảo
+            let donHang = JSON.parse(localStorage.getItem("thongTinDonHang"));
+            if (!donHang) { window.location.href = 'Trangchu.html'; return; }
+
+            // 1. In dữ liệu ra màn hình
+            document.getElementById("kq-ma").innerText = donHang.maVe;
+            document.getElementById("kq-ten").innerText = donHang.tenKhachHang;
+            document.getElementById("kq-phim").innerText = donHang.tenPhim;
+            document.getElementById("kq-thoigian").innerText = donHang.gioChieu + " - " + donHang.ngayChieu;
+            document.getElementById("kq-ghe").innerText = donHang.gheDaChon.join(', ');
+            document.getElementById("kq-loaive").innerText = donHang.loaiVe;
+
+            let chuCombo = "";
+if (donHang.soLuongCombo1 > 0) chuCombo += donHang.soLuongCombo1 + "x Combo 1 ";
+            if (donHang.soLuongCombo2 > 0) chuCombo += donHang.soLuongCombo2 + "x Combo 2";
+            document.getElementById("kq-combo").innerText = chuCombo || "Không";
+
+            document.getElementById("kq-tong").innerText = donHang.tongTienCuoiCung.toLocaleString('vi-VN') + "đ";
+
+            // Giữ lại email để dùng cho nút gửi Mail
+            emailNhanVe = donHang.emailKhachHang;
+
+            // =================================================================
+            // 2. LƯU VÉ VÀO LỊCH SỬ TÀI KHOẢN (ĐỒNG BỘ VỚI TAIKHOAN.JS)
+            // =================================================================
+            let dsVeTaiKhoan = JSON.parse(localStorage.getItem('cinema_tickets')) || [];
+
+            // Hàm tìm kiếm xem mã vé này đã lưu vào hệ thống chưa
+            let veDaLuuTruocDo = dsVeTaiKhoan.find(ve => ve.id === donHang.maVe);
+
+            // Chỉ thêm mới nếu vé chưa tồn tại
+            if (!veDaLuuTruocDo && emailNhanVe) {
+                let theVeMoi = {
+                    id: donHang.maVe,
+                    email: emailNhanVe,
+                    movie: donHang.tenPhim,
+                    date: donHang.ngayChieu,
+                    time: donHang.gioChieu,
+                    seats: donHang.gheDaChon,
+                    combo: chuCombo || "Không",
+                    total: donHang.tongTienCuoiCung
+                };
+
+                // Bơm vé vào CSDL ảo
+                dsVeTaiKhoan.push(theVeMoi);
+                localStorage.setItem('cinema_tickets', JSON.stringify(dsVeTaiKhoan));
+            }
+        });
+
+        // Hàm giả lập gửi thư
+        function giaLapGuiEmail() {
+            let nutGui = document.getElementById("nut-gui-mail");
+            nutGui.innerHTML = `⏳ Đang gửi đến ${emailNhanVe}...`;
+            nutGui.style.pointerEvents = "none"; // Khóa nút chống bấm đúp
+
+            setTimeout(() => {
+                nutGui.innerHTML = `✅ Đã gửi vé thành công!`;
+                nutGui.style.backgroundColor = "#93e9be";
+                nutGui.style.color = "#0a0a0a";
+                nutGui.style.borderColor = "#93e9be";
+            }, 2000);
+        }
+
+        function veTrangChu() {
+            // Xóa Balo chứa đơn hàng nháp đi để chuẩn bị cho lần đặt vé sau
+            localStorage.removeItem("thongTinDonHang");
+            window.location.href = 'Trangchu.html';
+        }
+    </script>
+</body>
+
+</html>

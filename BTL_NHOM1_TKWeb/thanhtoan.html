@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bước 3: Thanh Toán</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* TOAST NOTIFICATION */
+        #thong-bao-custom {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background-color: #111111;
+            color: #ff77a9;
+            border-left: 4px solid #ff77a9;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+            font-weight: bold;
+            font-size: 16px;
+            z-index: 9999;
+            transform: translateX(150%);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        #thong-bao-custom.hien-thi {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        /* KHÓA Ô NHẬP LIỆU NHƯNG VẪN GIỮ MÀU ĐẸP */
+        .input-khoa {
+            background-color: #1a1a1a !important;
+            border-color: #333 !important;
+            color: #888 !important;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="thong-bao-custom">⚠️ Thông báo ở đây</div>
+
+    <div class="container mt-4 mb-5 pb-5" style="max-width: 800px;">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3 class="fw-bold m-0 text-white">Bước 3: Thanh toán</h3>
+            <button class="btn btn-outline-light btn-sm" style="border-radius: 20px; padding: 5px 15px;"
+                onclick="window.history.back()">Quay lại</button>
+        </div>
+
+        <div class="khoi-giao-dien">
+            <h5 class="fw-bold mb-3 text-white">Thông tin vé</h5>
+            <p class="text-secondary mb-1">Phim: <strong class="text-white" id="tt-phim"></strong></p>
+            <p class="text-secondary mb-1">Thời gian: <strong class="text-white" id="tt-thoigian"></strong></p>
+            <p class="text-secondary mb-1">Ghế: <strong class="text-white" id="tt-ghe"></strong></p>
+            <p class="text-secondary mb-1">Combo: <strong class="text-white" id="tt-combo"></strong></p>
+        </div>
+
+        <div class="khoi-giao-dien">
+            <h5 class="fw-bold mb-3 text-white">Thông tin liên hệ</h5>
+            <input type="text" id="nhap-ten" class="form-control mb-2 input-khoa" readonly>
+            <input type="email" id="nhap-email" class="form-control mb-2 input-khoa" readonly>
+            <input type="text" id="nhap-sdt" class="form-control input-khoa" readonly>
+        </div>
+
+        <div class="khoi-giao-dien khu-vuc-thanh-toan">
+            <div class="d-flex justify-content-between mb-3">
+                <span class="text-secondary">Tổng thanh toán:</span>
+<span id="tt-tongtien" class="fw-bold fs-4" style="color: #93e9be;">0đ</span>
+            </div>
+            <button id="nut-thanh-toan" class="nut-thanh-toan" onclick="chotDon()">Thanh toán ngay</button>
+        </div>
+    </div>
+
+    <script>
+        function hienThongBao(tinNhan) {
+            let hopThongBao = document.getElementById("thong-bao-custom");
+            hopThongBao.innerHTML = `⚠️ ${tinNhan}`;
+            hopThongBao.classList.add("hien-thi");
+            setTimeout(() => { hopThongBao.classList.remove("hien-thi"); }, 3000);
+        }
+
+        let donHang = JSON.parse(localStorage.getItem("thongTinDonHang")) || {};
+        let khachHangDaDangNhap = JSON.parse(sessionStorage.getItem('currentUser'));
+
+        // Kiểm tra bảo mật
+        if (!khachHangDaDangNhap) {
+            alert("Phiên đăng nhập hết hạn. Vui lòng đăng nhập lại!");
+            window.location.href = "Trangchu.html";
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Hiển thị dữ liệu vé
+            document.getElementById("tt-phim").innerText = donHang.tenPhim || "Chưa có dữ liệu";
+            document.getElementById("tt-thoigian").innerText = (donHang.gioChieu || "") + " - " + (donHang.ngayChieu || "");
+            document.getElementById("tt-ghe").innerText = donHang.gheDaChon ? donHang.gheDaChon.join(', ') : '';
+
+            let chuCombo = "";
+            if (donHang.soLuongCombo1 > 0) chuCombo += donHang.soLuongCombo1 + "x Combo 1 ";
+            if (donHang.soLuongCombo2 > 0) chuCombo += donHang.soLuongCombo2 + "x Combo 2 ";
+            document.getElementById("tt-combo").innerText = chuCombo || "Không mua";
+
+            document.getElementById("tt-tongtien").innerText = (donHang.tongTienCuoiCung || 0).toLocaleString('vi-VN') + "đ";
+
+            // Điền thông tin User và khóa lại
+            if (khachHangDaDangNhap) {
+                document.getElementById("nhap-ten").value = khachHangDaDangNhap.name || khachHangDaDangNhap.ten;
+                document.getElementById("nhap-email").value = khachHangDaDangNhap.email;
+                document.getElementById("nhap-sdt").value = khachHangDaDangNhap.phone || khachHangDaDangNhap.sdt;
+            }
+        });
+
+        function chotDon() {
+            let ten = document.getElementById("nhap-ten").value;
+            if (!ten) {
+                hienThongBao("Hệ thống không tìm thấy thông tin tài khoản!");
+                return;
+            }
+
+            // Giao diện loading thanh toán
+            let nut = document.getElementById("nut-thanh-toan");
+            nut.innerHTML = "⏳ Đang xử lý giao dịch...";
+            nut.style.pointerEvents = "none"; // Khóa nút không cho bấm đúp
+            nut.style.opacity = "0.8";
+
+            // Chuẩn bị dữ liệu gửi đi
+            donHang.tenKhachHang = ten;
+            donHang.emailKhachHang = document.getElementById("nhap-email").value;
+donHang.maVe = "PL-" + Math.floor(Math.random() * 100000);
+            localStorage.setItem("thongTinDonHang", JSON.stringify(donHang));
+
+            // Giả lập thời gian chờ thanh toán (1.5 giây)
+            setTimeout(() => {
+                window.location.href = 'xacnhanve.html';
+            }, 1500);
+        }
+    </script>
+</body>
+
+</html>

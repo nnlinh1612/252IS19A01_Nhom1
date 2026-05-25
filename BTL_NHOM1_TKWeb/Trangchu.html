@@ -19,7 +19,6 @@
                 <li><a href="gioithieu.html">Giới thiệu</a></li>
                 <li><a href="Lichchieu.html">Lịch chiếu</a></li>
                 <li><a href="tintuc.html">Tin tức</a></li>
-                <li><a href="#">Khuyến mãi</a></li>
                 <li><a href="giave.html">Giá vé</a></li>
             </ul>
         </nav>
@@ -35,7 +34,7 @@
                 <h1>Trải Nghiệm Điện Ảnh Thượng Hạng</h1>
                 <p>Khám phá thế giới hình ảnh sống động với công nghệ chiếu phim hiện đại nhất tại Plant Cinema.</p>
                 <br>
-                <button class="nut-dat-ve">Đặt vé ngay</button>
+                <button class="nut-dat-ve" onclick="window.location.href='Lichchieu.html'">Đặt vé ngay</button>
             </div>
         </section>
 
@@ -43,12 +42,12 @@
             <a href="Lichchieu.html?tab=dang-chieu">Phim Đang Chiếu <span>&raquo;</span></a>
         </h2>
         <div class="row g-4 mb-5" id="danh-sach-phim-trang-chu"></div>
-        
+
         <h2 class="tieu-de-muc">
             <a href="Lichchieu.html?tab=sap-chieu">Phim Sắp Chiếu <span>&raquo;</span></a>
         </h2>
         <div class="row g-4" id="danh-sach-phim-sap-chieu-trang-chu"></div>
-        
+
         <h2 class="tieu-de-muc">
             <a href="#">Ưu đãi và khuyến mãi <span>&raquo;</span></a>
         </h2>
@@ -60,7 +59,8 @@
         <div class="noi-dung-footer">
             <div class="cot-footer">
                 <h3 class="logo-footer">PLANT CINEMA</h3>
-                <p>Hệ thống rạp chiếu phim mang đến trải nghiệm điện ảnh xanh, hiện đại và đẳng cấp nhất dành cho bạn.</p>
+                <p>Hệ thống rạp chiếu phim mang đến trải nghiệm điện ảnh xanh, hiện đại và đẳng cấp nhất dành cho bạn.
+                </p>
             </div>
             <div class="cot-footer">
                 <h3>Chính Sách & Quy Định</h3>
@@ -68,7 +68,7 @@
                     <li><a href="#">Điều khoản sử dụng</a></li>
                     <li><a href="#">Chính sách bảo mật</a></li>
                     <li><a href="#">Chính sách đổi trả, hoàn vé</a></li>
-                    <li><a href="#">Chính sách thành viên</a></li>
+<li><a href="#">Chính sách thành viên</a></li>
                 </ul>
             </div>
             <div class="cot-footer">
@@ -96,7 +96,8 @@
             <button class="taikhoan-btn-submit" onclick="dangNhap()">Đăng nhập</button>
             <div style="text-align: center; margin-top: 15px;">
                 <span style="color:#888;">Chưa có tài khoản? </span>
-                <span onclick="moModal('dangKyModal'); dongModal('dangNhapModal');" style="color:#93e9be; cursor:pointer;">Đăng ký ngay</span>
+                <span onclick="moModal('dangKyModal'); dongModal('dangNhapModal');"
+                    style="color:#93e9be; cursor:pointer;">Đăng ký ngay</span>
             </div>
         </div>
     </div>
@@ -115,13 +116,14 @@
             <button class="taikhoan-btn-submit" onclick="dangKy()">Tạo tài khoản</button>
             <div style="text-align: center; margin-top: 15px;">
                 <span style="color:#888;">Đã có tài khoản? </span>
-                <span onclick="moModal('dangNhapModal'); dongModal('dangKyModal');" style="color:#93e9be; cursor:pointer;">Đăng nhập</span>
+                <span onclick="moModal('dangNhapModal'); dongModal('dangKyModal');"
+                    style="color:#93e9be; cursor:pointer;">Đăng nhập</span>
             </div>
         </div>
     </div>
 
     <script src="taikhoan.js"></script>
-     <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

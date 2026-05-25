@@ -133,7 +133,7 @@ body {
 .tieu-de-muc a {
     color: #93e9be;
     font-size: 24px;
-    text-decoration: none;
+text-decoration: none;
     margin-bottom: 30px;
     margin-top: 50px;
     display: flex;
@@ -289,24 +289,30 @@ body {
 /* 2. Định dạng Navbar */
 .thanh-nav {
     background-color: #111111;
-    border-bottom: 1px solid rgba(147, 233, 190, 0.2);
+border-bottom: 1px solid rgba(147, 233, 190, 0.2);
     padding: 12px 0;
 }
+
 .logo {
     color: #93e9be !important;
     font-weight: 900;
     font-size: 22px;
     letter-spacing: 1px;
     /* THÊM 2 DÒNG NÀY VÀO */
-    white-space: nowrap; /* Bắt buộc chữ phải nằm trên cùng 1 dòng, không được rớt chữ */
-    flex-shrink: 0;      /* Cấm Flexbox bóp méo hay thu nhỏ khu vực của Logo */
+    white-space: nowrap;
+    /* Bắt buộc chữ phải nằm trên cùng 1 dòng, không được rớt chữ */
+    flex-shrink: 0;
+    /* Cấm Flexbox bóp méo hay thu nhỏ khu vực của Logo */
 }
+
 .thanh-nav .nav-link {
     color: #b0b0b0 !important;
     font-size: 16px;
     padding: 8px 15px !important;
 }
-.thanh-nav .nav-link.active, .thanh-nav .nav-link:hover {
+
+.thanh-nav .nav-link.active,
+.thanh-nav .nav-link:hover {
     color: #93e9be !important;
 }
 
@@ -314,16 +320,21 @@ body {
 .tieu-de-muc {
     color: #93e9be;
     font-weight: 700;
-    font-size: calc(1.5rem + 1vw); /* Tự co giãn font chữ theo độ rộng màn hình */
+    font-size: calc(1.5rem + 1vw);
+    /* Tự co giãn font chữ theo độ rộng màn hình */
 }
 
 /* 4. Thanh chọn ngày đặt vé thông minh */
 .thanh-chon-ngay {
-    overflow-x: auto; /* Nếu màn hình điện thoại quá hẹp, tự động cho phép vuốt ngang qua các ngày */
-    white-space: nowrap; /* Không cho chữ ngày bị xuống dòng lung tung */
+    overflow-x: auto;
+    /* Nếu màn hình điện thoại quá hẹp, tự động cho phép vuốt ngang qua các ngày */
+    white-space: nowrap;
+    /* Không cho chữ ngày bị xuống dòng lung tung */
     padding-bottom: 10px;
-    -webkit-overflow-scrolling: touch; /* Giúp vuốt vuốt trên iPhone mượt hơn */
+    -webkit-overflow-scrolling: touch;
+    /* Giúp vuốt vuốt trên iPhone mượt hơn */
 }
+
 /* Ẩn thanh cuộn xấu xí của trình duyệt để giao diện sạch đẹp */
 .thanh-chon-ngay::-webkit-scrollbar {
     display: none;
@@ -336,11 +347,14 @@ body {
     padding: 8px 16px;
     border-radius: 8px;
     min-width: 105px;
-    flex-shrink: 0; /* Ngăn nút bị bóp méo khi màn hình nhỏ */
+    flex-shrink: 0;
+    /* Ngăn nút bị bóp méo khi màn hình nhỏ */
     transition: all 0.3s ease;
     font-size: 14px;
 }
-.nut-ngay.active, .nut-ngay:hover {
+
+.nut-ngay.active,
+.nut-ngay:hover {
     background: #e50914;
     color: #fff;
     border-color: #e50914;
@@ -354,10 +368,12 @@ body {
     border-radius: 12px;
     padding: 15px;
     display: flex;
-    flex-direction: column; /* Mặc định trên điện thoại: Poster ở trên, chữ ở dưới */
+    flex-direction: column;
+    /* Mặc định trên điện thoại: Poster ở trên, chữ ở dưới */
     gap: 15px;
     transition: 0.3s ease;
 }
+
 .the-phim-ngang:hover {
     border-color: rgba(147, 233, 190, 0.3);
     background: #161616;
@@ -374,6 +390,7 @@ body {
     display: inline-block;
     vertical-align: middle;
 }
+
 .nhan-tuoi.nhan-p {
     background: #28a745;
 }
@@ -389,6 +406,7 @@ body {
     font-size: 14px;
     transition: 0.2s;
 }
+
 .nut-suat-chieu:hover {
     background: #93e9be;
     color: #000;
@@ -397,12 +415,13 @@ body {
 
 /* 6. Giao diện trang chi tiết phim */
 .anh-poster-chi-tiet {
-    width: 100%;
-    max-width: 320px; /* Khống chế không cho poster phình to quá mức trên máy tính */
+width: 100%;
+    max-width: 320px;
+    /* Khống chế không cho poster phình to quá mức trên máy tính */
     height: auto;
     object-fit: cover;
     border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
 }
 
 .nut-dat-ve {
@@ -412,7 +431,8 @@ body {
     border: none;
     padding: 12px 35px;
     border-radius: 30px;
-    width: 100%; /* Trên điện thoại nút đặt vé sẽ to toàn màn hình cho dễ bấm */
+    width: 100%;
+    /* Trên điện thoại nút đặt vé sẽ to toàn màn hình cho dễ bấm */
     transition: 0.3s;
 }
 
@@ -424,6 +444,7 @@ body {
     overflow: hidden;
     border-radius: 12px;
 }
+
 .khung-trailer iframe {
     position: absolute;
     top: 0;
@@ -439,14 +460,17 @@ body {
 /* Áp dụng khi màn hình rộng từ 768px trở lên (Máy tính bảng nằm ngang & Máy tính) */
 @media (min-width: 768px) {
     .the-phim-ngang {
-        flex-direction: row; /* Chuyển thành hàng ngang: Ảnh bên trái, chữ bên phải giống ảnh mẫu */
+        flex-direction: row;
+        /* Chuyển thành hàng ngang: Ảnh bên trái, chữ bên phải giống ảnh mẫu */
         padding: 20px;
     }
-    
+
     .nut-dat-ve {
-        width: auto; /* Trên máy tính, nút đặt vé thu gọn lại vừa vặn chữ thay vì tràn màn hình */
+        width: auto;
+        /* Trên máy tính, nút đặt vé thu gọn lại vừa vặn chữ thay vì tràn màn hình */
     }
 }
+
 /* ==========================================================
    CẤP NHẬT CĂN GIỮA TUYỆT ĐỐI TRÊN MÁY TÍNH (Màn hình >= 992px)
    ========================================================== */
@@ -455,14 +479,18 @@ body {
         margin: 0;
         border-radius: 50px;
         padding: 15px 5%;
-        position: sticky !important;  /* Bắt buộc gắn chặt thanh này */
-        top: 0 !important;            /* Gắn chặt ở vị trí sát mép trên cùng (0px) */
+        position: sticky !important;
+        /* Bắt buộc gắn chặt thanh này */
+        top: 0 !important;
+        /* Gắn chặt ở vị trí sát mép trên cùng (0px) */
         z-index: 9999 !important;
         flex-wrap: wrap;
         display: flex !important;
-        align-items: center !important; 
-        justify-content: space-between !important; /* Đẩy logo kịch trái, nút kịch phải */
-        position: relative; /* Tạo mỏ neo để cụm chữ căn giữa dựa vào header */
+        align-items: center !important;
+        justify-content: space-between !important;
+        /* Đẩy logo kịch trái, nút kịch phải */
+        position: relative;
+        /* Tạo mỏ neo để cụm chữ căn giữa dựa vào header */
     }
 
     /* Khung collapse chứa cả chữ và nút */
@@ -477,7 +505,8 @@ body {
         position: absolute;
         left: 50%;
         top: 50%;
-        transform: translate(-50%, -50%); /* Dịch chuyển tọa độ kịch kim vào giữa */
+        transform: translate(-50%, -50%);
+        /* Dịch chuyển tọa độ kịch kim vào giữa */
         z-index: 5;
     }
 
@@ -486,19 +515,20 @@ body {
         flex-direction: row !important;
         gap: 30px;
         padding: 0;
-        margin: 0; 
+margin: 0;
         display: flex !important;
-        align-items: center; 
+        align-items: center;
     }
 
     .thanh-dieu-huong ul li a {
         display: inline-block;
-        line-height: 1; 
+        line-height: 1;
     }
 
     /* Khóa chặt khu vực tài khoản cố định ở lề bên phải */
     .tai-khoan {
-        margin-left: auto; /* Tự động đẩy kịch sàn về bên phải */
+        margin-left: auto;
+        /* Tự động đẩy kịch sàn về bên phải */
         display: flex !important;
         justify-content: flex-end !important;
     }
@@ -508,48 +538,51 @@ body {
         padding-bottom: 0;
         margin: 0;
         display: flex;
-        align-items: center; 
+        align-items: center;
     }
+
     /* ==========================================================
    CSS DÀNH RIÊNG CHO TRANG CHỦ - 4 PHIM TRÊN MỘT DÒNG
    ========================================================== */
-@media (min-width: 992px) {
-    /* Thanh navbar giữ nguyên của cậu... */
+    @media (min-width: 992px) {
+        /* Thanh navbar giữ nguyên của cậu... */
 
-    /* Thẻ bọc phim ở trang chủ */
-    .the-phim-home {
-        background-color: #111111;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-radius: 16px;
-        padding: 12px;
-        width: 100%;
-        transition: all 0.3s ease-in-out;
-        cursor: pointer;
-    }
+        /* Thẻ bọc phim ở trang chủ */
+        .the-phim-home {
+            background-color: #111111;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 12px;
+            width: 100%;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+        }
 
-    .the-phim-home:hover {
-        transform: translateY(-8px);
-        border-color: rgba(147, 233, 190, 0.4);
-        box-shadow: 0 10px 25px rgba(147, 233, 190, 0.15);
-    }
+        .the-phim-home:hover {
+            transform: translateY(-8px);
+            border-color: rgba(147, 233, 190, 0.4);
+            box-shadow: 0 10px 25px rgba(147, 233, 190, 0.15);
+        }
 
-    /* ÉP POSTER VỀ ĐÚNG TỶ LỆ DỌC NHỎ (Hiển thị 4 phim đẹp mắt) */
-    .khung-anh-home {
-        position: relative;
-        width: 100%;
-        height: 320px; /* Chiều cao vừa vặn cho 4 poster/dòng */
-        overflow: hidden;
-        border-radius: 12px;
-    }
+        /* ÉP POSTER VỀ ĐÚNG TỶ LỆ DỌC NHỎ (Hiển thị 4 phim đẹp mắt) */
+        .khung-anh-home {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            /* Chiều cao vừa vặn cho 4 poster/dòng */
+            overflow: hidden;
+            border-radius: 12px;
+        }
 
-    .khung-anh-home img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease;
+        .khung-anh-home img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
     }
 }
-}
+
 /* ==========================================================
    CSS THẺ PHIM TRANG CHỦ (ÁP DỤNG CHO MỌI KÍCH THƯỚC MÀN HÌNH)
    ========================================================== */
@@ -575,7 +608,8 @@ body {
 .khung-anh-home {
     position: relative;
     width: 100%;
-    aspect-ratio: 2 / 3; /* Chiều cao tự động tính bằng 1.5 lần chiều rộng */
+    aspect-ratio: 2 / 3;
+    /* Chiều cao tự động tính bằng 1.5 lần chiều rộng */
     overflow: hidden;
     border-radius: 12px;
 }
@@ -583,8 +617,9 @@ body {
 .khung-anh-home img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Cắt gọn ảnh mà không làm méo hình */
-    transition: transform 0.5s ease;
+    object-fit: cover;
+    /* Cắt gọn ảnh mà không làm méo hình */
+transition: transform 0.5s ease;
 }
 
 .the-phim-home:hover .khung-anh-home img {
@@ -594,8 +629,10 @@ body {
 /* Lớp phủ hiện nút Chi tiết khi hover */
 .lop-phu-home {
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background: rgba(0, 0, 0, 0.7);
     display: flex;
     justify-content: center;
@@ -653,10 +690,10 @@ body {
     border: 1px solid rgba(147, 233, 190, 0.4) !important;
     color: #ffffff !important;
     border-radius: 30px !important;
-    
+
     /* CHÚ Ý: Tăng khoảng cách lề trái (padding-left) lên 45px để chừa chỗ cho icon */
-    padding: 12px 20px 12px 45px !important; 
-    
+    padding: 12px 20px 12px 45px !important;
+
     box-shadow: 0 0 10px rgba(147, 233, 190, 0.05);
     transition: all 0.3s ease;
 }
@@ -677,29 +714,44 @@ body {
 /* ĐỊNH DẠNG ĐẶT VỊ TRÍ ICON KÍNH LÚP LÊN TRÊN Ô TÌM KIẾM */
 .icon-tim-kiem {
     position: absolute;
-    left: 30px; /* Cách mép trái 30px */
-    top: 50%; /* Đẩy xuống giữa */
-    transform: translateY(-50%); /* Căn giữa chính xác tuyệt đối */
-    color: #888888; /* Màu kính lúp tệp với màu chữ placeholder */
+    left: 30px;
+    /* Cách mép trái 30px */
+    top: 50%;
+    /* Đẩy xuống giữa */
+    transform: translateY(-50%);
+    /* Căn giữa chính xác tuyệt đối */
+    color: #888888;
+    /* Màu kính lúp tệp với màu chữ placeholder */
     font-size: 16px;
-    z-index: 10; /* Nổi lên trên ô nhập liệu */
-    pointer-events: none; /* Tránh việc người dùng click nhầm vào icon bị kẹt con trỏ chuột */
+    z-index: 10;
+    /* Nổi lên trên ô nhập liệu */
+    pointer-events: none;
+    /* Tránh việc người dùng click nhầm vào icon bị kẹt con trỏ chuột */
 }
+
 /* ==========================================================
    KHÓA CHẶT KÍCH THƯỚC NÚT TÀI KHOẢN (CHỐNG BOOTSTRAP)
    ========================================================== */
-.dau-trang-kinh .nut-dang-nhap, 
+.dau-trang-kinh .nut-dang-nhap,
 .dau-trang-kinh .nut-dang-ky {
     display: inline-block !important;
-    font-size: 18px !important;       /* Ép chuẩn cỡ chữ gốc */
-    padding: 8px 20px !important;     /* Ép chuẩn khoảng đệm gốc của trang chủ */
-    line-height: normal !important;   /* Xóa bỏ chiều cao dòng ảo do Bootstrap tự độn vào */
-    height: auto !important;          /* Thuận theo tự nhiên của padding */
-    align-self: center !important;    /* Căn giữa dọc */
-    white-space: nowrap !important;   /* Không rớt chữ */
-    margin: 0 !important;             /* Xóa lề thừa rác */
-    
+    font-size: 18px !important;
+    /* Ép chuẩn cỡ chữ gốc */
+    padding: 8px 20px !important;
+    /* Ép chuẩn khoảng đệm gốc của trang chủ */
+    line-height: normal !important;
+    /* Xóa bỏ chiều cao dòng ảo do Bootstrap tự độn vào */
+    height: auto !important;
+    /* Thuận theo tự nhiên của padding */
+    align-self: center !important;
+    /* Căn giữa dọc */
+    white-space: nowrap !important;
+    /* Không rớt chữ */
+    margin: 0 !important;
+    /* Xóa lề thừa rác */
+
 }
+
 /* ==========================================================
    SỬA LỖI GIAO DIỆN LỊCH CHIẾU (ÉP NẰM NGANG)
    ========================================================== */
@@ -708,13 +760,14 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 12px;
     padding: 20px;
-    
+
     /* 3 lệnh BẮT BUỘC để ảnh và chữ luôn nằm ngang */
     display: flex !important;
-    flex-direction: row !important; 
+    flex-direction: row !important;
     flex-wrap: nowrap !important;
     align-items: flex-start;
-    gap: 20px; /* Khoảng cách giữa ảnh và chữ */
+    gap: 20px;
+    /* Khoảng cách giữa ảnh và chữ */
 }
 
 /* ==========================================================
@@ -723,9 +776,10 @@ body {
 
 /* Cố định khung ảnh poster bên trái */
 .the-phim-ngang .col-md-3 {
-    width: 20% !important; 
-    max-width: 130px !important; /* Đừng quên chữ !important quyền lực ở đây nhé */
-    flex-shrink: 0; 
+    width: 20% !important;
+    max-width: 130px !important;
+    /* Đừng quên chữ !important quyền lực ở đây nhé */
+    flex-shrink: 0;
 }
 
 /* Đảm bảo ảnh bên trong ôm vừa vặn khung chứa */
@@ -737,9 +791,10 @@ body {
 
 /* Khu vực chữ chiếm phần không gian còn lại */
 .the-phim-ngang .col-md-9 {
-    width: 80% !important; 
-    padding-left: 15px !important; 
+    width: 80% !important;
+    padding-left: 15px !important;
 }
+
 /* ==========================================================
    CSS CHO THANH TAB TRƯỢT TRÊN TRANG LỊCH CHIẾU
    ========================================================== */
@@ -757,19 +812,24 @@ body {
 }
 
 .tab-item.active {
-    color: #93e9be !important;; 
+    color: #93e9be !important;
+    ;
 }
 
 /* Đường gạch chân trượt */
 .thanh-truot {
     position: absolute;
-    bottom: -2px; /* Đè lên viền xám ở dưới */
+    bottom: -2px;
+    /* Đè lên viền xám ở dưới */
     left: 0;
     height: 4px;
-    background-color: #93e9be !important;;
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Hiệu ứng gia tốc trượt cực xịn */
+    background-color: #93e9be !important;
+    ;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    /* Hiệu ứng gia tốc trượt cực xịn */
     border-radius: 4px;
 }
+
 /* ==========================================================
    CSS DỌN DẸP GIAO DIỆN LỊCH CHIẾU (XÓA VIỀN, CĂN GIỮA)
    ========================================================== */
@@ -777,13 +837,13 @@ body {
 /* 1. XÓA SẠCH ĐƯỜNG KẺ XÁM MỜ Ở KHU VỰC TAB */
 .khu-vuc-tab,
 .danh-sach-tab {
-    border-bottom: 0px transparent !important; 
+border-bottom: 0px transparent !important;
     box-shadow: none !important;
 }
 
 /* Đảm bảo tab không có viền thừa nào bị sót lại */
-hr.vien-tab { 
-    display: none !important; 
+hr.vien-tab {
+    display: none !important;
 }
 
 /* 2. CĂN GIỮA THANH CHỌN 7 NGÀY TUYỆT ĐỐI */
@@ -791,22 +851,24 @@ hr.vien-tab {
     width: 100%;
     display: flex;
     justify-content: center;
-    overflow: visible !important; /* Đảm bảo không bị cắt xén từ thẻ cha */
+    overflow: visible !important;
+    /* Đảm bảo không bị cắt xén từ thẻ cha */
 }
 
 #thanh-chon-ngay {
     display: flex !important;
-    justify-content: center !important; 
-    gap: 12px !important; 
+    justify-content: center !important;
+    gap: 12px !important;
     width: 100% !important;
-    max-width: 850px; /* Nới rộng ra một chút cho thoải mái */
+    max-width: 850px;
+    /* Nới rộng ra một chút cho thoải mái */
     margin: 0 auto 30px auto !important;
-    
+
     /* ĐÂY LÀ BÍ QUYẾT: Thêm padding 20px vào 2 bên để bảo vệ góc và bóng đổ của nút */
-    padding: 15px 20px !important; 
-    
-    overflow-x: auto; 
-    -webkit-overflow-scrolling: touch; 
+    padding: 15px 20px !important;
+
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* Đảm bảo ô input tìm kiếm cũng được căn giữa cho đồng bộ */
@@ -818,11 +880,14 @@ hr.vien-tab {
 /* 3. BẢO VỆ GIAO DIỆN TRÊN ĐIỆN THOẠI (CHỐNG MẤT NÚT) */
 @media (max-width: 768px) {
     #thanh-chon-ngay {
-        justify-content: flex-start !important; /* Nhỏ quá thì cho xếp từ trái sang */
-        overflow-x: auto !important; /* Bật tính năng vuốt ngang */
+        justify-content: flex-start !important;
+        /* Nhỏ quá thì cho xếp từ trái sang */
+        overflow-x: auto !important;
+        /* Bật tính năng vuốt ngang */
         padding: 0 15px !important;
     }
 }
+
 /* ==========================================================
    CSS ĐỒNG BỘ MÀU CHỮ KHỞI CHIẾU SẮP RA MẮT
    ========================================================== */
@@ -851,4 +916,332 @@ hr.vien-tab {
     color: #0a0a0a !important;
     box-shadow: 0 0 15px rgba(147, 233, 190, 0.6) !important;
     border-color: #93e9be !important;
+}
+
+/* TRANG ĐẶT VÉ */
+/* ==========================================================
+   CSS DÀNH RIÊNG CHO TRANG ĐẶT VÉ (DATVE.HTML) - ĐỒNG BỘ DARK THEME
+   ========================================================== */
+
+/* 1. Các khối giao diện (Card) nền tối */
+.khoi-giao-dien {
+    background-color: #111111;
+    /* Khớp với màu thẻ phim ở trang chủ */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    /* Viền mờ tệp với nền */
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    /* Đổ bóng đen sâu */
+}
+
+/* 2. Phần Suất chiếu (Ngày & Giờ) */
+.danh-sach-ngay,
+.danh-sach-gio {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+/* Ẩn thanh cuộn */
+.danh-sach-ngay::-webkit-scrollbar,
+.danh-sach-gio::-webkit-scrollbar {
+    display: none;
+}
+
+.nut-ngay,
+.nut-gio {
+    background: #161616;
+    color: #b0b0b0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 8px 15px;
+    cursor: pointer;
+    min-width: 80px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+/* Trạng thái khi nút ngày/giờ được chọn (Sáng viền xanh) */
+.nut-ngay.dang-chon,
+.nut-gio.dang-chon,
+.nut-ngay:hover,
+.nut-gio:hover {
+    border-color: #93e9be;
+    background-color: rgba(147, 233, 190, 0.1);
+    color: #93e9be;
+    box-shadow: 0 0 10px rgba(147, 233, 190, 0.2);
+}
+
+/* 3. Phần Sơ đồ ghế */
+.duong-cong-man-hinh {
+    border-top: 4px solid #93e9be;
+    border-radius: 50% 50% 0 0 / 20px 20px 0 0;
+    text-align: center;
+    padding-top: 10px;
+    margin-bottom: 30px;
+    color: #b0b0b0;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 2px;
+    box-shadow: 0 -15px 20px -15px rgba(147, 233, 190, 0.3);
+    /* Hiệu ứng ánh sáng hắt từ màn hình */
+}
+
+.luoi-ghe {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    /* 8 cột */
+    gap: 8px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.ghe {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-color: #222222;
+    /* Màu ghế trống nền tối */
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+    border: 1px solid #444;
+    color: #888;
+    transition: all 0.2s;
+}
+
+/* --- GHẾ ĐÔI (To gấp đôi, nằm ở hàng cuối) --- */
+.ghe.ghe-doi {
+    grid-column: span 2;
+    aspect-ratio: 2.15 / 1 !important;
+    /* Ép thành hình chữ nhật ngang, không bị biến thành khối vuông 4 ghế */
+    background-color: #2a1a24;
+    border-color: #ff77a9;
+    border-radius: 12px;
+}
+
+/* Hiện 2 icon khi ghế đôi đã được mua */
+.ghe.ghe-doi.ghe-da-ban {
+    background-image:
+        url('https://cdn-icons-png.flaticon.com/512/1154/1154448.png'),
+        url('https://cdn-icons-png.flaticon.com/512/1154/1154448.png') !important;
+    background-position: 25% center, 75% center !important;
+    /* Đặt 2 icon 2 bên */
+    background-size: 30% !important;
+    background-repeat: no-repeat !important;
+}
+
+.ghe.ghe-doi.ghe-dang-chon {
+    background-color: #ff77a9;
+    color: #0a0a0a;
+    box-shadow: 0 0 15px rgba(255, 119, 169, 0.6);
+}
+
+/* ==========================================================
+   CSS CHO MENU THẢ XUỐNG (CUSTOM DROPDOWN) CÔNG NGHỆ CAO
+   ========================================================== */
+.khung-dropdown {
+    position: relative;
+    width: 100%;
+    font-family: inherit;
+    user-select: none;
+}
+
+/* Hộp hiển thị bên ngoài */
+.dropdown-hien-thi {
+    background-color: #0a0a0a;
+border: 1px solid rgba(147, 233, 190, 0.4);
+    color: #fff;
+    padding: 12px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.dropdown-hien-thi:hover,
+.khung-dropdown.mo .dropdown-hien-thi {
+    border-color: #93e9be;
+    box-shadow: 0 0 15px rgba(147, 233, 190, 0.3);
+}
+
+/* Mũi tên chỉ xuống */
+.dropdown-hien-thi::after {
+    content: '▼';
+    font-size: 12px;
+    color: #93e9be;
+    transition: transform 0.3s ease;
+}
+
+.khung-dropdown.mo .dropdown-hien-thi::after {
+    transform: rotate(180deg);
+    /* Xoay mũi tên khi mở */
+}
+
+/* Danh sách menu xổ xuống */
+.dropdown-danh-sach {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    width: 100%;
+    background-color: #111111;
+    border: 1px solid #93e9be;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 100;
+}
+
+.khung-dropdown.mo .dropdown-danh-sach {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Từng mục trong menu */
+.dropdown-muc {
+    padding: 12px 15px;
+    color: #b0b0b0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dropdown-muc:last-child {
+    border-bottom: none;
+}
+
+/* Hiệu ứng khi lướt chuột qua và khi được chọn */
+.dropdown-muc:hover,
+.dropdown-muc.dang-chon {
+    background-color: rgba(147, 233, 190, 0.15);
+    color: #93e9be;
+    font-weight: bold;
+}
+
+/* Ghế đang chọn: Đổi màu xanh chủ đạo */
+.ghe.ghe-dang-chon {
+    background-color: #93e9be;
+    border-color: #93e9be;
+    color: #0a0a0a;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(147, 233, 190, 0.5);
+}
+
+/* Ghế đã bán: Chèn icon và khóa click */
+.ghe.ghe-da-ban {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/1154/1154448.png');
+    background-size: 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #1a1a1a;
+    border-color: #333;
+    cursor: not-allowed;
+    color: transparent;
+    opacity: 0.5;
+    /* Làm mờ đi cho đỡ chói */
+}
+
+.chu-thich-ghe {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+    font-size: 13px;
+    color: #b0b0b0;
+}
+
+.o-mau {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* 4. Phần Combo Bắp Nước */
+.the-combo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 15px 0;
+}
+
+.nut-tang-giam {
+    background-color: transparent;
+    border: 1px solid #93e9be;
+    color: #93e9be;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 18px;
+font-weight: bold;
+    line-height: 1;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nut-tang-giam:hover {
+    background-color: #93e9be;
+    color: #0a0a0a;
+}
+
+/* Form input trong đặt vé */
+.khoi-giao-dien input.form-control {
+    background-color: #0a0a0a !important;
+    border: 1px solid rgba(147, 233, 190, 0.3) !important;
+    color: #fff !important;
+}
+
+.khoi-giao-dien input.form-control:focus {
+    border-color: #93e9be !important;
+    box-shadow: 0 0 10px rgba(147, 233, 190, 0.2) !important;
+}
+
+/* 5. Khu vực Thanh toán & Responsive */
+.nut-thanh-toan {
+    background: linear-gradient(45deg, #6ecfa0, #93e9be);
+    /* Dùng chung gradient của nut-dat-ve */
+    color: #0a0a0a;
+    border: none;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 30px;
+    width: 100%;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.nut-thanh-toan:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(147, 233, 190, 0.4);
+}
+
+/* Ghim thanh toán xuống đáy trên điện thoại */
+@media (max-width: 991px) {
+    .khu-vuc-thanh-toan {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: #111111;
+        padding: 15px 5%;
+        box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.8);
+        z-index: 1000;
+        margin-bottom: 0;
+        border-radius: 20px 20px 0 0;
+        border-top: 1px solid rgba(147, 233, 190, 0.2);
+    }
 }

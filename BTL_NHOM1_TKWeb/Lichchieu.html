@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,83 +9,86 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="taikhoan.css">
 </head>
-<body>
-<header class="dau-trang-kinh navbar navbar-expand-lg navbar-dark">
-<div class="container-fluid p-0 d-flex justify-content-between align-items-center flex-wrap flex-lg-nowrap">
-    
-    <div class="logo">PLANT CINEMA</div>
-    
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#thanhDieuHuongResponsive">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    
-    <nav class="thanh-dieu-huong collapse navbar-collapse justify-content-lg-center" id="thanhDieuHuongResponsive">
-        <ul>
-            <li><a href="Trangchu.html">Trang chủ</a></li>
-            <li><a href="gioithieu.html">Giới thiệu</a></li>
-            <li><a href="Lichchieu.html" class="dang-chon">Lịch chiếu</a></li>
-            <li><a href="tintuc.html">Tin tức</a></li>
-            <li><a href="#">Khuyến mãi</a></li>
-            <li><a href="giave.html">Giá vé</a></li>
-        </ul>
-    </nav>
-    
-    <div class="tai-khoan collapse navbar-collapse justify-content-lg-end" id="thanhDieuHuongResponsiveAccount">
-        <div class="nhom-nut-tk d-flex  mt-3 mt-lg-0" id="taikhoanArea">
-            <button class="nut-dang-nhap" onclick="moModal('dangNhapModal')">Đăng nhập</button>
-            <button class="nut-dang-ky" onclick="moModal('dangKyModal')">Đăng ký</button>
-        </div>
-    </div>
 
-</div>
-</header>
+<body>
+    <header class="dau-trang-kinh navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid p-0 d-flex justify-content-between align-items-center flex-wrap flex-lg-nowrap">
+
+            <div class="logo">PLANT CINEMA</div>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#thanhDieuHuongResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <nav class="thanh-dieu-huong collapse navbar-collapse justify-content-lg-center"
+                id="thanhDieuHuongResponsive">
+                <ul>
+                    <li><a href="Trangchu.html">Trang chủ</a></li>
+                    <li><a href="gioithieu.html">Giới thiệu</a></li>
+                    <li><a href="Lichchieu.html" class="dang-chon">Lịch chiếu</a></li>
+                    <li><a href="tintuc.html">Tin tức</a></li>
+                    <li><a href="giave.html">Giá vé</a></li>
+                </ul>
+            </nav>
+
+            <div class="tai-khoan collapse navbar-collapse justify-content-lg-end" id="thanhDieuHuongResponsiveAccount">
+                <div class="nhom-nut-tk d-flex  mt-3 mt-lg-0" id="taikhoanArea">
+                    <button class="nut-dang-nhap" onclick="moModal('dangNhapModal')">Đăng nhập</button>
+                    <button class="nut-dang-ky" onclick="moModal('dangKyModal')">Đăng ký</button>
+                </div>
+            </div>
+
+        </div>
+    </header>
 
     <main class="container my-4 my-md-5">
-        
+
         <div id="vung-lich-chieu">
             <div class="khu-vuc-tab my-5">
-        <div class="danh-sach-tab position-relative d-flex justify-content-center gap-4 gap-md-5">
-            <h3 class="tab-item active" onclick="chuyenTabLichChieu('dang-chieu', this)">PHIM ĐANG CHIẾU</h3>
-            <h3 class="tab-item text-secondary" onclick="chuyenTabLichChieu('sap-chieu', this)">PHIM SẮP CHIẾU</h3>
-            <div class="thanh-truot" id="thanh-truot-tab"></div> 
-        </div>
-        </div>
+                <div class="danh-sach-tab position-relative d-flex justify-content-center gap-4 gap-md-5">
+                    <h3 class="tab-item active" onclick="chuyenTabLichChieu('dang-chieu', this)">PHIM ĐANG CHIẾU</h3>
+                    <h3 class="tab-item text-secondary" onclick="chuyenTabLichChieu('sap-chieu', this)">PHIM SẮP CHIẾU
+                    </h3>
+                    <div class="thanh-truot" id="thanh-truot-tab"></div>
+                </div>
+            </div>
 
             <div id="vung-chon-ngay">
-            <div class="thanh-chon-ngay d-flex..." id="thanh-chon-ngay"></div>
-        </div>
+                <div class="thanh-chon-ngay d-flex..." id="thanh-chon-ngay"></div>
+            </div>
             <div class="row justify-content-center mb-4">
                 <div class="col-12 col-md-8 col-lg-6">
-            
-                <div style="position: relative; width: 100%;">
-                
-                    <i class="fas fa-search icon-tim-kiem"></i>
-                
-                    <input type="text" id="o-tim-kiem-phim" class="form-control o-tim-kiem-phim w-100" 
-                       placeholder="Nhập tên phim bạn muốn tìm..." 
-                       oninput="renderDanhSachLichChieu()">
-                       
-                </div>
 
+                    <div style="position: relative; width: 100%;">
+
+                        <i class="fas fa-search icon-tim-kiem"></i>
+<input type="text" id="o-tim-kiem-phim" class="form-control o-tim-kiem-phim w-100"
+                            placeholder="Nhập tên phim bạn muốn tìm..." oninput="renderDanhSachLichChieu()">
+
+                    </div>
+
+                </div>
             </div>
-        </div>
-            <div class="thanh-chon-ngay d-flex justify-content-start justify-content-md-center gap-2 mb-4 mb-md-5" id="thanh-chon-ngay">
-                
+            <div class="thanh-chon-ngay d-flex justify-content-start justify-content-md-center gap-2 mb-4 mb-md-5"
+                id="thanh-chon-ngay">
+
             </div>
 
             <div class="row g-3 g-md-4" id="danh-sach-phim">
-                </div>
+            </div>
         </div>
 
         <div id="vung-chi-tiet" class="d-none">
-            </div>
+        </div>
 
     </main>
     <footer class="chan-trang">
         <div class="noi-dung-footer">
             <div class="cot-footer">
                 <h3 class="logo-footer">PLANT CINEMA</h3>
-                <p>Hệ thống rạp chiếu phim mang đến trải nghiệm điện ảnh xanh, hiện đại và đẳng cấp nhất dành cho bạn.</p>
+                <p>Hệ thống rạp chiếu phim mang đến trải nghiệm điện ảnh xanh, hiện đại và đẳng cấp nhất dành cho bạn.
+                </p>
             </div>
             <div class="cot-footer">
                 <h3>Chính Sách & Quy Định</h3>
@@ -119,14 +123,15 @@
             <button class="taikhoan-btn-submit" onclick="dangNhap()">Đăng nhập</button>
             <div style="text-align: center; margin-top: 15px;">
                 <span style="color:#888;">Chưa có tài khoản? </span>
-                <span onclick="moModal('dangKyModal'); dongModal('dangNhapModal');" style="color:#93e9be; cursor:pointer;">Đăng ký ngay</span>
+                <span onclick="moModal('dangKyModal'); dongModal('dangNhapModal');"
+                    style="color:#93e9be; cursor:pointer;">Đăng ký ngay</span>
             </div>
         </div>
     </div>
 
     <!-- MODAL ĐĂNG KÝ -->
     <div id="dangKyModal" class="taikhoan-modal">
-        <div class="taikhoan-modal-content">
+<div class="taikhoan-modal-content">
             <span class="taikhoan-close" onclick="dongModal('dangKyModal')">&times;</span>
             <h2>ĐĂNG KÝ</h2>
             <input type="text" id="regName" class="taikhoan-input" placeholder="Họ tên">
@@ -138,7 +143,8 @@
             <button class="taikhoan-btn-submit" onclick="dangKy()">Tạo tài khoản</button>
             <div style="text-align: center; margin-top: 15px;">
                 <span style="color:#888;">Đã có tài khoản? </span>
-                <span onclick="moModal('dangNhapModal'); dongModal('dangKyModal');" style="color:#93e9be; cursor:pointer;">Đăng nhập</span>
+                <span onclick="moModal('dangNhapModal'); dongModal('dangKyModal');"
+                    style="color:#93e9be; cursor:pointer;">Đăng nhập</span>
             </div>
         </div>
     </div>
@@ -146,4 +152,5 @@
     <script src="taikhoan.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
