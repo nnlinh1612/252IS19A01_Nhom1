@@ -12,9 +12,8 @@
             position: fixed;
             top: 30px;
             right: 30px;
-            background-color: #111111;
-            color: #ff77a9;
-            border-left: 4px solid #ff77a9;
+            background-color: #f25555;
+            color: #ffff;
             padding: 15px 25px;
             border-radius: 8px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
@@ -34,7 +33,7 @@
 </head>
 
 <body>
-    <div id="thong-bao-custom">⚠️ Thông báo ở đây</div>
+    <div id="thong-bao-custom">Thông báo</div>
 
     <div class="container mt-4 mb-5 pb-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
@@ -70,7 +69,7 @@
             </div>
 
             <div class="col-lg-4">
-<div class="khoi-giao-dien">
+                <div class="khoi-giao-dien">
                     <h5 class="fw-bold mb-3 text-white">Khách hàng áp dụng</h5>
                     <div class="khung-dropdown" id="dropdown-loai-ve">
                         <div class="dropdown-hien-thi" onclick="batTatDropdown()">Người lớn (Tiêu chuẩn)</div>
@@ -128,7 +127,7 @@
             if (!chuoiNgay) return false;
             let p = chuoiNgay.split('/');
             let d = new Date(p[2], p[1] - 1, p[0]);
-return (d.getDay() === 0 || d.getDay() === 5 || d.getDay() === 6);
+            return (d.getDay() === 0 || d.getDay() === 5 || d.getDay() === 6);
         }
 
         // HÀM DỊCH NGÀY THÀNH "THỨ" CHO GIỐNG MOMO
@@ -197,7 +196,7 @@ return (d.getDay() === 0 || d.getDay() === 5 || d.getDay() === 6);
             ngayDuocChon = ngay;
             renderDanhSachNgay(ngay); // Vẽ lại để cập nhật màu sắc nút
             tinhLaiTongTien(); // Đổi ngày có thể rơi vào cuối tuần -> tính lại tiền
-}
+        }
 
         // =========================================================
         // HÀM VẼ DANH SÁCH GIỜ ĐỘNG TỪ DATA
@@ -262,7 +261,7 @@ return (d.getDay() === 0 || d.getDay() === 5 || d.getDay() === 6);
             document.getElementById("dropdown-loai-ve").classList.remove("mo");
             tinhLaiTongTien();
         }
-window.onclick = function (e) { if (!e.target.matches('.dropdown-hien-thi')) document.getElementById("dropdown-loai-ve").classList.remove("mo"); }
+        window.onclick = function (e) { if (!e.target.matches('.dropdown-hien-thi')) document.getElementById("dropdown-loai-ve").classList.remove("mo"); }
 
         function bamChonGhe(tenGhe, theGheThucTe) {
             if (theGheThucTe.classList.contains("ghe-da-ban")) return;

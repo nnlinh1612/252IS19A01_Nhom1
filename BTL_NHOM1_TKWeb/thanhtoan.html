@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
-        /* TOAST NOTIFICATION */
+        /* TOAST NOTIFICATION (Báo lỗi nhỏ góc màn hình) */
         #thong-bao-custom {
             position: fixed;
             top: 30px;
@@ -39,13 +39,68 @@
             color: #888 !important;
             cursor: not-allowed;
         }
+
+        /* =========================================================
+           POPUP CẢNH BÁO CHƯA ĐĂNG NHẬP CHUẨN MÀU XANH ĐEN
+           ========================================================= */
+        .popup-lop-phu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            /* Nền đen mờ */
+            backdrop-filter: blur(8px);
+            /* Làm nhòe bối cảnh phía sau */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+
+        .popup-khung {
+            background: #111111;
+            border: 1px solid #93e9be;
+            /* Viền xanh chủ đạo */
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(147, 233, 190, 0.15);
+            /* Phát sáng mờ màu xanh */
+            max-width: 400px;
+            width: 90%;
+            animation: phongTo 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            /* Hiệu ứng nảy cực mượt */
+        }
+
+        @keyframes phongTo {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <div id="thong-bao-custom">⚠️ Thông báo ở đây</div>
+    <div id="popup-canh-bao" class="popup-lop-phu" style="display: none;">
+        <div class="popup-khung">
+            <p style="color: #b0b0b0; margin-bottom: 30px;">Bạn cần phải đăng nhập tài khoản để tiến hành thanh toán và
+                giữ chỗ.</p>
+            <button class="nut-thanh-toan" style="width: auto; padding: 10px 40px;" onclick="veTrangChuDangNhap()">Đồng
+                ý</button>
+        </div>
+    </div>
 
-    <div class="container mt-4 mb-5 pb-5" style="max-width: 800px;">
+    <div id="thong-bao-custom"> Thông báo</div>
+
+    <div class="container mt-4 mb-5 pb-5" id="giao-dien-thanh-toan" style="max-width: 800px;">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h3 class="fw-bold m-0 text-white">Bước 3: Thanh toán</h3>
             <button class="btn btn-outline-light btn-sm" style="border-radius: 20px; padding: 5px 15px;"
@@ -70,13 +125,14 @@
         <div class="khoi-giao-dien khu-vuc-thanh-toan">
             <div class="d-flex justify-content-between mb-3">
                 <span class="text-secondary">Tổng thanh toán:</span>
-<span id="tt-tongtien" class="fw-bold fs-4" style="color: #93e9be;">0đ</span>
+                <span id="tt-tongtien" class="fw-bold fs-4" style="color: #93e9be;">0đ</span>
             </div>
             <button id="nut-thanh-toan" class="nut-thanh-toan" onclick="chotDon()">Thanh toán ngay</button>
         </div>
     </div>
 
     <script>
+        // Hàm hiển thị Toast báo lỗi
         function hienThongBao(tinNhan) {
             let hopThongBao = document.getElementById("thong-bao-custom");
             hopThongBao.innerHTML = `⚠️ ${tinNhan}`;
@@ -84,35 +140,42 @@
             setTimeout(() => { hopThongBao.classList.remove("hien-thi"); }, 3000);
         }
 
-        let donHang = JSON.parse(localStorage.getItem("thongTinDonHang")) || {};
-        let khachHangDaDangNhap = JSON.parse(sessionStorage.getItem('currentUser'));
-
-        // Kiểm tra bảo mật
-        if (!khachHangDaDangNhap) {
-            alert("Phiên đăng nhập hết hạn. Vui lòng đăng nhập lại!");
+        // Hàm chuyển về trang chủ khi bấm "Đồng ý" trên Popup
+        function veTrangChuDangNhap() {
             window.location.href = "Trangchu.html";
         }
 
-        document.addEventListener("DOMContentLoaded", () => {
-            // Hiển thị dữ liệu vé
-            document.getElementById("tt-phim").innerText = donHang.tenPhim || "Chưa có dữ liệu";
-            document.getElementById("tt-thoigian").innerText = (donHang.gioChieu || "") + " - " + (donHang.ngayChieu || "");
-            document.getElementById("tt-ghe").innerText = donHang.gheDaChon ? donHang.gheDaChon.join(', ') : '';
+        let donHang = JSON.parse(localStorage.getItem("thongTinDonHang")) || {};
+        let khachHangDaDangNhap = JSON.parse(sessionStorage.getItem('currentUser'));
 
-            let chuCombo = "";
-            if (donHang.soLuongCombo1 > 0) chuCombo += donHang.soLuongCombo1 + "x Combo 1 ";
-            if (donHang.soLuongCombo2 > 0) chuCombo += donHang.soLuongCombo2 + "x Combo 2 ";
-            document.getElementById("tt-combo").innerText = chuCombo || "Không mua";
+        // ========================================================
+        // KIỂM TRA BẢO MẬT: NẾU CHƯA ĐĂNG NHẬP THÌ BẬT POPUP
+        // ========================================================
+        if (!khachHangDaDangNhap) {
+            // Giấu giao diện thanh toán đi để khách không thấy lỗi
+            document.getElementById("giao-dien-thanh-toan").style.display = "none";
+            // Bật Popup xịn xò lên
+            document.getElementById("popup-canh-bao").style.display = "flex";
+        } else {
+            // Nếu đã đăng nhập thì mới cho chạy tiếp code hiển thị dữ liệu
+            document.addEventListener("DOMContentLoaded", () => {
+                document.getElementById("tt-phim").innerText = donHang.tenPhim || "Chưa có dữ liệu";
+                document.getElementById("tt-thoigian").innerText = (donHang.gioChieu || "") + " - " + (donHang.ngayChieu || "");
+                document.getElementById("tt-ghe").innerText = donHang.gheDaChon ? donHang.gheDaChon.join(', ') : '';
 
-            document.getElementById("tt-tongtien").innerText = (donHang.tongTienCuoiCung || 0).toLocaleString('vi-VN') + "đ";
+                let chuCombo = "";
+                if (donHang.soLuongCombo1 > 0) chuCombo += donHang.soLuongCombo1 + "x Combo 1 ";
+                if (donHang.soLuongCombo2 > 0) chuCombo += donHang.soLuongCombo2 + "x Combo 2 ";
+                document.getElementById("tt-combo").innerText = chuCombo || "Không mua";
 
-            // Điền thông tin User và khóa lại
-            if (khachHangDaDangNhap) {
+                document.getElementById("tt-tongtien").innerText = (donHang.tongTienCuoiCung || 0).toLocaleString('vi-VN') + "đ";
+
+                // Điền thông tin
                 document.getElementById("nhap-ten").value = khachHangDaDangNhap.name || khachHangDaDangNhap.ten;
                 document.getElementById("nhap-email").value = khachHangDaDangNhap.email;
                 document.getElementById("nhap-sdt").value = khachHangDaDangNhap.phone || khachHangDaDangNhap.sdt;
-            }
-        });
+            });
+        }
 
         function chotDon() {
             let ten = document.getElementById("nhap-ten").value;
@@ -124,13 +187,13 @@
             // Giao diện loading thanh toán
             let nut = document.getElementById("nut-thanh-toan");
             nut.innerHTML = "⏳ Đang xử lý giao dịch...";
-            nut.style.pointerEvents = "none"; // Khóa nút không cho bấm đúp
+            nut.style.pointerEvents = "none";
             nut.style.opacity = "0.8";
 
             // Chuẩn bị dữ liệu gửi đi
             donHang.tenKhachHang = ten;
             donHang.emailKhachHang = document.getElementById("nhap-email").value;
-donHang.maVe = "PL-" + Math.floor(Math.random() * 100000);
+            donHang.maVe = "PL-" + Math.floor(Math.random() * 100000);
             localStorage.setItem("thongTinDonHang", JSON.stringify(donHang));
 
             // Giả lập thời gian chờ thanh toán (1.5 giây)
