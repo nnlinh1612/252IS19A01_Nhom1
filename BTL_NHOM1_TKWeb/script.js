@@ -569,7 +569,7 @@ function renderDanhSachTrangChu() {
                     <div class="khung-anh-home">
                         <img src="${phim.poster}" alt="${phim.ten}">
                         <div class="lop-phu-home">
-                            <button class="nut-xem-chi-tiet" onclick="window.location.href='Lichchieu.html?id=${phim.id}'">Chi tiết</button>
+                            <button class="nut-xem-chi-tiet" onclick="window.location.href='Lichchieu.html?id=${phim.id}&from=home'">Chi tiết</button>
                         </div>
                     </div>
                     <div class="mt-3 d-flex flex-column flex-grow-1 justify-content-between">
@@ -608,7 +608,7 @@ function renderDanhSachSapChieuTrangChu() {
                     <div class="khung-anh-home">
                         <img src="${phim.poster}" alt="${phim.ten}">
                         <div class="lop-phu-home">
-                            <button class="nut-xem-chi-tiet" onclick="window.location.href='Lichchieu.html?id=${phim.id}'">Xem Trailer</button>
+                            <button class="nut-xem-chi-tiet" onclick="window.location.href='Lichchieu.html?id=${phim.id}&from=home'">Xem Trailer</button>
                         </div>
                     </div>
                     <div class="mt-3 d-flex flex-column flex-grow-1 justify-content-between">
@@ -675,14 +675,13 @@ function renderDanhSachLichChieu(ngayDuocChon = null) {
     const classNhan = phim.nhanTuoi === "P" ? "nhan-tuoi nhan-p" : "nhan-tuoi";
 
     let htmlChucNang = "";
-    if (tabLichChieuHienTai === "dang-chieu") {
-      const danhSachGio = phim.suatChieu[ngayDuocChon] || [];
-      htmlChucNang = danhSachGio
-        .map(
-          (gio) => `
-                <button class="nut-suat-chieu" onclick="window.location.href='datve.html?id=${phim.id}&ngay=${encodeURIComponent(ngayDuocChon)}&gio=${encodeURIComponent(gio)}'">${gio}</button>`,
-        )
-        .join("");
+    if (tabLichChieuHienTai === 'dang-chieu') {
+            const danhSachGio = phim.suatChieu[ngayDuocChon] || [];
+            // BÍ QUYẾT: Gắn link sang trang đặt vé, mang theo ID, Ngày và Giờ
+            // Lưu ý: Nếu file HTML đặt vé của nhóm cậu tên khác, hãy thay 'datve.html' thành tên chuẩn nhé
+            htmlChucNang = danhSachGio.map(gio => `
+                <button class="nut-suat-chieu" onclick="window.location.href='datve.html?id=${phim.id}&ngay=${ngayDuocChon}&gio=${gio}'">${gio}</button>
+            `).join('');
     } else {
       htmlChucNang = `
                 <p class="chu-khoi-chieu mb-2" style="width: 100%;">Khởi chiếu: ${phim.ngayKhoiChieu}</p>
@@ -776,19 +775,27 @@ function chonNgay(btnElement, dateStr) {
 // 6. XEM CHI TIẾT PHIM VÀ QUAY LẠI
 // =================================================================
 function hienChiTietPhim(idPhim) {
-  const phim = khoPhim.find((p) => p.id === idPhim);
-  if (!phim) return;
+    const phim = khoPhim.find(p => p.id === idPhim);
+    if (!phim) return;
 
-  const vungChiTiet = document.getElementById("vung-chi-tiet");
-  const classNhan = phim.nhanTuoi === "P" ? "nhan-tuoi nhan-p" : "nhan-tuoi";
+    const vungChiTiet = document.getElementById("vung-chi-tiet");
+    const classNhan = phim.nhanTuoi === "P" ? "nhan-tuoi nhan-p" : "nhan-tuoi";
 
-  let nutDatVe =
-    phim.trangThai === "dang-chieu"
-? `<button class="btn nut-dat-ve mt-3" onclick="window.location.href='datve.html?id=${phim.id}'">ĐẶT VÉ NGAY</button>`
-      : `<p class="chu-khoi-chieu mt-3" style="font-size: 18px;">Khởi chiếu: ${phim.ngayKhoiChieu}</p>`;
+    // 1. NÚT QUAY LẠI THÔNG MINH
+    const urlParams = new URLSearchParams(window.location.search);
+    const fromParam = urlParams.get('from');
 
-  vungChiTiet.innerHTML = `
-        <button class="btn btn-outline-secondary mb-4 text-white" onclick="hienLichChieu()">&larr; Quay lại Lịch chiếu</button>
+    let nutQuayLai = fromParam === 'home' 
+        ? `<button class="btn btn-outline-secondary mb-4 text-white" onclick="window.history.back()">&larr; Quay lại Trang chủ</button>`
+        : `<button class="btn btn-outline-secondary mb-4 text-white" onclick="hienLichChieu()">&larr; Quay lại Lịch chiếu</button>`;
+
+    // 2. NÚT ĐẶT VÉ (ĐÃ SỬA THÀNH LINK SANG TRANG ĐẶT VÉ CỦA BẠN CÙNG NHÓM)
+    let nutDatVe = phim.trangThai === 'dang-chieu' 
+        ? `<button class="btn nut-dat-ve mt-3" onclick="window.location.href='datve.html?id=${phim.id}'">ĐẶT VÉ NGAY</button>` 
+        : `<p class="chu-khoi-chieu mt-3" style="font-size: 18px;">Khởi chiếu: ${phim.ngayKhoiChieu}</p>`;
+
+    vungChiTiet.innerHTML = `
+        ${nutQuayLai}
         <div class="row g-4 g-md-5">
             <div class="col-12 col-md-4 text-center text-md-start">
                 <img src="${phim.poster}" class="anh-poster-chi-tiet" alt="${phim.ten}">
@@ -814,28 +821,37 @@ function hienChiTietPhim(idPhim) {
             </div>
         </div>
     `;
-  document.getElementById("vung-lich-chieu").classList.add("d-none");
-  vungChiTiet.classList.remove("d-none");
-  window.scrollTo({ top: 0, behavior: "smooth" });
+    document.getElementById("vung-lich-chieu").classList.add("d-none");
+    vungChiTiet.classList.remove("d-none");
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-
 function hienLichChieu() {
-  const iframeVideo = document.querySelector("#vung-chi-tiet iframe");
-  if (iframeVideo) iframeVideo.src = "";
-  document.getElementById("vung-chi-tiet").classList.add("d-none");
-  document.getElementById("vung-lich-chieu").classList.remove("d-none");
+    // 1. Tắt video Youtube nếu đang mở để tránh tiếng kêu văng vẳng
+    const iframeVideo = document.querySelector("#vung-chi-tiet iframe");
+    if (iframeVideo) iframeVideo.src = ""; 
+    
+    // 2. Đảo ngược trạng thái: Ẩn Chi tiết, Hiện Lịch chiếu
+    const vungChiTiet = document.getElementById("vung-chi-tiet");
+    const vungLichChieu = document.getElementById("vung-lich-chieu");
+    if (vungChiTiet) vungChiTiet.classList.add("d-none");
+    if (vungLichChieu) vungLichChieu.classList.remove("d-none");
 
-  // BỔ SUNG QUAN TRỌNG: Nếu trước đó đi thẳng từ Trang chủ vào Chi tiết (chưa kịp vẽ Lịch), thì bây giờ vẽ lại!
-  if (document.getElementById("danh-sach-phim") && document.getElementById("danh-sach-phim").innerHTML.trim() === "") {
-    if (document.getElementById("thanh-chon-ngay")) renderThanhChonNgay();
-    renderDanhSachLichChieu();
-  }
+    // 3. Chống giật lag: Nếu vùng chứa phim đang bị rỗng thì yêu cầu vẽ lại ngay
+    if (document.getElementById("danh-sach-phim") && document.getElementById("danh-sach-phim").innerHTML.trim() === "") {
+        if (document.getElementById("thanh-chon-ngay")) renderThanhChonNgay();
+        renderDanhSachLichChieu();
+    }
 
-  const url = new URL(window.location);
-  url.searchParams.delete("id");
-  window.history.pushState({}, "", url);
+    // 4. Dọn dẹp URL trên thanh địa chỉ (Xóa id phim để link sạch sẽ như cũ)
+    try {
+        const url = new URL(window.location);
+        url.searchParams.delete('id');
+        url.searchParams.delete('from');
+        window.history.pushState({}, '', url);
+    } catch (error) {
+        console.log("Đang chạy trên máy tính (Local), bỏ qua bước dọn URL.");
+    }
 }
-
 // =================================================================
 // 7. KHỞI TẠO TỰ ĐỘNG KHI LOAD TRANG (ĐÃ FIX LỖI GIẬT KHUNG HÌNH)
 // =================================================================
