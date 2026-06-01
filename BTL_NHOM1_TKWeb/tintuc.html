@@ -129,7 +129,7 @@
 
     <main class="khu-vuc-chinh">
         <h1 class="tieu-de-muc" style="margin-top: 0;">
-            <a href="#">📰 Tin tức & Khuyến mãi <span>&raquo;</span></a>
+            <a href="#">Tin tức & Khuyến mãi <span>&raquo;</span></a>
         </h1>
         <div class="news-grid" id="newsContainer"></div>
     </main>
@@ -161,7 +161,6 @@
         </div>
     </footer>
 
-    <!-- MODAL ĐĂNG NHẬP / ĐĂNG KÝ (giống trang chủ) -->
     <div id="dangNhapModal" class="taikhoan-modal">
         <div class="taikhoan-modal-content">
             <span class="taikhoan-close" onclick="dongModal('dangNhapModal')">&times;</span>
@@ -203,7 +202,7 @@
             {
                 id: 1,
                 type: "tintuc",
-                title: "🎬 Lịch chiếu phim mới tháng 6",
+                title: "Lịch chiếu phim mới tháng 6",
                 excerpt: "Hàng loạt bom tấn đổ bộ rạp Plant Cinema trong tháng 6 bao gồm: Inside Out 2, Despicable Me 4...",
                 content: "<p>Các phim chiếu từ 1/6: Inside Out 2 (2D/IMAX), Bad Boys 4, A Quiet Place: Day One. Đặt vé sớm nhận ưu đãi.</p>",
                 date: "28/05/2026",
@@ -212,7 +211,7 @@
             {
                 id: 2,
                 type: "khuyenmai",
-                title: "🎉 Khai trương rạp Plant Cinema - Ưu đãi khủng 30%",
+                title: "Khai trương rạp Plant Cinema - Ưu đãi khủng 30%",
                 excerpt: "Nhân dịp khai trương rạp Plant Cinema, khách hàng được giảm 30% giá vé trong thời gian áp dụng.",
                 content: "<p>Chi tiết: Từ ngày 20/05/2026 đến 25/05/2026, giảm 30% tổng tiền vé. Áp dụng cho tất cả khách hàng khi đặt vé xem phim tại Plant Cinema.</p>",
                 date: "20/05/2026",
@@ -222,7 +221,7 @@
             {
                 id: 3,
                 type: "khuyenmai",
-                title: "🎁 Khuyến mãi Tết Thiếu Nhi 1/6",
+                title: "Khuyến mãi Tết Thiếu Nhi 1/6",
                 excerpt: "Plant Cinema dành tặng ưu đãi miễn phí combo bắp nước cho vé trẻ em trong ngày Quốc tế Thiếu nhi.",
                 content: "<p>Chi tiết: Ngày 01/06/2026, khách hàng chọn loại vé trẻ em sẽ được miễn phí 1 combo bắp nước khi đặt vé xem phim tại Plant Cinema.</p>",
                 date: "01/06/2026",
@@ -232,22 +231,13 @@
             {
                 id: 4,
                 type: "khuyenmai",
-                title: "🏮 Khuyến mãi đặc biệt dịp Trung Thu",
+                title: "Khuyến mãi đặc biệt dịp Trung Thu",
                 excerpt: "Plant Cinema chào đón Tết Trung Thu với ưu đãi 'Mua 2 tặng 1' và tặng lồng đèn cho các bé...",
                 content: "<p>Chi tiết: Từ 22/9 đến 25/9, mua 2 vé bất kỳ tặng 1 vé trẻ em. Áp dụng voucher: MOONFEST để nhận thêm combo bắp nước.</p>",
                 date: "22/09/2026",
                 image: "././images/ctkm3.png",
                 voucher: { code: "MOONFEST", discount: "Mua 2 tặng 1", remain: 50 }
             },
-            {
-                id: 5,
-                type: "tintuc",
-                title: "⭐ Plant Cinema đạt giải 'Rạp chiếu phim xanh 2026'",
-                excerpt: "Với không gian xanh mát và cam kết bảo vệ môi trường, Plant Cinema vinh dự nhận giải thưởng danh giá...",
-                content: "<p>Plant Cinema được vinh danh là một trong những rạp chiếu phim thân thiện với môi trường nhất năm 2026.</p>",
-                date: "15/05/2026",
-                image: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=500&q=80"
-            }
         ];
 
         // Khởi tạo số lượt còn lại
@@ -279,12 +269,12 @@
 
         function copyVoucher(code, btn) {
             if (getRemain(code) <= 0) {
-                alert(`⚠️ Mã ${code} đã hết lượt!`);
+                alert(` Mã ${code} đã hết lượt!`);
                 return;
             }
             navigator.clipboard.writeText(code).then(() => {
                 if (decreaseRemain(code)) {
-                    btn.innerHTML = '✅ Đã copy!';
+                    btn.innerHTML = ' Đã copy!';
                     setTimeout(() => location.reload(), 1200);
                 }
             });
@@ -304,11 +294,11 @@
                     <img src="${item.image}" class="news-img">
                     <div style="padding: 20px;">
                         <span class="news-badge ${item.type === 'tintuc' ? 'badge-tintuc' : 'badge-khuyenmai'}">
-                            ${item.type === 'tintuc' ? '📰 TIN TỨC' : '🎁 KHUYẾN MÃI'}
+                            ${item.type === 'tintuc' ? 'TIN TỨC' : 'KHUYẾN MÃI'}
                         </span>
                         <h3 class="news-title">${item.title}</h3>
                         <p class="news-excerpt">${item.excerpt}</p>
-                        <p style="color:#666; font-size:12px;">📅 ${item.date}</p>
+                        <p style="color:#666; font-size:12px;"> ${item.date}</p>
                 `;
                 if (item.voucher) {
                     const remain = getRemain(item.voucher.code);
