@@ -141,14 +141,14 @@
                 <p>Hệ thống rạp chiếu phim mang đến trải nghiệm điện ảnh xanh, hiện đại và đẳng cấp nhất.</p>
             </div>
             <div class="cot-footer">
-                <h3>Chính Sách</h3>
+                <h3>CHÍNH SÁCH & QUY ĐỊNH</h3>
                 <ul>
-                    <li><a href="#">Điều khoản sử dụng</a></li>
-                    <li><a href="#">Chính sách bảo mật</a></li>
+                    <li><a href="dieukhoansudung.html">Điều khoản sử dụng</a></li>
+                    <li><a href="csbaomat.html">Chính sách bảo mật</a></li>
                 </ul>
             </div>
             <div class="cot-footer">
-                <h3>Kết Nối</h3>
+                <h3>KẾT NỐI VỚI CHÚNG TÔI</h3>
                 <div class="mang-xa-hoi">
                     <a href="#" class="icon-mxh">Facebook</a>
                     <a href="#" class="icon-mxh">Instagram</a>
@@ -172,7 +172,8 @@
             <button class="taikhoan-btn-submit" onclick="dangNhap()">Đăng nhập</button>
             <div style="text-align: center; margin-top: 15px;">
                 <span style="color:#888;">Chưa có tài khoản? </span>
-                <span onclick="moModal('dangKyModal'); dongModal('dangNhapModal');" style="color:#93e9be; cursor:pointer;">Đăng ký ngay</span>
+                <span onclick="moModal('dangKyModal'); dongModal('dangNhapModal');"
+                    style="color:#93e9be; cursor:pointer;">Đăng ký ngay</span>
             </div>
         </div>
     </div>
@@ -190,7 +191,8 @@
             <button class="taikhoan-btn-submit" onclick="dangKy()">Tạo tài khoản</button>
             <div style="text-align: center; margin-top: 15px;">
                 <span style="color:#888;">Đã có tài khoản? </span>
-                <span onclick="moModal('dangNhapModal'); dongModal('dangKyModal');" style="color:#93e9be; cursor:pointer;">Đăng nhập</span>
+                <span onclick="moModal('dangNhapModal'); dongModal('dangKyModal');"
+                    style="color:#93e9be; cursor:pointer;">Đăng nhập</span>
             </div>
         </div>
     </div>
@@ -201,39 +203,40 @@
             {
                 id: 1,
                 type: "tintuc",
-                title: "🎉 Khai trương rạp Plant Cinema - Ưu đãi khủng 50%",
-                excerpt: "Nhân dịp khai trương cơ sở mới tại 458 Minh Khai, Plant Cinema tri ân khách hàng với hàng loạt ưu đãi hấp dẫn...",
-                content: "<p>Chi tiết: Từ ngày 1/6 đến 10/6, giảm 50% tất cả các suất chiếu. Áp dụng cho thành viên đăng ký mới. Hãy nhanh tay đặt vé ngay!</p>",
-                date: "20/05/2026",
-                image: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=500&q=80"
-            },
-            {
-                id: 2,
-                type: "khuyenmai",
-                title: "🎁 Khuyến mãi Tết Thiếu Nhi 1/6",
-                excerpt: "Ngày Quốc tế Thiếu nhi, Plant Cinema dành tặng các bé voucher giảm giá 30% và combo bắp nước siêu tiết kiệm...",
-                content: "<p>Chi tiết: Trẻ em dưới 12 tuổi được tặng combo bắp nước miễn phí khi mua vé xem phim ngày 1/6. Voucher code: JUNE30</p>",
-                date: "25/05/2026",
-                image: "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=500&q=80",
-                voucher: { code: "JUNE30", discount: "30%", remain: 100 }
-            },
-            {
-                id: 3,
-                type: "tintuc",
                 title: "🎬 Lịch chiếu phim mới tháng 6",
                 excerpt: "Hàng loạt bom tấn đổ bộ rạp Plant Cinema trong tháng 6 bao gồm: Inside Out 2, Despicable Me 4...",
                 content: "<p>Các phim chiếu từ 1/6: Inside Out 2 (2D/IMAX), Bad Boys 4, A Quiet Place: Day One. Đặt vé sớm nhận ưu đãi.</p>",
                 date: "28/05/2026",
-                image: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=500&q=80"
+                image: "././images/tintuc1.png"
+            },
+            {
+                id: 2,
+                type: "khuyenmai",
+                title: "🎉 Khai trương rạp Plant Cinema - Ưu đãi khủng 30%",
+                excerpt: "Nhân dịp khai trương rạp Plant Cinema, khách hàng được giảm 30% giá vé trong thời gian áp dụng.",
+                content: "<p>Chi tiết: Từ ngày 20/05/2026 đến 25/05/2026, giảm 30% tổng tiền vé. Áp dụng cho tất cả khách hàng khi đặt vé xem phim tại Plant Cinema.</p>",
+                date: "20/05/2026",
+                image: "././images/anh2.png",
+                voucher: { code: "KHAITRUONG30", discount: "Giảm 30%", remain: 100 }
+            },
+            {
+                id: 3,
+                type: "khuyenmai",
+                title: "🎁 Khuyến mãi Tết Thiếu Nhi 1/6",
+                excerpt: "Plant Cinema dành tặng ưu đãi miễn phí combo bắp nước cho vé trẻ em trong ngày Quốc tế Thiếu nhi.",
+                content: "<p>Chi tiết: Ngày 01/06/2026, khách hàng chọn loại vé trẻ em sẽ được miễn phí 1 combo bắp nước khi đặt vé xem phim tại Plant Cinema.</p>",
+                date: "01/06/2026",
+                image: "././images/ctkm2.png",
+                voucher: { code: "THIEUNHI_BAPNUOC", discount: "Miễn phí bắp nước", remain: 100 }
             },
             {
                 id: 4,
                 type: "khuyenmai",
                 title: "🏮 Khuyến mãi đặc biệt dịp Trung Thu",
                 excerpt: "Plant Cinema chào đón Tết Trung Thu với ưu đãi 'Mua 2 tặng 1' và tặng lồng đèn cho các bé...",
-                content: "<p>Chi tiết: Từ 1/9 đến 15/9, mua 2 vé bất kỳ tặng 1 vé trẻ em. Áp dụng voucher: MOONFEST để nhận thêm combo bắp nước.</p>",
-                date: "01/09/2026",
-                image: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=500&q=80",
+                content: "<p>Chi tiết: Từ 22/9 đến 25/9, mua 2 vé bất kỳ tặng 1 vé trẻ em. Áp dụng voucher: MOONFEST để nhận thêm combo bắp nước.</p>",
+                date: "22/09/2026",
+                image: "././images/ctkm3.png",
                 voucher: { code: "MOONFEST", discount: "Mua 2 tặng 1", remain: 50 }
             },
             {

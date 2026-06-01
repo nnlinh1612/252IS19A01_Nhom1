@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chính sách - Plant Cinema</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* KHUNG CHUNG CỦA TRANG */
+        .trang-chinh-sach {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 45px 24px 70px;
+        }
+
+        .tieu-de-trang {
+            text-align: center;
+            color: #93e9be;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 35px;
+        }
+
+        /* NỘI DUNG CHÍNH SÁCH */
+        .noi-dung {
+            color: #f2f2f2;
+            font-size: 16px;
+            line-height: 1.75;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .noi-dung h2 {
+            color: #93e9be;
+            margin-top: 32px;
+            margin-bottom: 10px;
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+        .noi-dung h3 {
+            color: #ffffff;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .noi-dung p {
+            margin: 8px 0;
+            color: #d7d7d7;
+        }
+
+        .noi-dung ul {
+            margin-top: 10px;
+            margin-bottom: 14px;
+            padding-left: 24px;
+            color: #d7d7d7;
+        }
+
+        .noi-dung li {
+            margin-bottom: 7px;
+        }
+
+        .an {
+            display: none;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .trang-chinh-sach {
+                padding: 35px 20px 60px;
+            }
+
+            .tieu-de-trang {
+                font-size: 28px;
+            }
+
+            .noi-dung {
+                font-size: 15.5px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .trang-chinh-sach {
+                padding: 28px 16px 50px;
+            }
+
+            .tieu-de-trang {
+                font-size: 24px;
+                margin-bottom: 25px;
+            }
+
+            .noi-dung {
+                font-size: 15px;
+                line-height: 1.65;
+            }
+
+            .noi-dung h2 {
+                font-size: 18px;
+                margin-top: 26px;
+            }
+
+            .noi-dung h3 {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="dau-trang-kinh">
+        <div class="logo">PLANT CINEMA</div>
+        <nav class="thanh-dieu-huong">
+            <ul>
+                <li><a href="Trangchu.html" class="dang-chon">Trang chủ</a></li>
+                <li><a href="gioithieu.html">Giới thiệu</a></li>
+                <li><a href="Lichchieu.html">Lịch chiếu</a></li>
+                <li><a href="tintuc.html">Tin tức</a></li>
+                <li><a href="giave.html">Giá vé</a></li>
+            </ul>
+        </nav>
+        <div class="tai-khoan" id="taikhoanArea">
+            <button class="nut-dang-nhap" onclick="moModal('dangNhapModal')">Đăng nhập</button>
+            <button class="nut-dang-ky" onclick="moModal('dangKyModal')">Đăng ký</button>
+        </div>
+    </header>
+
+    <main class="trang-chinh-sach">
+        <h1 class="tieu-de-trang">Chính sách bảo mật</h1>
+
+        <!-- NỘI DUNG CHÍNH SÁCH BẢO MẬT -->
+        <section id="noi-dung-bao-mat" class="noi-dung">
+            <h2>1. Mục đích và phạm vi thu thập thông tin</h2>
+
+            <h3>1.1. Thông tin được thu thập</h3>
+            <p>
+                Việc thu thập thông tin cá nhân được thực hiện trên cơ sở khách hàng tự cung cấp khi đăng ký tài khoản
+                hoặc sử dụng dịch vụ tại Plant Cinema.
+            </p>
+
+            <ul>
+                <li>Thông tin cá nhân như họ tên, giới tính, độ tuổi.</li>
+                <li>Thông tin liên lạc như số điện thoại, email.</li>
+                <li>Thông tin đặt vé, lịch sử giao dịch và các thông tin liên quan đến chương trình khách hàng thân
+                    thiết.</li>
+            </ul>
+
+            <h3>1.2. Mục đích thu thập thông tin</h3>
+            <ul>
+                <li>Cung cấp dịch vụ đặt vé, thanh toán và nhận vé trực tuyến.</li>
+                <li>Liên hệ xác nhận khi khách hàng đăng ký tài khoản hoặc thực hiện giao dịch.</li>
+                <li>Gửi thông tin cập nhật, chương trình khuyến mãi hoặc ưu đãi khi khách hàng đồng ý.</li>
+                <li>Bảo vệ quyền lợi khách hàng khi phát hiện hành vi giả mạo, gian lận hoặc phá hoại tài khoản.</li>
+            </ul>
+
+            <p>
+                Trong quá trình thanh toán, Plant Cinema chỉ lưu giữ thông tin đơn hàng đã thanh toán. Các thông tin về
+                tài khoản ngân hàng hoặc thẻ thanh toán sẽ không được lưu giữ trên hệ thống.
+            </p>
+
+            <h2>2. Phạm vi sử dụng thông tin</h2>
+            <p>
+                Plant Cinema chỉ sử dụng thông tin cá nhân của khách hàng cho các mục đích đã nêu hoặc mục đích khác
+                nếu đã thông báo và được khách hàng đồng ý.
+            </p>
+            <p>
+                Chúng tôi không sử dụng thông tin cá nhân để gửi quảng cáo hoặc thông tin thương mại khi chưa có sự chấp
+                thuận của khách hàng.
+            </p>
+
+            <h2>3. Thời gian lưu trữ thông tin</h2>
+            <p>
+                Dữ liệu cá nhân của khách hàng được lưu trữ trong thời gian khách hàng còn sử dụng dịch vụ hoặc cho đến
+                khi có yêu cầu hủy bỏ. Một số thông tin có thể được lưu trữ thêm để phục vụ phòng chống gian lận, xử lý
+                khiếu nại hoặc theo quy định pháp luật.
+            </p>
+
+            <h2>4. Cách thức chỉnh sửa dữ liệu cá nhân</h2>
+            <p>
+                Khách hàng có thể đăng nhập vào tài khoản để xem và chỉnh sửa thông tin cá nhân. Với các thông tin quan
+                trọng cần xác minh, khách hàng có thể liên hệ Plant Cinema để được hỗ trợ.
+            </p>
+
+            <h2>5. Cam kết bảo mật thông tin</h2>
+            <p>
+                Plant Cinema cam kết bảo mật thông tin cá nhân của khách hàng, không chia sẻ hoặc chuyển giao thông tin
+                cho bên thứ ba khi chưa được sự đồng ý, trừ trường hợp phải thực hiện theo yêu cầu của cơ quan có thẩm
+                quyền hoặc theo quy định pháp luật.
+            </p>
+            <p>
+                Chúng tôi áp dụng các biện pháp phù hợp để hạn chế hành vi truy cập trái phép, đánh cắp, thay đổi hoặc
+                phá hủy dữ liệu cá nhân.
+            </p>
+
+            <h2>6. Trách nhiệm của khách hàng</h2>
+            <p>
+                Khách hàng có trách nhiệm bảo mật tên đăng nhập, mật khẩu và email của mình. Plant Cinema không chịu
+                trách nhiệm đối với thiệt hại phát sinh do khách hàng tự ý chia sẻ thông tin tài khoản hoặc mã vé.
+            </p>
+
+            <h2>7. Liên hệ</h2>
+            <p>
+                Nếu có câu hỏi về chính sách bảo mật hoặc cần hỗ trợ thông tin cá nhân, khách hàng có thể liên hệ Plant
+                Cinema qua thông tin hỗ trợ trên website.
+            </p>
+        </section>
+    </main>
+    <footer class="chan-trang">
+        <div class="noi-dung-footer">
+            <div class="cot-footer">
+                <h3 class="logo-footer">PLANT CINEMA</h3>
+                <p>Hệ thống rạp chiếu phim mang đến trải nghiệm điện ảnh xanh, hiện đại và đẳng cấp nhất dành cho bạn.
+                </p>
+            </div>
+            <div class="cot-footer">
+                <h3>CHÍNH SÁCH & QUY ĐỊNH</h3>
+                <ul>
+                    <li><a href="dieukhoansudung.html">Điều khoản sử dụng</a></li>
+                    <li><a href="csachbaomat.html">Chính sách bảo mật</a></li>
+                </ul>
+            </div>
+            <div class="cot-footer">
+                <h3>KẾT NỐI VỚI CHÚNG TÔI</h3>
+                <div class="mang-xa-hoi">
+                    <a href="#" class="icon-mxh">Facebook</a>
+                    <a href="#" class="icon-mxh">Instagram</a>
+                    <a href="#" class="icon-mxh">Youtube</a>
+                </div>
+            </div>
+        </div>
+        <div class="ban-quyen">
+            <p>Copyright &copy; 2026 Plant Cinema. All rights reserved. Developed by Nhóm 1</p>
+        </div>
+    </footer>
+</body>
+
+</html>

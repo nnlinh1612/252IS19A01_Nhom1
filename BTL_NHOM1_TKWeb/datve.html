@@ -4,311 +4,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bước 1: Đặt Vé - PLANT CINEMA</title>
+    <title>Đặt vé - PLANT CINEMA</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        #thong-bao-custom {
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            background-color: #f25555;
-            color: #ffff;
-            padding: 15px 25px;
-            border-radius: 8px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
-            font-weight: bold;
-            font-size: 16px;
-            z-index: 9999;
-            transform: translateX(150%);
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        #thong-bao-custom.hien-thi {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    </style>
+    <link rel="stylesheet" href="datve.css">
 </head>
 
 <body>
     <div id="thong-bao-custom">Thông báo</div>
 
-    <div class="container mt-4 mb-5 pb-5">
+    <div class="container trang-dat-ve">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h3 class="fw-bold m-0 text-white">Bước 1: Chọn ghế</h3>
-            <button class="btn btn-outline-light btn-sm" style="border-radius: 20px; padding: 5px 15px;"
-                onclick="window.history.back()">Quay lại</button>
+            <h2 class="tieu-de-trang">Bước 1: Chọn ghế</h2>
+
+            <button class="btn btn-outline-light btn-sm nut-quay-lai" onclick="history.back()">
+                Quay lại
+            </button>
         </div>
 
-        <div class="row" id="giao-dien-dat-ve">
+        <div class="row">
+            <!-- CỘT TRÁI -->
             <div class="col-lg-8">
                 <div class="khoi-giao-dien">
-                    <h5 class="fw-bold mb-1" id="ten-phim" style="color: #93e9be;">Đang tải tên phim...</h5>
-                    <p class="text-secondary small mb-3">2D Tiêu chuẩn</p>
+                    <h3 id="ten-phim" class="ten-phim">Đang tải tên phim...</h3>
+                    <p class="chu-mo">2D Tiêu chuẩn</p>
 
-                    <h6 class="text-white mb-2" style="font-size: 14px;">Ngày chiếu</h6>
-                    <div class="danh-sach-ngay" id="khung-ngay"></div>
+                    <p class="nhan-muc">Ngày chiếu</p>
+                    <div id="khung-ngay" class="danh-sach-ngay"></div>
 
-                    <h6 class="text-white mt-3 mb-2" style="font-size: 14px;">Thời gian</h6>
-                    <div class="danh-sach-gio" id="khung-gio"></div>
+                    <p class="nhan-muc mt-tu-lam">Thời gian</p>
+                    <div id="khung-gio" class="danh-sach-gio"></div>
                 </div>
 
                 <div class="khoi-giao-dien">
                     <div class="duong-cong-man-hinh">MÀN HÌNH</div>
-                    <div class="luoi-ghe" id="khung-chua-ghe"></div>
+
+                    <div id="khung-chua-ghe" class="luoi-ghe"></div>
+
                     <div class="chu-thich-ghe">
-                        <div><span class="o-mau" style="background-color: #222; border:1px solid #444;"></span> Thường
+                        <div>
+                            <span class="o-mau mau-ghe-thuong"></span>
+                            Thường
                         </div>
-                        <div><span class="o-mau" style="background-color: #2a1a24; border:1px solid #ff77a9;"></span>
-                            Ghế Đôi</div>
-                        <div><span class="o-mau" style="background-color: #93e9be;"></span> Đang chọn</div>
+
+                        <div>
+                            <span class="o-mau mau-ghe-doi"></span>
+                            Ghế Đôi
+                        </div>
+
+                        <div>
+                            <span class="o-mau mau-ghe-chon"></span>
+                            Đang chọn
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <!-- CỘT PHẢI -->
             <div class="col-lg-4">
                 <div class="khoi-giao-dien">
-                    <h5 class="fw-bold mb-3 text-white">Khách hàng áp dụng</h5>
+                    <h3 class="tieu-de-khoi">Khách hàng áp dụng</h3>
+
                     <div class="khung-dropdown" id="dropdown-loai-ve">
-                        <div class="dropdown-hien-thi" onclick="batTatDropdown()">Người lớn (Tiêu chuẩn)</div>
+                        <div class="dropdown-hien-thi" onclick="batTatDropdown()">
+                            Người lớn (Tiêu chuẩn)
+                        </div>
+
                         <div class="dropdown-danh-sach">
                             <div class="dropdown-muc dang-chon"
-                                onclick="chonLoaiVe('nguoi-lon', 'Người lớn (Tiêu chuẩn)', this)">Người lớn (Tiêu chuẩn)
+                                onclick="chonLoaiVe('nguoi-lon', 'Người lớn (Tiêu chuẩn)', this)">
+                                Người lớn (Tiêu chuẩn)
                             </div>
+
                             <div class="dropdown-muc" onclick="chonLoaiVe('sinh-vien', 'Học sinh - Sinh viên', this)">
-                                Học sinh - Sinh viên</div>
-                            <div class="dropdown-muc" onclick="chonLoaiVe('tre-em', 'Trẻ em (Dưới 1m2)', this)">Trẻ em
-                                (Dưới 1m2)</div>
+                                Học sinh - Sinh viên
+                            </div>
+
+                            <div class="dropdown-muc" onclick="chonLoaiVe('tre-em', 'Trẻ em (Dưới 1m2)', this)">
+                                Trẻ em (Dưới 1m2)
+                            </div>
                         </div>
                     </div>
+
                     <input type="hidden" id="chon-loai-ve" value="nguoi-lon">
+
+                    <p class="ghi-chu-khuyen-mai" style="margin-top: 12px;">
+                        Chọn đối tượng mặc định, sau đó bấm ghế. Mỗi ghế có thể đổi đối tượng riêng bên dưới.
+                    </p>
+
+                    <div id="danh-sach-ve-theo-ghe" style="margin-top: 12px;">
+                        <p class="chu-mo">Chưa chọn ghế nào.</p>
+                    </div>
+                </div>
+
+                <div class="khoi-giao-dien">
+                    <h3 class="tieu-de-khoi">Khuyến mãi</h3>
+
+                    <div class="khung-dropdown" id="dropdown-khuyen-mai">
+                        <div class="dropdown-hien-thi" id="hien-thi-khuyen-mai" onclick="batTatDropdownKhuyenMai()">
+                            Không áp dụng khuyến mãi
+                        </div>
+
+                        <div class="dropdown-danh-sach" id="danh-sach-khuyen-mai">
+                            <div class="dropdown-muc dang-chon"
+                                onclick="chonKhuyenMai('', 'Không áp dụng khuyến mãi', this)">
+                                Không áp dụng khuyến mãi
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="hidden" id="khuyen-mai" value="">
+
+                    <p id="ghi-chu-khuyen-mai" class="ghi-chu-khuyen-mai">
+                        Chọn ngày chiếu để xem khuyến mãi phù hợp.
+                    </p>
                 </div>
 
                 <div class="khoi-giao-dien khu-vuc-thanh-toan">
-                    <div class="d-flex justify-content-between mb-2">
-                        <span class="text-secondary">Ghế đã chọn:</span>
-                        <span id="chu-hien-thi-ghe" class="fw-bold text-white">Chưa chọn</span>
+                    <div class="dong-thanh-toan">
+                        <span>Ghế đã chọn:</span>
+                        <strong id="chu-hien-thi-ghe">Chưa chọn</strong>
                     </div>
-                    <div class="d-flex justify-content-between mb-3">
-                        <span class="text-secondary">Tạm tính:</span>
-                        <span id="chu-hien-thi-tong-tien" class="fw-bold fs-4" style="color: #93e9be;">0đ</span>
+
+                    <div class="dong-thanh-toan">
+                        <span>Khuyến mãi:</span>
+                        <strong id="chu-hien-thi-khuyen-mai">Không áp dụng</strong>
                     </div>
-                    <button class="nut-thanh-toan" onclick="chuyenTrangBapNuoc()">Tiếp tục mua bắp nước</button>
+
+                    <div class="dong-thanh-toan">
+                        <span>Tạm tính:</span>
+                        <strong id="chu-hien-thi-tong-tien" class="tong-tien">0đ</strong>
+                    </div>
+
+                    <button class="nut-thanh-toan" onclick="chuyenTrangBapNuoc()">
+                        Tiếp tục mua bắp nước
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="script.js"></script>
+    <script src="datve.js"></script>
 
-    <script>
-        const BANG_GIA_VE = { "nguoi-lon": { thuong: 80000, cuoiTuan: 105000 }, "tre-em": { thuong: 30000, cuoiTuan: 39000 }, "sinh-vien": { thuong: 60000, cuoiTuan: 78000 } };
-        const PHU_THU_GHE_DOI = 10000;
-
-        let danhSachGheDaChon = [];
-        let tenPhimHienTai = "";
-
-        // CÁC BIẾN LƯU TRẠNG THÁI NGÀY GIỜ
-        let phimHienTai = null;
-        let ngayDuocChon = "";
-        let gioDuocChon = "";
-        let uuTienGioTuLink = null; // Biến nhớ tạm thời giờ được click từ trang chủ
-
-        function hienThongBao(tinNhan) {
-            let hopThongBao = document.getElementById("thong-bao-custom");
-            hopThongBao.innerHTML = `⚠️ ${tinNhan}`;
-            hopThongBao.classList.add("hien-thi");
-            setTimeout(() => { hopThongBao.classList.remove("hien-thi"); }, 3000);
-        }
-
-        function laNgayCuoiTuan(chuoiNgay) {
-            if (!chuoiNgay) return false;
-            let p = chuoiNgay.split('/');
-            let d = new Date(p[2], p[1] - 1, p[0]);
-            return (d.getDay() === 0 || d.getDay() === 5 || d.getDay() === 6);
-        }
-
-        // HÀM DỊCH NGÀY THÀNH "THỨ" CHO GIỐNG MOMO
-        function layTenThu(chuoiNgay) {
-            let p = chuoiNgay.split('/');
-            let d = new Date(p[2], p[1] - 1, p[0]);
-            let thu = d.getDay();
-            if (thu === 0) return "Chủ nhật";
-            return "Thứ " + (thu + 1);
-        }
-
-        document.addEventListener("DOMContentLoaded", function () {
-            const duongLink = new URLSearchParams(window.location.search);
-            const idPhimDuocChon = parseInt(duongLink.get('id'));
-            let ngayTuLink = duongLink.get('ngay');
-            uuTienGioTuLink = duongLink.get('gio');
-
-            if (typeof khoPhim !== 'undefined' && idPhimDuocChon) {
-                phimHienTai = khoPhim.find(p => p.id === idPhimDuocChon);
-                if (phimHienTai) {
-                    tenPhimHienTai = phimHienTai.ten;
-                    document.getElementById("ten-phim").innerText = phimHienTai.ten;
-
-                    // Render danh sách ngày chiếu
-                    renderDanhSachNgay(ngayTuLink);
-                }
-            }
-            veSoDoGhe();
-        });
-
-        // =========================================================
-        // HÀM VẼ DANH SÁCH NGÀY ĐỘNG TỪ DATA
-        // =========================================================
-        function renderDanhSachNgay(ngayUuTien) {
-            if (!phimHienTai || !phimHienTai.suatChieu) return;
-
-            let danhSachCacNgay = Object.keys(phimHienTai.suatChieu);
-            if (danhSachCacNgay.length === 0) return;
-
-            // Nếu ngày từ URL có trong danh sách thì chọn nó, không thì chọn ngày đầu tiên
-            if (ngayUuTien && danhSachCacNgay.includes(ngayUuTien)) {
-                ngayDuocChon = ngayUuTien;
-            } else {
-                ngayDuocChon = danhSachCacNgay[0];
-            }
-
-            let htmlNgay = "";
-            danhSachCacNgay.forEach(ngay => {
-                let isSelected = ngay === ngayDuocChon ? "dang-chon" : "";
-                let ngayCatNgan = ngay.substring(0, 5); // Cắt 25/05/2026 thành 25/05
-                let tenThu = layTenThu(ngay);
-
-                htmlNgay += `
-                    <div class="nut-ngay ${isSelected}" onclick="bamChonNgay('${ngay}')">
-                        ${ngayCatNgan}<br><small>${tenThu}</small>
-                    </div>`;
-            });
-            document.getElementById("khung-ngay").innerHTML = htmlNgay;
-
-            // Sau khi vẽ ngày xong, vẽ tiếp danh sách Giờ của ngày đó
-            renderDanhSachGio(uuTienGioTuLink);
-            uuTienGioTuLink = null; // Xóa ưu tiên sau lần nạp đầu tiên
-        }
-
-        function bamChonNgay(ngay) {
-            ngayDuocChon = ngay;
-            renderDanhSachNgay(ngay); // Vẽ lại để cập nhật màu sắc nút
-            tinhLaiTongTien(); // Đổi ngày có thể rơi vào cuối tuần -> tính lại tiền
-        }
-
-        // =========================================================
-        // HÀM VẼ DANH SÁCH GIỜ ĐỘNG TỪ DATA
-        // =========================================================
-        function renderDanhSachGio(gioUuTien) {
-            if (!phimHienTai || !phimHienTai.suatChieu || !phimHienTai.suatChieu[ngayDuocChon]) return;
-
-            let danhSachCacGio = phimHienTai.suatChieu[ngayDuocChon];
-            if (danhSachCacGio.length === 0) {
-                document.getElementById("khung-gio").innerHTML = "<p class='text-secondary'>Không có suất chiếu</p>";
-                return;
-            }
-
-            if (gioUuTien && danhSachCacGio.includes(gioUuTien)) {
-                gioDuocChon = gioUuTien;
-            } else {
-                gioDuocChon = danhSachCacGio[0];
-            }
-
-            let htmlGio = "";
-            danhSachCacGio.forEach(gio => {
-                let isSelected = gio === gioDuocChon ? "dang-chon" : "";
-                htmlGio += `<div class="nut-gio ${isSelected}" onclick="bamChonGio('${gio}')">${gio}</div>`;
-            });
-            document.getElementById("khung-gio").innerHTML = htmlGio;
-        }
-
-        function bamChonGio(gio) {
-            gioDuocChon = gio;
-            renderDanhSachGio(gio); // Vẽ lại để cập nhật màu xanh
-        }
-
-        // =========================================================
-
-        function veSoDoGhe() {
-            let khungGhe = document.getElementById("khung-chua-ghe");
-            let htmlGhe = '';
-            let cacHangGheThuong = ['A', 'B', 'C', 'D'];
-
-            for (let i = 0; i < cacHangGheThuong.length; i++) {
-                for (let j = 1; j <= 8; j++) {
-                    let tenGhe = cacHangGheThuong[i] + j;
-                    let classTrangThaiGhe = Math.random() < 0.15 ? "ghe-da-ban" : "";
-                    htmlGhe += `<div class="ghe ${classTrangThaiGhe}" onclick="bamChonGhe('${tenGhe}', this)">${tenGhe}</div>`;
-                }
-            }
-
-            for (let j = 1; j <= 4; j++) {
-                let tenGhe = 'E' + j;
-                let classTrangThaiGhe = "ghe-doi " + (Math.random() < 0.2 ? "ghe-da-ban" : "");
-                htmlGhe += `<div class="ghe ${classTrangThaiGhe.trim()}" onclick="bamChonGhe('${tenGhe}', this)">${tenGhe}</div>`;
-            }
-            khungGhe.innerHTML = htmlGhe;
-        }
-
-        function batTatDropdown() { document.getElementById("dropdown-loai-ve").classList.toggle("mo"); }
-        function chonLoaiVe(maLoaiVe, tenLoaiVe, theHTML) {
-            document.querySelector(".dropdown-hien-thi").innerText = tenLoaiVe;
-            document.getElementById("chon-loai-ve").value = maLoaiVe;
-            document.querySelectorAll(".dropdown-muc").forEach(muc => muc.classList.remove("dang-chon"));
-            theHTML.classList.add("dang-chon");
-            document.getElementById("dropdown-loai-ve").classList.remove("mo");
-            tinhLaiTongTien();
-        }
-        window.onclick = function (e) { if (!e.target.matches('.dropdown-hien-thi')) document.getElementById("dropdown-loai-ve").classList.remove("mo"); }
-
-        function bamChonGhe(tenGhe, theGheThucTe) {
-            if (theGheThucTe.classList.contains("ghe-da-ban")) return;
-            if (theGheThucTe.classList.contains("ghe-dang-chon")) {
-                theGheThucTe.classList.remove("ghe-dang-chon");
-                danhSachGheDaChon = danhSachGheDaChon.filter(g => g !== tenGhe);
-            } else {
-                theGheThucTe.classList.add("ghe-dang-chon");
-                danhSachGheDaChon.push(tenGhe);
-            }
-            danhSachGheDaChon.sort();
-            tinhLaiTongTien();
-        }
-
-        let tongTienVe = 0;
-        function tinhLaiTongTien() {
-            document.getElementById("chu-hien-thi-ghe").innerText = danhSachGheDaChon.length > 0 ? danhSachGheDaChon.join(', ') : "Chưa chọn";
-            let loaiVeDaChon = document.getElementById("chon-loai-ve").value;
-            // Tính theo ngayDuocChon động
-            let giaCoBan = laNgayCuoiTuan(ngayDuocChon) ? BANG_GIA_VE[loaiVeDaChon].cuoiTuan : BANG_GIA_VE[loaiVeDaChon].thuong;
-
-            tongTienVe = 0;
-            danhSachGheDaChon.forEach(tenGhe => {
-                tongTienVe += tenGhe.startsWith('E') ? (giaCoBan * 2) + PHU_THU_GHE_DOI : giaCoBan;
-            });
-            document.getElementById("chu-hien-thi-tong-tien").innerText = tongTienVe.toLocaleString('vi-VN') + "đ";
-        }
-
-        function chuyenTrangBapNuoc() {
-            if (danhSachGheDaChon.length === 0) {
-                hienThongBao("Bạn chưa chọn ghế nào!");
-                return;
-            }
-
-            let donHang = {
-                tenPhim: tenPhimHienTai,
-                ngayChieu: ngayDuocChon,  // LƯU NGÀY VÀ GIỜ ĐANG ĐƯỢC CHỌN THỰC TẾ
-                gioChieu: gioDuocChon,
-                gheDaChon: danhSachGheDaChon,
-                loaiVe: document.querySelector(".dropdown-hien-thi").innerText,
-                tienVe: tongTienVe
-            };
-
-            localStorage.setItem("thongTinDonHang", JSON.stringify(donHang));
-            window.location.href = 'datbongnuoc.html';
-        }
-    </script>
 </body>
 
 </html>

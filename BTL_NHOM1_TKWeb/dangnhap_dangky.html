@@ -35,14 +35,14 @@
                 <p>Hệ thống rạp chiếu phim mang đến trải nghiệm điện ảnh xanh, hiện đại và đẳng cấp nhất.</p>
             </div>
             <div class="cot-footer">
-                <h3>Chính Sách</h3>
+                <h3>CHÍNH SÁCH & QUY ĐỊNH</h3>
                 <ul>
-                    <li><a href="#">Điều khoản sử dụng</a></li>
-                    <li><a href="#">Chính sách bảo mật</a></li>
+                    <li><a href="dieukhoansudung.html">Điều khoản sử dụng</a></li>
+                    <li><a href="csbaomat.html">Chính sách bảo mật</a></li>
                 </ul>
             </div>
             <div class="cot-footer">
-                <h3>Kết Nối</h3>
+                <h3>KẾT NỐI VỚI CHÚNG TÔI</h3>
                 <div class="mang-xa-hoi">
                     <a href="#" class="icon-mxh">Facebook</a>
                     <a href="#" class="icon-mxh">Instagram</a>
@@ -66,7 +66,8 @@
             <button class="taikhoan-btn-submit" onclick="dangNhap()">Đăng nhập</button>
             <div style="text-align: center; margin-top: 15px;">
                 <span style="color:#888;">Chưa có tài khoản? </span>
-                <span onclick="moModal('dangKyModal'); dongModal('dangNhapModal');" style="color:#93e9be; cursor:pointer;">Đăng ký ngay</span>
+                <span onclick="moModal('dangKyModal'); dongModal('dangNhapModal');"
+                    style="color:#93e9be; cursor:pointer;">Đăng ký ngay</span>
             </div>
         </div>
     </div>
@@ -85,7 +86,8 @@
             <button class="taikhoan-btn-submit" onclick="dangKy()">Tạo tài khoản</button>
             <div style="text-align: center; margin-top: 15px;">
                 <span style="color:#888;">Đã có tài khoản? </span>
-                <span onclick="moModal('dangNhapModal'); dongModal('dangKyModal');" style="color:#93e9be; cursor:pointer;">Đăng nhập</span>
+                <span onclick="moModal('dangNhapModal'); dongModal('dangKyModal');"
+                    style="color:#93e9be; cursor:pointer;">Đăng nhập</span>
             </div>
         </div>
     </div>
@@ -107,29 +109,29 @@
         let currentUser = null;
 
         function kiemTraDangNhap() {
-    const saved = sessionStorage.getItem('currentUser');
-    if (saved) {
-        // Đã đăng nhập → hiện vé luôn, không cần modal
-        currentUser = JSON.parse(saved);
-        capNhatGiaoDien();
-        hienThiVe();
-    } else {
-        // Chưa đăng nhập → xem action để hiện modal tương ứng
-        const urlParams = new URLSearchParams(window.location.search);
-        const action = urlParams.get('action');
-        
-        if (action === 'register') {
-            // Ẩn modal đăng nhập trước (đề phòng)
-            dongModal('dangNhapModal');
-            // Hiện modal đăng ký ngay lập tức
-            moModal('dangKyModal');
-        } else {
-            // Mặc định hiện modal đăng nhập
-            moModal('dangNhapModal');
+            const saved = sessionStorage.getItem('currentUser');
+            if (saved) {
+                // Đã đăng nhập → hiện vé luôn, không cần modal
+                currentUser = JSON.parse(saved);
+                capNhatGiaoDien();
+                hienThiVe();
+            } else {
+                // Chưa đăng nhập → xem action để hiện modal tương ứng
+                const urlParams = new URLSearchParams(window.location.search);
+                const action = urlParams.get('action');
+
+                if (action === 'register') {
+                    // Ẩn modal đăng nhập trước (đề phòng)
+                    dongModal('dangNhapModal');
+                    // Hiện modal đăng ký ngay lập tức
+                    moModal('dangKyModal');
+                } else {
+                    // Mặc định hiện modal đăng nhập
+                    moModal('dangNhapModal');
+                }
+            }
         }
-    }
-}
- 
+
         function capNhatGiaoDien() {
             const area = document.getElementById('taikhoanArea');
             if (area && currentUser) {
@@ -200,7 +202,7 @@
         function dangNhap() {
             const email = document.getElementById('loginEmail').value.trim();
             const pass = document.getElementById('loginPass').value.trim();
-            
+
             document.getElementById('loginError').innerText = '';
 
             if (!email || !pass) {
@@ -235,7 +237,7 @@
             document.getElementById(id).classList.remove('active');
         }
 
-        window.onclick = function(e) {
+        window.onclick = function (e) {
             if (e.target.classList.contains('taikhoan-modal')) {
                 e.target.classList.remove('active');
             }

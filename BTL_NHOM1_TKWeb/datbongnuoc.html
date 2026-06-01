@@ -4,123 +4,296 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bước 2: Chọn Bắp Nước</title>
+    <title>Chọn bắp nước - PLANT CINEMA</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="datve.css">
 </head>
 
 <body>
-    <div class="container mt-4 mb-5 pb-5" style="max-width: 800px;">
+    <div id="thong-bao-custom">Thông báo</div>
+
+    <div class="container trang-bap-nuoc">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h3 class="fw-bold m-0 text-white">Bước 2: Bắp Nước</h3>
-            <button class="btn btn-outline-light btn-sm" style="border-radius: 20px; padding: 5px 15px;"
-                onclick="window.history.back()">Quay lại</button>
+            <h2 class="tieu-de-trang">Bước 2: Bắp Nước</h2>
+
+            <button class="btn btn-outline-light btn-sm nut-quay-lai" onclick="history.back()">
+                Quay lại
+            </button>
         </div>
 
         <div class="khoi-giao-dien">
-            <h5 class="fw-bold mb-4 text-white">Danh sách bắp nước</h5>
-            <p class="text-secondary small mb-3">Bắp thơm nước ngọt mời bạn xơi nha! (Không bắt buộc)</p>
+            <h3 class="tieu-de-khoi">Danh sách bắp nước</h3>
+            <p class="chu-mo">Bắp thơm nước ngọt mời bạn xơi nha! Không bắt buộc.</p>
 
-            <div class="d-flex align-items-center p-3 mb-3"
-                style="background: #161616; border: 1px solid rgba(255,255,255,0.05); border-radius: 12px;">
-                <div class="me-3"
-                    style="width: 70px; height: 70px; background: #222; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 35px;">
-                    🍿
+            <div class="the-combo">
+                <div class="combo-icon">🍿</div>
+
+                <div class="combo-noi-dung">
+                    <h4>Combo 1 Bắp 1 Nước</h4>
+                    <p>65.000đ</p>
                 </div>
-                <div class="flex-grow-1">
-                    <div class="fw-bold text-white mb-1" style="font-size: 16px;">Combo 1 Bắp 1 Nước</div>
-                    <div style="color: #93e9be; font-size: 15px; font-weight: bold;">65.000đ</div>
-                </div>
-                <div class="d-flex align-items-center gap-3">
+
+                <div class="combo-so-luong">
                     <button class="nut-tang-giam" onclick="thayDoiCombo(1, 'giam')">-</button>
-                    <span id="so-luong-combo-1" class="fw-bold text-white fs-5"
-                        style="width: 20px; text-align: center;">0</span>
+                    <span id="so-luong-combo-1">0</span>
                     <button class="nut-tang-giam" onclick="thayDoiCombo(1, 'tang')">+</button>
                 </div>
             </div>
 
-            <div class="d-flex align-items-center p-3"
-                style="background: #161616; border: 1px solid rgba(255,255,255,0.05); border-radius: 12px;">
-                <div class="me-3"
-                    style="width: 70px; height: 70px; background: #222; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 35px;">
-                    🥤
+            <div class="the-combo">
+                <div class="combo-icon">🥤</div>
+
+                <div class="combo-noi-dung">
+                    <h4>Combo 1 Bắp 2 Nước</h4>
+                    <p>85.000đ</p>
                 </div>
-                <div class="flex-grow-1">
-                    <div class="fw-bold text-white mb-1" style="font-size: 16px;">Combo 1 Bắp 2 Nước</div>
-                    <div style="color: #93e9be; font-size: 15px; font-weight: bold;">85.000đ</div>
-                </div>
-                <div class="d-flex align-items-center gap-3">
-<button class="nut-tang-giam" onclick="thayDoiCombo(2, 'giam')">-</button>
-                    <span id="so-luong-combo-2" class="fw-bold text-white fs-5"
-                        style="width: 20px; text-align: center;">0</span>
+
+                <div class="combo-so-luong">
+                    <button class="nut-tang-giam" onclick="thayDoiCombo(2, 'giam')">-</button>
+                    <span id="so-luong-combo-2">0</span>
                     <button class="nut-tang-giam" onclick="thayDoiCombo(2, 'tang')">+</button>
                 </div>
             </div>
         </div>
 
+        <div id="hop-uu-dai-bap-nuoc" class="khoi-giao-dien hop-uu-dai">
+            🎁 Đơn hàng của bạn có ưu đãi miễn phí bắp nước. Bạn có thể chọn 1 combo miễn phí.
+        </div>
+
         <div class="khoi-giao-dien khu-vuc-thanh-toan">
-            <div class="d-flex justify-content-between mb-2">
-                <span class="text-secondary">Tiền vé (Đã chọn):</span>
-                <span id="hien-thi-tien-ve" class="fw-bold text-white">0đ</span>
+            <div class="dong-thanh-toan">
+                <span>Tiền vé đã chọn:</span>
+                <strong id="hien-thi-tien-ve">0đ</strong>
             </div>
-            <div class="d-flex justify-content-between mb-3">
-                <span class="text-secondary">Tổng cộng:</span>
-                <span id="hien-thi-tong-tien" class="fw-bold fs-3" style="color: #93e9be;">0đ</span>
+
+            <div class="dong-thanh-toan">
+                <span>Tiền bắp nước:</span>
+                <strong id="hien-thi-tien-combo">0đ</strong>
             </div>
-            <button class="nut-thanh-toan" onclick="chuyenTrangThanhToan()">Đến bước Thanh toán</button>
+
+            <div class="dong-thanh-toan">
+                <span>Ưu đãi bắp nước:</span>
+                <strong id="hien-thi-uu-dai">Không áp dụng</strong>
+            </div>
+
+            <div class="dong-thanh-toan">
+                <span>Tổng cộng:</span>
+                <strong id="hien-thi-tong-tien" class="tong-tien">0đ</strong>
+            </div>
+
+            <button class="nut-thanh-toan" onclick="chuyenTrangThanhToan()">
+                Đến bước Thanh toán
+            </button>
         </div>
     </div>
 
-    <script>
-        const GIA_COMBO_1 = 65000, GIA_COMBO_2 = 85000;
-        let slCombo1 = 0, slCombo2 = 0;
-
-        // Mở balo ảo lấy thông tin đơn hàng ra
-        let donHang = JSON.parse(localStorage.getItem("thongTinDonHang"));
-
-        document.addEventListener("DOMContentLoaded", () => {
-            // Bảo mật: Nếu không có dữ liệu vé từ Bước 1, đá về trang chủ
-            if (!donHang || !donHang.tienVe) {
-                alert("Vui lòng chọn vé trước khi mua bắp nước!");
-                window.location.href = "Trangchu.html";
-                return;
-            }
-
-            let tienVe = donHang.tienVe;
-            document.getElementById("hien-thi-tien-ve").innerText = tienVe.toLocaleString('vi-VN') + "đ";
-            tinhTongTien();
-        });
-
-        function thayDoiCombo(loai, hanhDong) {
-            if (loai === 1) {
-                if (hanhDong === 'tang') slCombo1++;
-                if (hanhDong === 'giam' && slCombo1 > 0) slCombo1--;
-                document.getElementById("so-luong-combo-1").innerText = slCombo1;
-            } else {
-                if (hanhDong === 'tang') slCombo2++;
-                if (hanhDong === 'giam' && slCombo2 > 0) slCombo2--;
-                document.getElementById("so-luong-combo-2").innerText = slCombo2;
-            }
-            tinhTongTien();
-        }
-
-        function tinhTongTien() {
-            let tienVe = donHang.tienVe;
-            let tienCombo = (slCombo1 * GIA_COMBO_1) + (slCombo2 * GIA_COMBO_2);
-            let tong = tienVe + tienCombo;
-            document.getElementById("hien-thi-tong-tien").innerText = tong.toLocaleString('vi-VN') + "đ";
-        }
-
-        function chuyenTrangThanhToan() {
-            // Cập nhật thêm bắp nước vào balo
-            donHang.soLuongCombo1 = slCombo1;
-            donHang.soLuongCombo2 = slCombo2;
-donHang.tongTienCuoiCung = donHang.tienVe + (slCombo1 * GIA_COMBO_1) + (slCombo2 * GIA_COMBO_2);
-
-            localStorage.setItem("thongTinDonHang", JSON.stringify(donHang));
-            window.location.href = 'thanhtoan.html';
-        }
-    </script>
+    <script src="datbongnuoc.js"></script>
 </body>
+
+<script>
+
+    /*
+        =========================================================
+        1. GIÁ COMBO
+        =========================================================
+    */
+    const GIA_COMBO_1 = 65000;
+    const GIA_COMBO_2 = 85000;
+
+    /*
+        =========================================================
+        2. BIẾN LƯU TRẠNG THÁI
+        =========================================================
+    */
+    let soLuongCombo1 = 0;
+    let soLuongCombo2 = 0;
+
+    let donHang = null;
+
+    let tienCombo = 0;
+    let tienUuDaiBapNuoc = 0;
+    let tongTienCuoiCung = 0;
+
+    /*
+        =========================================================
+        3. KHI TRANG VỪA MỞ
+        =========================================================
+    */
+    document.addEventListener("DOMContentLoaded", function () {
+        let duLieuDonHang = localStorage.getItem("thongTinDonHang");
+
+        if (!duLieuDonHang) {
+            hienThongBao("Vui lòng chọn vé trước khi mua bắp nước!");
+
+            setTimeout(function () {
+                window.location.href = "trangchu.html";
+            }, 1200);
+
+            return;
+        }
+
+        donHang = JSON.parse(duLieuDonHang);
+
+        if (!donHang.tienVe && donHang.tienVe !== 0) {
+            hienThongBao("Đơn hàng chưa có tiền vé!");
+
+            setTimeout(function () {
+                window.location.href = "trangchu.html";
+            }, 1200);
+
+            return;
+        }
+
+        hienThiTienVe();
+
+        if (donHang.uuDaiBapNuoc === true) {
+            document.getElementById("hop-uu-dai-bap-nuoc").style.display = "block";
+        }
+
+        tinhTongTien();
+    });
+
+    /*
+        =========================================================
+        4. THÔNG BÁO
+        =========================================================
+    */
+    function hienThongBao(tinNhan) {
+        let hopThongBao = document.getElementById("thong-bao-custom");
+
+        hopThongBao.innerHTML = "⚠️ " + tinNhan;
+        hopThongBao.classList.add("hien-thi");
+
+        setTimeout(function () {
+            hopThongBao.classList.remove("hien-thi");
+        }, 2500);
+    }
+
+    /*
+        =========================================================
+        5. HIỂN THỊ TIỀN VÉ
+        =========================================================
+    */
+    function hienThiTienVe() {
+        document.getElementById("hien-thi-tien-ve").innerText =
+            donHang.tienVe.toLocaleString("vi-VN") + "đ";
+    }
+
+    /*
+        =========================================================
+        6. TĂNG GIẢM COMBO
+        =========================================================
+    */
+    function thayDoiCombo(loaiCombo, hanhDong) {
+        if (loaiCombo === 1) {
+            if (hanhDong === "tang") {
+                soLuongCombo1 = soLuongCombo1 + 1;
+            }
+
+            if (hanhDong === "giam" && soLuongCombo1 > 0) {
+                soLuongCombo1 = soLuongCombo1 - 1;
+            }
+
+            document.getElementById("so-luong-combo-1").innerText = soLuongCombo1;
+        }
+
+        if (loaiCombo === 2) {
+            if (hanhDong === "tang") {
+                soLuongCombo2 = soLuongCombo2 + 1;
+            }
+
+            if (hanhDong === "giam" && soLuongCombo2 > 0) {
+                soLuongCombo2 = soLuongCombo2 - 1;
+            }
+
+            document.getElementById("so-luong-combo-2").innerText = soLuongCombo2;
+        }
+
+        tinhTongTien();
+    }
+
+    /*
+        =========================================================
+        7. TÍNH TỔNG TIỀN
+        =========================================================
+    */
+    function tinhTongTien() {
+        tienCombo = soLuongCombo1 * GIA_COMBO_1 + soLuongCombo2 * GIA_COMBO_2;
+        tienUuDaiBapNuoc = 0;
+
+        /*
+            Nếu đơn hàng có ưu đãi bắp nước:
+            - Chỉ miễn phí 1 combo.
+            - Nếu chọn cả 2 loại combo thì miễn phí combo rẻ hơn trong số combo đã chọn.
+        */
+        if (donHang.uuDaiBapNuoc === true) {
+            tienUuDaiBapNuoc = tinhTienUuDaiBapNuoc();
+        }
+
+        tongTienCuoiCung = donHang.tienVe + tienCombo - tienUuDaiBapNuoc;
+
+        document.getElementById("hien-thi-tien-combo").innerText =
+            tienCombo.toLocaleString("vi-VN") + "đ";
+
+        if (tienUuDaiBapNuoc > 0) {
+            document.getElementById("hien-thi-uu-dai").innerText =
+                "- " + tienUuDaiBapNuoc.toLocaleString("vi-VN") + "đ";
+        } else {
+            document.getElementById("hien-thi-uu-dai").innerText = "Không áp dụng";
+        }
+
+        document.getElementById("hien-thi-tong-tien").innerText =
+            tongTienCuoiCung.toLocaleString("vi-VN") + "đ";
+    }
+
+    /*
+        =========================================================
+        8. TÍNH ƯU ĐÃI BẮP NƯỚC
+        =========================================================
+    */
+    function tinhTienUuDaiBapNuoc() {
+        /*
+            Chưa chọn combo nào thì chưa được giảm.
+        */
+        if (soLuongCombo1 === 0 && soLuongCombo2 === 0) {
+            return 0;
+        }
+
+        /*
+            Nếu có combo 1 thì miễn phí combo 1.
+            Vì combo 1 rẻ hơn combo 2.
+        */
+        if (soLuongCombo1 > 0) {
+            return GIA_COMBO_1;
+        }
+
+        /*
+            Nếu chỉ chọn combo 2 thì miễn phí combo 2.
+        */
+        if (soLuongCombo2 > 0) {
+            return GIA_COMBO_2;
+        }
+
+        return 0;
+    }
+
+    /*
+        =========================================================
+        9. SANG TRANG THANH TOÁN
+        =========================================================
+    */
+    function chuyenTrangThanhToan() {
+        donHang.soLuongCombo1 = soLuongCombo1;
+        donHang.soLuongCombo2 = soLuongCombo2;
+
+        donHang.tienCombo = tienCombo;
+        donHang.tienUuDaiBapNuoc = tienUuDaiBapNuoc;
+        donHang.tongTienCuoiCung = tongTienCuoiCung;
+
+        localStorage.setItem("thongTinDonHang", JSON.stringify(donHang));
+
+        window.location.href = "thanhtoan.html";
+    }
+</script>
 
 </html>

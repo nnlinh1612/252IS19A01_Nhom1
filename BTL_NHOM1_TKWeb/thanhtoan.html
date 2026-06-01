@@ -7,199 +7,232 @@
     <title>Bước 3: Thanh Toán</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* TOAST NOTIFICATION (Báo lỗi nhỏ góc màn hình) */
-        #thong-bao-custom {
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            background-color: #111111;
-            color: #ff77a9;
-            border-left: 4px solid #ff77a9;
-            padding: 15px 25px;
-            border-radius: 8px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
-            font-weight: bold;
-            font-size: 16px;
-            z-index: 9999;
-            transform: translateX(150%);
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        #thong-bao-custom.hien-thi {
-            transform: translateX(0);
-            opacity: 1;
-        }
-
-        /* KHÓA Ô NHẬP LIỆU NHƯNG VẪN GIỮ MÀU ĐẸP */
-        .input-khoa {
-            background-color: #1a1a1a !important;
-            border-color: #333 !important;
-            color: #888 !important;
-            cursor: not-allowed;
-        }
-
-        /* =========================================================
-           POPUP CẢNH BÁO CHƯA ĐĂNG NHẬP CHUẨN MÀU XANH ĐEN
-           ========================================================= */
-        .popup-lop-phu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            /* Nền đen mờ */
-            backdrop-filter: blur(8px);
-            /* Làm nhòe bối cảnh phía sau */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-        }
-
-        .popup-khung {
-            background: #111111;
-            border: 1px solid #93e9be;
-            /* Viền xanh chủ đạo */
-            border-radius: 16px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 15px 40px rgba(147, 233, 190, 0.15);
-            /* Phát sáng mờ màu xanh */
-            max-width: 400px;
-            width: 90%;
-            animation: phongTo 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            /* Hiệu ứng nảy cực mượt */
-        }
-
-        @keyframes phongTo {
-            0% {
-                transform: scale(0.5);
-                opacity: 0;
-            }
-
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="datve.css">
 </head>
 
 <body>
-    <div id="popup-canh-bao" class="popup-lop-phu" style="display: none;">
+    <!-- POPUP CẢNH BÁO CHƯA ĐĂNG NHẬP -->
+    <div id="popup-canh-bao" class="popup-lop-phu">
         <div class="popup-khung">
-            <p style="color: #b0b0b0; margin-bottom: 30px;">Bạn cần phải đăng nhập tài khoản để tiến hành thanh toán và
-                giữ chỗ.</p>
-            <button class="nut-thanh-toan" style="width: auto; padding: 10px 40px;" onclick="veTrangChuDangNhap()">Đồng
-                ý</button>
+            <p>
+                Bạn cần phải đăng nhập tài khoản để tiến hành thanh toán và giữ chỗ.
+            </p>
+
+            <button class="nut-thanh-toan nut-popup" onclick="veTrangChuDangNhap()">
+                Đồng ý
+            </button>
         </div>
     </div>
 
-    <div id="thong-bao-custom"> Thông báo</div>
+    <div id="thong-bao-custom">Thông báo</div>
 
-    <div class="container mt-4 mb-5 pb-5" id="giao-dien-thanh-toan" style="max-width: 800px;">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h3 class="fw-bold m-0 text-white">Bước 3: Thanh toán</h3>
-            <button class="btn btn-outline-light btn-sm" style="border-radius: 20px; padding: 5px 15px;"
-                onclick="window.history.back()">Quay lại</button>
+    <main class="trang-thanh-toan" id="giao-dien-thanh-toan">
+        <div class="tieu-de-dong">
+            <h2>Bước 3: Thanh toán</h2>
+
+            <button class="btn btn-outline-light btn-sm nut-quay-lai" onclick="history.back()">
+                Quay lại
+            </button>
         </div>
 
-        <div class="khoi-giao-dien">
-            <h5 class="fw-bold mb-3 text-white">Thông tin vé</h5>
-            <p class="text-secondary mb-1">Phim: <strong class="text-white" id="tt-phim"></strong></p>
-            <p class="text-secondary mb-1">Thời gian: <strong class="text-white" id="tt-thoigian"></strong></p>
-            <p class="text-secondary mb-1">Ghế: <strong class="text-white" id="tt-ghe"></strong></p>
-            <p class="text-secondary mb-1">Combo: <strong class="text-white" id="tt-combo"></strong></p>
-        </div>
+        <section class="khoi-giao-dien">
+            <h3 class="tieu-de-khoi">Thông tin vé</h3>
 
-        <div class="khoi-giao-dien">
-            <h5 class="fw-bold mb-3 text-white">Thông tin liên hệ</h5>
-            <input type="text" id="nhap-ten" class="form-control mb-2 input-khoa" readonly>
-            <input type="email" id="nhap-email" class="form-control mb-2 input-khoa" readonly>
-            <input type="text" id="nhap-sdt" class="form-control input-khoa" readonly>
-        </div>
+            <p class="dong-thong-tin">
+                Phim:
+                <strong id="tt-phim"></strong>
+            </p>
 
-        <div class="khoi-giao-dien khu-vuc-thanh-toan">
-            <div class="d-flex justify-content-between mb-3">
-                <span class="text-secondary">Tổng thanh toán:</span>
-                <span id="tt-tongtien" class="fw-bold fs-4" style="color: #93e9be;">0đ</span>
+            <p class="dong-thong-tin">
+                Thời gian:
+                <strong id="tt-thoigian"></strong>
+            </p>
+
+            <p class="dong-thong-tin">
+                Ghế:
+                <strong id="tt-ghe"></strong>
+            </p>
+
+            <p class="dong-thong-tin">
+                Combo:
+                <strong id="tt-combo"></strong>
+            </p>
+        </section>
+
+        <section class="khoi-giao-dien">
+            <h3 class="tieu-de-khoi">Thông tin liên hệ</h3>
+
+            <input type="text" id="nhap-ten" class="o-nhap input-khoa" readonly>
+            <input type="email" id="nhap-email" class="o-nhap input-khoa" readonly>
+            <input type="text" id="nhap-sdt" class="o-nhap input-khoa" readonly>
+        </section>
+
+        <section class="khoi-giao-dien khu-vuc-thanh-toan">
+            <div class="dong-thanh-toan">
+                <span>Tổng thanh toán:</span>
+                <strong id="tt-tongtien">0đ</strong>
             </div>
-            <button id="nut-thanh-toan" class="nut-thanh-toan" onclick="chotDon()">Thanh toán ngay</button>
-        </div>
-    </div>
+
+            <button id="nut-thanh-toan" class="nut-thanh-toan" onclick="chotDon()">
+                Thanh toán ngay
+            </button>
+        </section>
+    </main>
 
     <script>
-        // Hàm hiển thị Toast báo lỗi
+        /*
+            =========================================================
+            1. LẤY DỮ LIỆU ĐƠN HÀNG VÀ TÀI KHOẢN
+            =========================================================
+        */
+        let donHang = JSON.parse(localStorage.getItem("thongTinDonHang")) || {};
+        let khachHangDaDangNhap = JSON.parse(sessionStorage.getItem("currentUser"));
+
+        /*
+            =========================================================
+            2. KHI TRANG VỪA MỞ
+            =========================================================
+        */
+        document.addEventListener("DOMContentLoaded", function () {
+            if (!khachHangDaDangNhap) {
+                hienPopupChuaDangNhap();
+                return;
+            }
+
+            hienGiaoDienThanhToan();
+            hienThongTinVe();
+            hienThongTinKhachHang();
+        });
+
+        /*
+            =========================================================
+            3. THÔNG BÁO NHỎ
+            =========================================================
+        */
         function hienThongBao(tinNhan) {
             let hopThongBao = document.getElementById("thong-bao-custom");
-            hopThongBao.innerHTML = `⚠️ ${tinNhan}`;
+
+            hopThongBao.innerHTML = "⚠️ " + tinNhan;
             hopThongBao.classList.add("hien-thi");
-            setTimeout(() => { hopThongBao.classList.remove("hien-thi"); }, 3000);
+
+            setTimeout(function () {
+                hopThongBao.classList.remove("hien-thi");
+            }, 3000);
         }
 
-        // Hàm chuyển về trang chủ khi bấm "Đồng ý" trên Popup
+        /*
+            =========================================================
+            4. POPUP CHƯA ĐĂNG NHẬP
+            =========================================================
+        */
+        function hienPopupChuaDangNhap() {
+            document.getElementById("giao-dien-thanh-toan").style.display = "none";
+            document.getElementById("popup-canh-bao").style.display = "flex";
+        }
+
+        function hienGiaoDienThanhToan() {
+            document.getElementById("giao-dien-thanh-toan").style.display = "block";
+            document.getElementById("popup-canh-bao").style.display = "none";
+        }
+
         function veTrangChuDangNhap() {
             window.location.href = "Trangchu.html";
         }
 
-        let donHang = JSON.parse(localStorage.getItem("thongTinDonHang")) || {};
-        let khachHangDaDangNhap = JSON.parse(sessionStorage.getItem('currentUser'));
+        /*
+            =========================================================
+            5. HIỂN THỊ THÔNG TIN VÉ
+            =========================================================
+        */
+        function hienThongTinVe() {
+            document.getElementById("tt-phim").innerText =
+                donHang.tenPhim || "Chưa có dữ liệu";
 
-        // ========================================================
-        // KIỂM TRA BẢO MẬT: NẾU CHƯA ĐĂNG NHẬP THÌ BẬT POPUP
-        // ========================================================
-        if (!khachHangDaDangNhap) {
-            // Giấu giao diện thanh toán đi để khách không thấy lỗi
-            document.getElementById("giao-dien-thanh-toan").style.display = "none";
-            // Bật Popup xịn xò lên
-            document.getElementById("popup-canh-bao").style.display = "flex";
-        } else {
-            // Nếu đã đăng nhập thì mới cho chạy tiếp code hiển thị dữ liệu
-            document.addEventListener("DOMContentLoaded", () => {
-                document.getElementById("tt-phim").innerText = donHang.tenPhim || "Chưa có dữ liệu";
-                document.getElementById("tt-thoigian").innerText = (donHang.gioChieu || "") + " - " + (donHang.ngayChieu || "");
-                document.getElementById("tt-ghe").innerText = donHang.gheDaChon ? donHang.gheDaChon.join(', ') : '';
+            document.getElementById("tt-thoigian").innerText =
+                (donHang.gioChieu || "") + " - " + (donHang.ngayChieu || "");
 
-                let chuCombo = "";
-                if (donHang.soLuongCombo1 > 0) chuCombo += donHang.soLuongCombo1 + "x Combo 1 ";
-                if (donHang.soLuongCombo2 > 0) chuCombo += donHang.soLuongCombo2 + "x Combo 2 ";
-                document.getElementById("tt-combo").innerText = chuCombo || "Không mua";
+            if (donHang.gheDaChon && donHang.gheDaChon.length > 0) {
+                document.getElementById("tt-ghe").innerText = donHang.gheDaChon.join(", ");
+            } else {
+                document.getElementById("tt-ghe").innerText = "Chưa chọn";
+            }
 
-                document.getElementById("tt-tongtien").innerText = (donHang.tongTienCuoiCung || 0).toLocaleString('vi-VN') + "đ";
+            document.getElementById("tt-combo").innerText = taoChuCombo();
 
-                // Điền thông tin
-                document.getElementById("nhap-ten").value = khachHangDaDangNhap.name || khachHangDaDangNhap.ten;
-                document.getElementById("nhap-email").value = khachHangDaDangNhap.email;
-                document.getElementById("nhap-sdt").value = khachHangDaDangNhap.phone || khachHangDaDangNhap.sdt;
-            });
+            let tongTien = donHang.tongTienCuoiCung || donHang.tienVe || 0;
+
+            document.getElementById("tt-tongtien").innerText =
+                tongTien.toLocaleString("vi-VN") + "đ";
         }
 
+        function taoChuCombo() {
+            let chuCombo = "";
+
+            if (donHang.soLuongCombo1 > 0) {
+                chuCombo += donHang.soLuongCombo1 + "x Combo 1 ";
+            }
+
+            if (donHang.soLuongCombo2 > 0) {
+                chuCombo += donHang.soLuongCombo2 + "x Combo 2 ";
+            }
+
+            if (chuCombo === "") {
+                return "Không mua";
+            }
+
+            return chuCombo;
+        }
+
+        /*
+            =========================================================
+            6. HIỂN THỊ THÔNG TIN KHÁCH HÀNG
+            =========================================================
+        */
+        function hienThongTinKhachHang() {
+            document.getElementById("nhap-ten").value =
+                khachHangDaDangNhap.name || khachHangDaDangNhap.ten || "";
+
+            document.getElementById("nhap-email").value =
+                khachHangDaDangNhap.email || "";
+
+            document.getElementById("nhap-sdt").value =
+                khachHangDaDangNhap.phone || khachHangDaDangNhap.sdt || "";
+        }
+
+        /*
+            =========================================================
+            7. CHỐT ĐƠN THANH TOÁN
+            =========================================================
+        */
         function chotDon() {
             let ten = document.getElementById("nhap-ten").value;
+
             if (!ten) {
                 hienThongBao("Hệ thống không tìm thấy thông tin tài khoản!");
                 return;
             }
 
-            // Giao diện loading thanh toán
             let nut = document.getElementById("nut-thanh-toan");
+
             nut.innerHTML = "⏳ Đang xử lý giao dịch...";
             nut.style.pointerEvents = "none";
             nut.style.opacity = "0.8";
 
-            // Chuẩn bị dữ liệu gửi đi
             donHang.tenKhachHang = ten;
             donHang.emailKhachHang = document.getElementById("nhap-email").value;
-            donHang.maVe = "PL-" + Math.floor(Math.random() * 100000);
+            donHang.sdtKhachHang = document.getElementById("nhap-sdt").value;
+            donHang.maVe = taoMaVe();
+
             localStorage.setItem("thongTinDonHang", JSON.stringify(donHang));
 
-            // Giả lập thời gian chờ thanh toán (1.5 giây)
-            setTimeout(() => {
-                window.location.href = 'xacnhanve.html';
+            setTimeout(function () {
+                window.location.href = "xacnhanve.html";
             }, 1500);
+        }
+
+        function taoMaVe() {
+            let soNgauNhien = Math.floor(Math.random() * 100000);
+            return "PL-" + soNgauNhien;
         }
     </script>
 </body>

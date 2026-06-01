@@ -27,16 +27,23 @@
             <button class="nut-dang-ky" onclick="moModal('dangKyModal')">Đăng ký</button>
         </div>
     </header>
-
     <main class="khu-vuc-chinh">
-        <section class="banner">
-            <div class="noi-dung-banner">
-                <h1>Trải Nghiệm Điện Ảnh Thượng Hạng</h1>
-                <p>Khám phá thế giới hình ảnh sống động với công nghệ chiếu phim hiện đại nhất tại Plant Cinema.</p>
-                <br>
-                <button class="nut-dat-ve" onclick="window.location.href='Lichchieu.html'">Đặt vé ngay</button>
-            </div>
-        </section>
+        <div class="banner">
+            <div class="slide slide-1 dang-chieu" onclick="window.location.href='Lichchieu.html'"></div>
+
+            <div class="slide slide-2" onclick="window.location.href='tintuc.html'"></div>
+
+            <div class="slide slide-3" onclick="window.location.href='gioithieu.html'"></div>
+        </div>
+
+        <button class="nut-chuyen-truoc" onclick="chuyenSlide(-1)">&#10094;</button>
+        <button class="nut-chuyen-sau" onclick="chuyenSlide(1)">&#10095;</button>
+
+        <div class="dots-container">
+            <span class="dot active" onclick="chonSlide(0)"></span>
+            <span class="dot" onclick="chonSlide(1)"></span>
+            <span class="dot" onclick="chonSlide(2)"></span>
+        </div>
 
         <h2 class="tieu-de-muc">
             <a href="Lichchieu.html?tab=dang-chieu">Phim Đang Chiếu <span>&raquo;</span></a>
@@ -63,10 +70,8 @@
             <div class="cot-footer">
                 <h3>Chính Sách & Quy Định</h3>
                 <ul>
-                    <li><a href="#">Điều khoản sử dụng</a></li>
-                    <li><a href="#">Chính sách bảo mật</a></li>
-                    <li><a href="#">Chính sách đổi trả, hoàn vé</a></li>
-<li><a href="#">Chính sách thành viên</a></li>
+                    <li><a href="dieukhoansudung.html">Điều khoản sử dụng</a></li>
+                    <li><a href="csbaomat.html">Chính sách bảo mật</a></li>
                 </ul>
             </div>
             <div class="cot-footer">
@@ -119,7 +124,50 @@
             </div>
         </div>
     </div>
+    <script>
+        // Hiển thị slide
+        let viTriHienTai = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
 
+        function hienThiSlide(soTrang) {
+            /* Tắt hiển thị của slide và dot hiện tại*/
+            slides[viTriHienTai].classList.remove('dang-chieu');
+            dots[viTriHienTai].classList.remove('dang-chieu');
+
+            viTriHienTai = (soTrang + slides.length) % slides.length;
+
+            /* Bật hiển thị cho slide và dot mới*/
+            slides[viTriHienTai].classList.add('dang-chieu');
+            dots[viTriHienTai].classList.add('dang-chieu');
+        }
+        // Chuyển slide khi bấm nút chuyển trước sau
+        function chuyenSlide(buoc) {
+            hienThiSlide(viTriHienTai + buoc);
+            resetThoiGian();
+        }
+
+        // Chuyển slide khi bấm vào dấu chấm
+        function chonSlide(soTrang) {
+            hienThiSlide(soTrang);
+            resetThoiGian();
+        }
+
+        // Tự động chuyển slide sau 3 giây
+        function chuyenSlideTuDong() {
+            thoiGianChuyen = setInterval(() => {
+                hienThiSlide(viTriHienTai + 1);
+            }, 3000);
+        }
+
+        // Reset thời gian khi chuyển trang mới
+        function resetThoiGian() {
+            clearInterval(thoiGianChuyen);
+            chuyenSlideTuDong();
+        }
+        hienThiSlide(0);
+        chuyenSlideTuDong();
+    </script>
     <script src="taikhoan.js"></script>
     <script src="script.js"></script>
 </body>
