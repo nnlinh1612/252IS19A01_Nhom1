@@ -891,4 +891,18 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   }
-});
+},
+// =================================================================
+// 8. TỰ ĐỘNG CĂN CHỈNH THANH TRƯỢT KHI THU PHÓNG MÀN HÌNH
+// =================================================================
+window.addEventListener('resize', () => {
+    const tabDangChon = document.querySelector('.tab-item.active');
+    const thanhTruot = document.getElementById('thanh-truot-tab');
+    
+    // Nếu màn hình thay đổi kích thước, lập tức đo lại tọa độ và gắn lại gạch chân
+    if (tabDangChon && thanhTruot) {
+        thanhTruot.style.width = tabDangChon.offsetWidth + 'px';
+        thanhTruot.style.left = tabDangChon.offsetLeft + 'px';
+    }
+})
+);
