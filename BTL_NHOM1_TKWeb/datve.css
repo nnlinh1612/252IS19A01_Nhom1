@@ -357,6 +357,15 @@ body {
     text-align: right;
 }
 
+#chu-hien-thi-tong-tien,
+#chu-hien-thi-khuyen-mai,
+#chu-hien-thi-ghe {
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    color: #93e9be;
+}
+
+
 .tong-tien {
     color: #93e9be !important;
     font-size: 25px;
