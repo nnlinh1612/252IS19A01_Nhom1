@@ -189,7 +189,7 @@
             const container = document.getElementById('ticketContainer');
 
             if (myTickets.length === 0) {
-                container.innerHTML = `<div class="empty-ticket">🎫 Bạn chưa đặt vé nào. Hãy đặt vé ngay hôm nay!</div>`;
+                container.innerHTML = `<div class="empty-ticket"> Bạn chưa đặt vé nào. Hãy đặt vé ngay hôm nay!</div>`;
                 return;
             }
 
@@ -197,14 +197,14 @@
             myTickets.forEach(t => {
                 html += `
                     <div class="ticket-item">
-                        <div class="ticket-code">🎫 Mã vé: ${t.id}</div>
+                        <div class="ticket-code"> Mã vé: ${t.id}</div>
                         <div class="ticket-info">
-                            <p><strong>📽️ Phim:</strong> ${t.movie}</p>
-                            <p><strong>📅 Ngày:</strong> ${t.date}</p>
-                            <p><strong>⏰ Giờ:</strong> ${t.time}</p>
-                            <p><strong>💺 Ghế:</strong> ${t.seats.join(', ')}</p>
-                            <p><strong>🍿 Combo:</strong> ${t.combo}</p>
-                            <p><strong>💰 Tổng tiền:</strong> ${t.total.toLocaleString()}đ</p>
+                            <p><strong>Phim:</strong> ${t.movie}</p>
+                            <p><strong>Ngày:</strong> ${t.date}</p>
+                            <p><strong>Giờ:</strong> ${t.time}</p>
+                            <p><strong>Ghế:</strong> ${t.seats.join(', ')}</p>
+                            <p><strong>Combo:</strong> ${t.combo}</p>
+                            <p><strong>Tổng tiền:</strong> ${t.total.toLocaleString()}đ</p>
                         </div>
                     </div>
                 `;
