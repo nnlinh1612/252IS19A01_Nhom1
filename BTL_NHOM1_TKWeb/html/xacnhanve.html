@@ -9,6 +9,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/datve.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+    (function(){
+        emailjs.init("{{to_email}}");
+    })();
+    </script>
 </head>
 
 <body>
@@ -211,18 +217,47 @@
             let nutGui = document.getElementById("nut-gui-mail");
 
             if (!emailNhanVe) {
-                nutGui.innerHTML = "Không tìm thấy email";
+                nutGui.innerHTML = "❌ Không tìm thấy địa chỉ email!";
                 return;
             }
 
-            nutGui.innerHTML = "Đang gửi đến " + emailNhanVe + "...";
+            // 1. Thay đổi trạng thái nút sang chế độ chờ để ngăn người dùng click liên tục
+            nutGui.innerHTML = "⏳ Đang tiến hành gửi email...";
             nutGui.style.pointerEvents = "none";
-            nutGui.style.opacity = "0.85";
+            nutGui.style.opacity = "0.8";
 
-            setTimeout(function () {
-                nutGui.innerHTML = "Đã gửi vé thành công!";
-                nutGui.classList.add("da-gui");
-            }, 2000);
+            // 2. Lấy lại dữ liệu đơn hàng hiện tại từ localStorage để đóng gói nội dung email
+            let donHang = JSON.parse(localStorage.getItem("thongTinDonHang")) || {};
+            let tongTien = donHang.tongTienCuoiCung || donHang.tienVe || 0;
+
+            // 3. Chuẩn bị các tham số (biến dữ liệu) để truyền vào biểu mẫu email
+            let thamSoEmail = {
+                to_email: emailNhanVe,
+                customer_name: donHang.tenKhachHang || "Khách hàng",
+                ticket_id: donHang.maVe || "Chưa có mã",
+                movie_name: donHang.tenPhim || "Chưa có dữ liệu",
+                show_time: (donHang.gioChieu || "") + " - " + (donHang.ngayChieu || ""),
+                seats: (donHang.gheDaChon && donHang.gheDaChon.length > 0) ? donHang.gheDaChon.join(", ") : "Chưa chọn",
+                combos: taoChuCombo(donHang),
+                total_price: tongTien.toLocaleString("vi-VN") + "đ"
+            };
+
+            // 4. Gọi API của EmailJS để ra lệnh cho Server gửi thư đi thật
+            emailjs.send("service_4cq84ps", "template_uhuru09", thamSoEmail)
+                .then(function(response) {
+                    // Kịch bản A: Gửi thư thành công mỹ mãn
+                    console.log("Thành công!", response.status, response.text);
+                    nutGui.innerHTML = "✅ Đã gửi vé về email thành công!";
+                    nutGui.classList.add("da-gui");
+                    nutGui.style.background = "#93e9be";
+                    nutGui.style.color = "#0a0a0a";
+                }, function(error) {
+                    // Kịch bản B: Gặp lỗi đường truyền hoặc sai cấu hình API
+                    console.error("Thất bại...", error);
+                    nutGui.innerHTML = "❌ Lỗi kết nối! Thử lại sau.";
+                    nutGui.style.pointerEvents = "auto";
+                    nutGui.style.opacity = "1";
+                });
         }
 
         function veTrangChu() {
