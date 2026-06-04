@@ -76,15 +76,54 @@
                 return;
             }
 
+            /*
+                Lấy thông tin user đang đăng nhập.
+                Đặt tên là userDangDangNhap để KHÔNG đụng currentUser của taikhoan.js.
+            */
+            let userDangDangNhap = JSON.parse(sessionStorage.getItem("currentUser"));
+
+            if (userDangDangNhap) {
+                if (!donHang.tenKhachHang) {
+                    donHang.tenKhachHang = userDangDangNhap.name || "";
+                }
+
+                if (!donHang.emailKhachHang) {
+                    donHang.emailKhachHang = userDangDangNhap.email || "";
+                }
+
+                if (!donHang.sdtKhachHang) {
+                    donHang.sdtKhachHang = userDangDangNhap.phone || "";
+                }
+            }
+
+            /*
+                Nếu trang thanh toán chưa tạo mã vé thì tạo ở đây.
+            */
+            if (!donHang.maVe) {
+                donHang.maVe = "PL-" + Math.floor(Math.random() * 100000);
+            }
+
+            /*
+                Đảm bảo tổng tiền luôn có số.
+            */
+            if (!donHang.tongTienCuoiCung) {
+                donHang.tongTienCuoiCung = donHang.tienVe || 0;
+            }
+
+            /*
+                Đảm bảo gheDaChon luôn là mảng string,
+                vì vecuatoi.html đang dùng t.seats.join(', ')
+            */
+            if (!Array.isArray(donHang.gheDaChon)) {
+                donHang.gheDaChon = [];
+            }
+
+            localStorage.setItem("thongTinDonHang", JSON.stringify(donHang));
+
             hienThiThongTinVe(donHang);
             luuVeVaoLichSuTaiKhoan(donHang);
         });
 
-        /*
-            =========================================================
-            1. HIỂN THỊ THÔNG TIN VÉ
-            =========================================================
-        */
         function hienThiThongTinVe(donHang) {
             document.getElementById("kq-ma").innerText = donHang.maVe || "";
             document.getElementById("kq-ten").innerText = donHang.tenKhachHang || "";
@@ -107,19 +146,12 @@
 
             document.getElementById("kq-combo").innerText = taoChuCombo(donHang);
 
-            let tongTien = donHang.tongTienCuoiCung || donHang.tienVe || 0;
-
             document.getElementById("kq-tong").innerText =
-                tongTien.toLocaleString("vi-VN") + "đ";
+                Number(donHang.tongTienCuoiCung || 0).toLocaleString("vi-VN") + "đ";
 
             emailNhanVe = donHang.emailKhachHang || "";
         }
 
-        /*
-            =========================================================
-            2. TẠO CHỮ COMBO
-            =========================================================
-        */
         function taoChuCombo(donHang) {
             let chuCombo = "";
 
@@ -138,47 +170,43 @@
             return chuCombo;
         }
 
-        /*
-            =========================================================
-            3. LƯU VÉ VÀO LỊCH SỬ TÀI KHOẢN
-            =========================================================
-        */
         function luuVeVaoLichSuTaiKhoan(donHang) {
             let dsVeTaiKhoan = JSON.parse(localStorage.getItem("cinema_tickets")) || [];
 
-            let daTonTai = false;
-
-            for (let i = 0; i < dsVeTaiKhoan.length; i++) {
-                if (dsVeTaiKhoan[i].id === donHang.maVe) {
-                    daTonTai = true;
-                    break;
-                }
-            }
-
-            if (daTonTai || !emailNhanVe) {
+            if (!emailNhanVe) {
+                console.log("Không lưu vé vì thiếu email.");
                 return;
             }
 
-            let veMoi = {
+            let veDaLuuTruocDo = dsVeTaiKhoan.find(function (ve) {
+                return ve.id === donHang.maVe;
+            });
+
+            if (veDaLuuTruocDo) {
+                return;
+            }
+
+            /*
+                Đây là format cũ mà vecuatoi.html đọc được.
+                Không đổi tên key.
+            */
+            let theVeMoi = {
                 id: donHang.maVe,
                 email: emailNhanVe,
-                movie: donHang.tenPhim,
-                date: donHang.ngayChieu,
-                time: donHang.gioChieu,
-                seats: donHang.gheDaChon,
+                movie: donHang.tenPhim || "",
+                date: donHang.ngayChieu || "",
+                time: donHang.gioChieu || "",
+                seats: donHang.gheDaChon || [],
                 combo: taoChuCombo(donHang),
-                total: donHang.tongTienCuoiCung || donHang.tienVe || 0
+                total: Number(donHang.tongTienCuoiCung || donHang.tienVe || 0)
             };
 
-            dsVeTaiKhoan.push(veMoi);
+            dsVeTaiKhoan.push(theVeMoi);
             localStorage.setItem("cinema_tickets", JSON.stringify(dsVeTaiKhoan));
+
+            console.log("Đã lưu vé đúng format cũ:", theVeMoi);
         }
 
-        /*
-            =========================================================
-            4. GIẢ LẬP GỬI EMAIL
-            =========================================================
-        */
         function giaLapGuiEmail() {
             let nutGui = document.getElementById("nut-gui-mail");
 
@@ -197,14 +225,9 @@
             }, 2000);
         }
 
-        /*
-            =========================================================
-            5. VỀ TRANG CHỦ
-            =========================================================
-        */
         function veTrangChu() {
             localStorage.removeItem("thongTinDonHang");
-            window.location.href = "../html/Trangchu.html";
+            window.location.href = "Trangchu.html";
         }
     </script>
 </body>

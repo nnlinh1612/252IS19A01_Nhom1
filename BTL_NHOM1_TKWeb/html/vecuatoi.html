@@ -107,17 +107,18 @@
         <div class="noi-dung-footer">
             <div class="cot-footer">
                 <h3 class="logo-footer">PLANT CINEMA</h3>
-                <p>Hệ thống rạp chiếu phim mang đến trải nghiệm điện ảnh xanh, hiện đại và đẳng cấp nhất.</p>
+                <p>Hệ thống rạp chiếu phim mang đến trải nghiệm điện ảnh xanh, hiện đại và đẳng cấp nhất dành cho bạn.
+                </p>
             </div>
             <div class="cot-footer">
-                <h3>CHÍNH SÁCH & QUY ĐỊNH</h3>
+                <h3>Chính Sách & Quy Định</h3>
                 <ul>
                     <li><a href="../html/dieukhoansudung.html">Điều khoản sử dụng</a></li>
                     <li><a href="../html/csbaomat.html">Chính sách bảo mật</a></li>
                 </ul>
             </div>
             <div class="cot-footer">
-                <h3>KẾT NỐI VỚI CHÚNG TÔI</h3>
+                <h3>Kết Nối Với Chúng Tôi</h3>
                 <div class="mang-xa-hoi">
                     <a href="#" class="icon-mxh">Facebook</a>
                     <a href="#" class="icon-mxh">Instagram</a>
@@ -172,13 +173,13 @@
             window.location.href = 'trangchu.html';
         }
 
-        const currentUser = JSON.parse(savedUser);
+        const userHienTai = JSON.parse(savedUser);
 
         const area = document.getElementById('taikhoanArea');
-        if (area && currentUser) {
+        if (area && userHienTai) {
             area.innerHTML = `
                 <div style="display: flex; gap: 15px; align-items: center;">
-                    <span style="color:#93e9be;">👤 ${currentUser.name}</span>
+                    <span style="color:#93e9be;">👤 ${userHienTai.name}</span>
                     <button class="nut-dang-xuat" style="background:transparent; border:1px solid #ff6b6b; color:#ff6b6b; padding:8px 20px; border-radius:30px; cursor:pointer;" onclick="dangXuat()">Đăng xuất</button>
                 </div>
             `;
@@ -186,7 +187,7 @@
 
         function hienThiVe() {
             const allTickets = JSON.parse(localStorage.getItem('cinema_tickets') || '[]');
-            const myTickets = allTickets.filter(t => t.email === currentUser.email);
+            const myTickets = allTickets.filter(t => t.email === userHienTai.email);
             const container = document.getElementById('ticketContainer');
 
             if (myTickets.length === 0) {
