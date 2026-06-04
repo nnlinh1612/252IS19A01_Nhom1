@@ -331,7 +331,9 @@ function chonGhe(tenGhe, theGhe) {
     theGhe.classList.remove("ghe-dang-chon");
     xoaGhe(tenGhe);
   } else {
-    let loaiVeMacDinh = document.getElementById("chon-loai-ve").value;
+    // BÍ QUYẾT SỬA LỖI Ở ĐÂY:
+    // Vì đã xóa dropdown tổng, chúng ta sẽ gán thẳng loại vé mặc định ban đầu là "nguoi-lon"
+    let loaiVeMacDinh = "nguoi-lon";
 
     theGhe.classList.add("ghe-dang-chon");
 
@@ -484,8 +486,11 @@ function chonKhuyenMai(maKhuyenMai, tenKhuyenMai, theHTML) {
 
 window.onclick = function (e) {
   if (!e.target.matches(".dropdown-hien-thi")) {
-    document.getElementById("dropdown-loai-ve").classList.remove("mo");
-    document.getElementById("dropdown-khuyen-mai").classList.remove("mo");
+    document.getElementById("dropdown-khuyen-mai")?.classList.remove("mo");
+    
+    // Đóng toàn bộ các dropdown động của ghế khi click ra ngoài
+    let tatCaDropdownGhe = document.querySelectorAll(".the-ghe-dynamic .khung-dropdown");
+    tatCaDropdownGhe.forEach(dr => dr.classList.remove("mo"));
   }
 };
 
@@ -612,48 +617,80 @@ function khuyenMaiHopLe(km) {
     15. VẼ DANH SÁCH KHUYẾN MÃI
     =========================================================
 */
-function veDanhSachKhuyenMai() {
-  let khungDanhSach = document.getElementById("danh-sach-khuyen-mai");
-  let oKhuyenMai = document.getElementById("khuyen-mai");
-  let hienThiKhuyenMai = document.getElementById("hien-thi-khuyen-mai");
+function veDanhSachVeTheoGhe() {
+  let khung = document.getElementById("danh-sach-ve-theo-ghe");
 
-  let html = `
-    <div class="dropdown-muc dang-chon" onclick="chonKhuyenMai('', 'Không áp dụng khuyến mãi', this)">
-      Không áp dụng khuyến mãi
-    </div>
-  `;
+  if (!khung) {
+    return;
+  }
 
-  let coKhuyenMai = false;
+  if (danhSachGheDaChon.length === 0) {
+    khung.innerHTML = "<p class='chu-mo'>Chưa chọn ghế nào.</p>";
+    return;
+  }
 
-  for (let i = 0; i < danhSachKhuyenMai.length; i++) {
-    let km = danhSachKhuyenMai[i];
+  let html = "";
 
-    if (khuyenMaiHopLe(km)) {
-      coKhuyenMai = true;
+  for (let i = 0; i < danhSachGheDaChon.length; i++) {
+    let ghe = danhSachGheDaChon[i];
+    let tenHienThiLoaiVe = "Người lớn (Tiêu chuẩn)";
+    if (ghe.loaiVe === "sinh-vien") tenHienThiLoaiVe = "Học sinh - Sinh viên";
+    if (ghe.loaiVe === "tre-em") tenHienThiLoaiVe = "Trẻ em (Dưới 1m2)";
 
-      let soLuot = laySoLuotConLai(km.ma);
-      let tenHienThi = km.ten + " - còn " + soLuot + " lượt";
-
-      html += `
-        <div class="dropdown-muc" onclick="chonKhuyenMai('${km.ma}', '${tenHienThi}', this)">
-          ${tenHienThi}
+    html += `
+      <div class="the-ghe-dynamic">
+        <div class="tieu-de-ghe-dynamic">🟢 Ghế vị trí: ${ghe.tenGhe}</div>
+        
+        <!-- Khung Dropdown Custom tự chế bằng DIV -->
+        <div class="khung-dropdown" id="dropdown-ghe-${ghe.tenGhe}">
+          <div class="dropdown-hien-thi" onclick="batTatDropdownGhe('${ghe.tenGhe}')">
+            ${tenHienThiLoaiVe}
+          </div>
+          
+          <div class="dropdown-danh-sach">
+            <div class="dropdown-muc ${ghe.loaiVe === 'nguoi-lon' ? 'dang-chon' : ''}" 
+                 onclick="chonLoaiVeChoGhe('${ghe.tenGhe}', 'nguoi-lon')">
+              Người lớn (Tiêu chuẩn)
+            </div>
+            <div class="dropdown-muc ${ghe.loaiVe === 'sinh-vien' ? 'dang-chon' : ''}" 
+                 onclick="chonLoaiVeChoGhe('${ghe.tenGhe}', 'sinh-vien')">
+              Học sinh - Sinh viên
+            </div>
+            <div class="dropdown-muc ${ghe.loaiVe === 'tre-em' ? 'dang-chon' : ''}" 
+                 onclick="chonLoaiVeChoGhe('${ghe.tenGhe}', 'tre-em')">
+              Trẻ em (Dưới 1m2)
+            </div>
+          </div>
         </div>
-      `;
+      </div>
+    `;
+  }
+
+  khung.innerHTML = html;
+}
+
+// Hàm bổ sung 1: Bật tắt menu xổ xuống của riêng từng ghế
+function batTatDropdownGhe(tenGhe) {
+  let tatCaDropdown = document.querySelectorAll(".the-ghe-dynamic .khung-dropdown");
+  tatCaDropdown.forEach(dr => {
+    if (dr.id !== `dropdown-ghe-${tenGhe}`) {
+      dr.classList.remove("mo");
+    }
+  });
+  document.getElementById(`dropdown-ghe-${tenGhe}`).classList.toggle("mo");
+}
+
+// Hàm bổ sung 2: Xử lý sự kiện khi người dùng click chọn một mục
+function chonLoaiVeChoGhe(tenGhe, loaiVeMoi) {
+  for (let i = 0; i < danhSachGheDaChon.length; i++) {
+    if (danhSachGheDaChon[i].tenGhe === tenGhe) {
+      danhSachGheDaChon[i].loaiVe = loaiVeMoi;
+      break;
     }
   }
-
-  khungDanhSach.innerHTML = html;
-
-  oKhuyenMai.value = "";
-  hienThiKhuyenMai.innerText = "Không áp dụng khuyến mãi";
-
-  if (ngayDuocChon === "") {
-    document.getElementById("ghi-chu-khuyen-mai").innerText = "Chọn ngày chiếu để xem khuyến mãi phù hợp.";
-  } else if (coKhuyenMai) {
-    document.getElementById("ghi-chu-khuyen-mai").innerText = "Khuyến mãi đã được lọc theo ngày chiếu, loại vé và số lượt.";
-  } else {
-    document.getElementById("ghi-chu-khuyen-mai").innerText = "Không có khuyến mãi phù hợp với ngày chiếu hoặc loại vé này.";
-  }
+  veDanhSachVeTheoGhe();
+  veDanhSachKhuyenMai();
+  tinhLaiTongTien();
 }
 
 function layKhuyenMaiDangChon() {

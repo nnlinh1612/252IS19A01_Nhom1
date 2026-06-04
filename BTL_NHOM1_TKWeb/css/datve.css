@@ -1074,3 +1074,42 @@ body {
         text-align: left;
     }
 }
+
+
+
+/* ==========================================================
+   TÙY BIẾN KHỐI CHỨA DROPDOWN ĐỘNG THEO GHẾ CHUẨN XANH MINT
+   ========================================================== */
+.the-ghe-dynamic {
+    background: #161616 !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    border-radius: 14px !important;
+    padding: 16px !important;
+    margin-bottom: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+    animation: slideInSelect 0.25s ease-out;
+}
+
+.tieu-de-ghe-dynamic {
+    color: #93e9be !important;
+    font-weight: bold !important;
+    margin-bottom: 10px !important;
+    font-size: 15px !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* Ép danh sách xổ xuống của ghế custom có độ ưu tiên hiển thị cao hơn */
+.the-ghe-dynamic .dropdown-danh-sach {
+    z-index: 30 !important;
+}
+
+@keyframes slideInSelect {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
