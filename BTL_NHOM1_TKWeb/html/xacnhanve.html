@@ -11,8 +11,7 @@
     <link rel="stylesheet" href="../css/datve.css">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
-    (function(){
-        emailjs.init("{{to_email}}");
+    (function(){emailjs.init("pYPKV4gHgjeRF4vLR");
     })();
     </script>
 </head>
@@ -63,7 +62,7 @@
             </div>
 
             <div class="khu-vuc-nut">
-                <button id="nut-gui-mail" class="nut-gui-mail" onclick="giaLapGuiEmail()">Gửi vé về Email</button>
+                <button id="nut-gui-mail" class="nut-gui-mail" onclick="GuiEmail()">Gửi vé về Email</button>
                 <button class="nut-thanh-toan" onclick="veTrangChu()">
                     Về Trang Chủ
                 </button>
@@ -83,23 +82,16 @@
             }
 
             /*
-                Lấy thông tin user đang đăng nhập.
-                Đặt tên là userDangDangNhap để KHÔNG đụng currentUser của taikhoan.js.
+                SỬA TẠI ĐÂY: Thay sessionStorage thành localStorage 
+                để đọc đúng tài khoản động vừa đăng nhập
             */
-            let userDangDangNhap = JSON.parse(sessionStorage.getItem("currentUser"));
+            let userDangDangNhap = JSON.parse(localStorage.getItem("currentUser")) || JSON.parse(localStorage.getItem("user_current"));
 
             if (userDangDangNhap) {
-                if (!donHang.tenKhachHang) {
-                    donHang.tenKhachHang = userDangDangNhap.name || "";
-                }
-
-                if (!donHang.emailKhachHang) {
-                    donHang.emailKhachHang = userDangDangNhap.email || "";
-                }
-
-                if (!donHang.sdtKhachHang) {
-                    donHang.sdtKhachHang = userDangDangNhap.phone || "";
-                }
+                // Cập nhật thông tin khách hàng động theo tài khoản đang đăng nhập
+                donHang.tenKhachHang = userDangDangNhap.name || "";
+                donHang.emailKhachHang = userDangDangNhap.email || "";
+                donHang.sdtKhachHang = userDangDangNhap.phone || "";
             }
 
             /*
@@ -117,8 +109,7 @@
             }
 
             /*
-                Đảm bảo gheDaChon luôn là mảng string,
-                vì vecuatoi.html đang dùng t.seats.join(', ')
+                Đảm bảo gheDaChon luôn là mảng string
             */
             if (!Array.isArray(donHang.gheDaChon)) {
                 donHang.gheDaChon = [];
@@ -213,7 +204,7 @@
             console.log("Đã lưu vé đúng format cũ:", theVeMoi);
         }
 
-        function giaLapGuiEmail() {
+        function GuiEmail() {
             let nutGui = document.getElementById("nut-gui-mail");
 
             if (!emailNhanVe) {
