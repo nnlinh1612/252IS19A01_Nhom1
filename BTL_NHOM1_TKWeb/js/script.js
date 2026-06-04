@@ -822,7 +822,7 @@ function hienChiTietPhim(idPhim) {
             <div class="col-12">
                 <h4 class="text-white h5 mb-3">Trailer Phim</h4>
                 <div class="khung-trailer">
-                    <iframe src="${phim.trailer}" frameborder="0" allowfullscreen></iframe>
+                    <video src="${phim.trailer}" controls muted autoplay style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;"></video>
                 </div>
             </div>
         </div>
