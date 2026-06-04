@@ -114,11 +114,8 @@ document.addEventListener("DOMContentLoaded", function () {
   tinhLaiTongTien();
 });
 
-/*
-    =========================================================
-    5. TÌM PHIM THEO ID
-    =========================================================
-*/
+/* TÌM PHIM THEO ID */
+
 function timPhimTheoId(idPhim) {
   for (let i = 0; i < khoPhim.length; i++) {
     if (khoPhim[i].id === idPhim) {
@@ -893,5 +890,5 @@ function chuyenTrangBapNuoc() {
 
   localStorage.setItem("thongTinDonHang", JSON.stringify(donHang));
 
-  window.location.href = "datbongnuoc.html";
+  window.location.href = "../html/datbongnuoc.html";
 }

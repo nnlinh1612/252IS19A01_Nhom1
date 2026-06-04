@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="taikhoan.css">
+    <link rel="icon" type="image/png" href="../hinhanh/logo.png">
+    <title>Plant Cinema - Lịch Chiếu</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Plant Cinema</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/taikhoan.css">
 </head>
 
 <body>
@@ -15,11 +16,11 @@
         <div class="logo">PLANT CINEMA</div>
         <nav class="thanh-dieu-huong">
             <ul>
-                <li><a href="Trangchu.html" class="dang-chon">Trang chủ</a></li>
-                <li><a href="gioithieu.html">Giới thiệu</a></li>
-                <li><a href="Lichchieu.html">Lịch chiếu</a></li>
-                <li><a href="tintuc.html">Tin tức</a></li>
-                <li><a href="giave.html">Giá vé</a></li>
+                <li><a href="../html/Trangchu.html">Trang chủ</a></li>
+                <li><a href="../html/gioithieu.html">Giới thiệu</a></li>
+                <li><a href="../html/Lichchieu.html" class="dang-chon">Lịch chiếu</a></li>
+                <li><a href="../html/tintuc.html">Tin tức</a></li>
+                <li><a href="../html/giave.html">Giá vé</a></li>
             </ul>
         </nav>
         <div class="tai-khoan" id="taikhoanArea">
@@ -27,39 +28,48 @@
             <button class="nut-dang-ky" onclick="moModal('dangKyModal')">Đăng ký</button>
         </div>
     </header>
-    <main class="khu-vuc-chinh">
-        <div class="banner">
-            <div class="slide slide-1 dang-chieu" onclick="window.location.href='Lichchieu.html'"></div>
 
-            <div class="slide slide-2" onclick="window.location.href='tintuc.html'"></div>
+    <main class="container my-4 my-md-5">
 
-            <div class="slide slide-3" onclick="window.location.href='gioithieu.html'"></div>
+        <div id="vung-lich-chieu">
+            <div class="khu-vuc-tab my-5">
+                <div class="danh-sach-tab position-relative d-flex justify-content-center gap-4 gap-md-5">
+                    <h3 class="tab-item active" onclick="chuyenTabLichChieu('dang-chieu', this)">PHIM ĐANG CHIẾU</h3>
+                    <h3 class="tab-item text-secondary" onclick="chuyenTabLichChieu('sap-chieu', this)">PHIM SẮP CHIẾU
+                    </h3>
+                    <div class="thanh-truot" id="thanh-truot-tab"></div>
+                </div>
+            </div>
+
+            <div id="vung-chon-ngay">
+                <div class="thanh-chon-ngay d-flex..." id="thanh-chon-ngay"></div>
+            </div>
+            <div class="row justify-content-center mb-4">
+                <div class="col-12 col-md-8 col-lg-6">
+
+                    <div style="position: relative; width: 100%;">
+
+                        <i class="fas fa-search icon-tim-kiem"></i>
+                        <input type="text" id="o-tim-kiem-phim" class="form-control o-tim-kiem-phim w-100"
+                            placeholder="Nhập tên phim bạn muốn tìm..." oninput="renderDanhSachLichChieu()">
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="thanh-chon-ngay d-flex justify-content-start justify-content-md-center gap-2 mb-4 mb-md-5"
+                id="thanh-chon-ngay">
+
+            </div>
+
+            <div class="row g-3 g-md-4" id="danh-sach-phim">
+            </div>
         </div>
 
-        <button class="nut-chuyen-truoc" onclick="chuyenSlide(-1)">&#10094;</button>
-        <button class="nut-chuyen-sau" onclick="chuyenSlide(1)">&#10095;</button>
-
-        <div class="dots-container">
-            <span class="dot active" onclick="chonSlide(0)"></span>
-            <span class="dot" onclick="chonSlide(1)"></span>
-            <span class="dot" onclick="chonSlide(2)"></span>
+        <div id="vung-chi-tiet" class="d-none">
         </div>
 
-        <h2 class="tieu-de-muc">
-            <a href="Lichchieu.html?tab=dang-chieu">Phim Đang Chiếu <span>&raquo;</span></a>
-        </h2>
-        <div class="row g-4 mb-5" id="danh-sach-phim-trang-chu"></div>
-
-        <h2 class="tieu-de-muc">
-            <a href="Lichchieu.html?tab=sap-chieu">Phim Sắp Chiếu <span>&raquo;</span></a>
-        </h2>
-        <div class="row g-4" id="danh-sach-phim-sap-chieu-trang-chu"></div>
-
-        <h2 class="tieu-de-muc">
-            <a href="#">Ưu đãi và khuyến mãi <span>&raquo;</span></a>
-        </h2>
     </main>
-
     <footer class="chan-trang">
         <div class="noi-dung-footer">
             <div class="cot-footer">
@@ -68,14 +78,14 @@
                 </p>
             </div>
             <div class="cot-footer">
-                <h3>Chính Sách & Quy Định</h3>
+                <h3>CHÍNH SÁCH & QUY ĐỊNH</h3>
                 <ul>
-                    <li><a href="dieukhoansudung.html">Điều khoản sử dụng</a></li>
-                    <li><a href="csbaomat.html">Chính sách bảo mật</a></li>
+                    <li><a href="../html/dieukhoansudung.html">Điều khoản sử dụng</a></li>
+                    <li><a href="../html/csbaomat.html">Chính sách bảo mật</a></li>
                 </ul>
             </div>
             <div class="cot-footer">
-                <h3>Kết Nối Với Chúng Tôi</h3>
+                <h3>KẾT NỐI VỚI CHÚNG TÔI</h3>
                 <div class="mang-xa-hoi">
                     <a href="#" class="icon-mxh">Facebook</a>
                     <a href="#" class="icon-mxh">Instagram</a>
@@ -87,7 +97,6 @@
             <p>Copyright &copy; 2026 Plant Cinema. All rights reserved. Developed by Nhóm 1</p>
         </div>
     </footer>
-
     <!-- MODAL ĐĂNG NHẬP -->
     <div id="dangNhapModal" class="taikhoan-modal">
         <div class="taikhoan-modal-content">
@@ -124,52 +133,9 @@
             </div>
         </div>
     </div>
-    <script>
-        // Hiển thị slide
-        let viTriHienTai = 0;
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.dot');
-
-        function hienThiSlide(soTrang) {
-            /* Tắt hiển thị của slide và dot hiện tại*/
-            slides[viTriHienTai].classList.remove('dang-chieu');
-            dots[viTriHienTai].classList.remove('dang-chieu');
-
-            viTriHienTai = (soTrang + slides.length) % slides.length;
-
-            /* Bật hiển thị cho slide và dot mới*/
-            slides[viTriHienTai].classList.add('dang-chieu');
-            dots[viTriHienTai].classList.add('dang-chieu');
-        }
-        // Chuyển slide khi bấm nút chuyển trước sau
-        function chuyenSlide(buoc) {
-            hienThiSlide(viTriHienTai + buoc);
-            resetThoiGian();
-        }
-
-        // Chuyển slide khi bấm vào dấu chấm
-        function chonSlide(soTrang) {
-            hienThiSlide(soTrang);
-            resetThoiGian();
-        }
-
-        // Tự động chuyển slide sau 3 giây
-        function chuyenSlideTuDong() {
-            thoiGianChuyen = setInterval(() => {
-                hienThiSlide(viTriHienTai + 1);
-            }, 3000);
-        }
-
-        // Reset thời gian khi chuyển trang mới
-        function resetThoiGian() {
-            clearInterval(thoiGianChuyen);
-            chuyenSlideTuDong();
-        }
-        hienThiSlide(0);
-        chuyenSlideTuDong();
-    </script>
-    <script src="taikhoan.js"></script>
-    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/taikhoan.js"></script>
+    <script src="../js/script.js"></script>
 </body>
 
 </html>

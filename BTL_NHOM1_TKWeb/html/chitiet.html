@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="taikhoan.css">
+    <link rel="icon" type="image/png" href="../hinhanh/logo.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/taikhoan.css">
     <title>Plant Cinema - Chi tiết</title>
     <style>
         .detail-container {
@@ -92,11 +93,11 @@
         <div class="logo">PLANT CINEMA</div>
         <nav class="thanh-dieu-huong">
             <ul>
-                <li><a href="Trangchu.html">Trang chủ</a></li>
-                <li><a href="gioithieu.html">Giới thiệu</a></li>
-                <li><a href="Lichchieu.html">Lịch chiếu</a></li>
-                <li><a href="tintuc.html">Tin tức</a></li>
-                <li><a href="giave.html">Giá vé</a></li>
+                <li><a href="../html/Trangchu.html">Trang chủ</a></li>
+                <li><a href="../html/gioithieu.html">Giới thiệu</a></li>
+                <li><a href="../html/Lichchieu.html">Lịch chiếu</a></li>
+                <li><a href="../html/tintuc.html">Tin tức</a></li>
+                <li><a href="../html/giave.html">Giá vé</a></li>
             </ul>
         </nav>
         <div class="tai-khoan" id="taikhoanArea">
@@ -121,8 +122,8 @@
             <div class="cot-footer">
                 <h3>CHÍNH SÁCH & QUY ĐỊNH</h3>
                 <ul>
-                    <li><a href="dieukhoansudung.html">Điều khoản sử dụng</a></li>
-                    <li><a href="csbaomat.html">Chính sách bảo mật</a></li>
+                    <li><a href="../html/dieukhoansudung.html">Điều khoản sử dụng</a></li>
+                    <li><a href="../html/csbaomat.html">Chính sách bảo mật</a></li>
                 </ul>
             </div>
             <div class="cot-footer">
@@ -176,14 +177,13 @@
         </div>
     </div>
 
-    <script src="taikhoan.js"></script>
+    <script src="/js/taikhoan.js"></script>
     <script>
         const newsData = [
-            { id: 1, type: "tintuc", title: "🎉 Khai trương rạp Plant Cinema", content: "<p>Chi tiết: Từ 1/6 đến 8/6, giảm 30% tất cả các suất chiếu. Áp dụng với tất cả các đối tượng và hình thức thanh toán bằng tiền mặt.</p>", date: "20/05/2026", image: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=500&q=80", voucher: null },
-            { id: 2, type: "khuyenmai", title: "🎁 Khuyến mãi Tết Thiếu Nhi 1/6", content: "<p>Trẻ em dưới 14 tuổi được tặng combo bắp nước tự chọn miễn phí.</p>", date: "25/05/2026", image: "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=500&q=80", voucher: { code: "JUNE30", discount: "30%" } },
-            { id: 3, type: "tintuc", title: "🎬 Lịch chiếu phim mới tháng 6", content: "<p>Inside Out 2, Bad Boys 4, A Quiet Place: Day One cùng các siêu phẩm các được công chiếu tại Plant Cinema.</p>", date: "28/05/2026", image: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=500&q=80", voucher: null },
-            { id: 4, type: "khuyenmai", title: "🏮 Khuyến mãi Trung Thu", content: "<p>Mua 2 tặng 1, voucher MOONFEST. Áp dụng đến hết rằm trung thu.</p>", date: "01/09/2026", image: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=500&q=80", voucher: { code: "MOONFEST", discount: "Mua 2 tặng 1" } },
-            { id: 5, type: "tintuc", title: "⭐ Plant Cinema đạt giải xanh 2026", content: "<p>Rạp chiếu phim thân thiện môi trường...</p>", date: "15/05/2026", image: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=500&q=80", voucher: null }
+            { id: 1, type: "tintuc", title: "🎉 Khai trương rạp Plant Cinema", content: "<p>Chi tiết: Từ 1/6 đến 8/6, giảm 30% tất cả các suất chiếu. Áp dụng với tất cả các đối tượng và hình thức thanh toán bằng tiền mặt.</p>", date: "20/05/2026", image: "../hinhanh/tintuc1.png", voucher: null },
+            { id: 2, type: "khuyenmai", title: "🎁 Khuyến mãi Tết Thiếu Nhi 1/6", content: "<p>Trẻ em dưới 14 tuổi được tặng combo bắp nước tự chọn miễn phí.</p>", date: "25/05/2026", image: "../hinhanh/anh2.png", voucher: { code: "JUNE30", discount: "30%" } },
+            { id: 3, type: "tintuc", title: "🎬 Lịch chiếu phim mới tháng 6", content: "<p>Inside Out 2, Bad Boys 4, A Quiet Place: Day One cùng các siêu phẩm các được công chiếu tại Plant Cinema.</p>", date: "28/05/2026", image: "../hinhanh/ctkm2.png", voucher: null },
+            { id: 4, type: "khuyenmai", title: "🏮 Khuyến mãi Trung Thu", content: "<p>Mua 2 tặng 1, voucher MOONFEST. Áp dụng đến hết rằm trung thu.</p>", date: "01/09/2026", image: "../hinhanh/ctkm3.png", voucher: { code: "MOONFEST", discount: "Mua 2 tặng 1" } }
         ];
 
         const params = new URLSearchParams(window.location.search);
