@@ -601,3 +601,49 @@ function chuyenTrangBapNuoc() {
   localStorage.setItem("thongTinDonHang", JSON.stringify(donHang));
   window.location.href = "datbongnuoc.html"; // Chỉnh lại đường dẫn nếu cần
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  setTimeout(function () {
+    const khungNgay = document.getElementById("khung-ngay");
+    if (!khungNgay) return;
+
+    khungNgay.innerHTML = "";
+
+    const today = new Date();
+    const daysOfWeek = ["Chủ nhật", "Thứ hai", "Thứ ba", "Thứ tư", "Thứ năm", "Thứ sáu", "Thứ bảy"];
+
+    for (let i = 0; i < 7; i++) {
+      const date = new Date(today);
+      date.setDate(today.getDate() + i);
+
+      const dd = String(date.getDate()).padStart(2, "0");
+      const mm = String(date.getMonth() + 1).padStart(2, "0");
+      const yyyy = date.getFullYear();
+
+      const ngayChieu = `${dd}/${mm}/${yyyy}`;
+      const tenNgay = i === 0 ? "Hôm nay" : daysOfWeek[date.getDay()];
+
+      const btn = document.createElement("button");
+      btn.className = "nut-ngay";
+      btn.innerHTML = `${dd}-${mm}-${yyyy}<br><small>${tenNgay}</small>`;
+
+      btn.onclick = function () {
+        document.querySelectorAll("#khung-ngay .nut-ngay").forEach(function (nut) {
+          nut.classList.remove("active", "dang-chon");
+        });
+
+        btn.classList.add("active", "dang-chon");
+
+        let donHang = JSON.parse(localStorage.getItem("thongTinDonHang")) || {};
+        donHang.ngayChieu = ngayChieu;
+        localStorage.setItem("thongTinDonHang", JSON.stringify(donHang));
+      };
+
+      khungNgay.appendChild(btn);
+
+      if (i === 0) {
+        btn.click();
+      }
+    }
+  }, 200);
+});

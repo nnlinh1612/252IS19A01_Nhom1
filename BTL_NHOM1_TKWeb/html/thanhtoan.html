@@ -69,6 +69,41 @@
             <input type="text" id="nhap-sdt" class="o-nhap input-khoa" readonly>
         </section>
 
+        <section class="khoi-giao-dien">
+            <h3 class="tieu-de-khoi">Phương thức thanh toán</h3>
+
+            <div class="ds-phuong-thuc">
+                <label class="phuong-thuc-item active">
+                    <input type="radio" name="phuongThucThanhToan" value="VNPAY" checked
+                        onchange="chonPhuongThucThanhToan(this)">
+                    <span>VNPay</span>
+                </label>
+
+                <label class="phuong-thuc-item">
+                    <input type="radio" name="phuongThucThanhToan" value="ZaloPay"
+                        onchange="chonPhuongThucThanhToan(this)">
+                    <span>ZaloPay</span>
+                </label>
+
+                <label class="phuong-thuc-item">
+                    <input type="radio" name="phuongThucThanhToan" value="Ngân hàng"
+                        onchange="chonPhuongThucThanhToan(this)">
+                    <span>Ngân hàng</span>
+                </label>
+            </div>
+
+            <div class="khung-qr-thanh-toan">
+                <p id="ten-phuong-thuc-qr">Quét mã VNPay để thanh toán</p>
+
+                <img id="qr-thanh-toan" alt="QR thanh toán">
+
+                <p class="ghi-chu-qr">
+                    Nội dung thanh toán:
+                    <strong id="noi-dung-chuyen-khoan"></strong>
+                </p>
+            </div>
+        </section>
+
         <section class="khoi-giao-dien khu-vuc-thanh-toan">
             <div class="dong-thanh-toan">
                 <span>Tổng thanh toán:</span>
@@ -103,9 +138,15 @@
                 return;
             }
 
+            if (!donHang.maVe) {
+                donHang.maVe = taoMaVe();
+                localStorage.setItem("thongTinDonHang", JSON.stringify(donHang));
+            }
+
             hienGiaoDienThanhToan();
             hienThongTinVe();
             hienThongTinKhachHang();
+            taoQRThanhToan();
         });
 
         /*
@@ -225,13 +266,76 @@
             donHang.tenKhachHang = ten;
             donHang.emailKhachHang = document.getElementById("nhap-email").value;
             donHang.sdtKhachHang = document.getElementById("nhap-sdt").value;
-            donHang.maVe = taoMaVe();
+            if (!donHang.maVe) {
+                donHang.maVe = taoMaVe();
+            }
+            donHang.phuongThucThanhToan = phuongThucThanhToan;
 
             localStorage.setItem("thongTinDonHang", JSON.stringify(donHang));
 
             setTimeout(function () {
                 window.location.href = "xacnhanve.html";
             }, 1500);
+        }
+
+        let phuongThucThanhToan = "VNPAY";
+
+        function chonPhuongThucThanhToan(input) {
+            phuongThucThanhToan = input.value;
+
+            document.querySelectorAll(".phuong-thuc-item").forEach(function (item) {
+                item.classList.remove("active");
+            });
+
+            input.closest(".phuong-thuc-item").classList.add("active");
+
+            taoQRThanhToan();
+        }
+
+        function taoNoiDungThanhToan() {
+            let tongTien = donHang.tongTienCuoiCung || donHang.tienVe || 0;
+            let tenPhim = donHang.tenPhim || "Chua co phim";
+            let ghe = donHang.gheDaChon && donHang.gheDaChon.length > 0
+                ? donHang.gheDaChon.join(", ")
+                : "Chua chon ghe";
+
+            return `
+                PLANT CINEMA
+                Phuong thuc: ${phuongThucThanhToan}
+                Phim: ${tenPhim}
+                Ghe: ${ghe}
+                So tien: ${tongTien.toLocaleString("vi-VN")} VND
+                Noi dung: THANH TOAN VE PLANT CINEMA
+                `.trim();
+        }
+
+        function taoQRThanhToan() {
+            const qrImg = document.getElementById("qr-thanh-toan");
+            const tenQR = document.getElementById("ten-phuong-thuc-qr");
+            const noiDungCK = document.getElementById("noi-dung-chuyen-khoan");
+
+            if (!qrImg || !tenQR || !noiDungCK) return;
+
+            let tongTien = donHang.tongTienCuoiCung || donHang.tienVe || 0;
+            let maVe = donHang.maVe || taoMaVe();
+
+            donHang.maVe = maVe;
+            localStorage.setItem("thongTinDonHang", JSON.stringify(donHang));
+
+            tenQR.innerText = "Quét mã " + phuongThucThanhToan + " để thanh toán";
+            noiDungCK.innerText = maVe;
+
+            const noiDungQR = `
+                    PLANT CINEMA
+                    Phương thức: ${phuongThucThanhToan}
+                    Mã vé: ${maVe}
+                    Số tiền: ${tongTien.toLocaleString("vi-VN")}đ
+                    Nội dung chuyển khoản: ${maVe}
+                    `.trim();
+
+            qrImg.src =
+                "https://quickchart.io/qr?size=300&margin=2&text=" +
+                encodeURIComponent(noiDungQR);
         }
 
         function taoMaVe() {

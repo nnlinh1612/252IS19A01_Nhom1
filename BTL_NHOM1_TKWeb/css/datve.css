@@ -1114,3 +1114,79 @@ body {
         transform: translateY(0);
     }
 }
+
+/* ==========================================================
+   PHƯƠNG THỨC THANH TOÁN
+   ========================================================== */
+
+.ds-phuong-thuc {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.phuong-thuc-item {
+    flex: 1;
+    min-width: 130px;
+    padding: 13px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(147, 233, 190, 0.25);
+    background: #111;
+    color: #ccc;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.25s;
+    font-weight: 700;
+}
+
+.phuong-thuc-item input {
+    display: none;
+}
+
+.phuong-thuc-item:hover,
+.phuong-thuc-item.active {
+    background: rgba(147, 233, 190, 0.12);
+    color: #93e9be;
+    border-color: #93e9be;
+    box-shadow: 0 0 18px rgba(147, 233, 190, 0.15);
+}
+
+.khung-qr-thanh-toan {
+    margin-top: 22px;
+    text-align: center;
+    padding: 22px;
+    border-radius: 18px;
+    background: #0f0f0f;
+    border: 1px dashed rgba(147, 233, 190, 0.35);
+}
+
+.khung-qr-thanh-toan p {
+    color: #ccc;
+    margin-bottom: 12px;
+}
+
+#ten-phuong-thuc-qr {
+    color: #93e9be;
+    font-weight: 800;
+}
+
+#qr-thanh-toan {
+    width: 190px;
+    height: 190px;
+    display: block;
+    margin: 12px auto;
+    padding: 10px;
+    background: white;
+    border-radius: 16px;
+    object-fit: contain;
+    box-shadow: 0 0 22px rgba(147, 233, 190, 0.22);
+}
+
+.ghi-chu-qr {
+    font-size: 14px;
+}
+
+.ghi-chu-qr strong {
+    color: #93e9be;
+}
