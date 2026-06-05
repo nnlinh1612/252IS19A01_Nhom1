@@ -230,7 +230,6 @@
             return 'Chưa cập nhật';
         }
 
-        // Hàm hiển thị danh sách vé (luôn lấy dữ liệu MỚI NHẤT từ localStorage)
         function hienThiVe() {
             const savedUser = sessionStorage.getItem('currentUser');
             if (!savedUser) {
@@ -249,9 +248,13 @@
             }
 
             myTickets.sort((a, b) => {
-                const dateA = new Date(a.date.split('/').reverse().join('-') + 'T' + (a.time || '00:00'));
-                const dateB = new Date(b.date.split('/').reverse().join('-') + 'T' + (b.time || '00:00'));
-                return dateB - dateA;
+            const dateA = a.date ? a.date.split('/').reverse().join('-') : '1970-01-01';
+            const dateB = b.date ? b.date.split('/').reverse().join('-') : '1970-01-01';
+
+            const datetimeA = new Date(`${dateA}T${a.time || '00:00'}`);
+            const datetimeB = new Date(`${dateB}T${b.time || '00:00'}`);
+        
+            return datetimeB - datetimeA;
             });
 
             let html = '';
