@@ -110,7 +110,9 @@ function hienThongBao(tinNhan) {
   let hopThongBao = document.getElementById("thong-bao-custom");
   hopThongBao.innerHTML = "⚠️ " + tinNhan;
   hopThongBao.classList.add("hien-thi");
-  setTimeout(function () { hopThongBao.classList.remove("hien-thi"); }, 2500);
+  setTimeout(function () {
+    hopThongBao.classList.remove("hien-thi");
+  }, 2500);
 }
 
 /*
@@ -150,7 +152,7 @@ function renderDanhSachNgay(ngayUuTien) {
   let html = "";
   for (let i = 0; i < danhSachNgay.length; i++) {
     let ngay = danhSachNgay[i];
-    let classDangChon = (ngay === ngayDuocChon) ? "dang-chon" : "";
+    let classDangChon = ngay === ngayDuocChon ? "dang-chon" : "";
     html += `<button class="nut-ngay ${classDangChon}" onclick="chonNgay('${ngay}')">${ngay.substring(0, 5)}<small>${layTenThu(ngay)}</small></button>`;
   }
   document.getElementById("khung-ngay").innerHTML = html;
@@ -178,7 +180,7 @@ function renderDanhSachGio(gioUuTien) {
   let html = "";
   for (let i = 0; i < danhSachGio.length; i++) {
     let gio = danhSachGio[i];
-    let classDangChon = (gio === gioDuocChon) ? "dang-chon" : "";
+    let classDangChon = gio === gioDuocChon ? "dang-chon" : "";
     html += `<button class="nut-gio ${classDangChon}" onclick="chonGio('${gio}')">${gio}</button>`;
   }
   document.getElementById("khung-gio").innerHTML = html;
@@ -224,7 +226,7 @@ function chonGhe(tenGhe, theGhe) {
 
   if (theGhe.classList.contains("ghe-dang-chon")) {
     theGhe.classList.remove("ghe-dang-chon");
-    danhSachGheDaChon = danhSachGheDaChon.filter(g => g.tenGhe !== tenGhe);
+    danhSachGheDaChon = danhSachGheDaChon.filter((g) => g.tenGhe !== tenGhe);
   } else {
     theGhe.classList.add("ghe-dang-chon");
     danhSachGheDaChon.push({ tenGhe: tenGhe, loaiVe: "nguoi-lon" });
@@ -260,7 +262,7 @@ function veDanhSachVeTheoGhe() {
   let html = "";
   for (let i = 0; i < danhSachGheDaChon.length; i++) {
     let ghe = danhSachGheDaChon[i];
-    let tenHienThiLoaiVe = ghe.loaiVe === "sinh-vien" ? "Học sinh - Sinh viên" : (ghe.loaiVe === "tre-em" ? "Trẻ em (Dưới 1m2)" : "Người lớn (Tiêu chuẩn)");
+    let tenHienThiLoaiVe = ghe.loaiVe === "sinh-vien" ? "Học sinh - Sinh viên" : ghe.loaiVe === "tre-em" ? "Trẻ em (Dưới 1m2)" : "Người lớn (Tiêu chuẩn)";
 
     html += `
       <div class="the-ghe-dynamic">
@@ -270,9 +272,9 @@ function veDanhSachVeTheoGhe() {
             ${tenHienThiLoaiVe}
           </div>
           <div class="dropdown-danh-sach">
-            <div class="dropdown-muc ${ghe.loaiVe === 'nguoi-lon' ? 'dang-chon' : ''}" onclick="chonLoaiVeChoGhe('${ghe.tenGhe}', 'nguoi-lon')">Người lớn (Tiêu chuẩn)</div>
-            <div class="dropdown-muc ${ghe.loaiVe === 'sinh-vien' ? 'dang-chon' : ''}" onclick="chonLoaiVeChoGhe('${ghe.tenGhe}', 'sinh-vien')">Học sinh - Sinh viên</div>
-            <div class="dropdown-muc ${ghe.loaiVe === 'tre-em' ? 'dang-chon' : ''}" onclick="chonLoaiVeChoGhe('${ghe.tenGhe}', 'tre-em')">Trẻ em (Dưới 1m2)</div>
+            <div class="dropdown-muc ${ghe.loaiVe === "nguoi-lon" ? "dang-chon" : ""}" onclick="chonLoaiVeChoGhe('${ghe.tenGhe}', 'nguoi-lon')">Người lớn (Tiêu chuẩn)</div>
+            <div class="dropdown-muc ${ghe.loaiVe === "sinh-vien" ? "dang-chon" : ""}" onclick="chonLoaiVeChoGhe('${ghe.tenGhe}', 'sinh-vien')">Học sinh - Sinh viên</div>
+            <div class="dropdown-muc ${ghe.loaiVe === "tre-em" ? "dang-chon" : ""}" onclick="chonLoaiVeChoGhe('${ghe.tenGhe}', 'tre-em')">Trẻ em (Dưới 1m2)</div>
           </div>
         </div>
       </div>
@@ -282,7 +284,7 @@ function veDanhSachVeTheoGhe() {
 }
 
 function batTatDropdownGhe(tenGhe) {
-  document.querySelectorAll(".the-ghe-dynamic .khung-dropdown").forEach(dr => {
+  document.querySelectorAll(".the-ghe-dynamic .khung-dropdown").forEach((dr) => {
     if (dr.id !== `dropdown-ghe-${tenGhe}`) dr.classList.remove("mo");
   });
   document.getElementById(`dropdown-ghe-${tenGhe}`).classList.toggle("mo");
@@ -308,7 +310,7 @@ function batTatDropdownKhuyenMai() {
 window.onclick = function (e) {
   if (!e.target.matches(".dropdown-hien-thi")) {
     document.getElementById("dropdown-khuyen-mai")?.classList.remove("mo");
-    document.querySelectorAll(".the-ghe-dynamic .khung-dropdown").forEach(dr => dr.classList.remove("mo"));
+    document.querySelectorAll(".the-ghe-dynamic .khung-dropdown").forEach((dr) => dr.classList.remove("mo"));
   }
 };
 
@@ -325,7 +327,7 @@ function khoiTaoLuotKhuyenMai() {
   } catch (e) {
     console.log("Phát hiện dữ liệu rác, hệ thống tự động reset bộ đếm khuyến mãi.");
   }
-  
+
   let coThayDoi = false;
   for (let i = 0; i < danhSachKhuyenMai.length; i++) {
     let km = danhSachKhuyenMai[i];
@@ -341,7 +343,9 @@ function laySoLuotConLai(maKhuyenMai) {
   try {
     let danhSachLuot = JSON.parse(localStorage.getItem("voucher_remains"));
     return danhSachLuot[maKhuyenMai] || 0;
-  } catch (e) { return 0; }
+  } catch (e) {
+    return 0;
+  }
 }
 
 function truLuotKhuyenMai(maKhuyenMai) {
@@ -351,7 +355,9 @@ function truLuotKhuyenMai(maKhuyenMai) {
     danhSachLuot[maKhuyenMai]--;
     localStorage.setItem("voucher_remains", JSON.stringify(danhSachLuot));
     return true;
-  } catch (e) { return false; }
+  } catch (e) {
+    return false;
+  }
 }
 
 /*
@@ -362,7 +368,7 @@ function truLuotKhuyenMai(maKhuyenMai) {
 function khuyenMaiConHan(km) {
   // Nếu chưa có ngày được chọn, hệ thống sẽ tạm thời coi như hợp lệ ĐỂ HIỂN THỊ LÊN MENU cho cậu test
   if (ngayDuocChon === "") {
-    return true; 
+    return true;
   }
 
   let ngayChieu = doiNgayThanhDate(ngayDuocChon);
@@ -403,7 +409,7 @@ function coQuyenDungKhuyenMai(km) {
 function khuyenMaiHopLe(km) {
   // Kiểm tra hạn dùng
   if (khuyenMaiConHan(km) === false) return false;
-  
+
   // Kiểm tra đối tượng vé
   if (coQuyenDungKhuyenMai(km) === false) return false;
 
@@ -450,7 +456,7 @@ function veDanhSachKhuyenMai() {
 function chonKhuyenMai(maKhuyenMai, tenKhuyenMai, theHTML) {
   document.getElementById("hien-thi-khuyen-mai").innerText = tenKhuyenMai;
   document.getElementById("khuyen-mai").value = maKhuyenMai;
-  document.querySelectorAll("#danh-sach-khuyen-mai .dropdown-muc").forEach(muc => muc.classList.remove("dang-chon"));
+  document.querySelectorAll("#danh-sach-khuyen-mai .dropdown-muc").forEach((muc) => muc.classList.remove("dang-chon"));
   theHTML.classList.add("dang-chon");
   document.getElementById("dropdown-khuyen-mai").classList.remove("mo");
   tinhLaiTongTien();
@@ -458,7 +464,7 @@ function chonKhuyenMai(maKhuyenMai, tenKhuyenMai, theHTML) {
 
 function layKhuyenMaiDangChon() {
   let ma = document.getElementById("khuyen-mai").value;
-  return ma ? danhSachKhuyenMai.find(k => k.ma === ma) || null : null;
+  return ma ? danhSachKhuyenMai.find((k) => k.ma === ma) || null : null;
 }
 
 /*
@@ -472,7 +478,7 @@ function hienThiGheDaChon() {
     oGhe.innerText = "Chưa chọn";
     return;
   }
-  oGhe.innerText = danhSachGheDaChon.map(g => `${g.tenGhe} (${layTenLoaiVe(g.loaiVe)})`).join(", ");
+  oGhe.innerText = danhSachGheDaChon.map((g) => `${g.tenGhe} (${layTenLoaiVe(g.loaiVe)})`).join(", ");
 }
 
 function hienThiKhuyenMai(km, ghiChu) {
@@ -502,7 +508,7 @@ function tinhLaiTongTien() {
     let ghe = danhSachGheDaChon[i];
     let giaCoBan = BANG_GIA_VE[ghe.loaiVe].thuong;
     if (laNgayCuoiTuan(ngayDuocChon)) giaCoBan = BANG_GIA_VE[ghe.loaiVe].cuoiTuan;
-    
+
     let giaGhe = ghe.tenGhe.startsWith("E") ? giaCoBan * 2 + PHU_THU_GHE_DOI : giaCoBan;
     tienGoc += giaGhe;
     danhSachGiaGhe.push(giaGhe);
@@ -581,9 +587,9 @@ function chuyenTrangBapNuoc() {
     tenPhim: tenPhimHienTai,
     ngayChieu: ngayDuocChon,
     gioChieu: gioDuocChon,
-    gheDaChon: danhSachGheDaChon.map(g => g.tenGhe),
+    gheDaChon: danhSachGheDaChon.map((g) => g.tenGhe),
     chiTietVe: danhSachGheDaChon,
-    loaiVe: [...new Set(danhSachGheDaChon.map(g => g.loaiVe))].length === 1 ? layTenLoaiVe(danhSachGheDaChon[0].loaiVe) : "Nhiều loại vé",
+    loaiVe: [...new Set(danhSachGheDaChon.map((g) => g.loaiVe))].length === 1 ? layTenLoaiVe(danhSachGheDaChon[0].loaiVe) : "Nhiều loại vé",
     maKhuyenMai: maKhuyenMai,
     khuyenMai: tenKhuyenMai,
     uuDaiBapNuoc: uuDaiBapNuoc,

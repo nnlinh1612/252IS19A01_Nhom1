@@ -614,7 +614,7 @@ function renderDanhSachSapChieuTrangChu() {
                     <div class="mt-3 d-flex flex-column flex-grow-1 justify-content-between">
                         <div>
                             <h4 class="tieu-de-phim-home">${phim.ten}</h4>
-                            <p class="text-center mb-1 fw-bold" style="font-size: 13px; color: #93e9be;">Khởi chiếu: ${phim.ngayKhoiChieu}</p>
+                            <p class="text-center mb-1 fw-bold" style="font-size: 13px; color: var(--mau-chu-dao);">Khởi chiếu: ${phim.ngayKhoiChieu}</p>
                         </div>
                         <div class="d-flex justify-content-center align-items-center mt-2 gap-2 px-1">
                             <span class="text-secondary small" style="font-size: 11px;">${phim.theLoai}</span>

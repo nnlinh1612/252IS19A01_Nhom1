@@ -5,7 +5,7 @@ if (!localStorage.getItem("cinema_users")) {
       { id: 1, name: "Admin Plant", email: "admin@plant.com", phone: "0900000001", password: "123456" },
       { id: 2, name: "Nguyễn Nhật Linh", email: "nnlinh1612@gmail.com", phone: "0987654321", password: "123456" },
       { id: 3, name: "Trịnh Thị Nhâm", email: "nhamtrinh507@gmail.com", phone: "0111222333", password: "123456" },
-      { id: 4, name: "Ninh Phương Linh", email: "nplinhh@gmail.com", phone: "0123456789", password: "123456" },
+      { id: 4, name: "Ninh Phương Linh", email: "nplinh0315@gmail.com", phone: "0123456789", password: "123456" },
     ]),
   );
 }

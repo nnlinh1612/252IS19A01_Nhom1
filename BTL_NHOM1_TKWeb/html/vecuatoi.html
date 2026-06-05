@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="../hinhanh/logo.png">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/taikhoan.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -39,242 +38,20 @@
             color: #0a0a0a;
         }
 
-        .cot-danh-sach-ve {
-            width: 100%;
-            margin-top: 20px;
-        }
-
-        /* ================= THIẾT KẾ VÉ  ================= */
-        .the-ve {
-            display: flex;
-            background: #141a18;
-            border: 1px solid #23312b;
-            border-radius: 16px;
-            margin-bottom: 24px;
-            min-height: 220px;
-            width: 100%;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-            overflow: hidden;
-            padding: 0;
-            transition: all 0.3s ease;
-        }
-
-        .the-ve:hover {
-            border-color: #93e9be;
-            transform: translateY(-5px);
-        }
-
-        .phan-than-ve {
-            flex: 1;
-            display: flex;
-            align-items: stretch;
-        }
-
-        /* Cột bên trái */
-        .cot-thoi-gian {
-            width: 220px;
-            flex-shrink: 0;
-            background-color: #93e9be;
-            border-right: 1px solid #1f2e26;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 25px;
-        }
-
-        .chu-ma-ve {
-            color: #141a18;
-            font-size: 14px;
-            font-weight: 800;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-        }
-
-        .chu-ngay-chieu {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 4px;
-            color: #141a18;
-        }
-
-        .chu-gio-chieu {
-            font-size: 46px;
-            font-weight: 800;
-            line-height: 1;
-            margin-bottom: 15px;
-            color: #141a18;
-        }
-
-        .duong-ke-mo {
-            border: none;
-            border-top: 1px solid rgba(20, 26, 24, 0.3);
-            margin: 0 0 15px 0;
-            width: 100%;
-        }
-
-        .chu-dia-diem {
-            display: flex;
-            gap: 8px;
-            font-size: 13px;
-            color: #141a18;
-            line-height: 1.4;
-            font-weight: 600;
-        }
-
-        .chu-dia-diem svg {
-            width: 16px;
-            flex-shrink: 0;
-            fill: none;
-            stroke: #141a18;
-            stroke-width: 2;
-            margin-top: 2px;
-        }
-
-        /* CỘT THÔNG TIN */
-        .cot-thong-tin {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 25px;
-        }
-
-        .hang-thong-tin {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-
-        .hang-thong-tin svg {
-            width: 16px;
-            stroke: #7f9188;
-            fill: none;
-            stroke-width: 1.5;
-            margin-top: 2px;
-            flex-shrink: 0;
-        }
-
-        .chu-thong-tin {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .chu-thong-tin span {
-            font-size: 13px;
-            color: #7f9188;
-            margin-bottom: 3px;
-        }
-
-        .chu-thong-tin strong {
-            font-size: 15px;
-            font-weight: 500;
-            color: #fff;
-            line-height: 1.3;
-        }
-
-        /* CỘT POSTER */
-        .cot-anh-bia {
-            width: 180px;
-            flex-shrink: 0;
-            padding: 25px 25px 25px 0;
-        }
-
-        .cot-anh-bia img {
-            width: 100%;
-            height: 100%;
-            min-height: 150px;
-            object-fit: cover;
-            border-radius: 8px;
-            background-color: #0b0e0d;
-        }
-
-        /* MÃ VẠCH */
-        .duong-chia-ve {
-            border-left: 3px dotted #23312b;
-            margin: 20px 0;
-        }
-
-        .cuong-ve {
-            width: 70px;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .hinh-ma-vach {
-            height: 150px;
-            width: 18px;
-            opacity: 0.8;
-            background: repeating-linear-gradient(to bottom, #d1d5d4 0, #d1d5d4 2px, transparent 2px, transparent 4px, #d1d5d4 4px, #d1d5d4 6px, transparent 6px, transparent 9px);
-        }
-
-        .chu-duoi-ma-vach {
-            position: absolute;
-            right: 8px;
-            writing-mode: vertical-rl;
-            transform: rotate(180deg);
+        .loading {
+            text-align: center;
+            padding: 40px;
             color: #93e9be;
-            font-size: 13px;
-            letter-spacing: 2px;
-            font-family: monospace;
         }
 
-        @media (max-width: 768px) {
-
-            .the-ve,
-            .phan-than-ve {
-                flex-direction: column;
-            }
-
-            .cot-thoi-gian {
-                width: 100%;
-                border-right: none;
-                border-bottom: 2px dashed #1f2e26;
-                align-items: center;
-                text-align: center;
-            }
-
-            .chu-dia-diem {
-                justify-content: center;
-            }
-
-            .cot-thong-tin {
-                width: 100%;
-            }
-
-            .cot-anh-bia {
-                width: 100%;
-                height: 250px;
-                padding: 0 25px 25px 25px;
-            }
-
-            .duong-chia-ve {
-                border-left: none;
-                border-top: 3px dotted #23312b;
-                margin: 0 25px;
-            }
-
-            .cuong-ve {
-                width: 100%;
-                flex-direction: column;
-                padding: 20px;
-            }
-
-            .hinh-ma-vach {
-                width: 100%;
-                height: 40px;
-                background: repeating-linear-gradient(to right, #d1d5d4 0, #d1d5d4 2px, transparent 2px, transparent 4px, #d1d5d4 4px, #d1d5d4 6px, transparent 6px, transparent 9px);
-            }
-
-            .chu-duoi-ma-vach {
-                position: static;
-                writing-mode: horizontal-tb;
-                transform: none;
-                margin-top: 10px;
-            }
+        .genre-badge {
+            display: inline-block;
+            background: rgba(147, 233, 190, 0.15);
+            color: #93e9be;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-left: 10px;
         }
     </style>
 </head>
@@ -287,27 +64,28 @@
         </a>
         <nav class="thanh-dieu-huong">
             <ul>
-                <li><a href="../html/Trangchu.html">Trang chủ</a></li>
+                <li><a href="../html/Trangchu.html" class="dang-chon">Trang chủ</a></li>
                 <li><a href="../html/gioithieu.html">Giới thiệu</a></li>
                 <li><a href="../html/Lichchieu.html">Lịch chiếu</a></li>
                 <li><a href="../html/tintuc.html">Tin tức</a></li>
                 <li><a href="../html/giave.html">Giá vé</a></li>
             </ul>
         </nav>
-        <div class="tai-khoan" id="taikhoanArea"></div>
+        <div class="tai-khoan" id="taikhoanArea">
+            <button class="nut-dang-nhap" onclick="moModal('dangNhapModal')">Đăng nhập</button>
+            <button class="nut-dang-ky" onclick="moModal('dangKyModal')">Đăng ký</button>
+        </div>
     </header>
 
     <main class="khu-vuc-chinh">
         <h1 class="tieu-de-muc" style="margin-top: 0;">
             <a href="#"> Vé của tôi <span>&raquo;</span></a>
         </h1>
-
-        <div class="cot-danh-sach-ve">
-            <div id="ticketContainer"></div>
-            <div style="text-align: center; padding-bottom: 30px;">
-                <a href="../html/Trangchu.html" style="text-decoration: none; color: #93e9be;" class="back-home">← Về
-                    trang chủ</a>
-            </div>
+        <div id="ticketContainer" class="ticket-list">
+            <div class="loading">⏳ Đang tải danh sách vé...</div>
+        </div>
+        <div style="text-align: center;">
+            <a href="trangchu.html" class="back-home">← Về trang chủ</a>
         </div>
     </main>
 
@@ -350,7 +128,7 @@
             <div style="text-align: center; margin-top: 15px;">
                 <span style="color:#888;">Chưa có tài khoản? </span>
                 <span onclick="moModal('dangKyModal'); dongModal('dangNhapModal');"
-                    style="color:#93e9be; cursor:pointer;">Đăng ký ngay</span>
+                    style="color:var(--mau-chu-dao); cursor:pointer;">Đăng ký ngay</span>
             </div>
         </div>
     </div>
@@ -369,191 +147,203 @@
             <div style="text-align: center; margin-top: 15px;">
                 <span style="color:#888;">Đã có tài khoản? </span>
                 <span onclick="moModal('dangNhapModal'); dongModal('dangKyModal');"
-                    style="color:#93e9be; cursor:pointer;">Đăng nhập</span>
+                    style="color:var(--mau-chu-dao); cursor:pointer;">Đăng nhập</span>
             </div>
         </div>
     </div>
 
-    <script src="../js/script.js"></script>
-    <script src="../js/taikhoan.js"></script>
-
     <script>
-        // ========================================================
-        // FKIỂM TRA ĐĂNG NHẬP 
-        // ========================================================
-        const savedUser = sessionStorage.getItem('currentUser');
-        if (!savedUser) {
-            window.location.href = 'trangchu.html';
+        function layTheLoaiPhim(tenPhim) {
+            // Kiểm tra biến khoPhim có tồn tại không (từ script.js)
+            if (typeof khoPhim !== 'undefined' && khoPhim.length > 0) {
+                const phim = khoPhim.find(p => p.ten === tenPhim);
+                if (phim && phim.theLoai) {
+                    return phim.theLoai;
+                }
+            }
+
+            const genreMap = {
+                'Doraemon': 'Hoạt Hình',
+                'Shin': 'Hoạt Hình',
+                'Mario': 'Hoạt Hình',
+                'Mèo Siêu Quậy': 'Hoạt Hình',
+                'Thám Tử Cừu': 'Hài',
+                'Tạm Biệt Gohan': 'Tâm Lý',
+                'Thoát Khỏi Tận Thế': 'Khoa Học Viễn Tưởng',
+                'Michael': 'Ca Nhạc',
+                'Trùm Sò': 'Hài',
+                'Dưới Bóng Điện Hạ': 'Cổ Trang',
+                'Phí Phông': 'Kinh Dị',
+                'Bài Trùng Phá Án': 'Trinh Thám',
+                'Một Thời Ta Đã Yêu': 'Tình Cảm',
+                'Hồ Nuốt Người': 'Kinh Dị',
+                'Xác Ướp': 'Kinh Dị',
+                'Làng Khát Máu': 'Kinh Dị',
+                'Làng Trùng Tang': 'Kinh Dị',
+                'Hào Quang Đơn Độc': 'Tâm Lý'
+            };
+
+            for (const [key, value] of Object.entries(genreMap)) {
+                if (tenPhim.includes(key)) {
+                    return value;
+                }
+            }
+            return 'Chưa cập nhật';
         }
 
-        const nguoiDungHienTai = JSON.parse(savedUser);
-        const area = document.getElementById('taikhoanArea');
+        // Hàm hiển thị danh sách vé (luôn lấy dữ liệu MỚI NHẤT từ localStorage)
+        function hienThiVe() {
+            const savedUser = sessionStorage.getItem('currentUser');
+            if (!savedUser) {
+                window.location.href = 'trangchu.html';
+                return;
+            }
 
-        if (area && nguoiDungHienTai) {
-            area.innerHTML = `
-                <div style="display: flex; gap: 15px; align-items: center;">
-                    <span style="color:#93e9be;">${nguoiDungHienTai.name}</span>
-                    <button class="nut-dang-xuat" style="background:transparent; border:1px solid #ff6b6b; color:#ff6b6b; padding:8px 20px; border-radius:30px; cursor:pointer;" onclick="dangXuat()">Đăng xuất</button>
-                </div>
-            `;
+            const currentUser = JSON.parse(savedUser);
+            const allTickets = JSON.parse(localStorage.getItem('cinema_tickets') || '[]');
+            const myTickets = allTickets.filter(t => t.email === currentUser.email);
+            const container = document.getElementById('ticketContainer');
+
+            if (myTickets.length === 0) {
+                container.innerHTML = `<div class="empty-ticket">🎫 Bạn chưa đặt vé nào. Hãy đặt vé ngay hôm nay!</div>`;
+                return;
+            }
+
+            myTickets.sort((a, b) => {
+                const dateA = new Date(a.date.split('/').reverse().join('-') + 'T' + (a.time || '00:00'));
+                const dateB = new Date(b.date.split('/').reverse().join('-') + 'T' + (b.time || '00:00'));
+                return dateB - dateA;
+            });
+
+            let html = '';
+            myTickets.forEach(t => {
+                // Lấy thể loại phim
+                const theLoai = layTheLoaiPhim(t.movie);
+
+                html += `
+    <div class="ticket-item">
+        <div class="ticket-code">🎟️ Mã vé: ${t.id}</div>
+        <div class="ticket-info">
+            <p><strong> Phim:</strong> ${t.movie} <span class="genre-badge">${theLoai}</span></p>
+            <p><strong> Thể loại:</strong> ${theLoai}</p>
+            <p><strong> Ngày:</strong> ${t.date}</p>
+            <p><strong> Giờ:</strong> ${t.time || '---'}</p>
+            <p><strong> Ghế:</strong> ${t.seats ? t.seats.join(', ') : '---'}</p>
+            <p><strong> Combo:</strong> ${t.combo || 'Không'}</p>
+            <p><strong> Tổng tiền:</strong> ${(t.total || 0).toLocaleString()}đ</p>
+        </div>
+    </div>
+    `;
+            });
+            container.innerHTML = html;
+        }
+
+        function capNhatHeader() {
+            const savedUser = sessionStorage.getItem('currentUser');
+            if (!savedUser) return;
+
+            const currentUser = JSON.parse(savedUser);
+            const area = document.getElementById('taikhoanArea');
+            if (area) {
+                area.innerHTML = `
+    <div style="display: flex; gap: 15px; align-items: center;">
+        <a href="vecuatoi.html" style="color:#93e9be; text-decoration:none; display:flex; align-items:center; gap:5px;">
+            👤 ${currentUser.name}
+        </a>
+        <button class="nut-dang-xuat"
+            style="background:transparent; border:1px solid #ff6b6b; color:#ff6b6b; padding:8px 20px; border-radius:30px; cursor:pointer;"
+            onclick="dangXuat()">Đăng xuất</button>
+    </div>
+    `;
+            }
         }
 
         function dangXuat() {
             sessionStorage.removeItem('currentUser');
-            window.location.href = '../html/Trangchu.html';
+            window.location.href = 'trangchu.html';
         }
 
-        // ========================================================
-        // 2CHUẨN BỊ ICON CHO VÉ
-        // ========================================================
-        const bieuTuongPhim = `<svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg>`;
-        const bieuTuongGhe = `<svg viewBox="0 0 24 24"><path d="M4 18v3M20 18v3M5 11V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v6"/><rect x="2" y="11" width="20" height="7" rx="2"/></svg>`;
-        const bieuTuongCombo = `<svg viewBox="0 0 24 24"><path d="M18 8h1a2 2 0 0 1 0 4h-1"/><path d="M4 8h16l-2 14H6Z"/><path d="M8 8v14M16 8v14M12 8v14"/></svg>`;
-        const bieuTuongTien = `<svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/></svg>`;
-        const bieuTuongTheLoai = `<svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>`;
-        // ========================================================
-        // HÀM TÌM ẢNH POSTER TRONG KHO PHIM
-        // ========================================================
-        function timAnhPoster(tenPhimCanTim) {
-            let anhMacDinh = "../hinhanh/logo.png";
-
-            if (typeof khoPhim !== 'undefined') {
-                for (let i = 0; i < khoPhim.length; i++) {
-                    let phimDangXet = khoPhim[i];
-                    if (phimDangXet.ten === tenPhimCanTim) {
-                        return phimDangXet.poster;
-                    }
-                }
-            }
-            return anhMacDinh;
+        // Các hàm modal
+        function moModal(id) {
+            document.getElementById(id).classList.add('active');
         }
 
-        // ========================================================
-        // HÀM TÌM THỂ LOẠI PHIM
-        // ========================================================
-        function timTheLoaiPhim(tenPhimCanTim) {
-            let theLoaiMacDinh = "Đang cập nhật";
-
-            if (typeof khoPhim !== 'undefined') {
-                for (let i = 0; i < khoPhim.length; i++) {
-                    let phimDangXet = khoPhim[i];
-                    if (phimDangXet.ten === tenPhimCanTim && phimDangXet.theLoai) {
-                        return phimDangXet.theLoai; // Lấy thể loại từ kho phim ra
-                    }
-                }
-            }
-            return theLoaiMacDinh;
+        function dongModal(id) {
+            document.getElementById(id).classList.remove('active');
         }
-        // ========================================================
-        // HÀM TẠO 1 CHIẾC VÉ BẰNG HTML
-        // ========================================================
-        function taoHTMLVe(ve) {
 
-            // Xử lý đọc danh sách ghế
-            let chuGhe = "";
-            let gheLayTuDatabase = ve.gheDaChon || ve.seats;
+        function dangNhap() {
+            const email = document.getElementById('loginEmail').value.trim();
+            const pass = document.getElementById('loginPass').value.trim();
+            const users = JSON.parse(localStorage.getItem('cinema_users') || '[]');
+            const user = users.find(u => u.email === email && u.password === pass);
 
-            if (Array.isArray(gheLayTuDatabase)) {
-                chuGhe = gheLayTuDatabase.join(', ');
-            } else if (gheLayTuDatabase) {
-                chuGhe = gheLayTuDatabase;
+            if (user) {
+                sessionStorage.setItem('currentUser', JSON.stringify(user));
+                dongModal('dangNhapModal');
+                location.reload();
             } else {
-                chuGhe = "Đang cập nhật";
+                document.getElementById('loginError').innerText = 'Sai email hoặc mật khẩu!';
             }
-
-            // Xử lý các thông tin text
-            let tenPhim = ve.tenPhim || ve.movie || 'Chưa rõ phim';
-            let ngayChieu = ve.ngayChieu || ve.date || '--/--/----';
-            let gioChieu = ve.gioChieu || ve.time || '--:--';
-            let maVe = ve.id || ve.maVe;
-
-            // Xử lý bắp nước
-            let chuCombo = ve.khuyenMai || ve.combo || 'Không';
-            if (ve.uuDaiBapNuoc === true) {
-                chuCombo = 'Miễn phí bắp nước';
-            }
-
-            // Xử lý tiền
-            let soTien = ve.tienVe || ve.total || 0;
-            let tienTong = soTien.toLocaleString('vi-VN');
-
-            // Gọi hàm lấy link ảnh
-            let anhBia = timAnhPoster(tenPhim);
-            let theLoai = timTheLoaiPhim(tenPhim);
-
-            // Gắn vào mã HTML
-            return `
-            <div class="the-ve">
-                <div class="phan-than-ve">
-                    <div class="cot-thoi-gian">
-                        <div class="chu-ma-ve">Mã vé: ${maVe}</div>
-                        <div class="chu-ngay-chieu">${ngayChieu}</div>
-                        <div class="chu-gio-chieu">${gioChieu}</div>
-                        <hr class="duong-ke-mo">
-                        <div class="chu-dia-diem">
-                            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                            <span>Plant Cinema - 458 Phố Minh Khai, Phường Vĩnh Tuy, Quận Hai Bà Trưng, Hà Nội</span>
-                        </div>
-                    </div>
-                    <div class="cot-thong-tin">
-                        <div class="hang-thong-tin">${bieuTuongPhim}<div class="chu-thong-tin"><span>Phim</span><strong>${tenPhim}</strong></div></div>
-                        <div class="hang-thong-tin">${bieuTuongTheLoai}<div class="chu-thong-tin"><span>Thể loại</span><strong>${theLoai}</strong></div></div>
-                        <div class="hang-thong-tin">${bieuTuongGhe}<div class="chu-thong-tin"><span>Ghế</span><strong>${chuGhe}</strong></div></div>
-                        <div class="hang-thong-tin">${bieuTuongCombo}<div class="chu-thong-tin"><span>Combo/KM</span><strong>${chuCombo}</strong></div></div>
-                        <div class="hang-thong-tin" style="margin-bottom:0;">${bieuTuongTien}<div class="chu-thong-tin"><span>Tổng tiền</span><strong>${tienTong}đ (Đã thanh toán)</strong></div></div>
-                    </div>
-                    <div class="cot-anh-bia">
-                        <img src="${anhBia}" alt="Poster" onerror="this.src='../hinhanh/logo.png'">
-                    </div>
-                </div>
-                
-                <div class="duong-chia-ve"></div>
-                
-                <div class="cuong-ve">
-                    <div class="hinh-ma-vach"></div>
-                    <div class="chu-duoi-ma-vach">${maVe}</div>
-                </div>
-            </div>
-            `;
         }
 
-        // ========================================================
-        // LẤY DỮ LIỆU TỪ TRÌNH DUYỆT VÀ IN RA
-        // ========================================================
-        function hienThiVe() {
-            let duLieuChuoi = localStorage.getItem('cinema_tickets');
-            let tatCaVeCuaHeThong = [];
+        function dangKy() {
+            const name = document.getElementById('regName').value.trim();
+            const phone = document.getElementById('regPhone').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
+            const pass = document.getElementById('regPass').value.trim();
 
-            if (duLieuChuoi !== null) {
-                tatCaVeCuaHeThong = JSON.parse(duLieuChuoi);
-            }
+            document.getElementById('regError').innerText = '';
+            document.getElementById('regSuccess').innerText = '';
 
-            // Dùng vòng lặp nhặt ra những vé thuộc về user đang đăng nhập
-            let dsVeCuaToi = [];
-            for (let i = 0; i < tatCaVeCuaHeThong.length; i++) {
-                let veDangXet = tatCaVeCuaHeThong[i];
-                if (veDangXet.email === nguoiDungHienTai.email) {
-                    dsVeCuaToi.push(veDangXet);
-                }
-            }
-
-            let vungChua = document.getElementById('ticketContainer');
-
-            // NẾU CHƯA MUA VÉ NÀO
-            if (dsVeCuaToi.length === 0) {
+            if (!name || !phone || !email || !pass) {
+                document.getElementById('regError').innerText = 'Vui lòng nhập đầy đủ thông tin!';
                 return;
             }
 
-            // NẾU CÓ VÉ THẬT THÌ DÙNG VÒNG LẶP ĐỂ IN RA
-            let tatCaHTML = "";
-            for (let i = 0; i < dsVeCuaToi.length; i++) {
-                tatCaHTML = tatCaHTML + taoHTMLVe(dsVeCuaToi[i]);
+            const users = JSON.parse(localStorage.getItem('cinema_users') || '[]');
+            if (users.find(u => u.email === email)) {
+                document.getElementById('regError').innerText = 'Email đã tồn tại!';
+                return;
             }
 
-            vungChua.innerHTML = tatCaHTML;
+            users.push({ id: users.length + 1, name, phone, email, password: pass });
+            localStorage.setItem('cinema_users', JSON.stringify(users));
+            document.getElementById('regSuccess').innerText = '✅ Đăng ký thành công! Hãy đăng nhập.';
+
+            setTimeout(() => {
+                dongModal('dangKyModal');
+                moModal('dangNhapModal');
+            }, 1500);
         }
 
-        // GỌI HÀM CHẠY
+        window.addEventListener('pageshow', function (event) {
+            setTimeout(() => {
+                hienThiVe();
+                capNhatHeader();
+            }, 100);
+        });
+
+        window.addEventListener('storage', function (e) {
+            if (e.key === 'cinema_tickets') {
+                console.log('Phát hiện thay đổi vé từ tab khác, tự động cập nhật...');
+                hienThiVe();
+            }
+        });
+
+        window.addEventListener('focus', function () {
+            console.log('Trang được focus, cập nhật vé...');
+            hienThiVe();
+        });
+
+        document.addEventListener('visibilitychange', function () {
+            if (!document.hidden) {
+                console.log('Tab được active lại, cập nhật vé...');
+                hienThiVe();
+            }
+        });
+
+        capNhatHeader();
         hienThiVe();
     </script>
 </body>
