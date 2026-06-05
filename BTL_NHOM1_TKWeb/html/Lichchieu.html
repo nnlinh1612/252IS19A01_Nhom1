@@ -9,9 +9,159 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/taikhoan.css">
+    <link rel="stylesheet" href="../css/themedacbiet.css">
 </head>
+<style>
+    /* ==========================================================
+   HIỆU ỨNG LÁ RƠI NHẸ NHÀNG TOÀN TRANG
+   ========================================================== */
+
+    .hieu-ung-la-roi {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    /* Đảm bảo nội dung web nổi trên lá */
+    .dau-trang-kinh,
+    .khu-vuc-chinh,
+    main,
+    footer,
+    .popup-overlay,
+    .taikhoan-modal {
+        position: relative;
+        z-index: 2;
+    }
+
+    .la {
+        position: absolute;
+        top: -80px;
+        font-size: 22px;
+        opacity: 0.35;
+        filter: drop-shadow(0 0 8px rgba(147, 233, 190, 0.35));
+        animation-name: laRoiCanada;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    /* Mỗi lá một vị trí, tốc độ, độ trễ khác nhau */
+    .la1 {
+        left: 4%;
+        animation-duration: 14s;
+        animation-delay: 0s;
+        font-size: 20px;
+    }
+
+    .la2 {
+        left: 12%;
+        animation-duration: 19s;
+        animation-delay: 3s;
+        font-size: 24px;
+    }
+
+    .la3 {
+        left: 20%;
+        animation-duration: 16s;
+        animation-delay: 6s;
+        font-size: 18px;
+    }
+
+    .la4 {
+        left: 30%;
+        animation-duration: 22s;
+        animation-delay: 1s;
+        font-size: 26px;
+    }
+
+    .la5 {
+        left: 42%;
+        animation-duration: 18s;
+        animation-delay: 8s;
+        font-size: 20px;
+    }
+
+    .la6 {
+        left: 50%;
+        animation-duration: 24s;
+        animation-delay: 4s;
+        font-size: 23px;
+    }
+
+    .la7 {
+        left: 60%;
+        animation-duration: 17s;
+        animation-delay: 7s;
+        font-size: 19px;
+    }
+
+    .la8 {
+        left: 70%;
+        animation-duration: 21s;
+        animation-delay: 2s;
+        font-size: 25px;
+    }
+
+    .la9 {
+        left: 78%;
+        animation-duration: 15s;
+        animation-delay: 9s;
+        font-size: 18px;
+    }
+
+    .la10 {
+        left: 86%;
+        animation-duration: 23s;
+        animation-delay: 5s;
+        font-size: 24px;
+    }
+
+    .la11 {
+        left: 93%;
+        animation-duration: 20s;
+        animation-delay: 10s;
+        font-size: 21px;
+    }
+
+    .la12 {
+        left: 97%;
+        animation-duration: 26s;
+        animation-delay: 12s;
+        font-size: 19px;
+    }
+
+    @keyframes laRoiCanada {
+        0% {
+            transform: translate3d(0, -80px, 0) rotate(0deg);
+            opacity: 0;
+        }
+
+        10% {
+            opacity: 0.35;
+        }
+
+        25% {
+            transform: translate3d(-35px, 25vh, 0) rotate(90deg);
+        }
+
+        50% {
+            transform: translate3d(35px, 50vh, 0) rotate(180deg);
+        }
+
+        75% {
+            transform: translate3d(-25px, 75vh, 0) rotate(270deg);
+        }
+
+        100% {
+            transform: translate3d(30px, 110vh, 0) rotate(360deg);
+            opacity: 0;
+        }
+    }
+</style>
 
 <body>
+
     <header class="dau-trang-kinh">
         <a href="../html/Trangchu.html" class="logo logo-link">
             <img src="../hinhanh/logo.png" alt="Plant Cinema Logo" class="anh-logo">
@@ -33,7 +183,20 @@
     </header>
 
     <main class="container my-4 my-md-5">
-
+        <div class="hieu-ung-la-roi">
+            <span class="la la1">🍁</span>
+            <span class="la la2">🍂</span>
+            <span class="la la3">🍃</span>
+            <span class="la la4">🍁</span>
+            <span class="la la5">🍂</span>
+            <span class="la la6">🍃</span>
+            <span class="la la7">🍁</span>
+            <span class="la la8">🍂</span>
+            <span class="la la9">🍃</span>
+            <span class="la la10">🍁</span>
+            <span class="la la11">🍂</span>
+            <span class="la la12">🍃</span>
+        </div>
         <div id="vung-lich-chieu">
             <div class="khu-vuc-tab my-5">
                 <div class="danh-sach-tab position-relative d-flex justify-content-center gap-4 gap-md-5">
@@ -113,7 +276,7 @@
             <div style="text-align: center; margin-top: 15px;">
                 <span style="color:#888;">Chưa có tài khoản? </span>
                 <span onclick="moModal('dangKyModal'); dongModal('dangNhapModal');"
-                    style="color:#93e9be; cursor:pointer;">Đăng ký ngay</span>
+                    style="color:var(--mau-chu-dao); cursor:pointer;">Đăng ký ngay</span>
             </div>
         </div>
     </div>
@@ -133,7 +296,7 @@
             <div style="text-align: center; margin-top: 15px;">
                 <span style="color:#888;">Đã có tài khoản? </span>
                 <span onclick="moModal('dangNhapModal'); dongModal('dangKyModal');"
-                    style="color:#93e9be; cursor:pointer;">Đăng nhập</span>
+                    style="color:var(--mau-chu-dao); cursor:pointer;">Đăng nhập</span>
             </div>
         </div>
     </div>

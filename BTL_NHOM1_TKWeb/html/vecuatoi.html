@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="../hinhanh/logo.png">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/taikhoan.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -75,6 +74,22 @@
             background: #93e9be;
             color: #0a0a0a;
         }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #93e9be;
+        }
+
+        .genre-badge {
+            display: inline-block;
+            background: rgba(147, 233, 190, 0.15);
+            color: #93e9be;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
     </style>
 </head>
 
@@ -86,23 +101,28 @@
         </a>
         <nav class="thanh-dieu-huong">
             <ul>
-                <li><a href="../html/Trangchu.html">Trang chủ</a></li>
+                <li><a href="../html/Trangchu.html" class="dang-chon">Trang chủ</a></li>
                 <li><a href="../html/gioithieu.html">Giới thiệu</a></li>
                 <li><a href="../html/Lichchieu.html">Lịch chiếu</a></li>
                 <li><a href="../html/tintuc.html">Tin tức</a></li>
                 <li><a href="../html/giave.html">Giá vé</a></li>
             </ul>
         </nav>
-        <div class="tai-khoan" id="taikhoanArea"></div>
+        <div class="tai-khoan" id="taikhoanArea">
+            <button class="nut-dang-nhap" onclick="moModal('dangNhapModal')">Đăng nhập</button>
+            <button class="nut-dang-ky" onclick="moModal('dangKyModal')">Đăng ký</button>
+        </div>
     </header>
 
     <main class="khu-vuc-chinh">
         <h1 class="tieu-de-muc" style="margin-top: 0;">
             <a href="#">🎟️ Vé của tôi <span>&raquo;</span></a>
         </h1>
-        <div id="ticketContainer" class="ticket-list"></div>
+        <div id="ticketContainer" class="ticket-list">
+            <div class="loading">⏳ Đang tải danh sách vé...</div>
+        </div>
         <div style="text-align: center;">
-            <a href="../html/Trangchu.html" class="back-home">← Về trang chủ</a>
+            <a href="trangchu.html" class="back-home">← Về trang chủ</a>
         </div>
     </main>
 
@@ -147,7 +167,7 @@
             <div style="text-align: center; margin-top: 15px;">
                 <span style="color:#888;">Chưa có tài khoản? </span>
                 <span onclick="moModal('dangKyModal'); dongModal('dangNhapModal');"
-                    style="color:#93e9be; cursor:pointer;">Đăng ký ngay</span>
+                    style="color:var(--mau-chu-dao); cursor:pointer;">Đăng ký ngay</span>
             </div>
         </div>
     </div>
@@ -165,65 +185,203 @@
             <div style="text-align: center; margin-top: 15px;">
                 <span style="color:#888;">Đã có tài khoản? </span>
                 <span onclick="moModal('dangNhapModal'); dongModal('dangKyModal');"
-                    style="color:#93e9be; cursor:pointer;">Đăng nhập</span>
+                    style="color:var(--mau-chu-dao); cursor:pointer;">Đăng nhập</span>
             </div>
         </div>
     </div>
 
-    <script src="../js/taikhoan.js"></script>
     <script>
-        const savedUser = sessionStorage.getItem('currentUser');
-        if (!savedUser) {
-            window.location.href = 'trangchu.html';
+        function layTheLoaiPhim(tenPhim) {
+            // Kiểm tra biến khoPhim có tồn tại không (từ script.js)
+            if (typeof khoPhim !== 'undefined' && khoPhim.length > 0) {
+                const phim = khoPhim.find(p => p.ten === tenPhim);
+                if (phim && phim.theLoai) {
+                    return phim.theLoai;
+                }
+            }
+
+            const genreMap = {
+                'Doraemon': 'Hoạt Hình',
+                'Shin': 'Hoạt Hình',
+                'Mario': 'Hoạt Hình',
+                'Mèo Siêu Quậy': 'Hoạt Hình',
+                'Thám Tử Cừu': 'Hài',
+                'Tạm Biệt Gohan': 'Tâm Lý',
+                'Thoát Khỏi Tận Thế': 'Khoa Học Viễn Tưởng',
+                'Michael': 'Ca Nhạc',
+                'Trùm Sò': 'Hài',
+                'Dưới Bóng Điện Hạ': 'Cổ Trang',
+                'Phí Phông': 'Kinh Dị',
+                'Bài Trùng Phá Án': 'Trinh Thám',
+                'Một Thời Ta Đã Yêu': 'Tình Cảm',
+                'Hồ Nuốt Người': 'Kinh Dị',
+                'Xác Ướp': 'Kinh Dị',
+                'Làng Khát Máu': 'Kinh Dị',
+                'Làng Trùng Tang': 'Kinh Dị',
+                'Hào Quang Đơn Độc': 'Tâm Lý'
+            };
+
+            for (const [key, value] of Object.entries(genreMap)) {
+                if (tenPhim.includes(key)) {
+                    return value;
+                }
+            }
+            return 'Chưa cập nhật';
         }
 
-        const userHienTai = JSON.parse(savedUser);
-
-        const area = document.getElementById('taikhoanArea');
-        if (area && userHienTai) {
-            area.innerHTML = `
-                <div style="display: flex; gap: 15px; align-items: center;">
-                    <span style="color:#93e9be;">👤 ${userHienTai.name}</span>
-                    <button class="nut-dang-xuat" style="background:transparent; border:1px solid #ff6b6b; color:#ff6b6b; 
-                    padding:8px 20px; border-radius:30px; cursor:pointer;" onclick="dangXuat()">Đăng xuất</button>
-                </div>
-            `;
-        }
-
+        // Hàm hiển thị danh sách vé (luôn lấy dữ liệu MỚI NHẤT từ localStorage)
         function hienThiVe() {
-            const allTickets = JSON.parse(localStorage.getItem('cinema_tickets') || '[]');
-            const myTickets = allTickets.filter(t => t.email === userHienTai.email);
-            const container = document.getElementById('ticketContainer');
-
-            if (myTickets.length === 0) {
-                container.innerHTML = `<div class="empty-ticket"> Bạn chưa đặt vé nào. Hãy đặt vé ngay hôm nay!</div>`;
+            const savedUser = sessionStorage.getItem('currentUser');
+            if (!savedUser) {
+                window.location.href = 'trangchu.html';
                 return;
             }
 
+            const currentUser = JSON.parse(savedUser);
+            const allTickets = JSON.parse(localStorage.getItem('cinema_tickets') || '[]');
+            const myTickets = allTickets.filter(t => t.email === currentUser.email);
+            const container = document.getElementById('ticketContainer');
+
+            if (myTickets.length === 0) {
+                container.innerHTML = `<div class="empty-ticket">🎫 Bạn chưa đặt vé nào. Hãy đặt vé ngay hôm nay!</div>`;
+                return;
+            }
+
+            myTickets.sort((a, b) => {
+                const dateA = new Date(a.date.split('/').reverse().join('-') + 'T' + (a.time || '00:00'));
+                const dateB = new Date(b.date.split('/').reverse().join('-') + 'T' + (b.time || '00:00'));
+                return dateB - dateA;
+            });
+
             let html = '';
             myTickets.forEach(t => {
+                // Lấy thể loại phim
+                const theLoai = layTheLoaiPhim(t.movie);
+
                 html += `
-                    <div class="ticket-item">
-                        <div class="ticket-code"> Mã vé: ${t.id}</div>
-                        <div class="ticket-info">
-                            <p><strong>Phim:</strong> ${t.movie}</p>
-                            <p><strong>Ngày:</strong> ${t.date}</p>
-                            <p><strong>Giờ:</strong> ${t.time}</p>
-                            <p><strong>Ghế:</strong> ${t.seats.join(', ')}</p>
-                            <p><strong>Combo:</strong> ${t.combo}</p>
-                            <p><strong>Tổng tiền:</strong> ${t.total.toLocaleString()}đ</p>
-                        </div>
-                    </div>
-                `;
+    <div class="ticket-item">
+        <div class="ticket-code">🎟️ Mã vé: ${t.id}</div>
+        <div class="ticket-info">
+            <p><strong> Phim:</strong> ${t.movie} <span class="genre-badge">${theLoai}</span></p>
+            <p><strong> Thể loại:</strong> ${theLoai}</p>
+            <p><strong> Ngày:</strong> ${t.date}</p>
+            <p><strong> Giờ:</strong> ${t.time || '---'}</p>
+            <p><strong> Ghế:</strong> ${t.seats ? t.seats.join(', ') : '---'}</p>
+            <p><strong> Combo:</strong> ${t.combo || 'Không'}</p>
+            <p><strong> Tổng tiền:</strong> ${(t.total || 0).toLocaleString()}đ</p>
+        </div>
+    </div>
+    `;
             });
             container.innerHTML = html;
         }
 
-        function dangXuat() {
-            sessionStorage.removeItem('currentUser');
-            window.location.href = '../html/Trangchu.html';
+        function capNhatHeader() {
+            const savedUser = sessionStorage.getItem('currentUser');
+            if (!savedUser) return;
+
+            const currentUser = JSON.parse(savedUser);
+            const area = document.getElementById('taikhoanArea');
+            if (area) {
+                area.innerHTML = `
+    <div style="display: flex; gap: 15px; align-items: center;">
+        <a href="vecuatoi.html" style="color:#93e9be; text-decoration:none; display:flex; align-items:center; gap:5px;">
+            👤 ${currentUser.name}
+        </a>
+        <button class="nut-dang-xuat"
+            style="background:transparent; border:1px solid #ff6b6b; color:#ff6b6b; padding:8px 20px; border-radius:30px; cursor:pointer;"
+            onclick="dangXuat()">Đăng xuất</button>
+    </div>
+    `;
+            }
         }
 
+        function dangXuat() {
+            sessionStorage.removeItem('currentUser');
+            window.location.href = 'trangchu.html';
+        }
+
+        // Các hàm modal
+        function moModal(id) {
+            document.getElementById(id).classList.add('active');
+        }
+
+        function dongModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        function dangNhap() {
+            const email = document.getElementById('loginEmail').value.trim();
+            const pass = document.getElementById('loginPass').value.trim();
+            const users = JSON.parse(localStorage.getItem('cinema_users') || '[]');
+            const user = users.find(u => u.email === email && u.password === pass);
+
+            if (user) {
+                sessionStorage.setItem('currentUser', JSON.stringify(user));
+                dongModal('dangNhapModal');
+                location.reload();
+            } else {
+                document.getElementById('loginError').innerText = 'Sai email hoặc mật khẩu!';
+            }
+        }
+
+        function dangKy() {
+            const name = document.getElementById('regName').value.trim();
+            const phone = document.getElementById('regPhone').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
+            const pass = document.getElementById('regPass').value.trim();
+
+            document.getElementById('regError').innerText = '';
+            document.getElementById('regSuccess').innerText = '';
+
+            if (!name || !phone || !email || !pass) {
+                document.getElementById('regError').innerText = 'Vui lòng nhập đầy đủ thông tin!';
+                return;
+            }
+
+            const users = JSON.parse(localStorage.getItem('cinema_users') || '[]');
+            if (users.find(u => u.email === email)) {
+                document.getElementById('regError').innerText = 'Email đã tồn tại!';
+                return;
+            }
+
+            users.push({ id: users.length + 1, name, phone, email, password: pass });
+            localStorage.setItem('cinema_users', JSON.stringify(users));
+            document.getElementById('regSuccess').innerText = '✅ Đăng ký thành công! Hãy đăng nhập.';
+
+            setTimeout(() => {
+                dongModal('dangKyModal');
+                moModal('dangNhapModal');
+            }, 1500);
+        }
+
+        window.addEventListener('pageshow', function (event) {
+            setTimeout(() => {
+                hienThiVe();
+                capNhatHeader();
+            }, 100);
+        });
+
+        window.addEventListener('storage', function (e) {
+            if (e.key === 'cinema_tickets') {
+                console.log('Phát hiện thay đổi vé từ tab khác, tự động cập nhật...');
+                hienThiVe();
+            }
+        });
+
+        window.addEventListener('focus', function () {
+            console.log('Trang được focus, cập nhật vé...');
+            hienThiVe();
+        });
+
+        document.addEventListener('visibilitychange', function () {
+            if (!document.hidden) {
+                console.log('Tab được active lại, cập nhật vé...');
+                hienThiVe();
+            }
+        });
+
+        capNhatHeader();
         hienThiVe();
     </script>
 </body>

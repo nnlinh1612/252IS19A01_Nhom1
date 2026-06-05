@@ -1198,3 +1198,166 @@ hr.vien-tab {
     box-shadow: 0 0 15px rgba(147, 233, 190, 0.6) !important;
     border-color: #93e9be !important;
 }
+
+/* ==========================================================
+   POPUP QUẢNG CÁO CHO TRANG CHỦ
+   ========================================================== */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+    z-index: 3000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.3s, opacity 0.3s;
+}
+
+.popup-overlay.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup-content {
+    background: #0f0f0f;
+    border: 2px solid #93e9be;
+    border-radius: 20px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+    animation: popupFadeIn 0.3s ease;
+}
+
+@keyframes popupFadeIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.popup-header {
+    background: linear-gradient(45deg, #1a3a2a, #0f0f0f);
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(147, 233, 190, 0.3);
+}
+
+.popup-header h3 {
+    color: #93e9be;
+    margin: 0;
+    font-size: 20px;
+}
+
+.popup-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.popup-body img {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.popup-body h4 {
+    color: #93e9be;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.popup-body p {
+    color: #ccc;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.popup-footer {
+    padding: 15px 20px;
+    border-top: 1px solid rgba(147, 233, 190, 0.2);
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.popup-btn {
+    padding: 8px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    font-size: 14px;
+}
+
+.popup-btn-primary {
+    background: linear-gradient(45deg, #6ecfa0, #93e9be);
+    color: #0a0a0a;
+    border: none;
+}
+
+.popup-btn-secondary {
+    background: transparent;
+    border: 1px solid #888;
+    color: #ccc;
+}
+
+.popup-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(147, 233, 190, 0.3);
+}
+
+.popup-btn-secondary:hover {
+    border-color: #93e9be;
+    color: #93e9be;
+}
+
+.popup-close {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #93e9be;
+    z-index: 10;
+    transition: 0.3s;
+}
+
+.popup-close:hover {
+    color: #ffffff;
+}
+
+/* Responsive cho popup trên điện thoại */
+@media screen and (max-width: 576px) {
+    .popup-content {
+        width: 95%;
+        margin: 0 10px;
+    }
+
+    .popup-header h3 {
+        font-size: 16px;
+    }
+
+    .popup-body h4 {
+        font-size: 16px;
+    }
+
+    .popup-body p {
+        font-size: 12px;
+    }
+
+    .popup-btn {
+        padding: 6px 16px;
+        font-size: 12px;
+    }
+}
