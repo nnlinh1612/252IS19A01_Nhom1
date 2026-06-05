@@ -7,7 +7,6 @@
     <link rel="icon" type="image/png" href="../hinhanh/logo.png">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/taikhoan.css">
-    <link rel="stylesheet" href="../css/themedacbiet.css">
     <title>Plant Cinema - Tài khoản</title>
 </head>
 
@@ -125,19 +124,19 @@
         function capNhatGiaoDien() {
             const area = document.getElementById('taikhoanArea');
             area.innerHTML = `
-        <div class="taikhoan-user-area">
-            <span style="color:var(--mau-chu-dao);">👤 ${currentUser.name}</span>
-            <button class="taikhoan-logout-btn" onclick="dangXuat()">Đăng xuất</button>
-        </div>
-    `;
+            <div class="taikhoan-user-area">
+                <span style="color:#93e9be;">${currentUser.name}</span>
+                <button class="taikhoan-logout-btn" onclick="dangXuat()">Đăng xuất</button>
+            </div>
+        `;
         }
 
         function hienThiGiaoDienChuaDangNhap() {
             const area = document.getElementById('taikhoanArea');
             area.innerHTML = `
-        <button class="nut-dang-nhap" id="moDangNhap">Đăng nhập</button>
-        <button class="nut-dang-ky" id="moDangKy">Đăng ký</button>
-    `;
+            <button class="nut-dang-nhap" id="moDangNhap">Đăng nhập</button>
+            <button class="nut-dang-ky" id="moDangKy">Đăng ký</button>
+        `;
             document.getElementById('moDangNhap')?.addEventListener('click', () => moModal('dangNhapModal'));
             document.getElementById('moDangKy')?.addEventListener('click', () => moModal('dangKyModal'));
             document.getElementById('veContainer').innerHTML = `<div class="taikhoan-empty">🔐 Vui lòng đăng nhập để xem vé</div>`;
@@ -156,14 +155,14 @@
             let html = `<div class="taikhoan-ve-container"><h2>🎟️ VÉ CỦA TÔI (${myTickets.length})</h2>`;
             myTickets.forEach(t => {
                 html += `<div class="taikhoan-ve-item">
-            <p><strong>Mã vé:</strong> ${t.id}</p>
-            <p><strong>Phim:</strong> ${t.movie}</p>
-            <p><strong>Thể loại:</strong> ${t.genre || 'Chưa cập nhật'}</p>
-            <p><strong>Ngày:</strong> ${t.date} - ${t.time}</p>
-            <p><strong>Ghế:</strong> ${t.seats.join(', ')}</p>
-            <p><strong>Combo:</strong> ${t.combo}</p>
-            <p><strong>Tiền:</strong> ${t.total.toLocaleString()}đ</p>
-        </div>`;
+                <p><strong>Mã vé:</strong> ${t.id}</p>
+                <p><strong>Phim:</strong> ${t.movie}</p>
+                <p><strong>Thể loại:</strong> ${t.genre || 'Chưa cập nhật'}</p>
+                <p><strong>Ngày:</strong> ${t.date} - ${t.time}</p>
+                <p><strong>Ghế:</strong> ${t.seats.join(', ')}</p>
+                <p><strong>Combo:</strong> ${t.combo}</p>
+                <p><strong>Tiền:</strong> ${t.total.toLocaleString()}đ</p>
+            </div>`;
             });
             html += `</div>`;
             document.getElementById('veContainer').innerHTML = html;

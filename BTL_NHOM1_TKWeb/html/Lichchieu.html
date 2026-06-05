@@ -9,7 +9,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/taikhoan.css">
-    <link rel="stylesheet" href="../css/themedacbiet.css">
 </head>
 <style>
     /* ==========================================================
@@ -19,20 +18,27 @@
     .hieu-ung-la-roi {
         position: fixed;
         inset: 0;
-        pointer-events: none;
+        pointer-events: none !important;
         overflow: hidden;
-        z-index: 1;
+        z-index: 0 !important;
+    }
+
+    .dau-trang-kinh {
+        position: relative;
+        z-index: 1000 !important;
     }
 
     /* Đảm bảo nội dung web nổi trên lá */
-    .dau-trang-kinh,
     .khu-vuc-chinh,
     main,
     footer,
-    .popup-overlay,
-    .taikhoan-modal {
+    .popup-overlay {
         position: relative;
         z-index: 2;
+    }
+
+    .taikhoan-modal {
+        z-index: 9999 !important;
     }
 
     .la {
@@ -41,7 +47,7 @@
         font-size: 22px;
         opacity: 0.35;
         filter: drop-shadow(0 0 8px rgba(147, 233, 190, 0.35));
-        animation-name: laRoiCanada;
+        animation-name: laRoi;
         animation-timing-function: linear;
         animation-iteration-count: infinite;
     }
@@ -131,7 +137,7 @@
         font-size: 19px;
     }
 
-    @keyframes laRoiCanada {
+    @keyframes laRoi {
         0% {
             transform: translate3d(0, -80px, 0) rotate(0deg);
             opacity: 0;
@@ -276,7 +282,7 @@
             <div style="text-align: center; margin-top: 15px;">
                 <span style="color:#888;">Chưa có tài khoản? </span>
                 <span onclick="moModal('dangKyModal'); dongModal('dangNhapModal');"
-                    style="color:var(--mau-chu-dao); cursor:pointer;">Đăng ký ngay</span>
+                    style="color:#93e9be; cursor:pointer;">Đăng ký ngay</span>
             </div>
         </div>
     </div>
@@ -296,13 +302,13 @@
             <div style="text-align: center; margin-top: 15px;">
                 <span style="color:#888;">Đã có tài khoản? </span>
                 <span onclick="moModal('dangNhapModal'); dongModal('dangKyModal');"
-                    style="color:var(--mau-chu-dao); cursor:pointer;">Đăng nhập</span>
+                    style="color:#93e9be; cursor:pointer;">Đăng nhập</span>
             </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/taikhoan.js"></script>
     <script src="../js/script.js"></script>
+    <script src="../js/taikhoan.js"></script>
 </body>
 
 </html>

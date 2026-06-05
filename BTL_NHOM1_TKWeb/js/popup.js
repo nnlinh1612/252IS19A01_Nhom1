@@ -5,7 +5,7 @@ const newsData = [
     title: "Lịch chiếu phim mới tháng 6",
     excerpt: "Hàng loạt bom tấn đổ bộ rạp Plant Cinema...",
     date: "28/05/2026",
-    image: "./images/tintuc1.png",
+    image: "../hinhanh/tintuc1.png",
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ const newsData = [
     title: "Khai trương rạp Plant Cinema - Ưu đãi khủng 30%",
     excerpt: "Nhân dịp khai trương, khách hàng được giảm 30% giá vé...",
     date: "20/05/2026",
-    image: "./images/anh2.png",
+    image: "../hinhanh/anh2.png",
     voucher: { code: "KHAITRUONG30", discount: "Giảm 30%" },
   },
   {
@@ -22,7 +22,7 @@ const newsData = [
     title: "Khuyến mãi Tết Thiếu Nhi 1/6",
     excerpt: "Miễn phí combo bắp nước cho vé trẻ em...",
     date: "01/06/2026",
-    image: "./images/ctkm2.png",
+    image: "../hinhanh/ctkm2.png",
     voucher: { code: "THIEUNHI_BAPNUOC", discount: "Miễn phí bắp nước" },
   },
   {
@@ -31,7 +31,7 @@ const newsData = [
     title: "Khuyến mãi đặc biệt dịp Trung Thu",
     excerpt: "Mua 2 tặng 1 và tặng lồng đèn cho các bé...",
     date: "22/09/2025",
-    image: "./images/ctkm3.png",
+    image: "../hinhanh/ctkm3.png",
     voucher: { code: "MOONFEST", discount: "Mua 2 tặng 1" },
   },
 ];
