@@ -346,11 +346,6 @@
                 window.location.href = "Trangchu.html";
                 return;
             }
-
-            /*
-                SỬA TẠI ĐÂY: Thay sessionStorage thành localStorage 
-                để đọc đúng tài khoản động vừa đăng nhập
-            */
             let userDangDangNhap = JSON.parse(localStorage.getItem("currentUser")) || JSON.parse(localStorage.getItem("user_current"));
 
             if (userDangDangNhap) {
@@ -360,23 +355,17 @@
                 donHang.sdtKhachHang = userDangDangNhap.phone || "";
             }
 
-            /*
-                Nếu trang thanh toán chưa tạo mã vé thì tạo ở đây.
-            */
+            /*Nếu trang thanh toán chưa tạo mã vé thì tạo ở đây. */
             if (!donHang.maVe) {
                 donHang.maVe = "PL-" + Math.floor(Math.random() * 100000);
             }
 
-            /*
-                Đảm bảo tổng tiền luôn có số.
-            */
+            /*Đảm bảo tổng tiền luôn có số*/
             if (!donHang.tongTienCuoiCung) {
                 donHang.tongTienCuoiCung = donHang.tienVe || 0;
             }
 
-            /*
-                Đảm bảo gheDaChon luôn là mảng string
-            */
+            /*Đảm bảo gheDaChon luôn là mảng string*/
             if (!Array.isArray(donHang.gheDaChon)) {
                 donHang.gheDaChon = [];
             }
@@ -501,10 +490,6 @@
                 return;
             }
 
-            /*
-                Đây là format cũ mà vecuatoi.html đọc được.
-                Không đổi tên key.
-            */
             let theVeMoi = {
                 id: donHang.maVe,
                 email: emailNhanVe,
@@ -539,16 +524,16 @@
                 return;
             }
 
-            // 1. Thay đổi trạng thái nút sang chế độ chờ để ngăn người dùng click liên tục
-            nutGui.innerHTML = "⏳ Đang tiến hành gửi email...";
+            // Thay đổi trạng thái nút sang chế độ chờ để ngăn người dùng click liên tục
+            nutGui.innerHTML = "Đang tiến hành gửi email...";
             nutGui.style.pointerEvents = "none";
             nutGui.style.opacity = "0.8";
 
-            // 2. Lấy lại dữ liệu đơn hàng hiện tại từ localStorage để đóng gói nội dung email
+            // Lấy lại dữ liệu đơn hàng hiện tại từ localStorage để gửi nội dung email
             let donHang = JSON.parse(localStorage.getItem("thongTinDonHang")) || {};
             let tongTien = donHang.tongTienCuoiCung || donHang.tienVe || 0;
 
-            // 3. Chuẩn bị các tham số (biến dữ liệu) để truyền vào biểu mẫu email
+            // Chuẩn bị các tham số để truyền vào biểu mẫu email
             let thamSoEmail = {
                 to_email: emailNhanVe,
                 customer_name: donHang.tenKhachHang || "Khách hàng",
@@ -561,19 +546,19 @@
                 qr_image: qrVeUrl
             };
 
-            // 4. Gọi API của EmailJS để ra lệnh cho Server gửi thư đi thật
+            // Gọi API của EmailJS để gửi thư 
             emailjs.send("service_4cq84ps", "template_uhuru09", thamSoEmail)
                 .then(function (response) {
                     // Kịch bản A: Gửi thư thành công mỹ mãn
                     console.log("Thành công!", response.status, response.text);
-                    nutGui.innerHTML = "✅ Đã gửi vé về email thành công!";
+                    nutGui.innerHTML = "Đã gửi vé về email thành công!";
                     nutGui.classList.add("da-gui");
                     nutGui.style.background = "#93e9be";
                     nutGui.style.color = "#0a0a0a";
                 }, function (error) {
                     // Kịch bản B: Gặp lỗi đường truyền hoặc sai cấu hình API
                     console.error("Thất bại...", error);
-                    nutGui.innerHTML = "❌ Lỗi kết nối! Thử lại sau.";
+                    nutGui.innerHTML = "Lỗi kết nối! Thử lại sau.";
                     nutGui.style.pointerEvents = "auto";
                     nutGui.style.opacity = "1";
                 });

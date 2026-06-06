@@ -93,19 +93,15 @@
 
 <script>
 
-    /*
-        =========================================================
-        1. GIÁ COMBO
-        =========================================================
-    */
+    /*=========================================================
+        GIÁ COMBO
+        ========================================================*/
     const GIA_COMBO_1 = 65000;
     const GIA_COMBO_2 = 85000;
 
-    /*
-        =========================================================
-        2. BIẾN LƯU TRẠNG THÁI
-        =========================================================
-    */
+    /*=========================================================
+        BIẾN LƯU TRẠNG THÁI
+        =========================================================*/
     let soLuongCombo1 = 0;
     let soLuongCombo2 = 0;
 
@@ -115,11 +111,9 @@
     let tienUuDaiBapNuoc = 0;
     let tongTienCuoiCung = 0;
 
-    /*
-        =========================================================
-        3. KHI TRANG VỪA MỞ
-        =========================================================
-    */
+    /* =========================================================
+        LOAD TRANG VỪA MỞ
+        =========================================================*/
     document.addEventListener("DOMContentLoaded", function () {
         let duLieuDonHang = localStorage.getItem("thongTinDonHang");
 
@@ -154,11 +148,9 @@
         tinhTongTien();
     });
 
-    /*
-        =========================================================
-        4. THÔNG BÁO
-        =========================================================
-    */
+    /*=========================================================
+        THÔNG BÁO
+        =========================================================*/
     function hienThongBao(tinNhan) {
         let hopThongBao = document.getElementById("thong-bao-custom");
 
@@ -170,21 +162,17 @@
         }, 2500);
     }
 
-    /*
-        =========================================================
-        5. HIỂN THỊ TIỀN VÉ
-        =========================================================
-    */
+    /* =========================================================
+        HIỂN THỊ TIỀN VÉ
+        =========================================================*/
     function hienThiTienVe() {
         document.getElementById("hien-thi-tien-ve").innerText =
             donHang.tienVe.toLocaleString("vi-VN") + "đ";
     }
 
-    /*
-        =========================================================
-        6. TĂNG GIẢM COMBO
-        =========================================================
-    */
+    /*=========================================================
+        TĂNG GIẢM COMBO
+        ========================================================*/
     function thayDoiCombo(loaiCombo, hanhDong) {
         if (loaiCombo === 1) {
             if (hanhDong === "tang") {
@@ -213,20 +201,16 @@
         tinhTongTien();
     }
 
-    /*
-        =========================================================
-        7. TÍNH TỔNG TIỀN
-        =========================================================
-    */
+    /* =========================================================
+        TÍNH TỔNG TIỀN
+        =========================================================*/
     function tinhTongTien() {
         tienCombo = soLuongCombo1 * GIA_COMBO_1 + soLuongCombo2 * GIA_COMBO_2;
         tienUuDaiBapNuoc = 0;
 
-        /*
-            Nếu đơn hàng có ưu đãi bắp nước:
+        /* Nếu đơn hàng có ưu đãi bắp nước:
             - Chỉ miễn phí 1 combo.
-            - Nếu chọn cả 2 loại combo thì miễn phí combo rẻ hơn trong số combo đã chọn.
-        */
+            - Nếu chọn cả 2 loại combo thì miễn phí combo rẻ hơn trong số combo đã chọn.*/
         if (donHang.uuDaiBapNuoc === true) {
             tienUuDaiBapNuoc = tinhTienUuDaiBapNuoc();
         }
@@ -247,30 +231,21 @@
             tongTienCuoiCung.toLocaleString("vi-VN") + "đ";
     }
 
-    /*
-        =========================================================
-        8. TÍNH ƯU ĐÃI BẮP NƯỚC
-        =========================================================
-    */
+    /*=========================================================
+        TÍNH ƯU ĐÃI BẮP NƯỚC
+        =========================================================*/
     function tinhTienUuDaiBapNuoc() {
-        /*
-            Chưa chọn combo nào thì chưa được giảm.
-        */
+        /* Chưa chọn combo nào thì chưa được giảm.*/
         if (soLuongCombo1 === 0 && soLuongCombo2 === 0) {
             return 0;
         }
 
-        /*
-            Nếu có combo 1 thì miễn phí combo 1.
-            Vì combo 1 rẻ hơn combo 2.
-        */
+        /*Nếu có combo 1 thì miễn phí combo 1. Vì combo 1 rẻ hơn combo 2.*/
         if (soLuongCombo1 > 0) {
             return GIA_COMBO_1;
         }
 
-        /*
-            Nếu chỉ chọn combo 2 thì miễn phí combo 2.
-        */
+        /* Nếu chỉ chọn combo 2 thì miễn phí combo 2.*/
         if (soLuongCombo2 > 0) {
             return GIA_COMBO_2;
         }
@@ -278,11 +253,9 @@
         return 0;
     }
 
-    /*
-        =========================================================
-        9. SANG TRANG THANH TOÁN
-        =========================================================
-    */
+    /*=========================================================
+        SANG TRANG THANH TOÁN
+        ========================================================*/
     function chuyenTrangThanhToan() {
         donHang.soLuongCombo1 = soLuongCombo1;
         donHang.soLuongCombo2 = soLuongCombo2;

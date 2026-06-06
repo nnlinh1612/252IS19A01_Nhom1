@@ -1,8 +1,6 @@
-/*
-    =========================================================
-    1. GIÁ VÉ & PHỤ THU
-    =========================================================
-*/
+/* =========================================================
+    GIÁ VÉ 
+    =========================================================*/
 const BANG_GIA_VE = {
   "nguoi-lon": { thuong: 80000, cuoiTuan: 105000 },
   "sinh-vien": { thuong: 60000, cuoiTuan: 78000 },
@@ -12,11 +10,9 @@ const BANG_GIA_VE = {
 const PHU_THU_GHE_DOI = 10000;
 const PHU_THU_GHE_VIP = 20000;
 
-/*
-    =========================================================
-    2. DANH SÁCH KHUYẾN MÃI
-    =========================================================
-*/
+/* =========================================================
+    DANH SÁCH KHUYẾN MÃI
+    =========================================================*/
 const danhSachKhuyenMai = [
   {
     ma: "KHAITRUONG30",
@@ -24,7 +20,7 @@ const danhSachKhuyenMai = [
     loai: "giam-phan-tram",
     phanTramGiam: 30,
     tuNgay: "20/05/2026",
-    denNgay: "25/09/2026",
+    denNgay: "25/05/2026",
     apDungLoaiVe: ["tat-ca"],
     soLuotMacDinh: 100,
   },
@@ -48,11 +44,9 @@ const danhSachKhuyenMai = [
   },
 ];
 
-/*
-    =========================================================
-    3. BIẾN LƯU TRẠNG THÁI
-    =========================================================
-*/
+/*=========================================================
+    BIẾN LƯU TRẠNG THÁI
+    =========================================================*/
 let phimHienTai = null;
 let tenPhimHienTai = "";
 
@@ -67,11 +61,9 @@ let tienDuocGiam = 0;
 let tongTienVe = 0;
 let uuDaiBapNuoc = false;
 
-/*
-    =========================================================
-    4. KHI TRANG VỪA MỞ
-    =========================================================
-*/
+/* =========================================================
+    LOAD MỞ TRANG
+    =========================================================*/
 document.addEventListener("DOMContentLoaded", function () {
   khoiTaoLuotKhuyenMai();
 
@@ -116,11 +108,9 @@ function hienThongBao(tinNhan) {
   }, 2500);
 }
 
-/*
-    =========================================================
-    7 & 8 & 9. XỬ LÝ NGÀY VÀ GIỜ CHIẾU
-    =========================================================
-*/
+/* =========================================================
+   XỬ LÝ NGÀY VÀ GIỜ CHIẾU
+    =========================================================*/
 function doiNgayThanhDate(chuoiNgay) {
   let p = chuoiNgay.split("/");
   return new Date(p[2], p[1] - 1, p[0]);
@@ -192,11 +182,9 @@ function chonGio(gio) {
   renderDanhSachGio(gio);
 }
 
-/*
-    =========================================================
-    10. VẼ SƠ ĐỒ GHẾ VÀ CHỌN GHẾ
-    =========================================================
-*/
+/*=========================================================
+    VẼ SƠ ĐỒ GHẾ VÀ CHỌN GHẾ
+    ========================================================*/
 function veSoDoGhe() {
   let khungGhe = document.getElementById("khung-chua-ghe");
   let html = "";
@@ -239,11 +227,9 @@ function chonGhe(tenGhe, theGhe) {
   tinhLaiTongTien();
 }
 
-/*
-    =========================================================
-    11. VẼ DROPDOWN CẤU HÌNH CHO TỪNG GHẾ (DYNAMIC)
-    =========================================================
-*/
+/* =========================================================
+    VẼ DROPDOWN CHO TỪNG GHẾ
+    =========================================================*/
 function layTenLoaiVe(loaiVe) {
   if (loaiVe === "nguoi-lon") return "Người lớn";
   if (loaiVe === "sinh-vien") return "Sinh viên";
@@ -315,11 +301,9 @@ window.onclick = function (e) {
   }
 };
 
-/*
-    =========================================================
-    13. KHỞI TẠO BỘ ĐẾM
-    =========================================================
-*/
+/*=========================================================
+    KHỞI TẠO BỘ ĐẾM
+    =========================================================*/
 function khoiTaoLuotKhuyenMai() {
   let duLieuMoi = {};
   try {
@@ -361,13 +345,11 @@ function truLuotKhuyenMai(maKhuyenMai) {
   }
 }
 
-/*
-    =========================================================
+/*=========================================================
     14. KIỂM TRA KHUYẾN MÃI
-    =========================================================
-*/
+    =========================================================*/
 function khuyenMaiConHan(km) {
-  // Nếu chưa có ngày được chọn, hệ thống sẽ tạm thời coi như hợp lệ ĐỂ HIỂN THỊ LÊN MENU cho cậu test
+  // Nếu chưa có ngày được chọn, hệ thống sẽ tạm thời coi như hợp lệ ĐỂ HIỂN THỊ LÊN MENU
   if (ngayDuocChon === "") {
     return true;
   }
@@ -420,11 +402,9 @@ function khuyenMaiHopLe(km) {
   return true;
 }
 
-/*
-    =========================================================
-    15. VẼ DANH SÁCH KHUYẾN MÃI (BẢN CHUẨN)
-    =========================================================
-*/
+/*=========================================================
+    VẼ DANH SÁCH KHUYẾN MÃI 
+  =========================================================*/
 function veDanhSachKhuyenMai() {
   let khungDanhSach = document.getElementById("danh-sach-khuyen-mai");
   let oKhuyenMai = document.getElementById("khuyen-mai");
@@ -468,11 +448,9 @@ function layKhuyenMaiDangChon() {
   return ma ? danhSachKhuyenMai.find((k) => k.ma === ma) || null : null;
 }
 
-/*
-    =========================================================
-    16. TÍNH TIỀN TỔNG
-    =========================================================
-*/
+/*=========================================================
+    TÍNH TIỀN TỔNG
+    =========================================================*/
 function hienThiGheDaChon() {
   let oGhe = document.getElementById("chu-hien-thi-ghe");
   if (danhSachGheDaChon.length === 0) {
@@ -510,8 +488,8 @@ function tinhLaiTongTien() {
     let giaCoBan = BANG_GIA_VE[ghe.loaiVe].thuong;
     if (laNgayCuoiTuan(ngayDuocChon)) giaCoBan = BANG_GIA_VE[ghe.loaiVe].cuoiTuan;
     /* Hàng A, B, C là ghế thường
-    Hàng D là ghế VIP +20.000đ
-    Hàng E là ghế đôi x2 + 10.000đ */
+    Hàng D là ghế VIP +20.000k
+    Hàng E là ghế đôi x2 + 10k */
     let giaGhe = giaCoBan;
 
     if (ghe.tenGhe.startsWith("E")) {
@@ -561,11 +539,9 @@ function tinhLaiTongTien() {
   hienThiTongTien();
 }
 
-/*
-    =========================================================
-    17. SANG TRANG BẮP NƯỚC
-    =========================================================
-*/
+/*=========================================================
+    SANG TRANG BẮP NƯỚC
+    =========================================================*/
 function chuyenTrangBapNuoc() {
   if (danhSachGheDaChon.length === 0) {
     hienThongBao("Bạn chưa chọn ghế nào!");
@@ -610,7 +586,7 @@ function chuyenTrangBapNuoc() {
   };
 
   localStorage.setItem("thongTinDonHang", JSON.stringify(donHang));
-  window.location.href = "datbongnuoc.html"; // Chỉnh lại đường dẫn nếu cần
+  window.location.href = "datbongnuoc.html";
 }
 
 document.addEventListener("DOMContentLoaded", function () {

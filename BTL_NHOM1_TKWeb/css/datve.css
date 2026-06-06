@@ -1,7 +1,5 @@
 /* ==========================================================
-   TRANG ĐẶT VÉ - PLANT CINEMA
-   Bootstrap chỉ dùng nhẹ để chia cột.
-   Phần giao diện chính tự viết bằng CSS.
+   TRANG ĐẶT VÉ
    ========================================================== */
 
 body {
@@ -452,7 +450,7 @@ body {
 }
 
 /* ==========================================================
-   TRANG ĐẶT BẮP NƯỚC - PLANT CINEMA
+   TRANG ĐẶT BẮP NƯỚC 
    ========================================================== */
 
 /* Thông báo */
@@ -703,7 +701,7 @@ body {
 }
 
 /* ==========================================================
-   TRANG THANH TOÁN - PLANT CINEMA
+   TRANG THANH TOÁN 
    ========================================================== */
 
 /* Toast thông báo */
@@ -912,16 +910,13 @@ body {
 }
 
 /* ==========================================================
-   TRANG XÁC NHẬN VÉ - PLANT CINEMA
+   TRANG XÁC NHẬN VÉ 
    ========================================================== */
-
-/* Căn giữa toàn bộ vé */
 .trang-xac-nhan {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-
     padding: 24px;
 }
 
@@ -1075,10 +1070,8 @@ body {
     }
 }
 
-
-
 /* ==========================================================
-   TÙY BIẾN KHỐI CHỨA DROPDOWN ĐỘNG THEO GHẾ CHUẨN XANH MINT
+   DROPDOWN GHẾ
    ========================================================== */
 .the-ghe-dynamic {
     background: #161616 !important;
@@ -1098,7 +1091,6 @@ body {
     letter-spacing: 0.5px !important;
 }
 
-/* Ép danh sách xổ xuống của ghế custom có độ ưu tiên hiển thị cao hơn */
 .the-ghe-dynamic .dropdown-danh-sach {
     z-index: 30 !important;
 }

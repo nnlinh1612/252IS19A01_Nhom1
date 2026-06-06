@@ -1,23 +1,20 @@
-// =================================================================
-// TẠO DỮ LIỆU VÉ GIẢ LẬP CHO BÀI TẬP LỚN (ĐÃ FIX LỖI KHÔNG HIỂN THỊ)
-// =================================================================
 function khoiTaoDuLieuVeAo() {
-  // 1. Đổi tên cờ kiểm tra: Nếu đã tạo bộ dữ liệu xịn này rồi thì mới dừng
+  // Nếu đã tạo bộ dữ liệu rồi thì mới dừng
   if (localStorage.getItem("daTaoDataVeAoXin")) {
     return;
   }
 
-  // 2. XÓA SẠCH VÉ RÁC CŨ TỪ TRƯỚC (QUAN TRỌNG)
+  // XXóa sạch vé cũ từ trước
   localStorage.removeItem("cinema_tickets");
 
-  // 3. Danh sách email các thành viên
+  // Danh sách email các thành viên
   const danhSachEmail = ["admin@plant.com", "nlinh1612@gmail.com", "nhamtrinh507@gmail.com", "nplinh0315@gmail.com"];
 
-  // 4. Lọc lấy những phim ĐANG CHIẾU từ khoPhim
+  // Lọc lấy những phim ĐANG CHIẾU từ khoPhim
   const phimDangChieu = khoPhim.filter((p) => p.trangThai === "dang-chieu");
   let danhSachVeAo = [];
 
-  // 5. Tạo vé ngẫu nhiên cho từng email
+  // Tạo vé ngẫu nhiên cho từng email
   danhSachEmail.forEach((email) => {
     // Mỗi người cho đặt từ 4 đến 6 vé cho hoành tráng
     let soLuongVe = Math.floor(Math.random() * 3) + 4;
@@ -55,10 +52,10 @@ function khoiTaoDuLieuVeAo() {
     }
   });
 
-  // 6. Lưu toàn bộ đống vé vừa tạo vào LocalStorage
+  // Lưu toàn bộ vé vừa tạo vào LocalStorage
   localStorage.setItem("cinema_tickets", JSON.stringify(danhSachVeAo));
 
-  // 7. ĐÁNH DẤU LÀ ĐÃ TẠO DATA XỊN ĐỂ LẦN SAU KHÔNG BỊ TẠO ĐÈ NỮA
+  // Đánh dấu đã tạo data để không bị đè
   localStorage.setItem("daTaoDataVeAoXin", "thanh_cong");
 
   console.log("Đã dọn dẹp vé cũ và tạo thành công " + danhSachVeAo.length + " vé xem phim ảo!");

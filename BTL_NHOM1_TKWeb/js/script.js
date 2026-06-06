@@ -544,15 +544,15 @@ const khoPhim = [
   },
 ];
 
-// =================================================================
-// BIẾN TOÀN CỤC (QUẢN LÝ TRẠNG THÁI)
-// =================================================================
+/* =================================================================
+BIẾN TOÀN CỤC (QUẢN LÝ TRẠNG THÁI)
+ =================================================================*/
 let ngayHienTai = null;
 let tabLichChieuHienTai = "dang-chieu";
 
-// =================================================================
-// 1. HÀM HIỂN THỊ PHIM ĐANG CHIẾU TRANG CHỦ (GIỚI HẠN 8 PHIM)
-// =================================================================
+/* =================================================================
+ HÀM HIỂN THỊ PHIM ĐANG CHIẾU TRANG CHỦ (GIỚI HẠN 8 PHIM)
+=================================================================*/
 function renderDanhSachTrangChu() {
   const vungTrangChu = document.getElementById("danh-sach-phim-trang-chu");
   if (!vungTrangChu) return;
@@ -589,9 +589,9 @@ function renderDanhSachTrangChu() {
   });
 }
 
-// =================================================================
-// 2. HÀM HIỂN THỊ PHIM SẮP CHIẾU TRANG CHỦ (GIỚI HẠN 8 PHIM)
-// =================================================================
+/*=================================================================
+HÀM HIỂN THỊ PHIM SẮP CHIẾU TRANG CHỦ (GIỚI HẠN 8 PHIM)
+================================================================= */
 function renderDanhSachSapChieuTrangChu() {
   const vungSapChieu = document.getElementById("danh-sach-phim-sap-chieu-trang-chu");
   if (!vungSapChieu) return;
@@ -628,9 +628,9 @@ function renderDanhSachSapChieuTrangChu() {
   });
 }
 
-// =================================================================
-// 3. HÀM HIỂN THỊ DANH SÁCH BÊN TRANG LỊCH CHIẾU (CHUNG CẢ 2 TAB)
-// =================================================================
+/* =================================================================
+HÀM HIỂN THỊ DANH SÁCH TRANG LỊCH CHIẾU 
+ ================================================================= */
 function renderDanhSachLichChieu(ngayDuocChon = null) {
   const vungDanhSach = document.getElementById("danh-sach-phim");
   if (!vungDanhSach) return;
@@ -670,15 +670,13 @@ function renderDanhSachLichChieu(ngayDuocChon = null) {
     return;
   }
 
-  // --- VẼ GIAO DIỆN PHIM ---
+  // VẼ GIAO DIỆN PHIM
   phimHopLe.forEach((phim) => {
     const classNhan = phim.nhanTuoi === "P" ? "nhan-tuoi nhan-p" : "nhan-tuoi";
 
     let htmlChucNang = "";
     if (tabLichChieuHienTai === "dang-chieu") {
       const danhSachGio = phim.suatChieu[ngayDuocChon] || [];
-      // BÍ QUYẾT: Gắn link sang trang đặt vé, mang theo ID, Ngày và Giờ
-      // Lưu ý: Nếu file HTML đặt vé của nhóm cậu tên khác, hãy thay 'datve.html' thành tên chuẩn nhé
       htmlChucNang = danhSachGio
         .map(
           (gio) => `
@@ -711,9 +709,9 @@ function renderDanhSachLichChieu(ngayDuocChon = null) {
   });
 }
 
-// =================================================================
-// 4. CHUYỂN TAB VÀ HIỆU ỨNG TRƯỢT GẠCH CHÂN
-// =================================================================
+/* =================================================================
+CHUYỂN TAB VÀ HIỆU ỨNG TRƯỢT GẠCH CHÂN
+================================================================= */
 function chuyenTabLichChieu(tabId, tabElement) {
   tabLichChieuHienTai = tabId;
 
@@ -738,9 +736,9 @@ function chuyenTabLichChieu(tabId, tabElement) {
   renderDanhSachLichChieu();
 }
 
-// =================================================================
-// 5. THANH CHỌN 7 NGÀY
-// =================================================================
+/* =================================================================
+THANH CHỌN 7 NGÀY
+================================================================= */
 function renderThanhChonNgay() {
   const thanhChonNgay = document.getElementById("thanh-chon-ngay");
   if (!thanhChonNgay) return;
@@ -775,9 +773,9 @@ function chonNgay(btnElement, dateStr) {
   renderDanhSachLichChieu(dateStr);
 }
 
-// =================================================================
-// 6. XEM CHI TIẾT PHIM VÀ QUAY LẠI
-// =================================================================
+/*=================================================================
+XEM CHI TIẾT PHIM VÀ QUAY LẠI
+================================================================= */
 function hienChiTietPhim(idPhim) {
   const phim = khoPhim.find((p) => p.id === idPhim);
   if (!phim) return;
@@ -794,7 +792,6 @@ function hienChiTietPhim(idPhim) {
       ? `<button class="btn btn-outline-secondary mb-4 text-white" onclick="window.history.back()">&larr; Quay lại Trang chủ</button>`
       : `<button class="btn btn-outline-secondary mb-4 text-white" onclick="hienLichChieu()">&larr; Quay lại Lịch chiếu</button>`;
 
-  // 2. NÚT ĐẶT VÉ (ĐÃ SỬA THÀNH LINK SANG TRANG ĐẶT VÉ CỦA BẠN CÙNG NHÓM)
   let nutDatVe =
     phim.trangThai === "dang-chieu"
       ? `<button class="btn nut-dat-ve mt-3" onclick="window.location.href='datve.html?id=${phim.id}'">ĐẶT VÉ NGAY</button>`
@@ -832,23 +829,23 @@ function hienChiTietPhim(idPhim) {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 function hienLichChieu() {
-  // 1. Tắt video Youtube nếu đang mở để tránh tiếng kêu văng vẳng
+  // Tắt video Youtube nếu đang mở
   const iframeVideo = document.querySelector("#vung-chi-tiet iframe");
   if (iframeVideo) iframeVideo.src = "";
 
-  // 2. Đảo ngược trạng thái: Ẩn Chi tiết, Hiện Lịch chiếu
+  // Đảo ngược trạng thái: Ẩn Chi tiết, Hiện Lịch chiếu
   const vungChiTiet = document.getElementById("vung-chi-tiet");
   const vungLichChieu = document.getElementById("vung-lich-chieu");
   if (vungChiTiet) vungChiTiet.classList.add("d-none");
   if (vungLichChieu) vungLichChieu.classList.remove("d-none");
 
-  // 3. Chống giật lag: Nếu vùng chứa phim đang bị rỗng thì yêu cầu vẽ lại ngay
+  //Nếu vùng chứa phim đang bị rỗng thì yêu cầu vẽ lại ngay
   if (document.getElementById("danh-sach-phim") && document.getElementById("danh-sach-phim").innerHTML.trim() === "") {
     if (document.getElementById("thanh-chon-ngay")) renderThanhChonNgay();
     renderDanhSachLichChieu();
   }
 
-  // 4. Dọn dẹp URL trên thanh địa chỉ (Xóa id phim để link sạch sẽ như cũ)
+  // Dọn dẹp URL trên thanh địa chỉ
   try {
     const url = new URL(window.location);
     url.searchParams.delete("id");
@@ -858,17 +855,16 @@ function hienLichChieu() {
     console.log("Đang chạy trên máy tính (Local), bỏ qua bước dọn URL.");
   }
 }
-// =================================================================
-// 7. KHỞI TẠO TỰ ĐỘNG KHI LOAD TRANG (ĐÃ FIX LỖI GIẬT KHUNG HÌNH)
-// =================================================================
+/*=================================================================
+KHỞI TẠO TỰ ĐỘNG KHI LOAD TRANG 
+=================================================================*/
 document.addEventListener(
   "DOMContentLoaded",
   () => {
-    // 1. Kích hoạt các hàm của Trang Chủ (Nếu có)
+    // Kích hoạt các hàm của Trang Chủ (Nếu có)
     if (document.getElementById("danh-sach-phim-trang-chu")) renderDanhSachTrangChu();
     if (document.getElementById("danh-sach-phim-sap-chieu-trang-chu")) renderDanhSachSapChieuTrangChu();
 
-    // 2. Đọc đường link ngay lập tức, không dùng setTimeout delay nữa
     const urlParams = new URLSearchParams(window.location.search);
     const phimIdParam = urlParams.get("id");
     const tabParam = urlParams.get("tab");
@@ -876,11 +872,10 @@ document.addEventListener(
     const vungLichChieu = document.getElementById("vung-lich-chieu");
     const vungChiTiet = document.getElementById("vung-chi-tiet");
 
-    // 3. Xử lý kịch bản cho trang Lịch Chiếu
+    // Xử lý kịch bản cho trang Lịch Chiếu
     if (vungLichChieu && vungChiTiet) {
       if (phimIdParam) {
         // KỊCH BẢN A: Có ID -> Đi thẳng vào Chi tiết phim
-        // Bí quyết chống giật: Giấu vùng Lịch chiếu đi ngay lập tức trước khi nó kịp vẽ bậy lên màn hình
         vungLichChieu.classList.add("d-none");
         const targetId = parseInt(phimIdParam);
         if (!isNaN(targetId)) hienChiTietPhim(targetId);
@@ -890,7 +885,7 @@ document.addEventListener(
         if (document.getElementById("thanh-chon-ngay")) renderThanhChonNgay();
         if (document.getElementById("danh-sach-phim")) renderDanhSachLichChieu();
 
-        // Nhảy Tab theo Link (Nhanh gấp 10 lần setTimeout cũ)
+        // Nhảy Tab theo
         const danhSachTab = document.querySelectorAll(".tab-item");
         if (tabParam === "sap-chieu" && danhSachTab.length >= 2) {
           chuyenTabLichChieu("sap-chieu", danhSachTab[1]);
@@ -900,9 +895,9 @@ document.addEventListener(
       }
     }
   },
-  // =================================================================
-  // 8. TỰ ĐỘNG CĂN CHỈNH THANH TRƯỢT KHI THU PHÓNG MÀN HÌNH
-  // =================================================================
+  /*=================================================================
+  TỰ ĐỘNG CĂN CHỈNH THANH TRƯỢT KHI THU PHÓNG MÀN HÌNH
+  =================================================================*/
   window.addEventListener("resize", () => {
     const tabDangChon = document.querySelector(".tab-item.active");
     const thanhTruot = document.getElementById("thanh-truot-tab");

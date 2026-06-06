@@ -119,19 +119,15 @@
     <script src="../js/script.js"></script>
     <script src="../js/taikhoan.js"></script>
     <script>
-        /*
-            =========================================================
-            1. LẤY DỮ LIỆU ĐƠN HÀNG VÀ TÀI KHOẢN
-            =========================================================
-        */
+        /*=========================================================
+            LẤY DỮ LIỆU ĐƠN HÀNG VÀ TÀI KHOẢN
+            =========================================================*/
         let donHang = JSON.parse(localStorage.getItem("thongTinDonHang")) || {};
         let khachHangDaDangNhap = JSON.parse(sessionStorage.getItem("currentUser"));
 
-        /*
-            =========================================================
-            2. KHI TRANG VỪA MỞ
-            =========================================================
-        */
+        /*=========================================================
+            LOAD KHI VỪA MỞ TRANG
+            =========================================================*/
         document.addEventListener("DOMContentLoaded", function () {
             if (!khachHangDaDangNhap) {
                 hienPopupChuaDangNhap();
@@ -149,11 +145,9 @@
             taoQRThanhToan();
         });
 
-        /*
-            =========================================================
-            3. THÔNG BÁO NHỎ
-            =========================================================
-        */
+        /*=========================================================
+            THÔNG BÁO 
+            =========================================================*/
         function hienThongBao(tinNhan) {
             let hopThongBao = document.getElementById("thong-bao-custom");
 
@@ -165,11 +159,9 @@
             }, 3000);
         }
 
-        /*
-            =========================================================
-            4. POPUP CHƯA ĐĂNG NHẬP
-            =========================================================
-        */
+        /*=========================================================
+             POPUP CHƯA ĐĂNG NHẬP
+            =========================================================*/
         function hienPopupChuaDangNhap() {
             document.getElementById("giao-dien-thanh-toan").style.display = "none";
             document.getElementById("popup-canh-bao").style.display = "flex";
@@ -184,11 +176,9 @@
             window.location.href = "Trangchu.html";
         }
 
-        /*
-            =========================================================
-            5. HIỂN THỊ THÔNG TIN VÉ
-            =========================================================
-        */
+        /* =========================================================
+            HIỂN THỊ THÔNG TIN VÉ
+            =========================================================*/
         function hienThongTinVe() {
             document.getElementById("tt-phim").innerText =
                 donHang.tenPhim || "Chưa có dữ liệu";
@@ -228,11 +218,9 @@
             return chuCombo;
         }
 
-        /*
-            =========================================================
-            6. HIỂN THỊ THÔNG TIN KHÁCH HÀNG
-            =========================================================
-        */
+        /*=========================================================
+            HIỂN THỊ THÔNG TIN KHÁCH HÀNG
+            =========================================================*/
         function hienThongTinKhachHang() {
             document.getElementById("nhap-ten").value =
                 khachHangDaDangNhap.name || khachHangDaDangNhap.ten || "";
@@ -244,11 +232,9 @@
                 khachHangDaDangNhap.phone || khachHangDaDangNhap.sdt || "";
         }
 
-        /*
-            =========================================================
-            7. CHỐT ĐƠN THANH TOÁN
-            =========================================================
-        */
+        /*=========================================================
+            CHỐT ĐƠN THANH TOÁN
+            =========================================================*/
         function chotDon() {
             let ten = document.getElementById("nhap-ten").value;
 
