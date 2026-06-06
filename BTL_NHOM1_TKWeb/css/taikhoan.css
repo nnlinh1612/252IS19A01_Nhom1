@@ -24,12 +24,30 @@
     width: 90%;
     max-width: 450px;
     position: relative;
+    animation: modalFadeIn 0.35s ease;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.92) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
 }
 
 .taikhoan-modal-content h2 {
     color: #93e9be;
+    font-size: 28px;
+    font-weight: 800;
     margin-bottom: 25px;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 .taikhoan-close {
@@ -39,51 +57,107 @@
     font-size: 30px;
     cursor: pointer;
     color: #93e9be;
+    transition: 0.2s;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
 }
 
 .taikhoan-close:hover {
+    background: rgba(147, 233, 190, 0.15);
     color: white;
+    transform: rotate(90deg);
+}
+
+.taikhoan-input-wrapper {
+    position: relative;
+    margin-bottom: 18px;
+}
+
+.taikhoan-input-wrapper i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #93e9be;
+    font-size: 16px;
+    z-index: 2;
 }
 
 .taikhoan-input {
     width: 100%;
-    padding: 12px 15px;
-    margin: 10px 0;
+    padding: 14px 16px 14px 48px !important;
     background: #1a1a1a;
     border: 1px solid #333;
-    border-radius: 10px;
+    border-radius: 16px;
     color: white;
+    font-size: 15px;
+    transition: all 0.25s ease;
 }
 
 .taikhoan-input:focus {
     border-color: #93e9be;
+    box-shadow: 0 0 0 3px rgba(147, 233, 190, 0.2);
+    background: #111;
     outline: none;
+}
+
+.taikhoan-input::placeholder {
+    color: #888;
 }
 
 .taikhoan-btn-submit {
     width: 100%;
-    padding: 12px;
-    margin-top: 20px;
+    padding: 14px;
+    margin-top: 10px;
     background: linear-gradient(45deg, #6ecfa0, #93e9be);
-    color: black;
+    color: #0a0a0a;
     border: none;
-    border-radius: 30px;
-    font-weight: bold;
+    border-radius: 40px;
+    font-weight: 800;
+    font-size: 16px;
     cursor: pointer;
+    transition: 0.25s;
+}
+
+.taikhoan-btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(147, 233, 190, 0.35);
 }
 
 .taikhoan-error {
     color: #ff6b6b;
     font-size: 13px;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 8px;
 }
 
 .taikhoan-success {
     color: #93e9be;
     font-size: 13px;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 8px;
+}
+
+.switch-auth {
+    text-align: center;
+    margin-top: 20px;
+    color: #888;
+    font-size: 14px;
+}
+
+.switch-auth span {
+    color: #93e9be;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.switch-auth span:hover {
+    text-decoration: underline;
 }
 
 .taikhoan-ve-container {
@@ -143,4 +217,68 @@
     text-align: center;
     padding: 40px;
     color: #888;
+}
+
+.modal-left {
+    flex: 1;
+    min-width: 200px;
+    background: linear-gradient(135deg, #1a3a2a, #0a2a1a);
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-left::before {
+    content: "🎬";
+    position: absolute;
+    font-size: 120px;
+    opacity: 0.08;
+    bottom: -20px;
+    right: -20px;
+    pointer-events: none;
+}
+
+.modal-left-icon {
+    font-size: 48px;
+    color: #93e9be;
+    margin-bottom: 15px;
+}
+
+.modal-left h3 {
+    color: #93e9be;
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.modal-left p {
+    color: #ccc;
+    font-size: 13px;
+    line-height: 1.6;
+    max-width: 220px;
+}
+
+
+.modal-right {
+    flex: 1;
+    min-width: 250px;
+    padding: 30px 25px;
+    background: #0f0f0f;
+}
+
+.modal-right h2 {
+    color: #93e9be;
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
