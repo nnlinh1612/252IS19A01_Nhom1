@@ -604,8 +604,6 @@
         </div>
     </div>
 
-
-    /* MINIGAME HỨNG BẮP */
     <script>
         let demBapDaRoiXong = 0;
         let tongSoBapDangRoi = 50;
@@ -613,6 +611,7 @@
         let daHungBap = false;
         let bapMayMan = -1;
         let vongKiemTraBap = null;
+        let choPhepBatDauHung = false;
 
         function moGameHungBap(e) {
             e.preventDefault();
@@ -634,8 +633,15 @@
 
             tao50BapRoi();
 
+            choPhepBatDauHung = false;
+
             document.addEventListener("mousemove", diChuyenHopBap);
-            batDauKiemTraBap();
+            document.addEventListener("touchmove", diChuyenHopBapTouch, { passive: false });
+
+            setTimeout(function () {
+                choPhepBatDauHung = true;
+                batDauKiemTraBap();
+            }, 1200);
         }
 
         function tao50BapRoi() {
@@ -679,11 +685,25 @@
             }
         }
 
+        /* Dành cho con trỏ chuột máy tính*/
         function diChuyenHopBap(e) {
             const hopBap = document.getElementById("hopBapTroChuot");
 
             hopBap.style.left = e.clientX + "px";
             hopBap.style.top = e.clientY + "px";
+        }
+
+        /* dành cho màn hình cảm ứng như điện thoại*/
+        function diChuyenHopBapTouch(e) {
+            e.preventDefault();
+
+            const touch = e.touches[0];
+            if (!touch) return;
+
+            const hopBap = document.getElementById("hopBapTroChuot");
+
+            hopBap.style.left = touch.clientX + "px";
+            hopBap.style.top = touch.clientY + "px";
         }
 
         function batDauKiemTraBap() {
@@ -694,6 +714,7 @@
                     clearInterval(vongKiemTraBap);
                     return;
                 }
+                if (!choPhepBatDauHung) return;
 
                 const hopBap = document.getElementById("hopBapTroChuot");
                 const hopRect = hopBap.getBoundingClientRect();
@@ -820,6 +841,8 @@
 
             manGame.style.display = "none";
             manGame.classList.remove("ket-thuc");
+
+            document.removeEventListener("touchmove", diChuyenHopBapTouch);
         }
 
         function xuLyKhongHungBapNao() {
