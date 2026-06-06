@@ -115,3 +115,69 @@ window.onclick = function (e) {
 };
 
 kiemTraDangNhap();
+
+// Hàm xử lý quên mật khẩu (gọi từ modal quên mật khẩu)
+function xuLyQuenMatKhau() {
+    const email = document.getElementById('resetEmail').value.trim();
+    
+    const resetError = document.getElementById('resetError');
+    const resetSuccess = document.getElementById('resetSuccess');
+    
+    if (resetError) resetError.innerText = '';
+    if (resetSuccess) resetSuccess.innerText = '';
+    
+    if (!email) {
+        if (resetError) resetError.innerText = '⚠️ Vui lòng nhập email!';
+        return;
+    }
+    
+    const users = JSON.parse(localStorage.getItem('cinema_users') || '[]');
+    const user = users.find(u => u.email === email);
+    
+    if (!user) {
+        if (resetError) resetError.innerText = '❌ Email không tồn tại trong hệ thống!';
+        return;
+    }
+    
+    // Tạo mật khẩu ngẫu nhiên
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&';
+    let matKhauMoi = '';
+    for (let i = 0; i < 8; i++) {
+        matKhauMoi += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    
+    user.password = matKhauMoi;
+    localStorage.setItem('cinema_users', JSON.stringify(users));
+    
+    // Gửi email
+    const thamSo = {
+        to_email: email,
+        customer_name: user.name,
+        new_password: matKhauMoi
+    };
+    
+    if (typeof emailjs !== 'undefined') {
+        emailjs.send("service_0m2wfrd", "template_a4b5vsp", thamSo)
+            .then(() => {
+                if (resetSuccess) resetSuccess.innerHTML = '✅ Mật khẩu mới đã được gửi về email!';
+                setTimeout(() => {
+                    dongModal('quenMatKhauModal');
+                    moModal('dangNhapModal');
+                    if (document.getElementById('resetEmail')) document.getElementById('resetEmail').value = '';
+                }, 2000);
+            })
+            .catch((error) => {
+                console.error("Lỗi gửi email:", error);
+                if (resetError) resetError.innerHTML = `⚠️ Mật khẩu mới: ${matKhauMoi}`;
+                setTimeout(() => {
+                    dongModal('quenMatKhauModal');
+                    moModal('dangNhapModal');
+                }, 3000);
+            });
+    } else {
+        // Fallback nếu không có EmailJS
+        alert(`🔐 Mật khẩu mới của bạn là: ${matKhauMoi}\n\nVui lòng đăng nhập lại!`);
+        dongModal('quenMatKhauModal');
+        moModal('dangNhapModal');
+    }
+}
