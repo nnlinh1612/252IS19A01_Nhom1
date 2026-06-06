@@ -144,10 +144,15 @@
             <div class="cot-footer">
                 <h3>KẾT NỐI VỚI CHÚNG TÔI</h3>
                 <div class="mang-xa-hoi">
-                    <a href="https://www.facebook.com/profile.php?id=61584052574245" target="_blank"
-                        class="icon-mxh">Facebook</a>
-                    <a href="https://www.instagram.com/tt.nham/" target="_blank" class="icon-mxh">Instagram</a>
-                    <a href="https://www.youtube.com/@ttn27" target="_blank" class="icon-mxh">Youtube</a>
+                    <a href="https://www.facebook.com/profile.php?id=61584052574245" target="_blank" class="icon-mxh">
+                        <i class="fab fa-facebook-f me-1"></i> Facebook
+                    </a>
+                    <a href="https://www.instagram.com/tt.nham/" target="_blank" class="icon-mxh">
+                        <i class="fab fa-instagram me-1"></i> Instagram
+                    </a>
+                    <a href="https://www.youtube.com/@ttn27" target="_blank" class="icon-mxh">
+                        <i class="fab fa-youtube me-1"></i> Youtube
+                    </a>
                 </div>
             </div>
         </div>
@@ -249,13 +254,13 @@
             }
 
             myTickets.sort((a, b) => {
-            const dateA = a.date ? a.date.split('/').reverse().join('-') : '1970-01-01';
-            const dateB = b.date ? b.date.split('/').reverse().join('-') : '1970-01-01';
+                const dateA = a.date ? a.date.split('/').reverse().join('-') : '1970-01-01';
+                const dateB = b.date ? b.date.split('/').reverse().join('-') : '1970-01-01';
 
-            const datetimeA = new Date(`${dateA}T${a.time || '00:00'}`);
-            const datetimeB = new Date(`${dateB}T${b.time || '00:00'}`);
-        
-            return datetimeB - datetimeA;
+                const datetimeA = new Date(`${dateA}T${a.time || '00:00'}`);
+                const datetimeB = new Date(`${dateB}T${b.time || '00:00'}`);
+
+                return datetimeB - datetimeA;
             });
 
             let html = '';

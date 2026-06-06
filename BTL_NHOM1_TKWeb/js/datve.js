@@ -10,6 +10,7 @@ const BANG_GIA_VE = {
 };
 
 const PHU_THU_GHE_DOI = 10000;
+const PHU_THU_GHE_VIP = 20000;
 
 /*
     =========================================================
@@ -31,8 +32,8 @@ const danhSachKhuyenMai = [
     ma: "THIEUNHI_BAPNUOC",
     ten: "Khuyến mãi Tết Thiếu Nhi 1/6 - Miễn phí bắp nước",
     loai: "mien-phi-bap-nuoc",
-    tuNgay: "01/03/2026",
-    denNgay: "01/09/2026",
+    tuNgay: "30/05/2026",
+    denNgay: "02/06/2026",
     apDungLoaiVe: ["tre-em"],
     soLuotMacDinh: 100,
   },
@@ -40,7 +41,7 @@ const danhSachKhuyenMai = [
     ma: "MOONFEST",
     ten: "Khuyến mãi đặc biệt dịp Trung Thu - Mua 2 tặng 1",
     loai: "mua-2-tang-1",
-    tuNgay: "01/03/2026",
+    tuNgay: "03/06/2026",
     denNgay: "15/09/2026",
     apDungLoaiVe: ["tat-ca"],
     soLuotMacDinh: 50,
@@ -508,8 +509,18 @@ function tinhLaiTongTien() {
     let ghe = danhSachGheDaChon[i];
     let giaCoBan = BANG_GIA_VE[ghe.loaiVe].thuong;
     if (laNgayCuoiTuan(ngayDuocChon)) giaCoBan = BANG_GIA_VE[ghe.loaiVe].cuoiTuan;
+    /* Hàng A, B, C là ghế thường
+    Hàng D là ghế VIP +20.000đ
+    Hàng E là ghế đôi x2 + 10.000đ */
+    let giaGhe = giaCoBan;
 
-    let giaGhe = ghe.tenGhe.startsWith("E") ? giaCoBan * 2 + PHU_THU_GHE_DOI : giaCoBan;
+    if (ghe.tenGhe.startsWith("E")) {
+      giaGhe = giaCoBan * 2 + PHU_THU_GHE_DOI;
+    }
+
+    if (ghe.tenGhe.startsWith("D")) {
+      giaGhe = giaCoBan + PHU_THU_GHE_VIP;
+    }
     tienGoc += giaGhe;
     danhSachGiaGhe.push(giaGhe);
   }
@@ -633,6 +644,15 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         btn.classList.add("active", "dang-chon");
+
+        ngayDuocChon = ngayChieu;
+
+        if (phimHienTai && phimHienTai.suatChieu && phimHienTai.suatChieu[ngayChieu]) {
+          renderDanhSachGio();
+        }
+
+        veDanhSachKhuyenMai();
+        tinhLaiTongTien();
 
         let donHang = JSON.parse(localStorage.getItem("thongTinDonHang")) || {};
         donHang.ngayChieu = ngayChieu;

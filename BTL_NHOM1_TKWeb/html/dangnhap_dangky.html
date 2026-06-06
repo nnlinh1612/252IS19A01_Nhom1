@@ -22,16 +22,19 @@
             overflow: hidden;
             border: 1px solid rgba(147, 233, 190, 0.2);
         }
+
         .auth-col {
             flex: 1;
             min-width: 300px;
             padding: 45px 40px;
         }
+
         .auth-col:first-child {
             background: linear-gradient(135deg, #1a3a2a, #0a2a1a);
             position: relative;
             overflow: hidden;
         }
+
         .auth-col:first-child::before {
             content: "🎬";
             position: absolute;
@@ -41,25 +44,30 @@
             right: -40px;
             pointer-events: none;
         }
+
         .auth-col:last-child {
             background: #0f0f0f;
         }
+
         .auth-icon {
             font-size: 64px;
             color: #93e9be;
             margin-bottom: 20px;
         }
+
         .auth-col h3 {
             color: #93e9be;
             font-size: 28px;
             font-weight: 800;
             margin-bottom: 15px;
         }
+
         .auth-col p {
             color: #ccc;
             font-size: 14px;
             line-height: 1.6;
         }
+
         .auth-title {
             color: #93e9be;
             font-size: 28px;
@@ -69,10 +77,12 @@
             align-items: center;
             gap: 10px;
         }
+
         .input-wrapper {
             position: relative;
             margin-bottom: 20px;
         }
+
         .input-wrapper i {
             position: absolute;
             left: 16px;
@@ -81,6 +91,7 @@
             color: #93e9be;
             font-size: 16px;
         }
+
         .auth-input {
             width: 100%;
             padding: 14px 16px 14px 48px;
@@ -90,10 +101,12 @@
             color: #fff;
             font-size: 15px;
         }
+
         .auth-input:focus {
             border-color: #93e9be;
             outline: none;
         }
+
         .password-rule {
             background: rgba(147, 233, 190, 0.05);
             border-radius: 12px;
@@ -102,16 +115,20 @@
             font-size: 12px;
             color: #aaa;
         }
+
         .password-rule ul {
             margin: 5px 0 0 20px;
             padding-left: 20px;
         }
+
         .rule-pass {
             color: #ff6b6b;
         }
+
         .rule-pass.valid {
             color: #93e9be;
         }
+
         .auth-btn {
             width: 100%;
             padding: 14px;
@@ -124,21 +141,37 @@
             cursor: pointer;
             transition: 0.25s;
         }
+
         .auth-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(147, 233, 190, 0.35);
         }
+
         .switch-auth {
             text-align: center;
             margin-top: 20px;
             color: #888;
         }
+
         .switch-auth a {
             color: #93e9be;
             text-decoration: none;
         }
-        .error-msg { color: #ff6b6b; font-size: 13px; text-align: center; margin-top: 8px; }
-        .success-msg { color: #93e9be; font-size: 13px; text-align: center; margin-top: 8px; }
+
+        .error-msg {
+            color: #ff6b6b;
+            font-size: 13px;
+            text-align: center;
+            margin-top: 8px;
+        }
+
+        .success-msg {
+            color: #93e9be;
+            font-size: 13px;
+            text-align: center;
+            margin-top: 8px;
+        }
+
         .taikhoan-ve-container {
             margin-top: 40px;
             padding: 25px;
@@ -146,12 +179,14 @@
             border-radius: 20px;
             border: 1px solid rgba(147, 233, 190, 0.2);
         }
+
         .taikhoan-ve-container h2 {
             color: #93e9be;
             margin-bottom: 20px;
             border-left: 4px solid #93e9be;
             padding-left: 15px;
         }
+
         .taikhoan-ve-item {
             background: #1a1a1a;
             border-left: 4px solid #93e9be;
@@ -159,24 +194,29 @@
             margin-bottom: 15px;
             border-radius: 12px;
         }
+
         .taikhoan-ve-item p {
             margin: 5px 0;
             font-size: 14px;
             color: #ccc;
         }
+
         .taikhoan-ve-item strong {
             color: #93e9be;
         }
+
         .taikhoan-empty {
             text-align: center;
             padding: 40px;
             color: #888;
         }
+
         @media (max-width: 768px) {
             .auth-container {
                 flex-direction: column;
                 margin: 30px 20px;
             }
+
             .auth-col {
                 padding: 30px 25px;
             }
@@ -222,9 +262,15 @@
             <div class="cot-footer">
                 <h3>Kết Nối Với Chúng Tôi</h3>
                 <div class="mang-xa-hoi">
-                    <a href="#" class="icon-mxh">Facebook</a>
-                    <a href="#" class="icon-mxh">Instagram</a>
-                    <a href="#" class="icon-mxh">Youtube</a>
+                    <a href="https://www.facebook.com/profile.php?id=61584052574245" target="_blank" class="icon-mxh">
+                        <i class="fab fa-facebook-f me-1"></i> Facebook
+                    </a>
+                    <a href="https://www.instagram.com/tt.nham/" target="_blank" class="icon-mxh">
+                        <i class="fab fa-instagram me-1"></i> Instagram
+                    </a>
+                    <a href="https://www.youtube.com/@ttn27" target="_blank" class="icon-mxh">
+                        <i class="fab fa-youtube me-1"></i> Youtube
+                    </a>
                 </div>
             </div>
         </div>
@@ -247,12 +293,13 @@
                 <input type="password" id="loginPass" class="taikhoan-input" placeholder="Mật khẩu">
             </div>
             <div id="loginError" class="taikhoan-error"></div>
-                        <div class="forgot-password" style="text-align: right; margin: -10px 0 15px 0;">
-                <span onclick="quenMatKhau()" style="color:#93e9be; font-size:13px; cursor:pointer;">Quên mật khẩu?</span>
+            <div class="forgot-password" style="text-align: right; margin: -10px 0 15px 0;">
+                <span onclick="quenMatKhau()" style="color:#93e9be; font-size:13px; cursor:pointer;">Quên mật
+                    khẩu?</span>
             </div>
             <button class="taikhoan-btn-submit" onclick="dangNhap()">Đăng nhập</button>
             <div class="switch-auth">
-                Chưa có tài khoản? 
+                Chưa có tài khoản?
                 <span onclick="moModal('dangKyModal'); dongModal('dangNhapModal')">Đăng ký ngay</span>
             </div>
         </div>
@@ -277,9 +324,11 @@
             </div>
             <div class="taikhoan-input-wrapper">
                 <i class="fas fa-lock"></i>
-                <input type="password" id="regPass" class="taikhoan-input" placeholder="Mật khẩu" oninput="kiemTraMatKhauRegister()">
+                <input type="password" id="regPass" class="taikhoan-input" placeholder="Mật khẩu"
+                    oninput="kiemTraMatKhauRegister()">
             </div>
-            <div style="background: rgba(147,233,190,0.05); border-radius: 12px; padding: 10px; margin: 10px 0; font-size: 11px;">
+            <div
+                style="background: rgba(147,233,190,0.05); border-radius: 12px; padding: 10px; margin: 10px 0; font-size: 11px;">
                 <i class="fas fa-shield-alt" style="color:#93e9be;"></i> Mật khẩu phải chứa:
                 <ul style="margin: 5px 0 0 20px; padding-left: 0;">
                     <li id="rule-length-reg" style="color:#ff6b6b;">✗ Từ 8 - 32 ký tự</li>
@@ -292,7 +341,7 @@
             <div id="regSuccess" class="taikhoan-success"></div>
             <button class="taikhoan-btn-submit" onclick="dangKyRegister()">Tạo tài khoản</button>
             <div class="switch-auth">
-                Đã có tài khoản? 
+                Đã có tài khoản?
                 <span onclick="moModal('dangNhapModal'); dongModal('dangKyModal')">Đăng nhập</span>
             </div>
         </div>
@@ -371,7 +420,7 @@
         // KIỂM TRA MẬT KHẨU REALTIME
         function kiemTraMatKhauRegister() {
             const pass = document.getElementById('regPass').value;
-            
+
             const ruleLength = document.getElementById('rule-length-reg');
             if (pass.length >= 8 && pass.length <= 32) {
                 ruleLength.innerHTML = '✓ Từ 8 - 32 ký tự';
@@ -380,7 +429,7 @@
                 ruleLength.innerHTML = '✗ Từ 8 - 32 ký tự';
                 ruleLength.style.color = '#ff6b6b';
             }
-            
+
             const hasLower = /[a-z]/.test(pass);
             const hasNumber = /[0-9]/.test(pass);
             const ruleLowerNumber = document.getElementById('rule-lower-number-reg');
@@ -391,7 +440,7 @@
                 ruleLowerNumber.innerHTML = '✗ Bao gồm chữ thường và số';
                 ruleLowerNumber.style.color = '#ff6b6b';
             }
-            
+
             const hasSpecial = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(pass);
             const ruleSpecial = document.getElementById('rule-special-reg');
             if (hasSpecial) {
@@ -401,7 +450,7 @@
                 ruleSpecial.innerHTML = '✗ Bao gồm ký tự đặc biệt (!, @, $, %, ...)';
                 ruleSpecial.style.color = '#ff6b6b';
             }
-            
+
             const hasUpper = /[A-Z]/.test(pass);
             const ruleUpper = document.getElementById('rule-upper-reg');
             if (hasUpper) {
@@ -427,26 +476,26 @@
             const phone = document.getElementById('regPhone').value.trim();
             const email = document.getElementById('regEmail').value.trim();
             const pass = document.getElementById('regPass').value.trim();
-            
+
             document.getElementById('regError').innerText = '';
             document.getElementById('regSuccess').innerText = '';
-            
+
             if (!name || !phone || !email || !pass) {
                 document.getElementById('regError').innerText = 'Vui lòng nhập đầy đủ thông tin!';
                 return;
             }
-            
+
             if (!isMatKhauHopLe(pass)) {
                 document.getElementById('regError').innerText = '⚠️ Mật khẩu chưa đáp ứng đủ các yêu cầu!';
                 return;
             }
-            
+
             const users = JSON.parse(localStorage.getItem('cinema_users'));
             if (users.find(u => u.email === email)) {
                 document.getElementById('regError').innerText = 'Email đã tồn tại!';
                 return;
             }
-            
+
             users.push({ id: users.length + 1, name, phone, email, password: pass });
             localStorage.setItem('cinema_users', JSON.stringify(users));
             document.getElementById('regSuccess').innerText = '✅ Đăng ký thành công! Hãy đăng nhập.';
@@ -461,21 +510,21 @@
             const phone = document.getElementById('regPhone').value.trim();
             const email = document.getElementById('regEmail').value.trim();
             const pass = document.getElementById('regPass').value.trim();
-            
+
             document.getElementById('regError').innerText = '';
             document.getElementById('regSuccess').innerText = '';
-            
+
             if (!name || !phone || !email || !pass) {
                 document.getElementById('regError').innerText = 'Vui lòng nhập đầy đủ thông tin!';
                 return;
             }
-            
+
             const users = JSON.parse(localStorage.getItem('cinema_users'));
             if (users.find(u => u.email === email)) {
                 document.getElementById('regError').innerText = 'Email đã tồn tại!';
                 return;
             }
-            
+
             users.push({ id: users.length + 1, name, phone, email, password: pass });
             localStorage.setItem('cinema_users', JSON.stringify(users));
             document.getElementById('regSuccess').innerText = '✅ Đăng ký thành công! Hãy đăng nhập.';
@@ -489,15 +538,15 @@
             const email = document.getElementById('loginEmail').value.trim();
             const pass = document.getElementById('loginPass').value.trim();
             document.getElementById('loginError').innerText = '';
-            
+
             if (!email || !pass) {
                 document.getElementById('loginError').innerText = 'Vui lòng nhập email và mật khẩu!';
                 return;
             }
-            
+
             const users = JSON.parse(localStorage.getItem('cinema_users'));
             const user = users.find(u => u.email === email && u.password === pass);
-            
+
             if (user) {
                 currentUser = user;
                 sessionStorage.setItem('currentUser', JSON.stringify(user));
@@ -522,7 +571,7 @@
             document.getElementById(id).classList.remove('active');
         }
 
-        window.onclick = function(e) {
+        window.onclick = function (e) {
             if (e.target.classList.contains('taikhoan-modal')) {
                 e.target.classList.remove('active');
             }

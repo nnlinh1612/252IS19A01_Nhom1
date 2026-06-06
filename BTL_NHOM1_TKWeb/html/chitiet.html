@@ -12,19 +12,21 @@
     <title>Plant Cinema - Chi tiết</title>
     <style>
         .detail-container {
+            width: 75%;
+            max-width: 1100px;
+            margin: 40px auto 22px;
             background: #0f0f0f;
             border-radius: 20px;
-            padding: 30px;
-            margin: 40px 0;
+            padding: 26px 30px;
             border: 1px solid rgba(147, 233, 190, 0.2);
         }
 
         .detail-img {
+            display: block;
             width: 100%;
-            max-height: 400px;
-            object-fit: cover;
+            height: auto;
             border-radius: 16px;
-            margin-bottom: 25px;
+            margin: 0 auto 25px;
         }
 
         .detail-badge {
@@ -71,7 +73,8 @@
             padding: 10px 25px;
             border-radius: 30px;
             cursor: pointer;
-            margin-top: 30px;
+            margin-top: 5px;
+            margin-bottom: 35px;
             transition: 0.3s;
         }
 
@@ -135,10 +138,15 @@
             <div class="cot-footer">
                 <h3>Kết Nối Với Chúng Tôi</h3>
                 <div class="mang-xa-hoi">
-                    <a href="https://www.facebook.com/profile.php?id=61584052574245" target="_blank"
-                        class="icon-mxh">Facebook</a>
-                    <a href="https://www.instagram.com/tt.nham/" target="_blank" class="icon-mxh">Instagram</a>
-                    <a href="https://www.youtube.com/@ttn27" target="_blank" class="icon-mxh">Youtube</a>
+                    <a href="https://www.facebook.com/profile.php?id=61584052574245" target="_blank" class="icon-mxh">
+                        <i class="fab fa-facebook-f me-1"></i> Facebook
+                    </a>
+                    <a href="https://www.instagram.com/tt.nham/" target="_blank" class="icon-mxh">
+                        <i class="fab fa-instagram me-1"></i> Instagram
+                    </a>
+                    <a href="https://www.youtube.com/@ttn27" target="_blank" class="icon-mxh">
+                        <i class="fab fa-youtube me-1"></i> Youtube
+                    </a>
                 </div>
             </div>
         </div>
@@ -170,15 +178,20 @@
         <div class="taikhoan-modal-content" style="max-width: 500px; padding: 0;">
             <span class="taikhoan-close" onclick="dongModal('dangNhapModal')">&times;</span>
             <div style="display: flex; flex-wrap: wrap;">
-                <div class="modal-left" style="flex: 1; min-width: 200px; background: linear-gradient(135deg, #1a3a2a, #0a2a1a); padding: 30px 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                <div class="modal-left"
+                    style="flex: 1; min-width: 200px; background: linear-gradient(135deg, #1a3a2a, #0a2a1a); padding: 30px 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
                     <div class="modal-left-icon" style="font-size: 48px; color: #93e9be; margin-bottom: 15px;">
                         <i class="fas fa-film"></i>
                     </div>
                     <h3 style="color: #93e9be; font-size: 24px; font-weight: 800; margin-bottom: 10px;">Xin chào!</h3>
-                    <p style="color: #ccc; font-size: 13px; line-height: 1.6;">Đăng nhập để đặt vé xem phim nhanh chóng và nhận nhiều ưu đãi hấp dẫn.</p>
+                    <p style="color: #ccc; font-size: 13px; line-height: 1.6;">Đăng nhập để đặt vé xem phim nhanh chóng
+                        và nhận nhiều ưu đãi hấp dẫn.</p>
                 </div>
                 <div class="modal-right" style="flex: 1; min-width: 250px; padding: 30px 25px; background: #0f0f0f;">
-                    <h2 style="color: #93e9be; font-size: 24px; font-weight: 800; margin-bottom: 20px; text-align: center;"><i class="fas fa-sign-in-alt"></i> ĐĂNG NHẬP</h2>
+                    <h2
+                        style="color: #93e9be; font-size: 24px; font-weight: 800; margin-bottom: 20px; text-align: center;">
+                        <i class="fas fa-sign-in-alt"></i> ĐĂNG NHẬP
+                    </h2>
                     <div class="taikhoan-input-wrapper">
                         <i class="fas fa-envelope"></i>
                         <input type="email" id="loginEmail" class="taikhoan-input" placeholder="Email">
@@ -189,12 +202,14 @@
                     </div>
                     <div id="loginError" class="taikhoan-error"></div>
                     <div class="forgot-password" style="text-align: right; margin: -10px 0 15px 0;">
-                        <span onclick="dongModal('dangNhapModal'); moModal('quenMatKhauModal')" style="color:#93e9be; font-size:13px; cursor:pointer;">Quên mật khẩu?</span>
+                        <span onclick="dongModal('dangNhapModal'); moModal('quenMatKhauModal')"
+                            style="color:#93e9be; font-size:13px; cursor:pointer;">Quên mật khẩu?</span>
                     </div>
                     <button class="taikhoan-btn-submit" onclick="dangNhap()">Đăng nhập</button>
                     <div class="switch-auth" style="text-align: center; margin-top: 15px; color: #888;">
-                        Chưa có tài khoản? 
-                        <span onclick="dongModal('dangNhapModal'); moModal('dangKyModal')" style="color:#93e9be; cursor:pointer;">Đăng ký ngay</span>
+                        Chưa có tài khoản?
+                        <span onclick="dongModal('dangNhapModal'); moModal('dangKyModal')"
+                            style="color:#93e9be; cursor:pointer;">Đăng ký ngay</span>
                     </div>
                 </div>
             </div>
@@ -206,15 +221,21 @@
         <div class="taikhoan-modal-content" style="max-width: 550px; padding: 0;">
             <span class="taikhoan-close" onclick="dongModal('dangKyModal')">&times;</span>
             <div style="display: flex; flex-wrap: wrap;">
-                <div class="modal-left" style="flex: 1; min-width: 200px; background: linear-gradient(135deg, #1a3a2a, #0a2a1a); padding: 30px 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                <div class="modal-left"
+                    style="flex: 1; min-width: 200px; background: linear-gradient(135deg, #1a3a2a, #0a2a1a); padding: 30px 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
                     <div class="modal-left-icon" style="font-size: 48px; color: #93e9be; margin-bottom: 15px;">
                         <i class="fas fa-ticket-alt"></i>
                     </div>
-                    <h3 style="color: #93e9be; font-size: 24px; font-weight: 800; margin-bottom: 10px;">Tham gia ngay!</h3>
-                    <p style="color: #ccc; font-size: 13px; line-height: 1.6;">Tạo tài khoản để trải nghiệm đặt vé dễ dàng và tích điểm thưởng mỗi lần xem phim.</p>
+                    <h3 style="color: #93e9be; font-size: 24px; font-weight: 800; margin-bottom: 10px;">Tham gia ngay!
+                    </h3>
+                    <p style="color: #ccc; font-size: 13px; line-height: 1.6;">Tạo tài khoản để trải nghiệm đặt vé dễ
+                        dàng và tích điểm thưởng mỗi lần xem phim.</p>
                 </div>
                 <div class="modal-right" style="flex: 1; min-width: 280px; padding: 25px; background: #0f0f0f;">
-                    <h2 style="color: #93e9be; font-size: 24px; font-weight: 800; margin-bottom: 15px; text-align: center;"><i class="fas fa-user-plus"></i> ĐĂNG KÝ</h2>
+                    <h2
+                        style="color: #93e9be; font-size: 24px; font-weight: 800; margin-bottom: 15px; text-align: center;">
+                        <i class="fas fa-user-plus"></i> ĐĂNG KÝ
+                    </h2>
                     <div class="taikhoan-input-wrapper">
                         <i class="fas fa-user"></i>
                         <input type="text" id="regName" class="taikhoan-input" placeholder="Họ tên">
@@ -229,23 +250,28 @@
                     </div>
                     <div class="taikhoan-input-wrapper">
                         <i class="fas fa-lock"></i>
-                        <input type="password" id="regPass" class="taikhoan-input" placeholder="Mật khẩu" oninput="kiemTraMatKhauRegister()">
+                        <input type="password" id="regPass" class="taikhoan-input" placeholder="Mật khẩu"
+                            oninput="kiemTraMatKhauRegister()">
                     </div>
-                    <div style="background: rgba(147,233,190,0.05); border-radius: 12px; padding: 10px; margin: 10px 0; font-size: 11px;">
+                    <div
+                        style="background: rgba(147,233,190,0.05); border-radius: 12px; padding: 10px; margin: 10px 0; font-size: 11px;">
                         <i class="fas fa-shield-alt" style="color:#93e9be;"></i> Mật khẩu phải chứa:
                         <ul style="margin: 5px 0 0 20px; padding-left: 0;">
                             <li id="rule-length-reg" style="color:#ff6b6b;">✗ Từ 8 - 32 ký tự</li>
                             <li id="rule-lower-number-reg" style="color:#ff6b6b;">✗ Bao gồm chữ thường và số</li>
-                            <li id="rule-special-reg" style="color:#ff6b6b;">✗ Bao gồm ký tự đặc biệt (!, @, $, %, ...)</li>
+                            <li id="rule-special-reg" style="color:#ff6b6b;">✗ Bao gồm ký tự đặc biệt (!, @, $, %, ...)
+                            </li>
                             <li id="rule-upper-reg" style="color:#ff6b6b;">✗ Có ít nhất 1 ký tự in hoa</li>
                         </ul>
                     </div>
                     <div id="regError" class="taikhoan-error"></div>
                     <div id="regSuccess" class="taikhoan-success"></div>
-                    <button class="taikhoan-btn-submit" onclick="dangKy()" style="margin-top: 5px;">Tạo tài khoản</button>
+                    <button class="taikhoan-btn-submit" onclick="dangKy()" style="margin-top: 5px;">Tạo tài
+                        khoản</button>
                     <div class="switch-auth" style="text-align: center; margin-top: 15px; color: #888;">
-                        Đã có tài khoản? 
-                        <span onclick="dongModal('dangKyModal'); moModal('dangNhapModal')" style="color:#93e9be; cursor:pointer;">Đăng nhập</span>
+                        Đã có tài khoản?
+                        <span onclick="dongModal('dangKyModal'); moModal('dangNhapModal')"
+                            style="color:#93e9be; cursor:pointer;">Đăng nhập</span>
                     </div>
                 </div>
             </div>
@@ -255,144 +281,177 @@
     <script src="../js/taikhoan.js"></script>
 
     <script>
-    function kiemTraMatKhauRegister() {
-        const pass = document.getElementById('regPass').value;
-        
-        const ruleLength = document.getElementById('rule-length-reg');
-        if (pass.length >= 8 && pass.length <= 32) {
-            ruleLength.innerHTML = '✓ Từ 8 - 32 ký tự';
-            ruleLength.style.color = '#93e9be';
-        } else {
-            ruleLength.innerHTML = '✗ Từ 8 - 32 ký tự';
-            ruleLength.style.color = '#ff6b6b';
-        }
-        
-        const hasLower = /[a-z]/.test(pass);
-        const hasNumber = /[0-9]/.test(pass);
-        const ruleLowerNumber = document.getElementById('rule-lower-number-reg');
-        if (hasLower && hasNumber) {
-            ruleLowerNumber.innerHTML = '✓ Bao gồm chữ thường và số';
-            ruleLowerNumber.style.color = '#93e9be';
-        } else {
-            ruleLowerNumber.innerHTML = '✗ Bao gồm chữ thường và số';
-            ruleLowerNumber.style.color = '#ff6b6b';
-        }
-        
-        const hasSpecial = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(pass);
-        const ruleSpecial = document.getElementById('rule-special-reg');
-        if (hasSpecial) {
-            ruleSpecial.innerHTML = '✓ Bao gồm ký tự đặc biệt (!, @, $, %, ...)';
-            ruleSpecial.style.color = '#93e9be';
-        } else {
-            ruleSpecial.innerHTML = '✗ Bao gồm ký tự đặc biệt (!, @, $, %, ...)';
-            ruleSpecial.style.color = '#ff6b6b';
-        }
-        
-        const hasUpper = /[A-Z]/.test(pass);
-        const ruleUpper = document.getElementById('rule-upper-reg');
-        if (hasUpper) {
-            ruleUpper.innerHTML = '✓ Có ít nhất 1 ký tự in hoa';
-            ruleUpper.style.color = '#93e9be';
-        } else {
-            ruleUpper.innerHTML = '✗ Có ít nhất 1 ký tự in hoa';
-            ruleUpper.style.color = '#ff6b6b';
-        }
-    }
+        function kiemTraMatKhauRegister() {
+            const pass = document.getElementById('regPass').value;
 
-    function isMatKhauHopLe(pass) {
-        if (pass.length < 8 || pass.length > 32) return false;
-        if (!/[a-z]/.test(pass)) return false;
-        if (!/[0-9]/.test(pass)) return false;
-        if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(pass)) return false;
-        if (!/[A-Z]/.test(pass)) return false;
-        return true;
-    }
+            const ruleLength = document.getElementById('rule-length-reg');
+            if (pass.length >= 8 && pass.length <= 32) {
+                ruleLength.innerHTML = '✓ Từ 8 - 32 ký tự';
+                ruleLength.style.color = '#93e9be';
+            } else {
+                ruleLength.innerHTML = '✗ Từ 8 - 32 ký tự';
+                ruleLength.style.color = '#ff6b6b';
+            }
 
-    function dangKy() {
-        const name = document.getElementById('regName').value.trim();
-        const phone = document.getElementById('regPhone').value.trim();
-        const email = document.getElementById('regEmail').value.trim();
-        const pass = document.getElementById('regPass').value.trim();
-        
-        document.getElementById('regError').innerText = '';
-        document.getElementById('regSuccess').innerText = '';
-        
-        if (!name || !phone || !email || !pass) {
-            document.getElementById('regError').innerText = 'Vui lòng nhập đầy đủ thông tin!';
-            return;
-        }
-        
-        if (!isMatKhauHopLe(pass)) {
-            document.getElementById('regError').innerText = '⚠️ Mật khẩu chưa đáp ứng đủ các yêu cầu!';
-            return;
-        }
-        
-        const users = JSON.parse(localStorage.getItem('cinema_users') || '[]');
-        if (users.find(u => u.email === email)) {
-            document.getElementById('regError').innerText = 'Email đã tồn tại!';
-            return;
-        }
-        
-        users.push({ id: users.length + 1, name, phone, email, password: pass });
-        localStorage.setItem('cinema_users', JSON.stringify(users));
-        document.getElementById('regSuccess').innerText = '✅ Đăng ký thành công! Hãy đăng nhập.';
-        
-        setTimeout(() => {
-            dongModal('dangKyModal');
-            moModal('dangNhapModal');
-        }, 1500);
-    }
+            const hasLower = /[a-z]/.test(pass);
+            const hasNumber = /[0-9]/.test(pass);
+            const ruleLowerNumber = document.getElementById('rule-lower-number-reg');
+            if (hasLower && hasNumber) {
+                ruleLowerNumber.innerHTML = '✓ Bao gồm chữ thường và số';
+                ruleLowerNumber.style.color = '#93e9be';
+            } else {
+                ruleLowerNumber.innerHTML = '✗ Bao gồm chữ thường và số';
+                ruleLowerNumber.style.color = '#ff6b6b';
+            }
 
-    // Hàm xử lý quên mật khẩu
-    function xuLyQuenMatKhau() {
-        const email = document.getElementById('resetEmail').value.trim();
-        
-        document.getElementById('resetError').innerText = '';
-        document.getElementById('resetSuccess').innerText = '';
-        
-        if (!email) {
-            document.getElementById('resetError').innerText = '⚠️ Vui lòng nhập email!';
-            return;
+            const hasSpecial = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(pass);
+            const ruleSpecial = document.getElementById('rule-special-reg');
+            if (hasSpecial) {
+                ruleSpecial.innerHTML = '✓ Bao gồm ký tự đặc biệt (!, @, $, %, ...)';
+                ruleSpecial.style.color = '#93e9be';
+            } else {
+                ruleSpecial.innerHTML = '✗ Bao gồm ký tự đặc biệt (!, @, $, %, ...)';
+                ruleSpecial.style.color = '#ff6b6b';
+            }
+
+            const hasUpper = /[A-Z]/.test(pass);
+            const ruleUpper = document.getElementById('rule-upper-reg');
+            if (hasUpper) {
+                ruleUpper.innerHTML = '✓ Có ít nhất 1 ký tự in hoa';
+                ruleUpper.style.color = '#93e9be';
+            } else {
+                ruleUpper.innerHTML = '✗ Có ít nhất 1 ký tự in hoa';
+                ruleUpper.style.color = '#ff6b6b';
+            }
         }
-        
-        const users = JSON.parse(localStorage.getItem('cinema_users') || '[]');
-        const user = users.find(u => u.email === email);
-        
-        if (!user) {
-            document.getElementById('resetError').innerText = '❌ Email không tồn tại trong hệ thống!';
-            return;
+
+        function isMatKhauHopLe(pass) {
+            if (pass.length < 8 || pass.length > 32) return false;
+            if (!/[a-z]/.test(pass)) return false;
+            if (!/[0-9]/.test(pass)) return false;
+            if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(pass)) return false;
+            if (!/[A-Z]/.test(pass)) return false;
+            return true;
         }
-        
-        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&';
-        let matKhauMoi = '';
-        for (let i = 0; i < 8; i++) {
-            matKhauMoi += chars.charAt(Math.floor(Math.random() * chars.length));
+
+        function dangKy() {
+            const name = document.getElementById('regName').value.trim();
+            const phone = document.getElementById('regPhone').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
+            const pass = document.getElementById('regPass').value.trim();
+
+            document.getElementById('regError').innerText = '';
+            document.getElementById('regSuccess').innerText = '';
+
+            if (!name || !phone || !email || !pass) {
+                document.getElementById('regError').innerText = 'Vui lòng nhập đầy đủ thông tin!';
+                return;
+            }
+
+            if (!isMatKhauHopLe(pass)) {
+                document.getElementById('regError').innerText = '⚠️ Mật khẩu chưa đáp ứng đủ các yêu cầu!';
+                return;
+            }
+
+            const users = JSON.parse(localStorage.getItem('cinema_users') || '[]');
+            if (users.find(u => u.email === email)) {
+                document.getElementById('regError').innerText = 'Email đã tồn tại!';
+                return;
+            }
+
+            users.push({ id: users.length + 1, name, phone, email, password: pass });
+            localStorage.setItem('cinema_users', JSON.stringify(users));
+            document.getElementById('regSuccess').innerText = '✅ Đăng ký thành công! Hãy đăng nhập.';
+
+            setTimeout(() => {
+                dongModal('dangKyModal');
+                moModal('dangNhapModal');
+            }, 1500);
         }
-        
-        user.password = matKhauMoi;
-        localStorage.setItem('cinema_users', JSON.stringify(users));
-        
-        document.getElementById('resetSuccess').innerHTML = `
+
+        // Hàm xử lý quên mật khẩu
+        function xuLyQuenMatKhau() {
+            const email = document.getElementById('resetEmail').value.trim();
+
+            document.getElementById('resetError').innerText = '';
+            document.getElementById('resetSuccess').innerText = '';
+
+            if (!email) {
+                document.getElementById('resetError').innerText = '⚠️ Vui lòng nhập email!';
+                return;
+            }
+
+            const users = JSON.parse(localStorage.getItem('cinema_users') || '[]');
+            const user = users.find(u => u.email === email);
+
+            if (!user) {
+                document.getElementById('resetError').innerText = '❌ Email không tồn tại trong hệ thống!';
+                return;
+            }
+
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&';
+            let matKhauMoi = '';
+            for (let i = 0; i < 8; i++) {
+                matKhauMoi += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+
+            user.password = matKhauMoi;
+            localStorage.setItem('cinema_users', JSON.stringify(users));
+
+            document.getElementById('resetSuccess').innerHTML = `
             ✅ Đã đặt lại mật khẩu!<br>
             <strong style="font-size: 22px; display: block; margin: 15px 0; color: #93e9be;">${matKhauMoi}</strong>
             Vui lòng dùng mật khẩu này để đăng nhập.
         `;
-        
-        setTimeout(() => {
-            dongModal('quenMatKhauModal');
-            moModal('dangNhapModal');
-            document.getElementById('resetEmail').value = '';
-        }, 4000);
-    }
+
+            setTimeout(() => {
+                dongModal('quenMatKhauModal');
+                moModal('dangNhapModal');
+                document.getElementById('resetEmail').value = '';
+            }, 4000);
+        }
     </script>
 
     <script>
         const newsData = [
-            { id: 1, type: "tintuc", title: "🎉 Khai trương rạp Plant Cinema", content: "<p>Chi tiết: Từ 1/6 đến 8/6, giảm 30% tất cả các suất chiếu. Áp dụng với tất cả các đối tượng và hình thức thanh toán bằng tiền mặt.</p>", date: "20/05/2026", image: "../hinhanh/tintuc1.png", voucher: null },
-            { id: 2, type: "khuyenmai", title: "🎁 Khuyến mãi Tết Thiếu Nhi 1/6", content: "<p>Trẻ em dưới 14 tuổi được tặng combo bắp nước tự chọn miễn phí.</p>", date: "25/05/2026", image: "../hinhanh/anh2.png", voucher: { code: "JUNE30", discount: "30%" } },
-            { id: 3, type: "tintuc", title: "🎬 Lịch chiếu phim mới tháng 6", content: "<p>Inside Out 2, Bad Boys 4, A Quiet Place: Day One cùng các siêu phẩm các được công chiếu tại Plant Cinema.</p>", date: "28/05/2026", image: "../hinhanh/ctkm2.png", voucher: null },
-            { id: 4, type: "khuyenmai", title: "🏮 Khuyến mãi Trung Thu", content: "<p>Mua 2 tặng 1, voucher MOONFEST. Áp dụng đến hết rằm trung thu.</p>", date: "01/09/2026", image: "../hinhanh/ctkm3.png", voucher: { code: "MOONFEST", discount: "Mua 2 tặng 1" } }
+            {
+                id: 1,
+                type: "tintuc",
+                title: "Lịch chiếu phim mới tháng 6",
+                content: "<p>Tháng 6 này, Plant Cinema cập nhật hàng loạt bộ phim mới thuộc nhiều thể loại khác nhau, phù hợp với cả gia đình, nhóm bạn và những khán giả yêu thích điện ảnh.</p><p>Danh sách phim nổi bật gồm Inside Out 2, Bad Boys 4, A Quiet Place: Day One cùng nhiều tác phẩm hấp dẫn khác. Các suất chiếu được sắp xếp linh hoạt trong ngày để khán giả dễ dàng lựa chọn thời gian phù hợp.</p><p>Khán giả có thể theo dõi lịch chiếu mới nhất trên website Plant Cinema và đặt vé trực tuyến để giữ chỗ trước khi đến rạp.</p>",
+                date: "28/05/2026",
+                image: "../hinhanh/tintuc1.png",
+                voucher: null
+            },
+            {
+                id: 2,
+                type: "tintuc",
+                title: "Khai trương rạp Plant Cinema",
+                content: "<p>Plant Cinema chính thức khai trương với không gian rạp hiện đại, màn hình sắc nét và hệ thống âm thanh sống động, mang đến trải nghiệm xem phim thoải mái cho mọi khán giả.</p><p>Nhân dịp khai trương, từ ngày 1/6 đến 8/6, Plant Cinema áp dụng ưu đãi giảm 30% cho tất cả các suất chiếu. Chương trình áp dụng với mọi đối tượng khách hàng và hình thức thanh toán bằng tiền mặt tại rạp.</p><p>Đây là lời cảm ơn của Plant Cinema gửi đến những khán giả đầu tiên đã đồng hành cùng rạp trong những ngày mở cửa đầu tiên.</p>",
+                date: "20/05/2026",
+                image: "../hinhanh/anh2.png",
+                voucher: { code: "KHAITRUONG30", discount: "30%" }
+            },
+            {
+                id: 3,
+                type: "khuyenmai",
+                title: "Khuyến mãi Tết Thiếu Nhi 1/6",
+                content: "<p>Nhân dịp Tết Thiếu Nhi 1/6, Plant Cinema dành tặng chương trình ưu đãi đặc biệt cho các khán giả nhỏ tuổi khi đến rạp xem phim cùng gia đình.</p><p>Trẻ em dưới 14 tuổi sẽ được tặng một combo bắp nước tự chọn miễn phí khi mua vé xem phim trong thời gian diễn ra chương trình. Ưu đãi giúp các bé có một buổi xem phim vui vẻ, trọn vẹn và đáng nhớ hơn.</p><p>Chương trình áp dụng tại quầy vé Plant Cinema và có thể kết thúc sớm khi số lượng quà tặng đã được sử dụng hết.</p>",
+                date: "30/05/2026",
+                image: "../hinhanh/ctkm2.png",
+                voucher: { code: "JUNE30", discount: "Tặng 1 combo bắp nước cho trẻ em" }
+            },
+            {
+                id: 4,
+                type: "khuyenmai",
+                title: "Khuyến mãi Trung Thu",
+                content: "<p>Plant Cinema mang đến chương trình khuyến mãi Trung Thu dành cho khán giả trong mùa lễ hội đoàn viên. Đây là dịp lý tưởng để cùng gia đình và bạn bè thưởng thức những bộ phim yêu thích tại rạp.</p><p>Với ưu đãi mua 2 vé tặng 1 vé, khán giả có thể sử dụng mã voucher MOONFEST khi đặt vé trong thời gian chương trình diễn ra. Ưu đãi áp dụng đến hết rằm Trung Thu hoặc cho đến khi số lượng voucher được sử dụng hết.</p><p>Ngoài ưu đãi vé, khách hàng nhập mã MOONFEST còn có cơ hội nhận thêm combo bắp nước khi đến xem phim tại Plant Cinema.</p>",
+                date: "03/06/2026",
+                image: "../hinhanh/ctkm3.png",
+                voucher: { code: "MOONFEST", discount: "Mua 2 tặng 1" }
+            }
         ];
+
 
         const params = new URLSearchParams(window.location.search);
         const id = params.get('id');
