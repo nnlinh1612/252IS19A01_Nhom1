@@ -161,37 +161,125 @@
         </div>
     </footer>
 
-    <!-- MODAL ĐĂNG NHẬP / ĐĂNG KÝ -->
-    <div id="dangNhapModal" class="taikhoan-modal">
-        <div class="taikhoan-modal-content">
-            <span class="taikhoan-close" onclick="dongModal('dangNhapModal')">&times;</span>
-            <h2>ĐĂNG NHẬP</h2>
-            <input type="email" id="loginEmail" class="taikhoan-input" placeholder="Email">
-            <input type="password" id="loginPass" class="taikhoan-input" placeholder="Mật khẩu">
-            <div id="loginError" class="taikhoan-error"></div>
-            <button class="taikhoan-btn-submit" onclick="dangNhap()">Đăng nhập</button>
-            <div style="text-align: center; margin-top: 15px;">
-                <span style="color:#888;">Chưa có tài khoản? </span>
-                <span onclick="moModal('dangKyModal'); dongModal('dangNhapModal');"
-                    style="color:#93e9be; cursor:pointer;">Đăng ký ngay</span>
+    <!-- MODAL QUÊN MẬT KHẨU -->
+    <div id="quenMatKhauModal" class="taikhoan-modal">
+        <div class="taikhoan-modal-content" style="max-width: 450px;">
+            <span class="taikhoan-close" onclick="dongModal('quenMatKhauModal')">&times;</span>
+            <h2><i class="fas fa-key"></i> QUÊN MẬT KHẨU</h2>
+            <div class="taikhoan-input-wrapper">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="resetEmail" class="taikhoan-input" placeholder="Nhập email của bạn">
+            </div>
+            <div id="resetError" class="taikhoan-error"></div>
+            <div id="resetSuccess" class="taikhoan-success"></div>
+            <button class="taikhoan-btn-submit" onclick="xuLyQuenMatKhau()">Gửi mật khẩu mới</button>
+            <div class="switch-auth">
+                <span onclick="dongModal('quenMatKhauModal'); moModal('dangNhapModal')">Quay lại đăng nhập</span>
             </div>
         </div>
     </div>
+
+    <!-- MODAL ĐĂNG NHẬP -->
+    <div id="dangNhapModal" class="taikhoan-modal">
+        <div class="taikhoan-modal-content" style="max-width: 500px; padding: 0;">
+            <span class="taikhoan-close" onclick="dongModal('dangNhapModal')">&times;</span>
+            <div style="display: flex; flex-wrap: wrap;">
+                <div class="modal-left"
+                    style="flex: 1; min-width: 200px; background: linear-gradient(135deg, #1a3a2a, #0a2a1a); padding: 30px 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                    <div class="modal-left-icon" style="font-size: 48px; color: #93e9be; margin-bottom: 15px;">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3 style="color: #93e9be; font-size: 24px; font-weight: 800; margin-bottom: 10px;">Xin chào!</h3>
+                    <p style="color: #ccc; font-size: 13px; line-height: 1.6;">Đăng nhập để đặt vé xem phim nhanh chóng
+                        và nhận nhiều ưu đãi hấp dẫn.</p>
+                </div>
+                <div class="modal-right" style="flex: 1; min-width: 250px; padding: 30px 25px; background: #0f0f0f;">
+                    <h2
+                        style="color: #93e9be; font-size: 24px; font-weight: 800; margin-bottom: 20px; text-align: center;">
+                        <i class="fas fa-sign-in-alt"></i> ĐĂNG NHẬP
+                    </h2>
+                    <div class="taikhoan-input-wrapper">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="loginEmail" class="taikhoan-input" placeholder="Email">
+                    </div>
+                    <div class="taikhoan-input-wrapper">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="loginPass" class="taikhoan-input" placeholder="Mật khẩu">
+                    </div>
+                    <div id="loginError" class="taikhoan-error"></div>
+                    <div class="forgot-password" style="text-align: right; margin: -10px 0 15px 0;">
+                        <span onclick="dongModal('dangNhapModal'); moModal('quenMatKhauModal')"
+                            style="color:#93e9be; font-size:13px; cursor:pointer;">Quên mật khẩu?</span>
+                    </div>
+                    <button class="taikhoan-btn-submit" onclick="dangNhap()">Đăng nhập</button>
+                    <div class="switch-auth" style="text-align: center; margin-top: 15px; color: #888;">
+                        Chưa có tài khoản?
+                        <span onclick="dongModal('dangNhapModal'); moModal('dangKyModal')"
+                            style="color:#93e9be; cursor:pointer;">Đăng ký ngay</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL ĐĂNG KÝ -->
     <div id="dangKyModal" class="taikhoan-modal">
-        <div class="taikhoan-modal-content">
+        <div class="taikhoan-modal-content" style="max-width: 550px; padding: 0;">
             <span class="taikhoan-close" onclick="dongModal('dangKyModal')">&times;</span>
-            <h2>ĐĂNG KÝ</h2>
-            <input type="text" id="regName" class="taikhoan-input" placeholder="Họ tên">
-            <input type="tel" id="regPhone" class="taikhoan-input" placeholder="Số điện thoại">
-            <input type="email" id="regEmail" class="taikhoan-input" placeholder="Email">
-            <input type="password" id="regPass" class="taikhoan-input" placeholder="Mật khẩu">
-            <div id="regError" class="taikhoan-error"></div>
-            <div id="regSuccess" class="taikhoan-success"></div>
-            <button class="taikhoan-btn-submit" onclick="dangKy()">Tạo tài khoản</button>
-            <div style="text-align: center; margin-top: 15px;">
-                <span style="color:#888;">Đã có tài khoản? </span>
-                <span onclick="moModal('dangNhapModal'); dongModal('dangKyModal');"
-                    style="color:#93e9be; cursor:pointer;">Đăng nhập</span>
+            <div style="display: flex; flex-wrap: wrap;">
+                <div class="modal-left"
+                    style="flex: 1; min-width: 200px; background: linear-gradient(135deg, #1a3a2a, #0a2a1a); padding: 30px 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                    <div class="modal-left-icon" style="font-size: 48px; color: #93e9be; margin-bottom: 15px;">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <h3 style="color: #93e9be; font-size: 24px; font-weight: 800; margin-bottom: 10px;">Tham gia ngay!
+                    </h3>
+                    <p style="color: #ccc; font-size: 13px; line-height: 1.6;">Tạo tài khoản để trải nghiệm đặt vé dễ
+                        dàng và tích điểm thưởng mỗi lần xem phim.</p>
+                </div>
+                <div class="modal-right" style="flex: 1; min-width: 280px; padding: 25px; background: #0f0f0f;">
+                    <h2
+                        style="color: #93e9be; font-size: 24px; font-weight: 800; margin-bottom: 15px; text-align: center;">
+                        <i class="fas fa-user-plus"></i> ĐĂNG KÝ
+                    </h2>
+                    <div class="taikhoan-input-wrapper">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="regName" class="taikhoan-input" placeholder="Họ tên">
+                    </div>
+                    <div class="taikhoan-input-wrapper">
+                        <i class="fas fa-phone"></i>
+                        <input type="tel" id="regPhone" class="taikhoan-input" placeholder="Số điện thoại">
+                    </div>
+                    <div class="taikhoan-input-wrapper">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="regEmail" class="taikhoan-input" placeholder="Email">
+                    </div>
+                    <div class="taikhoan-input-wrapper">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="regPass" class="taikhoan-input" placeholder="Mật khẩu"
+                            oninput="kiemTraMatKhauRegister()">
+                    </div>
+                    <div
+                        style="background: rgba(147,233,190,0.05); border-radius: 12px; padding: 10px; margin: 10px 0; font-size: 11px;">
+                        <i class="fas fa-shield-alt" style="color:#93e9be;"></i> Mật khẩu phải chứa:
+                        <ul style="margin: 5px 0 0 20px; padding-left: 0;">
+                            <li id="rule-length-reg" style="color:#ff6b6b;">✗ Từ 8 - 32 ký tự</li>
+                            <li id="rule-lower-number-reg" style="color:#ff6b6b;">✗ Bao gồm chữ thường và số</li>
+                            <li id="rule-special-reg" style="color:#ff6b6b;">✗ Bao gồm ký tự đặc biệt (!, @, $, %, ...)
+                            </li>
+                            <li id="rule-upper-reg" style="color:#ff6b6b;">✗ Có ít nhất 1 ký tự in hoa</li>
+                        </ul>
+                    </div>
+                    <div id="regError" class="taikhoan-error"></div>
+                    <div id="regSuccess" class="taikhoan-success"></div>
+                    <button class="taikhoan-btn-submit" onclick="dangKy()" style="margin-top: 5px;">Tạo tài
+                        khoản</button>
+                    <div class="switch-auth" style="text-align: center; margin-top: 15px; color: #888;">
+                        Đã có tài khoản?
+                        <span onclick="dongModal('dangKyModal'); moModal('dangNhapModal')"
+                            style="color:#93e9be; cursor:pointer;">Đăng nhập</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
