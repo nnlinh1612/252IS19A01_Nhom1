@@ -1,0 +1,3 @@
+[build]
+  base = "BTL_NHOM1_TKWeb"
+  publish = "."
