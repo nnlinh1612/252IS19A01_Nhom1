@@ -102,7 +102,6 @@
         .tech-icon:hover {
             transform: scale(1.1);
         }
-        /* SỬA LỖI CHỮ TỐI - LÀM SÁNG HƠN */
         .info-card p, .info-card .text-muted {
             color: #c0c0c0 !important;
             font-size: 14px;
@@ -378,6 +377,25 @@
         </div>
     </footer>
 
+    <!-- MODAL QUÊN MẬT KHẨU -->
+    <div id="quenMatKhauModal" class="taikhoan-modal">
+        <div class="taikhoan-modal-content" style="max-width: 450px;">
+            <span class="taikhoan-close" onclick="dongModal('quenMatKhauModal')">&times;</span>
+            <h2><i class="fas fa-key"></i> QUÊN MẬT KHẨU</h2>
+            <div class="taikhoan-input-wrapper">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="resetEmail" class="taikhoan-input" placeholder="Nhập email của bạn">
+            </div>
+            <div id="resetError" class="taikhoan-error"></div>
+            <div id="resetSuccess" class="taikhoan-success"></div>
+            <button class="taikhoan-btn-submit" onclick="xuLyQuenMatKhau()">Gửi mật khẩu mới</button>
+            <div class="switch-auth">
+                <span onclick="dongModal('quenMatKhauModal'); moModal('dangNhapModal')">Quay lại đăng nhập</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL ĐĂNG NHẬP -->
     <div id="dangNhapModal" class="taikhoan-modal">
         <div class="taikhoan-modal-content" style="max-width: 500px; padding: 0;">
             <span class="taikhoan-close" onclick="dongModal('dangNhapModal')">&times;</span>
@@ -400,6 +418,9 @@
                         <input type="password" id="loginPass" class="taikhoan-input" placeholder="Mật khẩu">
                     </div>
                     <div id="loginError" class="taikhoan-error"></div>
+                    <div class="forgot-password" style="text-align: right; margin: -10px 0 15px 0;">
+                        <span onclick="dongModal('dangNhapModal'); moModal('quenMatKhauModal')" style="color:#93e9be; font-size:13px; cursor:pointer;">Quên mật khẩu?</span>
+                    </div>
                     <button class="taikhoan-btn-submit" onclick="dangNhap()">Đăng nhập</button>
                     <div class="switch-auth" style="text-align: center; margin-top: 15px; color: #888;">
                         Chưa có tài khoản? 
@@ -410,6 +431,7 @@
         </div>
     </div>
 
+    <!-- MODAL ĐĂNG KÝ -->
     <div id="dangKyModal" class="taikhoan-modal">
         <div class="taikhoan-modal-content" style="max-width: 550px; padding: 0;">
             <span class="taikhoan-close" onclick="dongModal('dangKyModal')">&times;</span>
@@ -450,7 +472,7 @@
                     </div>
                     <div id="regError" class="taikhoan-error"></div>
                     <div id="regSuccess" class="taikhoan-success"></div>
-                    <button class="taikhoan-btn-submit" onclick="dangKyRegister()" style="margin-top: 5px;">Tạo tài khoản</button>
+                    <button class="taikhoan-btn-submit" onclick="dangKy()" style="margin-top: 5px;">Tạo tài khoản</button>
                     <div class="switch-auth" style="text-align: center; margin-top: 15px; color: #888;">
                         Đã có tài khoản? 
                         <span onclick="dongModal('dangKyModal'); moModal('dangNhapModal')" style="color:#93e9be; cursor:pointer;">Đăng nhập</span>
@@ -516,7 +538,7 @@
         return true;
     }
 
-    function dangKyRegister() {
+    function dangKy() {
         const name = document.getElementById('regName').value.trim();
         const phone = document.getElementById('regPhone').value.trim();
         const email = document.getElementById('regEmail').value.trim();
@@ -550,8 +572,49 @@
             moModal('dangNhapModal');
         }, 1500);
     }
-</script>
 
+    // Hàm xử lý quên mật khẩu
+    function xuLyQuenMatKhau() {
+        const email = document.getElementById('resetEmail').value.trim();
+        
+        document.getElementById('resetError').innerText = '';
+        document.getElementById('resetSuccess').innerText = '';
+        
+        if (!email) {
+            document.getElementById('resetError').innerText = '⚠️ Vui lòng nhập email!';
+            return;
+        }
+        
+        const users = JSON.parse(localStorage.getItem('cinema_users') || '[]');
+        const user = users.find(u => u.email === email);
+        
+        if (!user) {
+            document.getElementById('resetError').innerText = '❌ Email không tồn tại trong hệ thống!';
+            return;
+        }
+        
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&';
+        let matKhauMoi = '';
+        for (let i = 0; i < 8; i++) {
+            matKhauMoi += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        
+        user.password = matKhauMoi;
+        localStorage.setItem('cinema_users', JSON.stringify(users));
+        
+        document.getElementById('resetSuccess').innerHTML = `
+            ✅ Đã đặt lại mật khẩu!<br>
+            <strong style="font-size: 22px; display: block; margin: 15px 0; color: #93e9be;">${matKhauMoi}</strong>
+            Vui lòng dùng mật khẩu này để đăng nhập.
+        `;
+        
+        setTimeout(() => {
+            dongModal('quenMatKhauModal');
+            moModal('dangNhapModal');
+            document.getElementById('resetEmail').value = '';
+        }, 4000);
+    }
+    </script>
 
 </body>
 
