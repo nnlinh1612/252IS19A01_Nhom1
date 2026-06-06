@@ -270,42 +270,176 @@
             <p>Copyright &copy; 2026 Plant Cinema. All rights reserved. Developed by Nhóm 1</p>
         </div>
     </footer>
-    <!-- MODAL ĐĂNG NHẬP -->
     <div id="dangNhapModal" class="taikhoan-modal">
-        <div class="taikhoan-modal-content">
+        <div class="taikhoan-modal-content" style="max-width: 500px; padding: 0;">
             <span class="taikhoan-close" onclick="dongModal('dangNhapModal')">&times;</span>
-            <h2>ĐĂNG NHẬP</h2>
-            <input type="email" id="loginEmail" class="taikhoan-input" placeholder="Email">
-            <input type="password" id="loginPass" class="taikhoan-input" placeholder="Mật khẩu">
-            <div id="loginError" class="taikhoan-error"></div>
-            <button class="taikhoan-btn-submit" onclick="dangNhap()">Đăng nhập</button>
-            <div style="text-align: center; margin-top: 15px;">
-                <span style="color:#888;">Chưa có tài khoản? </span>
-                <span onclick="moModal('dangKyModal'); dongModal('dangNhapModal');"
-                    style="color:#93e9be; cursor:pointer;">Đăng ký ngay</span>
+            <div style="display: flex; flex-wrap: wrap;">
+                <div class="modal-left" style="flex: 1; min-width: 200px; background: linear-gradient(135deg, #1a3a2a, #0a2a1a); padding: 30px 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                    <div class="modal-left-icon" style="font-size: 48px; color: #93e9be; margin-bottom: 15px;">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3 style="color: #93e9be; font-size: 24px; font-weight: 800; margin-bottom: 10px;">Xin chào!</h3>
+                    <p style="color: #ccc; font-size: 13px; line-height: 1.6;">Đăng nhập để đặt vé xem phim nhanh chóng và nhận nhiều ưu đãi hấp dẫn.</p>
+                </div>
+                <div class="modal-right" style="flex: 1; min-width: 250px; padding: 30px 25px; background: #0f0f0f;">
+                    <h2 style="color: #93e9be; font-size: 24px; font-weight: 800; margin-bottom: 20px; text-align: center;"><i class="fas fa-sign-in-alt"></i> ĐĂNG NHẬP</h2>
+                    <div class="taikhoan-input-wrapper">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="loginEmail" class="taikhoan-input" placeholder="Email">
+                    </div>
+                    <div class="taikhoan-input-wrapper">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="loginPass" class="taikhoan-input" placeholder="Mật khẩu">
+                    </div>
+                    <div id="loginError" class="taikhoan-error"></div>
+                    <button class="taikhoan-btn-submit" onclick="dangNhap()">Đăng nhập</button>
+                    <div class="switch-auth" style="text-align: center; margin-top: 15px; color: #888;">
+                        Chưa có tài khoản? 
+                        <span onclick="dongModal('dangNhapModal'); moModal('dangKyModal')" style="color:#93e9be; cursor:pointer;">Đăng ký ngay</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- MODAL ĐĂNG KÝ -->
     <div id="dangKyModal" class="taikhoan-modal">
-        <div class="taikhoan-modal-content">
+        <div class="taikhoan-modal-content" style="max-width: 550px; padding: 0;">
             <span class="taikhoan-close" onclick="dongModal('dangKyModal')">&times;</span>
-            <h2>ĐĂNG KÝ</h2>
-            <input type="text" id="regName" class="taikhoan-input" placeholder="Họ tên">
-            <input type="tel" id="regPhone" class="taikhoan-input" placeholder="Số điện thoại">
-            <input type="email" id="regEmail" class="taikhoan-input" placeholder="Email">
-            <input type="password" id="regPass" class="taikhoan-input" placeholder="Mật khẩu">
-            <div id="regError" class="taikhoan-error"></div>
-            <div id="regSuccess" class="taikhoan-success"></div>
-            <button class="taikhoan-btn-submit" onclick="dangKy()">Tạo tài khoản</button>
-            <div style="text-align: center; margin-top: 15px;">
-                <span style="color:#888;">Đã có tài khoản? </span>
-                <span onclick="moModal('dangNhapModal'); dongModal('dangKyModal');"
-                    style="color:#93e9be; cursor:pointer;">Đăng nhập</span>
+            <div style="display: flex; flex-wrap: wrap;">
+                <div class="modal-left" style="flex: 1; min-width: 200px; background: linear-gradient(135deg, #1a3a2a, #0a2a1a); padding: 30px 20px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                    <div class="modal-left-icon" style="font-size: 48px; color: #93e9be; margin-bottom: 15px;">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <h3 style="color: #93e9be; font-size: 24px; font-weight: 800; margin-bottom: 10px;">Tham gia ngay!</h3>
+                    <p style="color: #ccc; font-size: 13px; line-height: 1.6;">Tạo tài khoản để trải nghiệm đặt vé dễ dàng và tích điểm thưởng mỗi lần xem phim.</p>
+                </div>
+                <div class="modal-right" style="flex: 1; min-width: 280px; padding: 25px; background: #0f0f0f;">
+                    <h2 style="color: #93e9be; font-size: 24px; font-weight: 800; margin-bottom: 15px; text-align: center;"><i class="fas fa-user-plus"></i> ĐĂNG KÝ</h2>
+                    <div class="taikhoan-input-wrapper">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="regName" class="taikhoan-input" placeholder="Họ tên">
+                    </div>
+                    <div class="taikhoan-input-wrapper">
+                        <i class="fas fa-phone"></i>
+                        <input type="tel" id="regPhone" class="taikhoan-input" placeholder="Số điện thoại">
+                    </div>
+                    <div class="taikhoan-input-wrapper">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="regEmail" class="taikhoan-input" placeholder="Email">
+                    </div>
+                    <div class="taikhoan-input-wrapper">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="regPass" class="taikhoan-input" placeholder="Mật khẩu" oninput="kiemTraMatKhauRegister()">
+                    </div>
+                    <div style="background: rgba(147,233,190,0.05); border-radius: 12px; padding: 10px; margin: 10px 0; font-size: 11px;">
+                        <i class="fas fa-shield-alt" style="color:#93e9be;"></i> Mật khẩu phải chứa:
+                        <ul style="margin: 5px 0 0 20px; padding-left: 0;">
+                            <li id="rule-length-reg" style="color:#ff6b6b;">✗ Từ 8 - 32 ký tự</li>
+                            <li id="rule-lower-number-reg" style="color:#ff6b6b;">✗ Bao gồm chữ thường và số</li>
+                            <li id="rule-special-reg" style="color:#ff6b6b;">✗ Bao gồm ký tự đặc biệt (!, @, $, %, ...)</li>
+                            <li id="rule-upper-reg" style="color:#ff6b6b;">✗ Có ít nhất 1 ký tự in hoa</li>
+                        </ul>
+                    </div>
+                    <div id="regError" class="taikhoan-error"></div>
+                    <div id="regSuccess" class="taikhoan-success"></div>
+                    <button class="taikhoan-btn-submit" onclick="dangKyRegister()" style="margin-top: 5px;">Tạo tài khoản</button>
+                    <div class="switch-auth" style="text-align: center; margin-top: 15px; color: #888;">
+                        Đã có tài khoản? 
+                        <span onclick="dongModal('dangKyModal'); moModal('dangNhapModal')" style="color:#93e9be; cursor:pointer;">Đăng nhập</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <script>
+    function kiemTraMatKhauRegister() {
+        const pass = document.getElementById('regPass').value;
+        
+        const ruleLength = document.getElementById('rule-length-reg');
+        if (pass.length >= 8 && pass.length <= 32) {
+            ruleLength.innerHTML = '✓ Từ 8 - 32 ký tự';
+            ruleLength.style.color = '#93e9be';
+        } else {
+            ruleLength.innerHTML = '✗ Từ 8 - 32 ký tự';
+            ruleLength.style.color = '#ff6b6b';
+        }
+        
+        const hasLower = /[a-z]/.test(pass);
+        const hasNumber = /[0-9]/.test(pass);
+        const ruleLowerNumber = document.getElementById('rule-lower-number-reg');
+        if (hasLower && hasNumber) {
+            ruleLowerNumber.innerHTML = '✓ Bao gồm chữ thường và số';
+            ruleLowerNumber.style.color = '#93e9be';
+        } else {
+            ruleLowerNumber.innerHTML = '✗ Bao gồm chữ thường và số';
+            ruleLowerNumber.style.color = '#ff6b6b';
+        }
+        
+        const hasSpecial = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(pass);
+        const ruleSpecial = document.getElementById('rule-special-reg');
+        if (hasSpecial) {
+            ruleSpecial.innerHTML = '✓ Bao gồm ký tự đặc biệt (!, @, $, %, ...)';
+            ruleSpecial.style.color = '#93e9be';
+        } else {
+            ruleSpecial.innerHTML = '✗ Bao gồm ký tự đặc biệt (!, @, $, %, ...)';
+            ruleSpecial.style.color = '#ff6b6b';
+        }
+        
+        const hasUpper = /[A-Z]/.test(pass);
+        const ruleUpper = document.getElementById('rule-upper-reg');
+        if (hasUpper) {
+            ruleUpper.innerHTML = '✓ Có ít nhất 1 ký tự in hoa';
+            ruleUpper.style.color = '#93e9be';
+        } else {
+            ruleUpper.innerHTML = '✗ Có ít nhất 1 ký tự in hoa';
+            ruleUpper.style.color = '#ff6b6b';
+        }
+    }
+
+    function isMatKhauHopLe(pass) {
+        if (pass.length < 8 || pass.length > 32) return false;
+        if (!/[a-z]/.test(pass)) return false;
+        if (!/[0-9]/.test(pass)) return false;
+        if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(pass)) return false;
+        if (!/[A-Z]/.test(pass)) return false;
+        return true;
+    }
+
+    function dangKyRegister() {
+        const name = document.getElementById('regName').value.trim();
+        const phone = document.getElementById('regPhone').value.trim();
+        const email = document.getElementById('regEmail').value.trim();
+        const pass = document.getElementById('regPass').value.trim();
+        
+        document.getElementById('regError').innerText = '';
+        document.getElementById('regSuccess').innerText = '';
+        
+        if (!name || !phone || !email || !pass) {
+            document.getElementById('regError').innerText = 'Vui lòng nhập đầy đủ thông tin!';
+            return;
+        }
+        
+        if (!isMatKhauHopLe(pass)) {
+            document.getElementById('regError').innerText = '⚠️ Mật khẩu chưa đáp ứng đủ các yêu cầu!';
+            return;
+        }
+        
+        const users = JSON.parse(localStorage.getItem('cinema_users') || '[]');
+        if (users.find(u => u.email === email)) {
+            document.getElementById('regError').innerText = 'Email đã tồn tại!';
+            return;
+        }
+        
+        users.push({ id: users.length + 1, name, phone, email, password: pass });
+        localStorage.setItem('cinema_users', JSON.stringify(users));
+        document.getElementById('regSuccess').innerText = '✅ Đăng ký thành công! Hãy đăng nhập.';
+        
+        setTimeout(() => {
+            dongModal('dangKyModal');
+            moModal('dangNhapModal');
+        }, 1500);
+    }
+</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/script.js"></script>
     <script src="../js/taikhoan.js"></script>
