@@ -36,13 +36,11 @@ const newsData = [
   },
 ];
 
-// Lấy bài viết mới nhất
 function getLatestNews() {
   const sorted = [...newsData].sort((a, b) => new Date(b.date) - new Date(a.date));
   return sorted[0];
 }
 
-// Cập nhật nội dung popup
 function updatePopupContent() {
   const latest = getLatestNews();
   if (!latest) return;
@@ -51,6 +49,7 @@ function updatePopupContent() {
   const imageEl = document.getElementById("popup-image");
   const headingEl = document.getElementById("popup-heading");
   const descEl = document.getElementById("popup-description");
+  const linkEl = document.getElementById("popup-link"); 
 
   if (titleEl) titleEl.innerHTML = latest.type === "khuyenmai" ? "KHUYẾN MÃI ĐẶC BIỆT" : "TIN TỨC MỚI NHẤT";
   if (imageEl) imageEl.src = latest.image;
@@ -62,9 +61,9 @@ function updatePopupContent() {
     }
     descEl.innerHTML = desc;
   }
+  if (linkEl) linkEl.href = `chitiet.html?id=${latest.id}`;
 }
 
-// Hiển thị popup
 function showPopup() {
   updatePopupContent();
   const popup = document.getElementById("popupAds");
@@ -76,10 +75,8 @@ function dongPopup() {
   if (popup) popup.classList.remove("active");
 }
 
-// Tự động hiển thị sau 1 giây
 setTimeout(showPopup, 1000);
 
-// Đóng popup khi click ra ngoài
 document.addEventListener("click", function (e) {
   const popup = document.getElementById("popupAds");
   if (e.target === popup) {
